@@ -1,1 +1,1 @@
-{"name":"bottle","posts_per_page":7,"postnum":2,"postindex":{"0":{"title":"Hello1","date":"20190619","intro":"测试1","tags":"日常"},"1":{"title":"Hello2","date":"20190620","intro":"测试2","tags":"日常"}},"dateindex":{"post1":201906201,"post0":201906190}}
+{"name":"bottle","posts_per_page":7,"postnum":3,"postindex":{"0":{"title":"Hello1","date":"20190619","intro":"测试1","tags":"日常"},"1":{"title":"Hello2","date":"20190620","intro":"测试2","tags":"日常"},"2":{"title":"Hello3","date":"20190502","intro":"测试3","tags":"日常"}},"dateindex":{"post1":201906201,"post0":201906190,"post2":201905022}}
