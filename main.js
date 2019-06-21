@@ -78,6 +78,7 @@ if (!B) { /*PreventInitializingTwice*/
 		renderer: function() {
 			var cloth = window.htmls['cloth.html'];
 			var main = window.htmls['main.html'];
+			var comment = window.htmls['comment.html'];
 			if (pagetype == 'post.html') {
 				var content = this.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
 				var title = this.gt('<!--[PostTitle]-->', '<!--[PostTitleEnd]-->'); /*Get Post Title*/
@@ -92,7 +93,8 @@ if (!B) { /*PreventInitializingTwice*/
 				var render2 = this.r(main, '{[contents]}', render14);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', pagetitle);
-				$.ht(render4, 'html');
+				var render5 = this.r(render4, '{[comments]}', comment);/*LoadCommentsForPost*/
+				$.ht(render5, 'html');
 			}
 		}
 	};
