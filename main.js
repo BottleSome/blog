@@ -84,6 +84,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var title = this.gt('<!--[PostTitle]-->', '<!--[PostTitleEnd]-->'); /*Get Post Title*/
 				var date = this.gt('<!--[PostDate]-->', '<!--[PostDateEnd]-->'); /*Get Post Date*/
 				var tags = this.gt('<!--[PostTag]-->', '<!--[PostTagEnd]-->'); /*Get Post Content*/
+				var pid = this.gt('<!--[PostID]-->', '<!--[PostIDEnd]-->'); /*Get Post ID*/
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
 				var post = window.htmls['post.html'];
 				var render11 = this.r(post, '{[postcontent]}', content);
@@ -94,7 +95,8 @@ if (!B) { /*PreventInitializingTwice*/
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', pagetitle);
 				var render5 = this.r(render4, '{[comments]}', comment);/*LoadCommentsForPost*/
-				$.ht(render5, 'html');
+				var render6 = this.r(render5, '{[pid]}', pid);/*SetPid*/
+				$.ht(render6, 'html');
 			}
 		}
 	};
