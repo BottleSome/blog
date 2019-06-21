@@ -17,8 +17,13 @@ if (!B) { /*PreventInitializingTwice*/
 			var e = document.getElementsByTagName('html')[0].innerHTML;
 			document.getElementsByTagName('html')[0].innerHTML = this.r(e, o, p);
 		},
-		gt: function(p1, p2) { /*htmlget*/
-			var e = document.getElementsByTagName('html')[0].innerHTML;
+		gt: function(p1, p2, ct = false) { /*htmlget*/
+			var e;
+			if (!ct) {
+				e = document.getElementsByTagName('html')[0].innerHTML;
+			} else {
+				e = ct;
+			}
 			var k = e.split(p1)[1];
 			var d = k.split(p2)[0];
 			return d;
@@ -78,6 +83,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var title = this.gt('<!--[PostTitle]-->', '<!--[PostTitleEnd]-->'); /*Get Post Title*/
 				var date = this.gt('<!--[PostDate]-->', '<!--[PostDateEnd]-->'); /*Get Post Date*/
 				var tags = this.gt('<!--[PostTag]-->', '<!--[PostTagEnd]-->'); /*Get Post Content*/
+				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
 				var post = window.htmls['post.html'];
 				var render11 = this.r(post, '{[postcontent]}', content);
 				var render12 = this.r(render11, '{[posttitle]}', title);
@@ -85,7 +91,8 @@ if (!B) { /*PreventInitializingTwice*/
 				var render14 = this.r(render13, '{[postdate]}', date);
 				var render2 = this.r(main, '{[contents]}', render14);
 				var render3 = this.r(cloth, '{[main]}', render2);
-				$.ht(render3, 'html');
+				var render4 = this.r(render3, '{[title]}', pagetitle);
+				$.ht(render4, 'html');
 			}
 		}
 	};
