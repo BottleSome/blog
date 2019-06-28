@@ -148,6 +148,33 @@ if (!B) { /*PreventInitializingTwice*/
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', pagetitle);
 				$.ht(render4, 'html');
+			}else if (pagetype == 'tags.html') {
+				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
+				var href=$.tr(window.location.href);
+				/*Generate Tags*/
+				var rendertg='';
+				var pts=tj['postindex'];
+				if(href.indexOf('#')==-1){
+					var tagarr=new Array();
+					for(var i in pts){
+						var t=pts[i]['tag'];
+						if(t!==''&&tagarr.indexOf(t)==-1){
+							tagarr.push(t);
+						}
+					}
+					tagarr.forEach(function(item,index){
+						rendertg+='[<a href=\'#'+encodeURIComponent(item)+'\' class=\'itemlink\'>'+item+'</a>]';
+					});
+				}else{
+					var pg=href.split('#')[1];
+				}
+				/*Generate Finish*/
+				var tgs = window.htmls['tags.html'];
+				var render11 = this.r(tgs, '{[tags]}', rendertg);
+				var render2 = this.r(main, '{[contents]}', render11);
+				var render3 = this.r(cloth, '{[main]}', render2);
+				var render4 = this.r(render3, '{[title]}', pagetitle);
+				$.ht(render4, 'html');
 			}
 		}
 	};
@@ -236,6 +263,21 @@ $.ht = function(h, e) {
 		}
 	}
 
+}
+$.tr = function(url) {/*PreventURLProblem*/
+	var a = url;
+	a = a.split('?');
+	if ((a.length - 1) > 1 || url.indexOf('!') !== -1) {
+		if (url.indexOf('?') !== -1) {
+			a.pop();
+		}
+	}
+	var u = '';
+	for (var i in a) {
+		u = u + a[i] + '?';
+	}
+	u = u.substring(0, u.length - 1);
+	return u;
 }
 /*Simple PJAX - SomeBottle*/
 var mainhost = window.location.host;
