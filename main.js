@@ -157,12 +157,11 @@ if (!B) { /*PreventInitializingTwice*/
 				if(href.indexOf('#')==-1){
 					var tagarr=new Array();
 					for(var i in pts){
-						var t=pts[i]['tag'];
+						var t=pts[i]['tags'];
 						if(t!==''&&tagarr.indexOf(t)==-1){
 							tagarr.push(t);
 						}
 					}
-					console.log(tagarr);
 					tagarr.forEach(function(item,index){
 						rendertg+='[<a href=\'#'+encodeURIComponent(item)+'\' class=\'itemlink\'>'+item+'</a>]';
 					});
