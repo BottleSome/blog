@@ -34,22 +34,28 @@ if (!B) { /*PreventInitializingTwice*/
 		tpcheck: function() { /*template check*/
 		    var pagetype=this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
 			if (!window.templjson) {
+				var ot = this;
 				$.aj('template.json', '', {
 					success: function(m) {
 						window.templjson = JSON.parse(m);
+						return ot.tpcheck();
 					},
 					failed: function(m) { /*Failed*/
-
+                        
 					}
 				}, 'get', '', true);
+			}else if (!window.mainjson) {
 				var ot = this;
-				var timer = setInterval(function() {
-					if (window.templjson) {
-						clearInterval(timer);
+				$.aj('main.json', '', {
+					success: function(m) {
+						window.mainjson = JSON.parse(m);
 						return ot.tpcheck();
+					},
+					failed: function(m) { /*Failed*/
+                        
 					}
-				}, 1000);
-			} else {
+				}, 'get', '', true);
+			}else {
 				var o = this;
 				var j = window.templjson;
 				j['necessary'].push(pagetype); /*Pagetype Pushed*/
@@ -81,6 +87,7 @@ if (!B) { /*PreventInitializingTwice*/
 			var main = window.htmls['main.html'];
 			var comment = window.htmls['comment.html'];
 			var pagetype=this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
+			var tj = JSON.parse(BASE64.decode(window.mainjson.content.replace(/[\r\n]/g, ""))); /*get json*/
 			if (pagetype == 'post.html') {
 				var content = this.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
 				var title = this.gt('<!--[PostTitle]-->', '<!--[PostTitleEnd]-->'); /*Get Post Title*/
@@ -105,6 +112,38 @@ if (!B) { /*PreventInitializingTwice*/
 				var realtitle = pagetitle.replace('-','');/*Remove - */
 				var pt = window.htmls['postlist.html'];
 				var render11 = this.r(pt, '{[postitems]}', content.trim());
+				var render2 = this.r(main, '{[contents]}', render11);
+				var render3 = this.r(cloth, '{[main]}', render2);
+				var render4 = this.r(render3, '{[title]}', realtitle);
+				$.ht(render4, 'html');
+			}else if (pagetype == 'archives.html') {
+				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
+				/*Generate Archives*/
+				var din=tj['dateindex'];
+				var renderar='';
+				var year=0;
+				for(var td in din){
+					var t=(din[td].toString()).substring(0,4);/*get years*/
+					if(t!==year){
+						year=t;
+						if(renderar!==''){
+						renderar+='</ul><h2>· '+t+'</h2><ul>';
+						}else{
+							renderar+='<h2>· '+t+'</h2><ul>';
+						}
+					}
+					var pid=td.replace('post','');
+					var title=tj['postindex'][pid]['title'];
+					if(!tj['postindex'][pid]['link']){
+					renderar+='<li><a class=\'taglink\' href=\'post-'+pid+'.html\'>'+title+'</a></li>';
+					}else{
+						renderar+='<li><a class=\'taglink\' href=\''+tj['postindex'][pid]['link']+'.html\'>'+title+'</a></li>';
+					}
+				}
+				renderar+='</ul>';
+				/*Generate Finish*/
+				var ar = window.htmls['archives.html'];
+				var render11 = this.r(ar, '{[archives]}', renderar);
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', realtitle);
