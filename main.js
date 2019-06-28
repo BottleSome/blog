@@ -172,7 +172,7 @@ if (!B) { /*PreventInitializingTwice*/
 					rendertg += '<script>B.taguper(\'' + pg + '\');</script>';
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
-					tagpagechecker();
+					ot.tagpagechecker();
 					if (ot.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->').indexOf('tags') == -1) {
 						clearInterval(timer);
 					}
