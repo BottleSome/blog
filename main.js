@@ -191,8 +191,7 @@ $.ht = function(h, e) {
 		if (os[o].src !== undefined && os[o].src !== null && os[o].src !== '') {
 			$.script(os[o].src);
 		} else {
-			eval(os[o].innerHTML);
-			console.log(os[o].innerHTML);
+			setTimeout(function(){eval(os[o].innerHTML);},100);
 		}
 	}
 
