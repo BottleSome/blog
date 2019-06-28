@@ -48,7 +48,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var ot = this;
 				$.aj('main.json', '', {
 					success: function(m) {
-						window.mainjson = JSON.parse(m);
+						window.mainjson = JSON.parse(m.replace(/[\r\n]/g, ""));
 						return ot.tpcheck();
 					},
 					failed: function(m) { /*Failed*/
