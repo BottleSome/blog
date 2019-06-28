@@ -192,6 +192,7 @@ $.ht = function(h, e) {
 			$.script(os[o].src);
 		} else {
 			eval(os[o].innerHTML);
+			console.log(os[o].innerHTML);
 		}
 	}
 
