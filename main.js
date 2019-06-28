@@ -173,7 +173,7 @@ if (!B) { /*PreventInitializingTwice*/
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
 					ot.tagpagechecker();
-					if (ot.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->').indexOf('tags') == -1) {
+					if (window.location.href.indexOf('tag') == -1) {
 						clearInterval(timer);
 					}
 				}, 1000);
