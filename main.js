@@ -195,7 +195,7 @@ $.ht = function(h, e) {
 			eval(os[o].innerHTML);
 		}
 	}
-	},50);
+	},100);
 
 }
 /*Simple PJAX - SomeBottle*/
