@@ -384,7 +384,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 			var h = window.location.host;
 			for (var i in p) {
 				if (p[i].href !== undefined) {
-					if (p[i].href.indexOf(h) == -1) {
+					if (p[i].href.indexOf(h) == -1||p[i].href.indexOf('#') !== -1) {
 						ts.preventurl.push(p[i].href);
 					}
 				}
