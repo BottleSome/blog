@@ -217,6 +217,7 @@ if (!B) { /*PreventInitializingTwice*/
 			$.ht(finalh, 'html');
 		},
 		tagpagechecker: function() {
+			var eh = document.getElementsByTagName('html')[0].innerHTML;/*Get All html*/
 			var href = $.tr(window.location.href);
 			if (href.indexOf('#') !== -1) {
 				window.open('#alltags', '_self');
@@ -230,7 +231,7 @@ if (!B) { /*PreventInitializingTwice*/
 						var finalh = first + this.alltaghtml + second;
 						$.ht(finalh, 'html');
 					} else {
-						taguper(pg);
+						this.taguper(pg);
 					}
 				}
 			}
