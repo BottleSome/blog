@@ -32,6 +32,7 @@ if (!B) { /*PreventInitializingTwice*/
 		/*LoadingTemplates*/
 		templateloaded: new Array(),
 		tpcheck: function() { /*template check*/
+		    var pagetype=this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
 			if (!window.templjson) {
 				$.aj('template.json', '', {
 					success: function(m) {
