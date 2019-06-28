@@ -169,7 +169,9 @@ if (!B) { /*PreventInitializingTwice*/
 				if (href.indexOf('#') !== -1) {
 					var pg = href.split('#')[1];
 					this.nowtag = pg;
+					if(pg!=='alltags'){
 					rendertg = '<script>B.taguper(\'' + pg + '\');</script>';
+					}
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
 					ot.tagpagechecker();
