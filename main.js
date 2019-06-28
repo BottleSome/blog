@@ -187,7 +187,7 @@ if (!B) { /*PreventInitializingTwice*/
 			}
 		},
 		nowtag: '',
-		alltaghtml '',
+		alltaghtml:'',
 		taguper: function(tg) {
 			tg = decodeURIComponent(tg);
 			var eh = document.getElementsByTagName('html')[0].innerHTML;
