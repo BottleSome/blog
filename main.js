@@ -153,8 +153,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var rendertg = '';
 				var ot = this;
 				var pts = tj['postindex'];
-				if (href.indexOf('#') == -1) {
-					var tagarr = new Array();
+				var tagarr = new Array();
 					for (var i in pts) {
 						var t = pts[i]['tags'].split(',');
 						t.forEach(function(item, index) {
@@ -166,10 +165,11 @@ if (!B) { /*PreventInitializingTwice*/
 					tagarr.forEach(function(item, index) {
 						rendertg += '[<a href=\'#' + encodeURIComponent(item) + '\' class=\'itemlink\'>' + item + '</a>]';
 					});
-				} else {
+				this.alltaghtml = rendertg;
+				if (href.indexOf('#') !== -1) {
 					var pg = href.split('#')[1];
 					this.nowtag = pg;
-					rendertg += '<script>B.taguper(\'' + pg + '\');</script>';
+					rendertg = '<script>B.taguper(\'' + pg + '\');</script>';
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
 					ot.tagpagechecker();
@@ -178,7 +178,6 @@ if (!B) { /*PreventInitializingTwice*/
 					}
 				}, 1000);
 				var tgs = window.htmls['tags.html'];
-				this.alltaghtml = rendertg;
 				var render11 = this.r(tgs, '{[tags]}', rendertg);
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
