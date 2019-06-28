@@ -146,7 +146,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var render11 = this.r(ar, '{[archives]}', renderar);
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
-				var render4 = this.r(render3, '{[title]}', realtitle);
+				var render4 = this.r(render3, '{[title]}', pagetitle);
 				$.ht(render4, 'html');
 			}
 		}
