@@ -162,6 +162,7 @@ if (!B) { /*PreventInitializingTwice*/
 							tagarr.push(t);
 						}
 					}
+					console.log(tagarr);
 					tagarr.forEach(function(item,index){
 						rendertg+='[<a href=\'#'+encodeURIComponent(item)+'\' class=\'itemlink\'>'+item+'</a>]';
 					});
