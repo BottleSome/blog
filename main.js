@@ -192,8 +192,6 @@ if (!B) { /*PreventInitializingTwice*/
 			tg = decodeURIComponent(tg);
 			var eh = document.getElementsByTagName('html')[0].innerHTML;
 			var tj = window.mainjson; /*get json*/
-			var first = eh.split('<!--[Tags]-->')[0];
-			var second = eh.split('<!--[TagsEnd]-->')[1];
 			var dti = tj['dateindex'];
 			var pts = tj['postindex'];
 			var postlist = new Array();
@@ -213,8 +211,7 @@ if (!B) { /*PreventInitializingTwice*/
 				}
 				rendertgs += '<li><a class=\'taglink\' href=\'' + lk + '\'>' + post['title'] + '</a></li>';
 			});
-			var finalh = first + rendertgs + second;
-			$.ht(finalh, 'html');
+			SC('tags').innerHTML=rendertgs;
 		},
 		tagpagechecker: function() {
 			var eh = document.getElementsByTagName('html')[0].innerHTML;/*Get All html*/
@@ -226,10 +223,7 @@ if (!B) { /*PreventInitializingTwice*/
 				if (this.nowtag !== pg) {
 					this.nowtag = pg;
 					if (pg == 'alltags') {
-						var first = eh.split('<!--[Tags]-->')[0];
-						var second = eh.split('<!--[TagsEnd]-->')[1];
-						var finalh = first + this.alltaghtml + second;
-						$.ht(finalh, 'html');
+						SC('tags').innerHTML=this.alltaghtml;
 					} else {
 						this.taguper(pg);
 					}
