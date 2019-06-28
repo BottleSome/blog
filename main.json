@@ -1,1 +1,1 @@
-{"name":"bottle","posts_per_page":7,"postnum":3,"postindex":{"2":{"title":"Hello World","date":"20190628","intro":"测试一下文章","tags":"日常"}},"dateindex":{"post2":201906282}}
+{"name":"bottle","posts_per_page":7,"postnum":4,"postindex":{"2":{"title":"Hello World","date":"20190628","intro":"测试一下文章","tags":"日常"},"3":{"title":"第二篇文章","date":"20190628","intro":"第二篇文章！","tags":"测试"}},"dateindex":{"post3":201906283,"post2":201906282}}
