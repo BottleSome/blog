@@ -187,13 +187,15 @@ $.ht = function(h, e) {
 	ht.innerHTML = h;
 	os = ht.getElementsByTagName('script');
 	var scr = '';
+	setTimeout(function(){
 	for (var o = 0; o < os.length; o++) {
 		if (os[o].src !== undefined && os[o].src !== null && os[o].src !== '') {
 			$.script(os[o].src);
 		} else {
-			setTimeout(function(){eval(os[o].innerHTML);},100);
+			eval(os[o].innerHTML);
 		}
 	}
+	},50);
 
 }
 /*Simple PJAX - SomeBottle*/
