@@ -219,7 +219,7 @@ if (!B) { /*PreventInitializingTwice*/
 		tagpagechecker: function() {
 			var eh = document.getElementsByTagName('html')[0].innerHTML;/*Get All html*/
 			var href = $.tr(window.location.href);
-			if (href.indexOf('#') !== -1) {
+			if (href.indexOf('#') == -1) {
 				window.open('#alltags', '_self');
 			} else {
 				var pg = href.split('#')[1];
