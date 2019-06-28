@@ -157,16 +157,19 @@ if (!B) { /*PreventInitializingTwice*/
 				if(href.indexOf('#')==-1){
 					var tagarr=new Array();
 					for(var i in pts){
-						var t=pts[i]['tags'];
-						if(t!==''&&tagarr.indexOf(t)==-1){
-							tagarr.push(t);
+						var t=pts[i]['tags'].split(',');
+						t.forEach(function(item,index){
+						if(item!==''&&tagarr.indexOf(item)==-1){
+							tagarr.push(item);
 						}
+						});
 					}
 					tagarr.forEach(function(item,index){
-						rendertg+='[<a href=\'#'+encodeURIComponent(item)+'\' class=\'itemlink\'>'+item+'</a>]';
+						rendertg+='[<a href=\'#'+encodeURIComponent(item)+'\' class=\'itemlink\' onclick=\'B.taguper()\'>'+item+'</a>]';
 					});
 				}else{
 					var pg=href.split('#')[1];
+					rendertg+='<script>B.taguper(\''+pg+'\');</script>';
 				}
 				/*Generate Finish*/
 				var tgs = window.htmls['tags.html'];
@@ -176,6 +179,34 @@ if (!B) { /*PreventInitializingTwice*/
 				var render4 = this.r(render3, '{[title]}', pagetitle);
 				$.ht(render4, 'html');
 			}
+		},
+		taguper:function(tg){
+			tg=decodeURIComponent(tg);
+			var eh = document.getElementsByTagName('html')[0].innerHTML;
+			var tj = window.mainjson; /*get json*/
+			var first=eh.split('<!--[Tags]-->')[0];
+			var second=eh.split('<!--[TagsEnd]-->')[1];
+			var dti=tj['dateindex'];
+			var pts=tj['postindex'];
+			var postlist=new Array();
+			var rendertgs='';
+			for(var i in dti){/*Sel Posts in the order of date*/
+				var pid=i.replace('post','');
+				if(pts[pid]['tags'].indexOf(tg)!==-1){
+					postlist.push(pid);
+				}
+			}
+			rendertgs+='<ul>';
+			postlist.forEach(function(it,id){
+				var post=pts[it];
+				var lk='post-'+it+'.html';
+				if(post['link']){
+					lk=post['link']+'.html';
+				}
+				rendertgs+='<li><a class=\'taglink\' href=\''+lk+'\'>'+post['title']+'</a></li>';
+			});
+			var finalh=first+rendertgs+second;
+			$.ht(finalh,'html');
 		}
 	};
 }
