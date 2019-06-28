@@ -87,7 +87,7 @@ if (!B) { /*PreventInitializingTwice*/
 			var main = window.htmls['main.html'];
 			var comment = window.htmls['comment.html'];
 			var pagetype=this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
-			var tj = JSON.parse(window.mainjson.content.replace(/[\r\n]/g, "")); /*get json*/
+			var tj = JSON.parse(window.mainjson.replace(/[\r\n]/g, "")); /*get json*/
 			if (pagetype == 'post.html') {
 				var content = this.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
 				var title = this.gt('<!--[PostTitle]-->', '<!--[PostTitleEnd]-->'); /*Get Post Title*/
