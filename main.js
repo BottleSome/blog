@@ -79,6 +79,7 @@ if (!B) { /*PreventInitializingTwice*/
 			var cloth = window.htmls['cloth.html'];
 			var main = window.htmls['main.html'];
 			var comment = window.htmls['comment.html'];
+			var pagetype=this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
 			if (pagetype == 'post.html') {
 				var content = this.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
 				var title = this.gt('<!--[PostTitle]-->', '<!--[PostTitleEnd]-->'); /*Get Post Title*/
@@ -187,7 +188,6 @@ $.ht = function(h, e) {
 	ht.innerHTML = h;
 	os = ht.getElementsByTagName('script');
 	var scr = '';
-	setTimeout(function(){
 	for (var o = 0; o < os.length; o++) {
 		if (os[o].src !== undefined && os[o].src !== null && os[o].src !== '') {
 			$.script(os[o].src);
@@ -195,7 +195,6 @@ $.ht = function(h, e) {
 			eval(os[o].innerHTML);
 		}
 	}
-	},100);
 
 }
 /*Simple PJAX - SomeBottle*/
