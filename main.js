@@ -32,7 +32,7 @@ if (!B) { /*PreventInitializingTwice*/
 		/*LoadingTemplates*/
 		templateloaded: new Array(),
 		tpcheck: function() { /*template check*/
-		    var pagetype=this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
+			var pagetype = this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
 			if (!window.templjson) {
 				var ot = this;
 				$.aj('template.json', '', {
@@ -41,10 +41,10 @@ if (!B) { /*PreventInitializingTwice*/
 						return ot.tpcheck();
 					},
 					failed: function(m) { /*Failed*/
-                        
+
 					}
 				}, 'get', '', true);
-			}else if (!window.mainjson) {
+			} else if (!window.mainjson) {
 				var ot = this;
 				$.aj('main.json', '', {
 					success: function(m) {
@@ -52,10 +52,10 @@ if (!B) { /*PreventInitializingTwice*/
 						return ot.tpcheck();
 					},
 					failed: function(m) { /*Failed*/
-                        
+
 					}
 				}, 'get', '', true);
-			}else {
+			} else {
 				var o = this;
 				var j = window.templjson;
 				j['necessary'].push(pagetype); /*Pagetype Pushed*/
@@ -86,7 +86,7 @@ if (!B) { /*PreventInitializingTwice*/
 			var cloth = window.htmls['cloth.html'];
 			var main = window.htmls['main.html'];
 			var comment = window.htmls['comment.html'];
-			var pagetype=this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
+			var pagetype = this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
 			var tj = window.mainjson; /*get json*/
 			if (pagetype == 'post.html') {
 				var content = this.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
@@ -103,76 +103,82 @@ if (!B) { /*PreventInitializingTwice*/
 				var render2 = this.r(main, '{[contents]}', render14);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', pagetitle);
-				var render5 = this.r(render4, '{[comments]}', comment);/*LoadCommentsForPost*/
-				var render6 = this.r(render5, '{[pid]}', pid);/*SetPid*/
+				var render5 = this.r(render4, '{[comments]}', comment); /*LoadCommentsForPost*/
+				var render6 = this.r(render5, '{[pid]}', pid); /*SetPid*/
 				$.ht(render6, 'html');
-			}else if (pagetype == 'postlist.html') {
+			} else if (pagetype == 'postlist.html') {
 				var content = this.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
-				var realtitle = pagetitle.replace('-','');/*Remove - */
+				var realtitle = pagetitle.replace('-', ''); /*Remove - */
 				var pt = window.htmls['postlist.html'];
 				var render11 = this.r(pt, '{[postitems]}', content.trim());
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', realtitle);
 				$.ht(render4, 'html');
-			}else if (pagetype == 'archives.html') {
+			} else if (pagetype == 'archives.html') {
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
 				/*Generate Archives*/
-				var din=tj['dateindex'];
-				var renderar='';
-				var year=0;
-				for(var td in din){
-					var t=(din[td].toString()).substring(0,4);/*get years*/
-					if(t!==year){
-						year=t;
-						if(renderar!==''){
-						renderar+='</ul><h2>· '+t+'</h2><ul>';
-						}else{
-							renderar+='<h2>· '+t+'</h2><ul>';
+				var din = tj['dateindex'];
+				var renderar = '';
+				var year = 0;
+				for (var td in din) {
+					var t = (din[td].toString()).substring(0, 4); /*get years*/
+					if (t !== year) {
+						year = t;
+						if (renderar !== '') {
+							renderar += '</ul><h2>· ' + t + '</h2><ul>';
+						} else {
+							renderar += '<h2>· ' + t + '</h2><ul>';
 						}
 					}
-					var pid=td.replace('post','');
-					var title=tj['postindex'][pid]['title'];
-					if(!tj['postindex'][pid]['link']){
-					renderar+='<li><a class=\'taglink\' href=\'post-'+pid+'.html\'>'+title+'</a></li>';
-					}else{
-						renderar+='<li><a class=\'taglink\' href=\''+tj['postindex'][pid]['link']+'.html\'>'+title+'</a></li>';
+					var pid = td.replace('post', '');
+					var title = tj['postindex'][pid]['title'];
+					if (!tj['postindex'][pid]['link']) {
+						renderar += '<li><a class=\'taglink\' href=\'post-' + pid + '.html\'>' + title + '</a></li>';
+					} else {
+						renderar += '<li><a class=\'taglink\' href=\'' + tj['postindex'][pid]['link'] + '.html\'>' + title + '</a></li>';
 					}
 				}
-				renderar+='</ul>';
-				/*Generate Finish*/
+				renderar += '</ul>'; /*Generate Finish*/
 				var ar = window.htmls['archives.html'];
 				var render11 = this.r(ar, '{[archives]}', renderar);
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', pagetitle);
 				$.ht(render4, 'html');
-			}else if (pagetype == 'tags.html') {
+			} else if (pagetype == 'tags.html') {
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
-				var href=$.tr(window.location.href);
-				/*Generate Tags*/
-				var rendertg='';
-				var pts=tj['postindex'];
-				if(href.indexOf('#')==-1){
-					var tagarr=new Array();
-					for(var i in pts){
-						var t=pts[i]['tags'].split(',');
-						t.forEach(function(item,index){
-						if(item!==''&&tagarr.indexOf(item)==-1){
-							tagarr.push(item);
-						}
+				var href = $.tr(window.location.href); /*Generate Tags*/
+				var rendertg = '';
+				var ot = this;
+				var pts = tj['postindex'];
+				if (href.indexOf('#') == -1) {
+					var tagarr = new Array();
+					for (var i in pts) {
+						var t = pts[i]['tags'].split(',');
+						t.forEach(function(item, index) {
+							if (item !== '' && tagarr.indexOf(item) == -1) {
+								tagarr.push(item);
+							}
 						});
 					}
-					tagarr.forEach(function(item,index){
-						rendertg+='[<a href=\'#'+encodeURIComponent(item)+'\' class=\'itemlink\' onclick=\'B.taguper()\'>'+item+'</a>]';
+					tagarr.forEach(function(item, index) {
+						rendertg += '[<a href=\'#' + encodeURIComponent(item) + '\' class=\'itemlink\'>' + item + '</a>]';
 					});
-				}else{
-					var pg=href.split('#')[1];
-					rendertg+='<script>B.taguper(\''+pg+'\');</script>';
-				}
-				/*Generate Finish*/
+				} else {
+					var pg = href.split('#')[1];
+					this.nowtag = pg;
+					rendertg += '<script>B.taguper(\'' + pg + '\');</script>';
+				} /*Generate Finish*/
+				var timer = setInterval(function() { /*CheckTagPage*/
+					tagpagechecker();
+					if (ot.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->').indexOf('tags') == -1) {
+						clearInterval(timer);
+					}
+				}, 1000);
 				var tgs = window.htmls['tags.html'];
+				this.alltaghtml = rendertg;
 				var render11 = this.r(tgs, '{[tags]}', rendertg);
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
@@ -180,33 +186,54 @@ if (!B) { /*PreventInitializingTwice*/
 				$.ht(render4, 'html');
 			}
 		},
-		taguper:function(tg){
-			tg=decodeURIComponent(tg);
+		nowtag: '',
+		alltaghtml '',
+		taguper: function(tg) {
+			tg = decodeURIComponent(tg);
 			var eh = document.getElementsByTagName('html')[0].innerHTML;
 			var tj = window.mainjson; /*get json*/
-			var first=eh.split('<!--[Tags]-->')[0];
-			var second=eh.split('<!--[TagsEnd]-->')[1];
-			var dti=tj['dateindex'];
-			var pts=tj['postindex'];
-			var postlist=new Array();
-			var rendertgs='';
-			for(var i in dti){/*Sel Posts in the order of date*/
-				var pid=i.replace('post','');
-				if(pts[pid]['tags'].indexOf(tg)!==-1){
+			var first = eh.split('<!--[Tags]-->')[0];
+			var second = eh.split('<!--[TagsEnd]-->')[1];
+			var dti = tj['dateindex'];
+			var pts = tj['postindex'];
+			var postlist = new Array();
+			var rendertgs = '';
+			for (var i in dti) { /*Sel Posts in the order of date*/
+				var pid = i.replace('post', '');
+				if (pts[pid]['tags'].indexOf(tg) !== -1) {
 					postlist.push(pid);
 				}
 			}
-			rendertgs+='<ul>';
-			postlist.forEach(function(it,id){
-				var post=pts[it];
-				var lk='post-'+it+'.html';
-				if(post['link']){
-					lk=post['link']+'.html';
+			rendertgs += '<ul>';
+			postlist.forEach(function(it, id) {
+				var post = pts[it];
+				var lk = 'post-' + it + '.html';
+				if (post['link']) {
+					lk = post['link'] + '.html';
 				}
-				rendertgs+='<li><a class=\'taglink\' href=\''+lk+'\'>'+post['title']+'</a></li>';
+				rendertgs += '<li><a class=\'taglink\' href=\'' + lk + '\'>' + post['title'] + '</a></li>';
 			});
-			var finalh=first+rendertgs+second;
-			$.ht(finalh,'html');
+			var finalh = first + rendertgs + second;
+			$.ht(finalh, 'html');
+		},
+		tagpagechecker: function() {
+			var href = $.tr(window.location.href);
+			if (href.indexOf('#') !== -1) {
+				window.open('#alltags', '_self');
+			} else {
+				var pg = href.split('#')[1];
+				if (this.nowtag !== pg) {
+					this.nowtag = pg;
+					if (pg == 'alltags') {
+						var first = eh.split('<!--[Tags]-->')[0];
+						var second = eh.split('<!--[TagsEnd]-->')[1];
+						var finalh = first + this.alltaghtml + second;
+						$.ht(finalh, 'html');
+					} else {
+						taguper(pg);
+					}
+				}
+			}
 		}
 	};
 }
@@ -295,7 +322,7 @@ $.ht = function(h, e) {
 	}
 
 }
-$.tr = function(url) {/*PreventURLProblem*/
+$.tr = function(url) { /*PreventURLProblem*/
 	var a = url;
 	a = a.split('?');
 	if ((a.length - 1) > 1 || url.indexOf('!') !== -1) {
@@ -309,8 +336,7 @@ $.tr = function(url) {/*PreventURLProblem*/
 	}
 	u = u.substring(0, u.length - 1);
 	return u;
-}
-/*Simple PJAX - SomeBottle*/
+} /*Simple PJAX - SomeBottle*/
 var mainhost = window.location.host;
 var dt = new Date().getTime();
 if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
@@ -326,7 +352,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 		},
 		jump: function(href) {
 			var ts = this;
-			window.dispatchEvent(ts.PJAXStart);/*激活事件来显示加载动画*/
+			window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
 			$.aj(href, {}, {
 				success: function(m) {
 					var e = ts.replace;
@@ -346,13 +372,13 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 					if (ts.preventurl.indexOf(this.href) !== -1) {
 						return true;
 					} else {
-						window.history.pushState(null, null, this.href);/*加入历史*/
+						window.history.pushState(null, null, this.href); /*加入历史*/
 						e.preventDefault();
 						ts.jump(this.href);
 					}
 				};
 			}
-			window.onpopstate = function(e) {/*回退或者前进时触发*/
+			window.onpopstate = function(e) { /*回退或者前进时触发*/
 				if (window.location.href.indexOf(mainhost) !== -1) {
 					PJAX.jump(window.location.href);
 				}
