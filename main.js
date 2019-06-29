@@ -253,12 +253,12 @@ if (!B) { /*PreventInitializingTwice*/
 			}
 		},
 		loadshow: function() {
-			SC('loading').style.opacity = 0;
-			SC('loading').style.zIndex = -1;
+			SC('loading').style.opacity = 1;
+			SC('loading').style.zIndex = 200;
 		},
 		loadhide: function() {
 			SC('loading').style.opacity = 1;
-			SC('loading').style.zIndex = 200;
+			SC('loading').style.zIndex = -1;
 		}
 	};
 	window.addEventListener('pjaxstart', function() { /*加载动画*/
