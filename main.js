@@ -181,7 +181,7 @@ if (!B) { /*PreventInitializingTwice*/
 						return false;
 					}
 					ot.tagpagechecker();
-				}, 1000);
+				}, 500);
 				var tgs = window.htmls['tags.html'];
 				var render11 = this.r(tgs, '{[tags]}', rendertg);
 				var render2 = this.r(main, '{[contents]}', render11);
