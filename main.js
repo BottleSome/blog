@@ -1,18 +1,8 @@
 /*FrontMainJS - SomeBottle*/
 var $ = new Object();
 if (!B) { /*PreventInitializingTwice*/
-	/*Add Loading Pattern*/
-	/*
-	var loadcss = document.createElement('link');
-	loadcss.rel='stylesheet';
-	loadcss.href='style.css';
-	document.body.appendChild(loadcss);
-	var loade = document.createElement('div');
-	loade.className = 'loading';
-	loade.id = 'loading';
-	loade.innerHTML = '<img src=\'./loadingcloth.gif\' class=\'loadingpic\'><\/img>';
-	document.body.appendChild(loade);
-	*/
+	/*Include MdJS*/
+	$.ht("<script src='./md.js'></script>"+SC('container').innerHTML,'container');
 	window.htmls = new Object();
 	var B = { /*Replace Part*/
 		r: function(a, o, p, g = true) { /*(All,Original,ReplaceStr,IfReplaceAll)*/
