@@ -174,7 +174,7 @@ if (!B) { /*PreventInitializingTwice*/
 					}
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
-				    if (window.location.href.indexOf('tag') == -1) {
+				    if (window.location.href.indexOf('tag') == -1) {/*跳离tag页了*/
 						PJAX.sel('html');
 						PJAX.start();
 						clearInterval(timer);
@@ -352,7 +352,8 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 		},
 		jump: function(href) {
 			var ts = this;
-			if(href.indexOf('#')!==-1){/*防止Tag页面的跳转问题*/
+			var nh=window.location.href;
+			if(nh.indexOf('#')!==-1&&href.indexOf('#')!==-1){/*防止Tag页面的跳转问题*/
 				return false;
 			}
 			window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
