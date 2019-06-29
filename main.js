@@ -175,6 +175,7 @@ if (!B) { /*PreventInitializingTwice*/
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
 				    if (window.location.href.indexOf('tag') == -1) {
+						PJAX.start();
 						clearInterval(timer);
 						return false;
 					}
