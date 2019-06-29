@@ -23,6 +23,7 @@ h2{
 	height:100%;
 	margin:0 auto;
 	background-color:#FFFFFF;
+	transition:1s ease;
 }
 .loadingpic{
 	position:relative;
@@ -30,7 +31,6 @@ h2{
 	left:50%;
 	top:50%;
 	transform:translate(-50%,-50%);
-	transition:1s ease;
 }
 .container{
 	position:relative;
