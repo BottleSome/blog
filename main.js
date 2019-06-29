@@ -362,15 +362,31 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 		},
 		jump: function(href) {
 			var ts = this;
+			var usecache=false;/*是否使用缓存*/
 			if(ts.recenturl.indexOf('#')!==-1&&href.indexOf('#')!==-1){/*防止Tag页面的跳转问题*/
 				return false;
 			}
 			window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
+			var cache=q('r',encodeURIComponent(href),'','','');/*获取缓存信息*/
+			if(cache['c']){/*如果有缓存*/
+				usecache=true;
+				var e = ts.replace;
+				$.ht(cache['c'], e);/*预填装缓存*/
+			}
 			$.aj(href, {}, {
 				success: function(m) {
 					var e = ts.replace;
 					ts.recenturl=href;
+				if(!usecache){
 					$.ht(m, e);
+				}else{
+					if(cache['c']!==m){/*缓存需要更新了*/
+						q('w',encodeURIComponent(href),m,timestamp(), '');
+						$.ht(m, e);
+					}else{
+						q('e',encodeURIComponent(href), '', '', 1);/*更新缓存读取次数*/
+					}
+				}
 					window.dispatchEvent(ts.PJAXFinish);
 				},
 				failed: function(m) {
@@ -412,4 +428,50 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 			}
 		}
 	};
+}
+/*CacheArea - Thank you OBottle*/
+function q(md, k, c, t, rt) { /*(mode,key,content,timestamp,readtime)*/
+	/*初始化本地cache*/
+	if (typeof localStorage.obottle == 'undefined') {
+		localStorage.obottle = '{}';
+	}
+	var timestamp = 0,
+		cache = '',
+		caches = JSON.parse(localStorage.obottle),
+		rs = new Array();
+	if (typeof caches[k] !== 'undefined') {
+		timestamp = caches[k].t;
+		cache = caches[k].h;
+	}
+	if (md == 'w') {
+		var caches = JSON.parse(localStorage.obottle);
+		var cc = new Object();
+		cc.h = c;
+		cc.t = t;
+		cc.rt = 0; /*使用缓存次数*/
+		caches[k] = cc;
+		try {
+			localStorage.obottle = JSON.stringify(caches);
+		} catch (e) {
+			for (var d in caches) {
+				if (Number(caches[d].rt) <= 8 || Number(t) - Number(caches[d].t) >= 172800) { /*自动清理缓存空间*/
+					delete caches[d];
+				}
+			}
+			localStorage.obottle = JSON.stringify(caches);
+		}
+	} else if (md == 'r') {
+		rs['t'] = timestamp;
+		rs['c'] = cache;
+		return rs;
+	} else if (md == 'e') {
+		var caches = JSON.parse(localStorage.obottle);
+		caches[k].rt = Number(caches[k].rt) + rt;
+		localStorage.obottle = JSON.stringify(caches);
+	}
+}
+/*GetTimestamp*/
+function timestamp(){
+	var a=new Date().getTime();
+	return a;
 }
