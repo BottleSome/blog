@@ -170,7 +170,7 @@ if (!B) { /*PreventInitializingTwice*/
 					var pg = href.split('#')[1];
 					this.nowtag = pg;
 					if(pg!=='alltags'){
-					rendertg = '<script>B.taguper(\'' + pg + '\');</script>';
+					rendertg = '<script>B.taguper(\'' + pg + '\');PJAX.start();</script>';
 					}
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
@@ -228,6 +228,7 @@ if (!B) { /*PreventInitializingTwice*/
 					} else {
 						this.taguper(pg);
 					}
+					PJAX.start();
 				}
 			}
 		}
