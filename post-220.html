@@ -1,0 +1,136 @@
+<!--LoadingArea-->
+<style>
+body{
+	margin:0 auto;
+	overflow-x:hidden;
+}
+.loading{
+	position:absolute;
+	opacity:1;
+	z-index:200;
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	background-color:#FFFFFF;
+	transition:1s ease;
+}
+.loadingpic{
+	position:relative;
+	margin:0 auto;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+}
+</style>
+<div class='loading' id='loading'><img src='./loadingcloth.gif' class='loadingpic'></img></div>
+<!--LoadingAreaEnd-->
+<div id='container'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--[MainTitle]--><title>追溯钓鱼站源头-Bottle</title><!--[MainTitleEnd]-->
+<!--description-->
+<meta name="description" content="&nbsp;&nbsp;最近发现很多身边同学的号被盗了..他们被盗号的特征都是会发下面这个蹩脚的二维码：  
+
+![](https://api.xbottle.top/i.php?u=https:" />
+<!--Keywords-->
+<meta name="keywords" content="咸鱼技术,Bottle" />
+</head>
+<body>
+<!--[PostTitle]-->追溯钓鱼站源头<!--[PostTitleEnd]-->
+<!--[PostDate]-->20180810<!--[PostDateEnd]-->
+<!--[PostContent]-->&nbsp;&nbsp;最近发现很多身边同学的号被盗了..他们被盗号的特征都是会发下面这个蹩脚的二维码：  
+
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu4uuh3mq8j20h90q6di5)  
+
+如出一辙的案件估计是一人所为，于是我将二维码分享给了隔壁咸鱼工作室，一起追溯一下源。  
+
+开头的几分钟，大家都说进不去，会卡501或者404，我试着用手机扫了一下，发现是可以进得去的...
+
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu4v7ggai1j209y0e50sx)  
+
+界面真的做的和空间一模一样，只是没有快速登录功能，要你自己输入账号密码...(经典钓鱼)  
+
+去网上查了一下501，发现和UA验证有关系，于是我开始怀疑这家伙是不是用了UA验证...  
+
+很快，大家也发现了，用微信就可以返回出网站：
+
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu4znnq30ij207n010dfm)  
+(竟然用的是微信短网址...)  
+
+于是我们模拟了一下微信浏览器的UA，成功让短链接生效了~
+
+钓鱼网站的惯例是利用多层跳转来逃避攻击..在模拟UA后我们首先捕捉到的是来自*qbview.url.cn*的一条URL，且在地址栏uriencode了一个跳转URL到：  
+```
+i.ali213.net/api.html?action=logout&callback=xxxxxxxx  
+```
+利用游侠网的API进行了跳转并xss载入js...  
+
+URIdecode了一下发现载入的js地址是  
+```
+*******.pywbm.cn/template/app.js  
+```
+pywbm我感觉是一个提供二级域名和空间的网站..  
+
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu50cj6m07j21hc086dgc)  
+
+在app.js里面有一个base64函数并且执行unescape来载入下一层html代码...(这家伙真不嫌累..)  
+
+再次URIdecode后：  
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu50gxd19uj20tw0madjk)  
+
+好家伙...又来个htmlspecialchars...  
+又双叕decode后：  
+
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu50pwdlzvj20uv06ft9e)  
+
+这个页面叕(you you you you)是一个写入html的js....而且玩了新花样..arcfour()  
+
+起初我们翻了前面几个好几个父级页面都没找到这个函数...可能眼瞎吧...  
+
+但是最大的问题是我们没见过arcfour这种玩意，网上资料也很少。但是当我们找到一篇文章讲的Java的加密时提到了个RC4加密算法...
+
+这下我们又有兴趣了，我于是拿网上PHP的rc4解密函数试了一下：  
+
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu50ugdfn7j20ek0do0td)  
+
+竟然真的解密成功了...再htmlspecialchars_decode一下：  
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu50v7lsi5j20u80lx769)  
+
+钓鱼网站的真实面目就披露在我们面前了！  
+
+这家伙首先在页头引入了QQ的API，还又进行了一次UA检验..不过代码都暴露了，UA也没什么意义了.  
+
+QQ API是干啥的呢？想不到吧！这个瘪三自己还注释了：  
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu50ytt6y8j20kg085mxy)  
+
+我第一次看到这么用心的钓鱼网站...  
+
+最重要的一点来了：  
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu510ep4jyj20dd02bmx2)  
+
+他的接口暴露了:  
+```
+http://qzone.duboy.com.cn/user.php  
+```
+用的竟然还是windows服务器...端口扫描了一下，发现远程桌面3389端口竟然开放..是美国机..  
+
+而post数据则是：  
+```
+hrUW3PG7mp3RLd3dJu:QQ账号  
+
+LxMzAX2jog9Bpjs07jP:QQ密码  
+```
+这下这家伙的丑恶嘴脸一览无余了，我直接给他送了波祝福。
+
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fu514qvzwtj20u90ke0um)  
+
+隔壁小伙伴帮忙写了个curl post的PHP脚本，我直接丢到一台美国服务器上给他送了24小时总计500000条祝福，这次追溯源头的行动也算是圆满结束了，大快人心！  
+
+在遇到要你扫码填账号的网站时，请一定谨慎为上！先加以辨识网站是否可信、真实，再作出决策。  <!--[PostContentEnd]-->
+<!--[PostTag]-->咸鱼技术<!--[PostTagEnd]-->
+<!--[PostID]-->220<!--[PostIDEnd]-->
+<div style='display:none;'><!--[PageType]-->post.html<!--[PageTypeEnd]--></div>
+<script src="./main.js?233"></script>
+<script>B.tpcheck();</script>
+</body>
+</div>

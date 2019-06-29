@@ -1,0 +1,66 @@
+<!--LoadingArea-->
+<style>
+body{
+	margin:0 auto;
+	overflow-x:hidden;
+}
+.loading{
+	position:absolute;
+	opacity:1;
+	z-index:200;
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	background-color:#FFFFFF;
+	transition:1s ease;
+}
+.loadingpic{
+	position:relative;
+	margin:0 auto;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+}
+</style>
+<div class='loading' id='loading'><img src='./loadingcloth.gif' class='loadingpic'></img></div>
+<!--LoadingAreaEnd-->
+<div id='container'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--[MainTitle]--><title>☁️ 云上のMinecraft-Bottle</title><!--[MainTitleEnd]-->
+<!--description-->
+<meta name="description" content="![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fzvoozfnkwj20m808c77v)  " />
+<!--Keywords-->
+<meta name="keywords" content="咸鱼技术,PHP,Bottle" />
+</head>
+<body>
+<!--[PostTitle]-->☁️ 云上のMinecraft<!--[PostTitleEnd]-->
+<!--[PostDate]-->20190205<!--[PostDateEnd]-->
+<!--[PostContent]-->![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fzvoozfnkwj20m808c77v)  
+
+项目：CloudMinecraft.  
+
+第一次调用服务商API来完成项目，也是第一次肝了两整天...   
+
+   这是一个基于腾讯云API的简单**低成本开服方案**的实现，起初的想法来自于Best33：https://best33.com/179.moe  
+另外在这个项目产生前一天，Ghosin已经创造了对接了机器人的<del>PY</del>Python版：https://github.com/Ghosin/dejavu  
+我在用PHP写的时候确实遇到了一些麻烦，感谢众人的指导.  
+
+   实现原理要说难也不难.首先是前台(可以对接机器人)调用**控制服务器**上的CloudMC API(main.php)，由此发出请求通过QcloudAPI创建
+云服务器(按量计费)并通过php的扩展连接ssh，通过sftp传输**打包存档**并进行解压、部署，运行Minecraft服务器.达到条件关闭服务器的时候，  
+远程向screen发送指令停止MC服务器并进行**打包**传回**控制服务器**.控制服务器最后释放掉该按量付费服务器。  
+
+   其中的文件传输全靠同一区域的内网传输（用外网怕不是吃一堆流量，还很慢）.   
+
+这次肝的时候真的痛苦，光测试就不下**50次**.   
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1fzvymkwbx6j20kv0iy0x9)   
+
+Github项目地址： <a href='https://github.com/SomeBottle/CloudMinecraft' target='_blank'>https://github.com/SomeBottle/CloudMinecraft</a>  
+<!--[PostContentEnd]-->
+<!--[PostTag]-->咸鱼技术,PHP<!--[PostTagEnd]-->
+<!--[PostID]-->239<!--[PostIDEnd]-->
+<div style='display:none;'><!--[PageType]-->post.html<!--[PageTypeEnd]--></div>
+<script src="./main.js?233"></script>
+<script>B.tpcheck();</script>
+</body>
+</div>
