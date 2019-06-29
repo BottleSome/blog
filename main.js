@@ -1,6 +1,5 @@
 /*FrontMainJS - SomeBottle*/
 /*q.js*/
-if(!$){
 $ = new Object();
 $.ls = new Array();
 	$.lss = '';
@@ -104,7 +103,6 @@ $.ls = new Array();
 		u = u.substring(0, u.length - 1);
 		return u;
 	} 
-}
 if (!B) { /*PreventInitializingTwice*/
 	/*Include MdJS*/
 	$.ht("<script src='./md.js'></script>" + SC('container').innerHTML, 'container');
