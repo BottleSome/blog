@@ -5,10 +5,14 @@ window.onload = function() { /*Hide load pattern*/
 }
 if (!B) { /*PreventInitializingTwice*/
 	/*Add Loading Pattern*/
+	var loadcss = document.createElement('link');
+	loadcss.rel='stylesheet';
+	loadcss.href='style.css';
+	document.body.appendChild(loadcss);
 	var loade = document.createElement('div');
 	loade.className = 'loading';
 	loade.id = 'loading';
-	loade.innerHTML = '<link href=\'./style.css\' rel="stylesheet" \/><img src=\'./loadingcloth.gif\' class=\'loadingpic\'><\/img>';
+	loade.innerHTML = '<img src=\'./loadingcloth.gif\' class=\'loadingpic\'><\/img>';
 	document.body.appendChild(loade);
 	window.htmls = new Object();
 	var B = { /*Replace Part*/
