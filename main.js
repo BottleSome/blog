@@ -348,7 +348,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 		},
 		jump: function(href) {
 			var ts = this;
-			if(href.indexOf('#alltags')!==-1){/*防止Tag页面的跳转问题*/
+			if(href.indexOf('#')!==-1){/*防止Tag页面的跳转问题*/
 				return false;
 			}
 			window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
