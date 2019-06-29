@@ -310,6 +310,10 @@ $.script = function(url) {
 }
 $.ht = function(h, e) {
 	var ht = SC(e);
+	if(!ht){
+		console.log('Unable to find the Element:'+e);
+		return false;
+	}
 	ht.innerHTML = h;
 	os = ht.getElementsByTagName('script');
 	var scr = '';
@@ -336,7 +340,7 @@ $.tr = function(url) { /*PreventURLProblem*/
 	}
 	u = u.substring(0, u.length - 1);
 	return u;
-} /*Simple PJAX - SomeBottle*/
+} /*Simple PJAX For Front MAIN - SomeBottle*/
 var mainhost = window.location.host;
 var dt = new Date().getTime();
 if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
@@ -353,7 +357,6 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 		},
 		jump: function(href) {
 			var ts = this;
-			console.log('Jump');
 			if(ts.recenturl.indexOf('#')!==-1&&href.indexOf('#')!==-1){/*防止Tag页面的跳转问题*/
 				return false;
 			}
