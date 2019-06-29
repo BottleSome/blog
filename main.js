@@ -379,6 +379,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 					ts.recenturl=href;
 				if(!usecache){
 					$.ht(m, e);
+					q('w',encodeURIComponent(href),m,timestamp(), '');
 				}else{
 					if(cache['c']!==m){/*缓存需要更新了*/
 						q('w',encodeURIComponent(href),m,timestamp(), '');
