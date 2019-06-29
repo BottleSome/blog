@@ -372,6 +372,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 		},
 		start: function() {
 			var ts = this;
+			ts.recenturl=window.location.href;
 			var p = document.getElementsByTagName("a");
 			for (var i in p) {
 				p[i].onclick = function(e) {
