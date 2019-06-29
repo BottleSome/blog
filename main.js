@@ -257,7 +257,7 @@ if (!B) { /*PreventInitializingTwice*/
 			SC('loading').style.zIndex = 200;
 		},
 		loadhide: function() {
-			SC('loading').style.opacity = 1;
+			SC('loading').style.opacity = 0;
 			SC('loading').style.zIndex = -1;
 		}
 	};
