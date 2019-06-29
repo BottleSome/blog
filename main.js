@@ -348,6 +348,9 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 		},
 		jump: function(href) {
 			var ts = this;
+			if(href.indexOf('#alltags')!==-1){/*防止Tag页面的跳转问题*/
+				return false;
+			}
 			window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
 			$.aj(href, {}, {
 				success: function(m) {
@@ -365,7 +368,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 			var p = document.getElementsByTagName("a");
 			for (var i in p) {
 				p[i].onclick = function(e) {
-					if (ts.preventurl.indexOf(this.href) !== -1||this.href.indexOf('#')!==-1) {
+					if (ts.preventurl.indexOf(this.href) !== -1) {
 						return true;
 					} else {
 						window.history.pushState(null, null, this.href); /*加入历史*/
