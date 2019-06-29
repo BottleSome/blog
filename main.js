@@ -1,8 +1,8 @@
 /*FrontMainJS - SomeBottle*/
-var $ = new Object();
-if (!B) { /*PreventInitializingTwice*/
-	/*q.js*/
-	$.ls = new Array();
+/*q.js*/
+if(!$){
+$ = new Object();
+$.ls = new Array();
 	$.lss = '';
 	$.aj = function(p, d, sf, m, hd, as) { /*(path,data,success or fail,method,authheader,async)*/
 		var xhr = new XMLHttpRequest();
@@ -104,6 +104,8 @@ if (!B) { /*PreventInitializingTwice*/
 		u = u.substring(0, u.length - 1);
 		return u;
 	} 
+}
+if (!B) { /*PreventInitializingTwice*/
 	/*Include MdJS*/
 	$.ht("<script src='./md.js'></script>" + SC('container').innerHTML, 'container');
 	window.htmls = new Object();
