@@ -1,6 +1,15 @@
 /*FrontMainJS - SomeBottle*/
 var $ = new Object();
+window.onload=function(){/*Hide load pattern*/
+	this.loadhide();
+}
 if (!B) { /*PreventInitializingTwice*/
+/*Add Loading Pattern*/
+    var loade=document.createElement('div');
+	loade.className='loading';
+	loade.id='loading';
+	loade.innerHTML='<img src=\'./loadingcloth.gif\' class=\'loadingpic\'><\/img>';
+	document.body.appendChild(loade);
 	window.htmls = new Object();
 	var B = { /*Replace Part*/
 		r: function(a, o, p, g = true) { /*(All,Original,ReplaceStr,IfReplaceAll)*/
