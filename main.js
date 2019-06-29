@@ -346,6 +346,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 		PJAXFinish: new CustomEvent('pjaxfinish'),
 		lasthref: window.location.href,
 		preventurl: new Array(),
+		recenturl: '',
 		replace: '',
 		sel: function(r) {
 			this.replace = r;
@@ -353,14 +354,14 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 		jump: function(href) {
 			var ts = this;
 			console.log('Jump');
-			var nh=window.location.href;
-			if(nh.indexOf('#')!==-1&&href.indexOf('#')!==-1){/*防止Tag页面的跳转问题*/
+			if(ts.recenturl.indexOf('#')!==-1&&href.indexOf('#')!==-1){/*防止Tag页面的跳转问题*/
 				return false;
 			}
 			window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
 			$.aj(href, {}, {
 				success: function(m) {
 					var e = ts.replace;
+					ts.recenturl=href;
 					$.ht(m, e);
 					window.dispatchEvent(ts.PJAXFinish);
 				},
