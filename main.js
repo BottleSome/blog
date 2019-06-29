@@ -352,6 +352,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 		},
 		jump: function(href) {
 			var ts = this;
+			console.log('Jump');
 			var nh=window.location.href;
 			if(nh.indexOf('#')!==-1&&href.indexOf('#')!==-1){/*防止Tag页面的跳转问题*/
 				return false;
