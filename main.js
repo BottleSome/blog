@@ -24,9 +24,14 @@ if (!B) { /*PreventInitializingTwice*/
 			} else {
 				e = ct;
 			}
+			try{
 			var k = e.split(p1)[1];
 			var d = k.split(p2)[0];
 			return d;
+			}
+			catch(e){
+				return false;
+			}
 		},
 		templonload: 0,
 		/*LoadingTemplates*/
