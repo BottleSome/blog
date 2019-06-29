@@ -174,10 +174,11 @@ if (!B) { /*PreventInitializingTwice*/
 					}
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
-					ot.tagpagechecker();
-					if (window.location.href.indexOf('tag') == -1) {
+				    if (window.location.href.indexOf('tag') == -1) {
 						clearInterval(timer);
+						return false;
 					}
+					ot.tagpagechecker();
 				}, 1000);
 				var tgs = window.htmls['tags.html'];
 				var render11 = this.r(tgs, '{[tags]}', rendertg);
