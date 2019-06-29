@@ -111,6 +111,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var render5 = this.r(render4, '{[comments]}', comment); /*LoadCommentsForPost*/
 				var render6 = this.r(render5, '{[pid]}', pid); /*SetPid*/
 				$.ht(render6, 'html');
+				this.loadhide();
 			} else if (pagetype == 'postlist.html') {
 				var content = this.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
@@ -121,6 +122,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', realtitle);
 				$.ht(render4, 'html');
+				this.loadhide();
 			} else if (pagetype == 'archives.html') {
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
 				/*Generate Archives*/
@@ -152,6 +154,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', pagetitle);
 				$.ht(render4, 'html');
+				this.loadhide();
 			} else if (pagetype == 'tags.html') {
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
 				var href = $.tr(window.location.href); /*Generate Tags*/
@@ -193,6 +196,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', pagetitle);
 				$.ht(render4, 'html');
+				this.loadhide();
 			}
 		},
 		nowtag: '',
@@ -239,6 +243,14 @@ if (!B) { /*PreventInitializingTwice*/
 					PJAX.start();
 				}
 			}
+		},
+		loadshow:function(){
+			SC('loading').style.opacity=0;
+			SC('loading').style.zIndex=-1;
+		},
+		loadhide:function(){
+			SC('loading').style.opacity=1;
+			SC('loading').style.zIndex=200;
 		}
 	};
 }
@@ -476,3 +488,9 @@ function timestamp(){
 	var a=new Date().getTime();
 	return a;
 }
+window.addEventListener('pjaxstart', function() { /*加载动画*/
+	B.loadshow();
+}, false);
+window.addEventListener('pjaxfinish', function() {
+	B.loadhide();
+}, false);
