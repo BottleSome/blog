@@ -106,7 +106,7 @@ $.ls = new Array();
 	} 
 if (!B) { /*PreventInitializingTwice*/
 	/*Include MdJS*/
-	$.ht("<script src='./md.js'></script>" + SC('container').innerHTML, 'container');
+	$.ht("<script src='./library.js'></script>" + SC('container').innerHTML, 'container');
 	window.htmls = new Object();
 	var B = { /*Replace Part*/
 		r: function(a, o, p, g = true) { /*(All,Original,ReplaceStr,IfReplaceAll)*/
