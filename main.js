@@ -209,6 +209,9 @@ if (!B) { /*PreventInitializingTwice*/
 				var post = window.htmls['post.html'];
 				var render11 = this.r(post, '{[postcontent]}', md.makeHtml(content.trim())); /*Analyse md*/
 				var render12 = this.r(render11, '{[posttitle]}', title);
+				if(isNaN(date)){
+					tags='页面';
+				}
 				var render13 = this.r(render12, '{[posttags]}', tags);
 				var render14 = this.r(render13, '{[postdate]}', date);
 				var render2 = this.r(main, '{[contents]}', render14);
@@ -216,6 +219,9 @@ if (!B) { /*PreventInitializingTwice*/
 				var render4 = this.r(render3, '{[title]}', pagetitle);
 				var render5 = this.r(render4, '{[comments]}', comment); /*LoadCommentsForPost*/
 				var render6 = this.r(render5, '{[pid]}', pid); /*SetPid*/
+				if(isNaN(date)){
+					render6=render6.split('<!--PostEnd-->')[0]+'<!--PostEnd-->';
+				}
 				$.ht(render6, 'container');
 				this.loadhide();
 			} else if (pagetype == 'postlist.html') {
