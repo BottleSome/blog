@@ -1,7 +1,7 @@
 /*FrontMainJS - SomeBottle*/
 /*q.js*/
 $ = new Object();
-var md=window.markdownit();
+var md;
 $.ls = new Array();
 	$.lss = '';
 	$.aj = function(p, d, sf, m, hd, as) { /*(path,data,success or fail,method,authheader,async)*/
@@ -193,6 +193,7 @@ if (!B) { /*PreventInitializingTwice*/
 			}
 		},
 		renderer: function() {
+			md=window.markdownit();
 			var cloth = window.htmls['cloth.html'];
 			var main = window.htmls['main.html'];
 			var comment = window.htmls['comment.html'];
