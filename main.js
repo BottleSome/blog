@@ -1,6 +1,7 @@
 /*FrontMainJS - SomeBottle*/
 /*q.js*/
 $ = new Object();
+var md=window.markdownit();
 $.ls = new Array();
 	$.lss = '';
 	$.aj = function(p, d, sf, m, hd, as) { /*(path,data,success or fail,method,authheader,async)*/
@@ -205,7 +206,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var pid = this.gt('<!--[PostID]-->', '<!--[PostIDEnd]-->'); /*Get Post ID*/
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
 				var post = window.htmls['post.html'];
-				var render11 = this.r(post, '{[postcontent]}', marked(content.trim())); /*Analyse md*/
+				var render11 = this.r(post, '{[postcontent]}', md.render(content.trim())); /*Analyse md*/
 				var render12 = this.r(render11, '{[posttitle]}', title);
 				var render13 = this.r(render12, '{[posttags]}', tags);
 				var render14 = this.r(render13, '{[postdate]}', date);
@@ -221,7 +222,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
 				var realtitle = pagetitle.replace('-', ''); /*Remove - */
 				var pt = window.htmls['postlist.html'];
-				var render11 = this.r(pt, '{[postitems]}', marked(content.trim())); /*Analyse md*/
+				var render11 = this.r(pt, '{[postitems]}', md.render(content.trim())); /*Analyse md*/
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', realtitle);
