@@ -246,7 +246,7 @@ if (!B) { /*PreventInitializingTwice*/
 						}
 					}
 					var pid = td.replace('post', '');
-					var title = tj['postindex'][pid]['title'];
+					var title = Base64.decode(tj['postindex'][pid]['title']);
 					if (!tj['postindex'][pid]['link']) {
 						renderar += '<li><a class=\'taglink\' href=\'post-' + pid + '.html\'>' + title + '</a></li>';
 					} else {
@@ -328,7 +328,7 @@ if (!B) { /*PreventInitializingTwice*/
 				if (post['link']) {
 					lk = post['link'] + '.html';
 				}
-				rendertgs += '<li><a class=\'taglink\' href=\'' + lk + '\'>' + post['title'] + '</a></li>';
+				rendertgs += '<li><a class=\'taglink\' href=\'' + lk + '\'>' + Base64.decode(post['title']) + '</a></li>';
 			});
 			SC('tags').innerHTML = rendertgs;
 		},
