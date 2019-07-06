@@ -1,7 +1,7 @@
 /*FrontMainJS - SomeBottle*/
 /*q.js*/
 var md;
-if(!$){
+if(!$.aj){
 $ = new Object();
 $.ls = new Array();
 	$.lss = '';
