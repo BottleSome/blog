@@ -55,8 +55,10 @@ $.ls = new Array();
 				return document.getElementById(e);
 			}
 		}
-	$.scripturl=[],
 $.script = function(url) {
+	if(!this.scripturl){
+		this.scripturl=[];
+	}
 	var script = document.createElement("script");
 	var exist = false;
 	for (var up in $.ls) {
@@ -65,11 +67,11 @@ $.script = function(url) {
 			break;
 		}
 	}
-	if (!exist&&$.scripturl.indexOf(url)==-1) {
+	if (!exist&&this.scripturl.indexOf(url)==-1) {
 		$.ls[$.ls.length] = url;
 		script.type = "text/javascript";
 		script.src = url;
-		$.scripturl.push(url);
+		this.scripturl.push(url);
 		document.body.appendChild(script);
 	}
 }
