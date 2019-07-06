@@ -143,17 +143,6 @@ if (!B) { /*PreventInitializingTwice*/
 		templateloaded: new Array(),
 		tpcheck: function() { /*template check*/
 			var pagetype = this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
-			if (!window.mainjson) {/*Include Mainjson*/
-				var ot = this;
-				$.aj('main.json', '', {
-					success: function(m) {
-						window.mainjson = JSON.parse(m.replace(/[\r\n]/g, ""));
-					},
-					failed: function(m) { /*Failed*/
-
-					}
-				}, 'get', '', true);
-			} 
 			if (!window.templjson) {
 				var ot = this;
 				$.aj('template.json', '', {
@@ -196,6 +185,17 @@ if (!B) { /*PreventInitializingTwice*/
 					}
 				}, 1000);
 			}
+			if (!window.mainjson) {/*Include Mainjson*/
+				var ot = this;
+				$.aj('main.json', '', {
+					success: function(m) {
+						window.mainjson = JSON.parse(m.replace(/[\r\n]/g, ""));
+					},
+					failed: function(m) { /*Failed*/
+
+					}
+				}, 'get', '', true);
+			} 
 		},
 		itempage:0,
 		renderer: function() {
