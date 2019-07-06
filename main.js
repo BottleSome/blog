@@ -1,7 +1,8 @@
 /*FrontMainJS - SomeBottle*/
 /*q.js*/
-$ = new Object();
 var md;
+if(!$){
+$ = new Object();
 $.ls = new Array();
 	$.lss = '';
 	$.aj = function(p, d, sf, m, hd, as) { /*(path,data,success or fail,method,authheader,async)*/
@@ -108,6 +109,7 @@ $.script = function(url) {
 		u = u.substring(0, u.length - 1);
 		return u;
 	} 
+}
 if (!B) { /*PreventInitializingTwice*/
 	/*Include MdJS*/
 	$.ht("<script src='./library.js'></script>" + SC('container').innerHTML, 'container');
