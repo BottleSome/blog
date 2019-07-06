@@ -55,22 +55,24 @@ $.ls = new Array();
 				return document.getElementById(e);
 			}
 		}
-	$.script = function(url) {
-		var script = document.createElement("script");
-		var exist = false;
-		for (var up in $.ls) {
-			if ($.ls[up] == url) {
-				exist = true;
-				break;
-			}
-		}
-		if (!exist) {
-			$.ls[$.ls.length] = url;
-			script.type = "text/javascript";
-			script.src = url;
-			document.body.appendChild(script);
+	$.scripturl=[],
+$.script = function(url) {
+	var script = document.createElement("script");
+	var exist = false;
+	for (var up in $.ls) {
+		if ($.ls[up] == url) {
+			exist = true;
+			break;
 		}
 	}
+	if (!exist&&$.scripturl.indexOf(url)==-1) {
+		$.ls[$.ls.length] = url;
+		script.type = "text/javascript";
+		script.src = url;
+		$.scripturl.push(url);
+		document.body.appendChild(script);
+	}
+}
 	$.ht = function(h, e) {
 		var ht = SC(e);
 		if (!ht) {
