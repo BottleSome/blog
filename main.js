@@ -143,6 +143,17 @@ if (!B) { /*PreventInitializingTwice*/
 		templateloaded: new Array(),
 		tpcheck: function() { /*template check*/
 			var pagetype = this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
+			if (!window.mainjson) {/*Include Mainjson*/
+				var ot = this;
+				$.aj('main.json', '', {
+					success: function(m) {
+						window.mainjson = JSON.parse(m.replace(/[\r\n]/g, ""));
+					},
+					failed: function(m) { /*Failed*/
+
+					}
+				}, 'get', '', true);
+			} 
 			if (!window.templjson) {
 				var ot = this;
 				$.aj('template.json', '', {
@@ -154,17 +165,11 @@ if (!B) { /*PreventInitializingTwice*/
 
 					}
 				}, 'get', '', true);
-			} else if (!window.mainjson) {
-				var ot = this;
-				$.aj('main.json', '', {
-					success: function(m) {
-						window.mainjson = JSON.parse(m.replace(/[\r\n]/g, ""));
-						return ot.tpcheck();
-					},
-					failed: function(m) { /*Failed*/
-
-					}
-				}, 'get', '', true);
+			}else if (!window.mainjson&&window.templjson['usemain'].indexOf(pagetype)!==-1) {/*Some pages are in need of Main.json*/
+				var o=this;
+				setTimeout(function(){
+					return o.tpcheck();
+				},500);
 			} else {
 				var o = this;
 				var j = window.templjson;
@@ -192,6 +197,7 @@ if (!B) { /*PreventInitializingTwice*/
 				}, 1000);
 			}
 		},
+		itempage:0,
 		renderer: function() {
 			md=new Markdown.Converter()
 			var cloth = window.htmls['cloth.html'];
@@ -233,6 +239,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', realtitle);
+				this.itempage=parseInt(tj['posts_per_page']);
 				$.ht(render4, 'container');
 				this.loadhide();
 			} else if (pagetype == 'archives.html') {
@@ -363,6 +370,11 @@ if (!B) { /*PreventInitializingTwice*/
 		loadhide: function() {
 			SC('loading').style.opacity = 0;
 			SC('loading').style.zIndex = -1;
+		},
+		more:function(){
+			var start=this.itempage+1;
+			var tj = window.mainjson; /*get json*/
+			var maxrender=parseInt(tj['posts_per_page']);
 		}
 	};
 	window.addEventListener('pjaxstart', function() { /*加载动画*/
