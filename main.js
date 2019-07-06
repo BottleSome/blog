@@ -185,8 +185,9 @@ if (!B) { /*PreventInitializingTwice*/
 					}
 				}, 1000);
 			}
-			if (!window.mainjson) {/*Include Mainjson*/
+			if (!window.mainjson&&!window.mainjsonrequest) {/*Include Mainjson*/
 				var ot = this;
+				window.mainjsonrequest=true;/*make request flag*/
 				$.aj('main.json', '', {
 					success: function(m) {
 						window.mainjson = JSON.parse(m.replace(/[\r\n]/g, ""));
