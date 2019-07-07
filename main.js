@@ -512,6 +512,8 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 			var usecache = false; /*是否使用缓存*/
 			if (ts.recenturl.indexOf('#') !== -1 && href.indexOf('#') !== -1) { /*防止Tag页面的跳转问题*/
 				return false;
+			}else if(ts.recenturl.indexOf('#') == -1 && href.indexOf('#') !== -1) {
+				B.nowpage=0;/*防止页码bug*/
 			}
 			window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
 			var cache = q('r', encodeURIComponent(href), '', '', ''); /*获取缓存信息*/
@@ -541,7 +543,6 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 					window.dispatchEvent(ts.PJAXFinish);
 				}
 			}, 'get', '', true);
-			B.nowpage=0;/*防止页码bug*/
 		},
 		start: function() {
 			var ts = this;
