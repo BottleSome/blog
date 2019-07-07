@@ -402,8 +402,9 @@ if (!B) { /*PreventInitializingTwice*/
 				var pg = href.split('#')[1];
 				if(pg.indexOf('?')==-1){
 					if(!isNaN(pg)){
-						var pnum=parseInt(pg);
+						var pnum=parseInt(pg)-1;
 						if(this.nowpage!==pnum){
+							this.switchpage=0;
 							this.nowpage=pnum;
 						    this.itempage=maxrender*pnum*this.moreperpage;
 							SC('postitems').innerHTML = '';
