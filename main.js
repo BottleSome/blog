@@ -169,6 +169,9 @@ if (!B) { /*PreventInitializingTwice*/
 				var o = this;
 				var j = window.templjson;
 				j['necessary'].push(pagetype); /*Pagetype Pushed*/
+				if(pagetype=='post.html'){
+					j['necessary'].push('postitem.html');/*Extra Load*/
+				}
 				for (var i in j['necessary']) {
 					if (o.templateloaded.indexOf(j['necessary'][i]) == -1) {
 						o.templonload += 1;
@@ -362,7 +365,9 @@ if (!B) { /*PreventInitializingTwice*/
 				if (this.nowtag !== pg) {
 					this.nowtag = pg;
 					if (pg == 'alltags') {
+						if(SC('tags')){
 						SC('tags').innerHTML = this.alltaghtml;
+						}
 					} else {
 						this.taguper(pg);
 					}
@@ -502,7 +507,7 @@ function q(md, k, c, t, rt) { /*(mode,key,content,timestamp,readtime)*/
 			localStorage.obottle = JSON.stringify(caches);
 		} catch (e) {
 			for (var d in caches) {
-				if (Number(caches[d].rt) <= 8 || Number(t) - Number(caches[d].t) >= 172800) { /*自动清理缓存空间*/
+				if (Number(caches[d].rt) <= 20 || Number(t) - Number(caches[d].t) >= 172800) { /*自动清理缓存空间*/
 					delete caches[d];
 				}
 			}
