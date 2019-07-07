@@ -415,7 +415,7 @@ if (!B) { /*PreventInitializingTwice*/
 				}
 			}
 			this.itempage = this.itempage + maxrender;
-			SC('postitems').innerHTML = SC('postitems').innerHTML + this.itempage;
+			SC('postitems').innerHTML = SC('postitems').innerHTML + listrender;
 			PJAX.start(); /*refresh pjax links*/
 		}
 	};
