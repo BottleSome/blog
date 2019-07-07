@@ -400,7 +400,8 @@ if (!B) { /*PreventInitializingTwice*/
 				if(pg.indexOf('?')==-1){
 					if(!isNaN(pg)){
 						var pnum=parseInt(pg);
-						if(this.realpage!==pnum){
+						if(this.nowpage!==pnum){
+							this.nowpage=pnum;
 						var start=1;
 						while(start<pnum){
 							this.more();
