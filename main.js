@@ -415,6 +415,9 @@ if (!B) { /*PreventInitializingTwice*/
 				}else{/*Search mode*/
 					
 				}
+			}else{
+				this.realpage=1;
+				this.switchpage=0;
 			}
 		},
 		loadshow: function() {
