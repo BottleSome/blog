@@ -380,7 +380,7 @@ if (!B) { /*PreventInitializingTwice*/
 		tagpagechecker: function() {
 			var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
 			var href = $.tr(window.location.href);
-			if (href.indexOf('#') == -1) {
+			if (href.indexOf('#') == -1&&ot.gt('<!--[PageType]', '[PageTypeEnd]-->')=='tags.html') {
 				PJAX.pause();
 				window.location.href+='#alltags';
 				PJAX.start();
