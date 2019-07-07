@@ -332,7 +332,7 @@ if (!B) { /*PreventInitializingTwice*/
 					}
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
-					if (ot.gt('<!--[PageType]', '[PageTypeEnd]-->')!=='tags.html') { /*跳离tag页了*/
+					if (ot.gt('<!--[PageType]', '[PageTypeEnd]-->')!=='tags.html'||window.location.href.indexOf('tag.html')==-1) { /*跳离tag页了*/
 						PJAX.sel('container');
 						PJAX.start();
 						clearInterval(timer);
@@ -381,7 +381,7 @@ if (!B) { /*PreventInitializingTwice*/
 			var ot=this;
 			var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
 			var href = $.tr(window.location.href);
-			if (href.indexOf('#') == -1&&href.indexOf('tag')!==-1) {
+			if (href.indexOf('#') == -1) {
 				PJAX.pause();
 				window.location.href+='#alltags';
 				PJAX.start();
