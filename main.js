@@ -209,6 +209,7 @@ if (!B) { /*PreventInitializingTwice*/
 		},
 		itempage: 0,
 		nowpage:0,
+		realpage:1,
 		renderer: function() {
 			md = new Markdown.Converter()
 			var cloth = window.htmls['cloth.html'];
@@ -454,7 +455,10 @@ if (!B) { /*PreventInitializingTwice*/
 			this.itempage = this.itempage + maxrender;
 			if(this.nowpage>=2){
 			SC('postitems').innerHTML = listrender;
+			window.scrollTo(0,0);
 			this.nowpage=0;
+			this.realpage+=1;
+			window.location.href+='#'+this.realpage;
 			}else{
 			SC('postitems').innerHTML = SC('postitems').innerHTML + listrender;
 			this.nowpage+=1;
