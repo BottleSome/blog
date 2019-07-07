@@ -404,7 +404,7 @@ if (!B) { /*PreventInitializingTwice*/
 			if (href.indexOf('#') !== -1) {
 				this.hashexist=true;
 				var pg = href.split('#')[1];
-				if(pg.indexOf('?')==-1){
+				if(href.indexOf('#!')==-1){
 					if(!isNaN(pg)){
 						var pnum=parseInt(pg)-1;
 						if(this.nowpage!==pnum){
