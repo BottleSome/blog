@@ -234,6 +234,7 @@ if (!B) { /*PreventInitializingTwice*/
 				alltags.forEach(function(i,v){
 					tags=tags+'<a href="tag.html#'+encodeURIComponent(i)+'" class="taglink">'+i+'</a>,';
 				});
+				tags=tags.substr(0,tags.length-1);
 				}
 				var render13 = this.r(render12, '{[posttags]}', tags);
 				var render14 = this.r(render13, '{[postdate]}', date);
