@@ -381,7 +381,7 @@ if (!B) { /*PreventInitializingTwice*/
 			var ot=this;
 			var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
 			var href = $.tr(window.location.href);
-			if (href.indexOf('#') == -1&&ot.gt('<!--[PageType]', '[PageTypeEnd]-->')=='tags.html') {
+			if (href.indexOf('#') == -1&&href.indexOf('tag')!==-1) {
 				PJAX.pause();
 				window.location.href+='#alltags';
 				PJAX.start();
