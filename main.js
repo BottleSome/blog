@@ -323,7 +323,7 @@ if (!B) { /*PreventInitializingTwice*/
 					}
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
-					if (this.gt('<!--[PageType]', '[PageTypeEnd]-->')!=='tags.html') { /*跳离tag页了*/
+					if (ot.gt('<!--[PageType]', '[PageTypeEnd]-->')!=='tags.html') { /*跳离tag页了*/
 						PJAX.sel('container');
 						PJAX.start();
 						clearInterval(timer);
