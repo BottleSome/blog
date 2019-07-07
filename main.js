@@ -96,18 +96,12 @@ if (typeof($) !== 'object') {
 	}
 	$.tr = function(url) { /*PreventURLProblem*/
 		var a = url;
-		a = a.split('?');
-		if ((a.length - 1) > 1 || url.indexOf('!') !== -1) {
-			if (url.indexOf('?') !== -1) {
-				a.pop();
-			}
+		b = a.split('?');
+		if(b[1]){
+			return b[0];
+		}else{
+			return a;
 		}
-		var u = '';
-		for (var i in a) {
-			u = u + a[i] + '?';
-		}
-		u = u.substring(0, u.length - 1);
-		return u;
 	}
 }
 if (!B) { /*PreventInitializingTwice*/
