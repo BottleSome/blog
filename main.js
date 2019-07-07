@@ -395,6 +395,8 @@ if (!B) { /*PreventInitializingTwice*/
 		indexpagechecker: function() {
 			var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
 			var href = $.tr(window.location.href);
+			var tj = window.mainjson; /*get json*/
+			var maxrender = parseInt(tj['posts_per_page']);
 			if (href.indexOf('#') !== -1) {
 				var pg = href.split('#')[1];
 				if(pg.indexOf('?')==-1){
@@ -402,11 +404,8 @@ if (!B) { /*PreventInitializingTwice*/
 						var pnum=parseInt(pg);
 						if(this.nowpage!==pnum){
 							this.nowpage=pnum;
-						var start=1;
-						while(start<pnum){
+						    this.itempage=maxrender*pnum;
 							this.more();
-							start+=1;
-						}
 						}
 					}
 				}else{/*Search mode*/
@@ -465,7 +464,7 @@ if (!B) { /*PreventInitializingTwice*/
 			window.scrollTo(0,0);
 			this.switchpage=0;
 			this.realpage+=1;
-			window.location.href+='#'+this.realpage;
+			window.location.href='#'+this.realpage;
 			}else{
 			SC('postitems').innerHTML = SC('postitems').innerHTML + listrender;
 			this.switchpage+=1;
