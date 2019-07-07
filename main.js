@@ -169,7 +169,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var o = this;
 				var j = window.templjson;
 				j['necessary'].push(pagetype); /*Pagetype Pushed*/
-				if(pagetype=='post.html'){
+				if(pagetype=='postlist.html'){
 					j['necessary'].push('postitem.html');/*Extra Load*/
 				}
 				for (var i in j['necessary']) {
