@@ -208,6 +208,7 @@ if (!B) { /*PreventInitializingTwice*/
 			}
 		},
 		itempage: 0,
+		switchpage:0,
 		nowpage:0,
 		realpage:1,
 		renderer: function() {
@@ -399,10 +400,12 @@ if (!B) { /*PreventInitializingTwice*/
 				if(pg.indexOf('?')==-1){
 					if(!isNaN(pg)){
 						var pnum=parseInt(pg);
+						if(this.realpage!==pnum){
 						var start=1;
 						while(start<pnum){
 							this.more();
 							start+=1;
+						}
 						}
 					}
 				}else{/*Search mode*/
@@ -451,17 +454,20 @@ if (!B) { /*PreventInitializingTwice*/
 			}
 			if(listrender==''){
 				listrender='<h3 style=\'color:#AAA;\'>没有更多了呢</h3>';
+				SC('morebtn').style.display='none';
+			}else{
+				SC('morebtn').style.display='block';
 			}
 			this.itempage = this.itempage + maxrender;
-			if(this.nowpage>=2){
+			if(this.switchpage>=2){
 			SC('postitems').innerHTML = listrender;
 			window.scrollTo(0,0);
-			this.nowpage=0;
+			this.switchpage=0;
 			this.realpage+=1;
 			window.location.href+='#'+this.realpage;
 			}else{
 			SC('postitems').innerHTML = SC('postitems').innerHTML + listrender;
-			this.nowpage+=1;
+			this.switchpage+=1;
 			}
 			PJAX.start(); /*refresh pjax links*/
 		}
