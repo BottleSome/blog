@@ -395,7 +395,7 @@ if (!B) { /*PreventInitializingTwice*/
 			var tj = window.mainjson; /*get json*/
 			var postids = tj['dateindex'];
 			for (var i in postids) {
-				if (parseInt(pid) <= itemid) {
+				if (start <= itemid) {
 					if (counter < maxrender) {
 						var pid = i.replace('post', '');
 						var pt = tj['postindex'][pid];
