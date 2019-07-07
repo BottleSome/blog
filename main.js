@@ -460,7 +460,7 @@ if (!B) { /*PreventInitializingTwice*/
 				SC('morebtn').style.display='block';
 			}
 			this.itempage = this.itempage + maxrender;
-			if(this.switchpage>=1){
+			if(this.switchpage>=2){
 			window.scrollTo(0,0);
 			SC('postitems').innerHTML = listrender;
 			this.switchpage=0;
