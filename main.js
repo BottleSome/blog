@@ -420,7 +420,6 @@ if (!B) { /*PreventInitializingTwice*/
 			}else{
 				if(this.hashexist){
 				this.realpage=1;
-				this.switchpage=0;
 				this.hashexist=false;
 				}
 			}
