@@ -405,6 +405,7 @@ if (!B) { /*PreventInitializingTwice*/
 						if(this.nowpage!==pnum){
 							this.nowpage=pnum;
 						    this.itempage=maxrender*pnum;
+							SC('postitems').innerHTML = '';
 							this.more();
 						}
 					}
@@ -459,9 +460,9 @@ if (!B) { /*PreventInitializingTwice*/
 				SC('morebtn').style.display='block';
 			}
 			this.itempage = this.itempage + maxrender;
-			if(this.switchpage>=2){
-			SC('postitems').innerHTML = listrender;
+			if(this.switchpage>=1){
 			window.scrollTo(0,0);
+			SC('postitems').innerHTML = listrender;
 			this.switchpage=0;
 			this.realpage+=1;
 			window.location.href='#'+this.realpage;
