@@ -232,7 +232,7 @@ if (!B) { /*PreventInitializingTwice*/
 				alltags=tags.split(',');
 				tags='';
 				alltags.forEach(function(i,v){
-					tags=tags+'<a href="tag.html#'+encodeURIComponent(i)+'" class="taglink">'+i+'</a>';
+					tags=tags+'<a href="tag.html#'+encodeURIComponent(i)+'" class="taglink">'+i+'</a>,';
 				});
 				}
 				var render13 = this.r(render12, '{[posttags]}', tags);
