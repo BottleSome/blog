@@ -401,7 +401,7 @@ if (!B) { /*PreventInitializingTwice*/
 						var pt = tj['postindex'][pid];
 						if (!pt['link']) { /*排除页面在外*/
 							var render1 = B.r(item, '{[postitemtitle]}', Base64.decode(pt.title));
-							var render2 = B.r(render1, '{[postitemintro]}', Base64.decode(pt.intro).'...');
+							var render2 = B.r(render1, '{[postitemintro]}', Base64.decode(pt.intro)+'...');
 							var render3 = B.r(render2, '{[postitemdate]}', pt.date);
 							var render4 = B.r(render3, '{[postitemlink]}', 'post-' + pid + '.html');
 							listrender += render4; /*渲染到列表模板*/
