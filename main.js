@@ -408,6 +408,7 @@ if (!B) { /*PreventInitializingTwice*/
 						    this.itempage=maxrender*pnum*this.moreperpage;
 							SC('postitems').innerHTML = '';
 							this.more();
+							this.realpage=pnum+1;
 							this.switchpage=0;
 						}
 					}
