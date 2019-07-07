@@ -1,9 +1,9 @@
 /*FrontMainJS - SomeBottle*/
 /*q.js*/
 var md;
-if(typeof($)!=='object'){
-$ = new Object();
-$.ls = new Array();
+if (typeof($) !== 'object') {
+	$ = new Object();
+	$.ls = new Array();
 	$.lss = '';
 	$.aj = function(p, d, sf, m, hd, as) { /*(path,data,success or fail,method,authheader,async)*/
 		var xhr = new XMLHttpRequest();
@@ -56,26 +56,26 @@ $.ls = new Array();
 				return document.getElementById(e);
 			}
 		}
-$.script = function(url) {
-	if(!$.scripturl){
-		$.scripturl=[];
-	}
-	var script = document.createElement("script");
-	var exist = false;
-	for (var up in $.ls) {
-		if ($.ls[up] == url) {
-			exist = true;
-			break;
+	$.script = function(url) {
+		if (!$.scripturl) {
+			$.scripturl = [];
+		}
+		var script = document.createElement("script");
+		var exist = false;
+		for (var up in $.ls) {
+			if ($.ls[up] == url) {
+				exist = true;
+				break;
+			}
+		}
+		if (!exist && $.scripturl.indexOf(url) == -1) {
+			$.ls[$.ls.length] = url;
+			script.type = "text/javascript";
+			script.src = url;
+			$.scripturl.push(url);
+			document.body.appendChild(script);
 		}
 	}
-	if (!exist&&$.scripturl.indexOf(url)==-1) {
-		$.ls[$.ls.length] = url;
-		script.type = "text/javascript";
-		script.src = url;
-		$.scripturl.push(url);
-		document.body.appendChild(script);
-	}
-}
 	$.ht = function(h, e) {
 		var ht = SC(e);
 		if (!ht) {
@@ -108,7 +108,7 @@ $.script = function(url) {
 		}
 		u = u.substring(0, u.length - 1);
 		return u;
-	} 
+	}
 }
 if (!B) { /*PreventInitializingTwice*/
 	/*Include MdJS*/
@@ -160,17 +160,17 @@ if (!B) { /*PreventInitializingTwice*/
 
 					}
 				}, 'get', '', true);
-			}else if (!window.mainjson&&window.templjson['usemain'].indexOf(pagetype)!==-1) {/*Some pages are in need of Main.json*/
-				var o=this;
-				setTimeout(function(){
+			} else if (!window.mainjson && window.templjson['usemain'].indexOf(pagetype) !== -1) { /*Some pages are in need of Main.json*/
+				var o = this;
+				setTimeout(function() {
 					return o.tpcheck();
-				},500);
+				}, 500);
 			} else {
 				var o = this;
 				var j = window.templjson;
 				j['necessary'].push(pagetype); /*Pagetype Pushed*/
-				if(pagetype=='postlist.html'){
-					j['necessary'].push('postitem.html');/*Extra Load*/
+				if (pagetype == 'postlist.html') {
+					j['necessary'].push('postitem.html'); /*Extra Load*/
 				}
 				for (var i in j['necessary']) {
 					if (o.templateloaded.indexOf(j['necessary'][i]) == -1) {
@@ -194,9 +194,9 @@ if (!B) { /*PreventInitializingTwice*/
 					}
 				}, 1000);
 			}
-			if (!window.mainjson&&!window.mainjsonrequest) {/*Include Mainjson*/
+			if (!window.mainjson && !window.mainjsonrequest) { /*Include Mainjson*/
 				var ot = this;
-				window.mainjsonrequest=true;/*make request flag*/
+				window.mainjsonrequest = true; /*make request flag*/
 				$.aj('main.json', '', {
 					success: function(m) {
 						window.mainjson = JSON.parse(m.replace(/[\r\n]/g, ""));
@@ -205,11 +205,11 @@ if (!B) { /*PreventInitializingTwice*/
 
 					}
 				}, 'get', '', true);
-			} 
+			}
 		},
-		itempage:0,
+		itempage: 0,
 		renderer: function() {
-			md=new Markdown.Converter()
+			md = new Markdown.Converter()
 			var cloth = window.htmls['cloth.html'];
 			var main = window.htmls['main.html'];
 			var comment = window.htmls['comment.html'];
@@ -225,8 +225,8 @@ if (!B) { /*PreventInitializingTwice*/
 				var post = window.htmls['post.html'];
 				var render11 = this.r(post, '{[postcontent]}', md.makeHtml(content.trim())); /*Analyse md*/
 				var render12 = this.r(render11, '{[posttitle]}', title);
-				if(isNaN(date)){
-					tags='页面';
+				if (isNaN(date)) {
+					tags = '页面';
 				}
 				var render13 = this.r(render12, '{[posttags]}', tags);
 				var render14 = this.r(render13, '{[postdate]}', date);
@@ -235,8 +235,8 @@ if (!B) { /*PreventInitializingTwice*/
 				var render4 = this.r(render3, '{[title]}', pagetitle);
 				var render5 = this.r(render4, '{[comments]}', comment); /*LoadCommentsForPost*/
 				var render6 = this.r(render5, '{[pid]}', pid); /*SetPid*/
-				if(isNaN(date)){
-					render6=render6.split('<!--PostEnd-->')[0]+'<!--PostEnd-->';
+				if (isNaN(date)) {
+					render6 = render6.split('<!--PostEnd-->')[0] + '<!--PostEnd-->';
 				}
 				$.ht(render6, 'container');
 				this.loadhide();
@@ -249,7 +249,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', realtitle);
-				this.itempage=parseInt(tj['posts_per_page']);
+				this.itempage = parseInt(tj['posts_per_page']);
 				$.ht(render4, 'container');
 				this.loadhide();
 			} else if (pagetype == 'archives.html') {
@@ -365,8 +365,8 @@ if (!B) { /*PreventInitializingTwice*/
 				if (this.nowtag !== pg) {
 					this.nowtag = pg;
 					if (pg == 'alltags') {
-						if(SC('tags')){
-						SC('tags').innerHTML = this.alltaghtml;
+						if (SC('tags')) {
+							SC('tags').innerHTML = this.alltaghtml;
 						}
 					} else {
 						this.taguper(pg);
@@ -383,10 +383,40 @@ if (!B) { /*PreventInitializingTwice*/
 			SC('loading').style.opacity = 0;
 			SC('loading').style.zIndex = -1;
 		},
-		more:function(){
-			var start=this.itempage+1;
+		more: function() {
+			var start = this.itempage + 1;
+			var counter = 0;
+			var itemid = 0;
+			var listrender = '';
 			var tj = window.mainjson; /*get json*/
-			var maxrender=parseInt(tj['posts_per_page']);
+			var item = window.htmls['postitem.html'];
+			var maxrender = parseInt(tj['posts_per_page']);
+			var end = start + maxrender;
+			var tj = window.mainjson; /*get json*/
+			var postids = tj['dateindex'];
+			for (var i in postids) {
+				if (parseInt(pid) <= itemid) {
+					if (counter < maxrender) {
+						var pid = i.replace('post', '');
+						var pt = tj['postindex'][pid];
+						if (!pt['link']) { /*排除页面在外*/
+							var render1 = B.r(item, '{[postitemtitle]}', Base64.decode(pt.title));
+							var render2 = B.r(render1, '{[postitemintro]}', Base64.decode(pt.intro).'...');
+							var render3 = B.r(render2, '{[postitemdate]}', pt.date);
+							var render4 = B.r(render3, '{[postitemlink]}', 'post-' + pid + '.html');
+							listrender += render4; /*渲染到列表模板*/
+						} else {
+							counter -= 1;
+						}
+						counter += 1;
+					}
+				} else {
+					itemid += 1;
+				}
+			}
+			this.itempage = this.itempage + maxrender;
+			SC('postitems').innerHTML = SC('postitems').innerHTML + this.itempage;
+			PJAX.start(); /*refresh pjax links*/
 		}
 	};
 	window.addEventListener('pjaxstart', function() { /*加载动画*/
