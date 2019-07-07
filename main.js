@@ -378,6 +378,7 @@ if (!B) { /*PreventInitializingTwice*/
 			SC('tags').innerHTML = rendertgs;
 		},
 		tagpagechecker: function() {
+			var ot=this;
 			var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
 			var href = $.tr(window.location.href);
 			if (href.indexOf('#') == -1&&ot.gt('<!--[PageType]', '[PageTypeEnd]-->')=='tags.html') {
@@ -386,14 +387,14 @@ if (!B) { /*PreventInitializingTwice*/
 				PJAX.start();
 			} else {
 				var pg = href.split('#')[1];
-				if (this.nowtag !== pg) {
-					this.nowtag = pg;
+				if (ot.nowtag !== pg) {
+					ot.nowtag = pg;
 					if (pg == 'alltags') {
 						if (SC('tags')) {
-							SC('tags').innerHTML = this.alltaghtml;
+							SC('tags').innerHTML = ot.alltaghtml;
 						}
 					} else {
-						this.taguper(pg);
+						ot.taguper(pg);
 					}
 					PJAX.start();
 				}
