@@ -404,11 +404,11 @@ if (!B) { /*PreventInitializingTwice*/
 					if(!isNaN(pg)){
 						var pnum=parseInt(pg)-1;
 						if(this.nowpage!==pnum){
-							this.switchpage=0;
 							this.nowpage=pnum;
 						    this.itempage=maxrender*pnum*this.moreperpage;
 							SC('postitems').innerHTML = '';
 							this.more();
+							this.switchpage=0;
 						}
 					}
 				}else{/*Search mode*/
