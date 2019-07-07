@@ -378,7 +378,9 @@ if (!B) { /*PreventInitializingTwice*/
 			var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
 			var href = $.tr(window.location.href);
 			if (href.indexOf('#') == -1) {
+				PJAX.pause();
 				window.location.href+='#alltags';
+				PJAX.start();
 			} else {
 				var pg = href.split('#')[1];
 				if (this.nowtag !== pg) {
