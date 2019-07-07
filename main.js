@@ -208,6 +208,7 @@ if (!B) { /*PreventInitializingTwice*/
 			}
 		},
 		itempage: 0,
+		nowpage:0,
 		renderer: function() {
 			md = new Markdown.Converter()
 			var cloth = window.htmls['cloth.html'];
@@ -242,6 +243,7 @@ if (!B) { /*PreventInitializingTwice*/
 				$.ht(render6, 'container');
 				this.loadhide();
 			} else if (pagetype == 'postlist.html') {
+				var ot=this;
 				var content = this.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
 				var realtitle = pagetitle.replace('-', ''); /*Remove - */
@@ -254,15 +256,15 @@ if (!B) { /*PreventInitializingTwice*/
 				this.itempage = parseInt(tj['posts_per_page']);
 				$.ht(render4, 'container');
 				this.loadhide();
-				//var timer = setInterval(function() { /*CheckIndexPage*/
-					//if (this.gt('<!--[PageType]', '[PageTypeEnd]-->')!=='postlist.html') { /*跳离index页了*/
-						//PJAX.sel('container');
-						//PJAX.start();
-						//clearInterval(timer);
-						//return false;
-					//}
-					//ot.tagpagechecker();
-				//}, 500);
+				var timer = setInterval(function() { /*CheckIndexPage*/
+					if (ot.gt('<!--[PageType]', '[PageTypeEnd]-->')!=='postlist.html') { /*跳离index页了*/
+						PJAX.sel('container');
+						PJAX.start();
+						clearInterval(timer);
+						return false;
+					}
+					ot.indexpagechecker();
+				}, 500);
 			} else if (pagetype == 'archives.html') {
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
 				/*Generate Archives*/
@@ -372,7 +374,7 @@ if (!B) { /*PreventInitializingTwice*/
 			var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
 			var href = $.tr(window.location.href);
 			if (href.indexOf('#') == -1) {
-				window.open('#alltags', '_self');
+				window.location.href+='#alltags';
 			} else {
 				var pg = href.split('#')[1];
 				if (this.nowtag !== pg) {
@@ -385,6 +387,25 @@ if (!B) { /*PreventInitializingTwice*/
 						this.taguper(pg);
 					}
 					PJAX.start();
+				}
+			}
+		},
+		indexpagechecker: function() {
+			var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
+			var href = $.tr(window.location.href);
+			if (href.indexOf('#') !== -1) {
+				var pg = href.split('#')[1];
+				if(pg.indexOf('?')==-1){
+					if(!isNaN(pg)){
+						var pnum=parseInt(pg);
+						var start=1;
+						while(start<pnum){
+							this.more();
+							start+=1;
+						}
+					}
+				}else{/*Search mode*/
+					
 				}
 			}
 		},
@@ -431,7 +452,13 @@ if (!B) { /*PreventInitializingTwice*/
 				listrender='<h3 style=\'color:#AAA;\'>没有更多了呢</h3>';
 			}
 			this.itempage = this.itempage + maxrender;
+			if(this.nowpage>=2){
+			SC('postitems').innerHTML = listrender;
+			this.nowpage=0;
+			}else{
 			SC('postitems').innerHTML = SC('postitems').innerHTML + listrender;
+			this.nowpage+=1;
+			}
 			PJAX.start(); /*refresh pjax links*/
 		}
 	};
@@ -512,6 +539,11 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 				if (window.location.href.indexOf(mainhost) !== -1) {
 					PJAX.jump(window.location.href);
 				}
+			}
+		},
+		pause:function(){
+			window.onpopstate = function(e) { 
+			    return true;
 			}
 		},
 		autoprevent: function() {
