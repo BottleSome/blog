@@ -212,6 +212,7 @@ if (!B) { /*PreventInitializingTwice*/
 		switchpage:0,
 		nowpage:0,
 		realpage:1,
+		hashexist:false,
 		renderer: function() {
 			md = new Markdown.Converter()
 			var cloth = window.htmls['cloth.html'];
@@ -404,6 +405,7 @@ if (!B) { /*PreventInitializingTwice*/
 					if(!isNaN(pg)){
 						var pnum=parseInt(pg)-1;
 						if(this.nowpage!==pnum){
+							this.hashexist=true;
 							this.nowpage=pnum;
 						    this.itempage=maxrender*pnum*this.moreperpage;
 							SC('postitems').innerHTML = '';
@@ -416,8 +418,11 @@ if (!B) { /*PreventInitializingTwice*/
 					
 				}
 			}else{
+				if(hashexist){
 				this.realpage=1;
 				this.switchpage=0;
+				this.hashexist=false;
+				}
 			}
 		},
 		loadshow: function() {
