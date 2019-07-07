@@ -115,6 +115,7 @@ if (!B) { /*PreventInitializingTwice*/
 	$.ht("<script src='./library.js'></script>" + SC('container').innerHTML, 'container');
 	window.htmls = new Object();
 	var B = { /*Replace Part*/
+	    moreperpage:3,
 		r: function(a, o, p, g = true) { /*(All,Original,ReplaceStr,IfReplaceAll)*/
 			if (g) {
 				while (a.indexOf(o) !== -1) {
@@ -404,7 +405,7 @@ if (!B) { /*PreventInitializingTwice*/
 						var pnum=parseInt(pg);
 						if(this.nowpage!==pnum){
 							this.nowpage=pnum;
-						    this.itempage=maxrender*pnum;
+						    this.itempage=maxrender*pnum*this.moreperpage;
 							SC('postitems').innerHTML = '';
 							this.more();
 						}
@@ -460,7 +461,7 @@ if (!B) { /*PreventInitializingTwice*/
 				SC('morebtn').style.display='block';
 			}
 			this.itempage = this.itempage + maxrender;
-			if(this.switchpage>=2){
+			if(this.switchpage>=(this.moreperpage-1)){
 			window.scrollTo(0,0);
 			SC('postitems').innerHTML = listrender;
 			this.switchpage=0;
