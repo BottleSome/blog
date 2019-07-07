@@ -235,6 +235,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var render4 = this.r(render3, '{[title]}', pagetitle);
 				var render5 = this.r(render4, '{[comments]}', comment); /*LoadCommentsForPost*/
 				var render6 = this.r(render5, '{[pid]}', pid); /*SetPid*/
+				var render6 = this.r(render6, '{[pagetype]}', pagetype); /*SetPageType*/
 				if (isNaN(date)) {
 					render6 = render6.split('<!--PostEnd-->')[0] + '<!--PostEnd-->';
 				}
@@ -249,9 +250,19 @@ if (!B) { /*PreventInitializingTwice*/
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', realtitle);
+				var render4 = this.r(render4, '{[pagetype]}', pagetype); /*SetPageType*/
 				this.itempage = parseInt(tj['posts_per_page']);
 				$.ht(render4, 'container');
 				this.loadhide();
+				//var timer = setInterval(function() { /*CheckIndexPage*/
+					//if (this.gt('<!--[PageType]', '[PageTypeEnd]-->')!=='postlist.html') { /*跳离index页了*/
+						//PJAX.sel('container');
+						//PJAX.start();
+						//clearInterval(timer);
+						//return false;
+					//}
+					//ot.tagpagechecker();
+				//}, 500);
 			} else if (pagetype == 'archives.html') {
 				var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
 				/*Generate Archives*/
@@ -282,6 +293,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', pagetitle);
+				var render4 = this.r(render4, '{[pagetype]}', pagetype); /*SetPageType*/
 				$.ht(render4, 'container');
 				this.loadhide();
 			} else if (pagetype == 'tags.html') {
@@ -311,7 +323,7 @@ if (!B) { /*PreventInitializingTwice*/
 					}
 				} /*Generate Finish*/
 				var timer = setInterval(function() { /*CheckTagPage*/
-					if (window.location.href.indexOf('tag') == -1) { /*跳离tag页了*/
+					if (this.gt('<!--[PageType]', '[PageTypeEnd]-->')!=='tags.html') { /*跳离tag页了*/
 						PJAX.sel('container');
 						PJAX.start();
 						clearInterval(timer);
@@ -324,6 +336,7 @@ if (!B) { /*PreventInitializingTwice*/
 				var render2 = this.r(main, '{[contents]}', render11);
 				var render3 = this.r(cloth, '{[main]}', render2);
 				var render4 = this.r(render3, '{[title]}', pagetitle);
+				var render4 = this.r(render4, '{[pagetype]}', pagetype); /*SetPageType*/
 				$.ht(render4, 'container');
 				this.loadhide();
 			}
@@ -413,6 +426,9 @@ if (!B) { /*PreventInitializingTwice*/
 				} else {
 					itemid += 1;
 				}
+			}
+			if(listrender==''){
+				listrender='<h3 style=\'color:#AAA;\'>没有更多了呢</h3>';
 			}
 			this.itempage = this.itempage + maxrender;
 			SC('postitems').innerHTML = SC('postitems').innerHTML + listrender;
