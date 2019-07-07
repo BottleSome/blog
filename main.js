@@ -541,6 +541,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 					window.dispatchEvent(ts.PJAXFinish);
 				}
 			}, 'get', '', true);
+			B.nowpage=0;/*防止页码bug*/
 		},
 		start: function() {
 			var ts = this;
