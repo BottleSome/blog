@@ -94,7 +94,7 @@ if (typeof($) !== 'object') {
 		}
 
 	}
-	$.tr = function(url) { /*PreventURLProblem*/
+	$.tr = function(url) { /*PreventURLProblem(Fuck QQ Querying URI*/
 		var a = url;
 		b = a.split('?');
 		if(b[1]){
@@ -224,8 +224,16 @@ if (!B) { /*PreventInitializingTwice*/
 				var post = window.htmls['post.html'];
 				var render11 = this.r(post, '{[postcontent]}', md.makeHtml(content.trim())); /*Analyse md*/
 				var render12 = this.r(render11, '{[posttitle]}', title);
+				var alltags=[];
 				if (isNaN(date)) {
 					tags = '页面';
+				}else{
+				/*Tag Process*/
+				alltags=tags.split(',');
+				tags='';
+				alltags.forEach(function(i,v){
+					tags=tags+'<a href="tag.html#'+encodeURIComponent(i)+'" class="taglink">'+i+'</a>';
+				});
 				}
 				var render13 = this.r(render12, '{[posttags]}', tags);
 				var render14 = this.r(render13, '{[postdate]}', date);
@@ -406,6 +414,7 @@ if (!B) { /*PreventInitializingTwice*/
 						    this.itempage=maxrender*pnum*this.moreperpage;
 							SC('postitems').innerHTML = '';
 							this.more();
+							/*顺序不要颠倒!*/
 							this.realpage=pnum+1;
 							this.switchpage=0;
 						}
