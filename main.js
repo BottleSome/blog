@@ -169,11 +169,27 @@ if (!B) { /*PreventInitializingTwice*/
                 for (var i in j['necessary']) {
                     if (o.templateloaded.indexOf(j['necessary'][i]) == -1) {
                         o.templonload += 1;
+						var usecache=false;
+						var cache = q('r','template-'+j['necessary'][i], '', '', ''); /*Test Cache*/
+						if (cache['c']) { /*如果有缓存，先装载缓存*/
+                            usecache = true;
+                            var p=j['necessary'][i];
+							window.htmls[p]=cache['c'];
+							o.templateloaded.push(p);
+                            o.templonload -= 1;
+                        }
                         $.aj(j['necessary'][i], '', {
                             success: function(m, p) {
                                 window.htmls[p] = m;
+								if(!usecache){
                                 o.templateloaded.push(p);
                                 o.templonload -= 1;
+								q('w','template-'+p, m, timestamp(), '');
+								}else if(cache['c']!==m){/*缓存需要更新*/
+									q('w','template-'+p, m, timestamp(), '');
+								}else{/*增加缓存读取次数*/
+									q('e','template-'+p, '', '', 1);
+								}
                             },
                             failed: function(m) { /*Failed*/
                             }
@@ -333,7 +349,7 @@ if (!B) { /*PreventInitializingTwice*/
                     }
                 } /*Generate Finish*/
                 var timer = setInterval(function() { /*CheckTagPage*/
-                    if (ot.gt('<!--[PageType]', '[PageTypeEnd]-->') !== j['templatehtmls']['tags'] || window.location.href.indexOf(j['generatehtmls']['tags']) == -1 || window.location.href.indexOf((j['generatehtmls']['tags']).replace('.html', '')) == -1) { /*跳离tag页了*/
+                    if ( window.location.href.indexOf(j['generatehtmls']['tags']) == -1 && window.location.href.indexOf((j['generatehtmls']['tags']).replace('.html', '')) == -1) { /*跳离tag页了*/
                         PJAX.sel('container');
                         PJAX.start();
                         clearInterval(timer);
