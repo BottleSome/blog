@@ -1,0 +1,206 @@
+{
+	"x": "m",
+	"color": "#6E6E6E",
+	"opacity": 100,
+	"time": 8,
+	"md": "random",
+	"bold": 200,
+	"size": 1,
+	"danmaku": {
+		"1": {
+			"color": "#2E9AFE",
+			"text": "死宅（划掉）",
+			"ts": 1
+		},
+		"2": {
+		    "color": "#AC58FA",
+			"text": "会搞♂点PHP的玩意",
+			"ts": 4
+		},
+		"3": {
+			"color": "#642EFE",
+			"md": "bottom",
+			"text": "Minecraft正版服主??",
+			"ts": 7
+		},
+		"4": {
+			"color": "#642EFE",
+			"text": "Minecraft正版服主??!!",
+			"ts": 8
+		},
+		"5": {
+			"color": "#DF013A",
+			"md": "top",
+			"text": "这家伙很穷↓",
+			"ts": 11
+		},
+		"6": {
+			"color": "#DF013A",
+			"md": "random",
+			"text": "凡科建站吼啊",
+			"ts": 15
+		},
+		"7": {
+			"color": "#4000FF",
+			"text": "跑步真TM开心！",
+			"ts": 17
+		},
+		"8": {
+			"color": "#58ACFA",
+			"text": "复读机真的太讨厌了！",
+			"ts": 20
+		},
+		"9": {
+			"color": "#58ACFA",
+			"text": "复读机真的太讨厌了！",
+			"ts": 20
+		},
+		"10": {
+			"color": "#58ACFA",
+			"text": "复读机真的太讨厌了！",
+			"ts": 20
+		},
+		"11": {
+			"color": "#58ACFA",
+			"text": "复读机真的太讨厌了！",
+			"ts": 20
+		},
+		"12": {
+			"color": "#58ACFA",
+			"text": "复读机真的太讨厌了！",
+			"ts": 20
+		},
+		"13": {
+			"color": "#58ACFA",
+			"text": "复读机真的太讨厌了！",
+			"ts": 20
+		},
+		"14": {
+			"color": "#58ACFA",
+			"text": "复读机真的太讨厌了！",
+			"ts": 20
+		},
+		"15": {
+			"color": "#58ACFA",
+			"text": "复读机真的太讨厌了！",
+			"ts": 20
+		},
+		"16": {
+			"color": "#58ACFA",
+			"text": "复读机真的太讨厌了！",
+			"ts": 20
+		},
+		"17": {
+			"color": "#58ACFA",
+			"text": "复读机真的太讨厌了！",
+			"ts": 20
+		},
+		"18": {
+			"color": "red",
+			"text": "一大波僵尸正在来袭",
+			"ts": 24
+		},
+		"19": {
+			"color": "red",
+			"text": "A HUGE WAVE OF ZOMBIES IS APPROACHING",
+			"ts": 24
+		},
+		"20": {
+			"color": "#00BFFF",
+			"text": "弹幕使用N.js（明明原来用bottledm.js的）",
+			"ts": 26
+		},
+		"21": {
+			"color": "#01A9DB",
+			"text": "我说，月色真美啊",
+			"ts": 28
+		},
+		"22": {
+			"color": "red",
+			"md":"top",
+			"text": "ん?",
+			"ts": 31
+		},
+		"23": {
+			"color": "red",
+			"text": "are wa dareda dareda dareda~~♪",
+			"ts": 33
+		},
+		"24": {
+			"color": "#0080FF",
+			"md":"random",
+			"text": "Your Life is your own , OK?",
+			"ts": 35
+		},
+		"25": {
+			"color": "#0080FF",
+			"text": "Your Life is your own , OK?",
+			"ts": 35
+		},
+		"26": {
+			"color": "#FE9A2E",
+			"text": "嗯，是柑橘味香气",
+			"ts": 37
+		},
+		"27": {
+			"color": "#642EFE",
+			"text": "请停止你的些瓶行为！",
+			"ts": 39
+		},
+		"28": {
+			"color": "#642EFE",
+			"text": "去看看SomeBottle的Github仓库，说不定有新发现哦",
+			"ts": 41
+		},
+		"29": {
+			"color": "#FFFF00",
+			"text": "我要成为秧歌Star!",
+			"ts": 44
+		},
+		"30": {
+			"color": "#8181F7",
+			"text": "啊，这光！啊，这水！",
+			"ts": 46
+		},
+		"32": {
+			"color": "#FA58D0",
+			"md":"top",
+			"text": "阿真爱上了阿强",
+			"ts": 48
+		},
+		"33": {
+			"color": "#FA58D0",
+			"text": "↑真写错了，是帧",
+			"ts": 49
+		},
+		"34": {
+			"color": "#8258FA",
+			"text": "↑你似不似Flash玩多了，那是珍",
+			"ts": 50
+		},
+		"35": {
+			"color": "#01DF3A",
+			"md":"random",
+			"text": "男人就要坚强",
+			"ts": 52
+		},
+		"36": {
+			"color": "#01DFD7",
+			"text": "后面没有弹幕了，....",
+			"ts": 54
+		},
+		"37": {
+			"color": "#01DFD7",
+			"text": "生气了吗？",
+			"ts": 56
+		},
+		"38": {
+			"text": "b站求关注:SomeBottle(表脸)",
+			"ts": 12
+		},
+		"39": {
+			"text": "拜托了，那真的对我很重要~！",
+			"ts": 12
+		}
+	}
+}
