@@ -174,6 +174,7 @@ if (!B) { /*PreventInitializingTwice*/
 						if (cache['c']) { /*如果有缓存，先装载缓存*/
                             usecache = true;
                             var p=j['necessary'][i];
+							console.log('Template using cache:'+p);
 							window.htmls[p]=cache['c'];
 							o.templateloaded.push(p);
                             o.templonload -= 1;
