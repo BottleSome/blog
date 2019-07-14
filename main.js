@@ -232,7 +232,8 @@ if (!B) {
         hashexist: false,
         renderer: function() {
             var j = window.templjson;
-            md = new Markdown.Converter() var cloth = window.htmls[j['templatehtmls']['cloth']];
+            md = new Markdown.Converter();
+			var cloth = window.htmls[j['templatehtmls']['cloth']];
             var main = window.htmls[j['templatehtmls']['main']];
             var comment = window.htmls[j['templatehtmls']['comment']];
             var pagetype = this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->');
