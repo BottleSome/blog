@@ -205,6 +205,7 @@ if (!B) { /*PreventInitializingTwice*/
         switchpage: 0,
         nowpage: 0,
         realpage: 1,
+        searchw: '',
         hashexist: false,
         renderer: function() {
             var j = window.templjson;
@@ -403,6 +404,7 @@ if (!B) { /*PreventInitializingTwice*/
         },
         indexpagechecker: function() {
             var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
+            var j = window.templjson;
             var href = $.tr(window.location.href);
             var tj = window.mainjson; /*get json*/
             var maxrender = parseInt(tj['posts_per_page']);
@@ -425,27 +427,30 @@ if (!B) { /*PreventInitializingTwice*/
                     var rendertp = '';
                     var item = window.htmls[j['templatehtmls']['postitem']];
                     var v = href.split('#!')[1];
-                    var pt = tj['postindex'];
-                    for (var i in pt) {
-                        var tt = Base64.decode(pt[i]['title']);
-                        var cc = Base64.decode(pt[i]['intro']);
-                        var dd = pt[i]['date'];
-                        var tg = pt[i]['tags'];
-                        if (tt.indexOf(v) !== -1 || cc.indexOf(v) !== -1 || dd.indexOf(v) !== -1 || tg.indexOf(v) !== -1) {
-                            var render1 = B.r(item, '{[postitemtitle]}', tt);
-                            var render2 = B.r(render1, '{[postitemintro]}', cc + '...');
-                            var render3 = B.r(render2, '{[postitemdate]}', dd);
-                            var render4 = B.r(render3, '{[postitemlink]}', 'post-' + i + '.html');
-                            rendertp += render4; /*渲染到列表模板*/
+                    if (v !== this.searchw) {
+                        this.searchw = v;
+                        var pt = tj['postindex'];
+                        for (var i in pt) {
+                            var tt = Base64.decode(pt[i]['title']);
+                            var cc = Base64.decode(pt[i]['intro']);
+                            var dd = pt[i]['date'];
+                            var tg = pt[i]['tags'];
+                            if (tt.indexOf(v) !== -1 || cc.indexOf(v) !== -1 || dd.indexOf(v) !== -1 || tg.indexOf(v) !== -1) {
+                                var render1 = B.r(item, '{[postitemtitle]}', tt);
+                                var render2 = B.r(render1, '{[postitemintro]}', cc + '...');
+                                var render3 = B.r(render2, '{[postitemdate]}', dd);
+                                var render4 = B.r(render3, '{[postitemlink]}', 'post-' + i + '.html');
+                                rendertp += render4; /*渲染到列表模板*/
+                            }
                         }
+                        if (rendertp == '') {
+                            rendertp = '<h2>啥都没找到</h2>';
+                        }
+                        window.scrollTo(0, 0);
+                        SC('postitems').innerHTML = rendertp;
+                        SC('morebtn').style.display = 'none';
+                        PJAX.start(); /*refresh pjax links*/
                     }
-                    if (rendertp == '') {
-                        rendertp = '<h2>啥都没找到</h2>';
-                    }
-                    window.scrollTo(0, 0);
-                    SC('postitems').innerHTML = rendertp;
-                    SC('morebtn').style.display = 'none';
-                    PJAX.start(); /*refresh pjax links*/
                 }
             } else {
                 if (this.hashexist) {
