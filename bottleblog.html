@@ -1,0 +1,173 @@
+<!--LoadingArea-->
+<style>
+body{
+	margin:0 auto;
+	overflow-x:hidden;
+}
+.loading{
+	position:fixed;
+	opacity:1;
+	z-index:200;
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	background-color:#FFFFFF;
+	transition:1s ease;
+}
+.loadingpic{
+	position:relative;
+	margin:0 auto;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+}
+</style>
+<div class='loading' id='loading'><img src='./loadingcloth.gif' class='loadingpic'></img></div>
+<!--LoadingAreaEnd-->
+<div id='container'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--[MainTitle]--><title>BottleBlog-Bottle小站</title><!--[MainTitleEnd]-->
+<!--description-->
+<meta name="description" content="
+ 
+ 
+  
+  本人是PHP新手，高中生，该作品仅仅是兴趣使然.
+  
+  无须数据库的，基于PHP的博客系统~
+  
+  
+  注意！建议PHP版本：5.6，请打开mbstri" />
+<!--Keywords-->
+<meta name="keywords" content="日常,Bottle小站" />
+</head>
+<body>
+<!--[PostTitle]-->BottleBlog<!--[PostTitleEnd]-->
+<!--[PostDate]-->bottleblog<!--[PostDateEnd]-->
+<!--[PostContent]--><html>
+ <head></head>
+ <body>
+  <hr />
+  <h4>本人是PHP新手，高中生，该作品仅仅是兴趣使然.</h4>
+  <hr />
+  <p>无须数据库的，基于PHP的博客系统~</p>
+  <p><img src="https://i.loli.net/2018/04/07/5ac81b2dc4f92.jpg" style="max-width:100%;" /></p>
+  <hr />
+  <h3 style='color:blue;'>注意！建议PHP版本：5.6，请打开<strong>mbstring</strong>扩展</h3>
+  <h4><span style="font-weight: bold;">特点</span></h4>
+  <ul>
+   <li>轻便</li>
+   <li>容易备份</li>
+   <li>内置缓存、博客页面缓存器</li>
+   <li>支持自定义主题（2018.4.6）</li>
+   <li>安装便捷，丢到网站目录就能用</li>
+   <li>markdown撰写，简约上阵(2018.4.21)</li>
+  </ul>
+  <hr />
+  <h4>DEMO</h4>
+  <h5><a href="https://imbottle.com/" rel="nofollow">https://imbottle.com</a></h5>
+  <hr />
+  <h3><span style="font-weight: bold;">备份方法</span></h3>
+  <div>
+   <ul>
+    <li>打包根目录下的contents文件夹，走人~</li>
+   </ul>
+   <hr />
+   <h3><span style="font-weight: bold;">关于安装</span></h3>
+  </div>
+  <div>
+   <img src="https://i.loli.net/2018/04/07/5ac8198f951be.jpg" style="max-width:331;" />
+  </div>
+  <div>
+   <h5><span style="font-size: small;">1.首先上传博客程序到网站根目录</span></h5>
+   <h5><span style="font-size: small;">2.访问根目录会跳转到登录界面</span></h5>
+   <h5><span style="font-size: small;">3.<span style="color: rgb(77, 128, 191); font-weight: bold;">登录程序基于BottleLogin，进入admin/bottlelogin/lconfig目录，打开配置文件，allowreg选项调为yes后</span><span style="color: rgb(77, 128, 191); font-weight: bold; font-family: inherit; text-align: left;">访问register.php进行注册。注册完毕后请务必关闭allowreg至no！</span><span style="color: rgb(77, 128, 191); font-weight: bold; font-family: inherit; text-align: left;">BottleLogin更改密码的程序在editpass.php。</span></span></h5>
+   <h5><span style="font-size: small;">4.登录，进入后台，初始化，敬请享用吧！</span></h5>
+   <h4><a id="2访问根目录会跳转到登录界面" href="https://gitee.com/somebottle/BottleBlog/blob/master/README.md#2%E8%AE%BF%E9%97%AE%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%BC%9A%E8%B7%B3%E8%BD%AC%E5%88%B0%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2"></a></h4>
+   <h4><a id="3登录程序基于bottlelogin进入adminbottleloginlconfig目录打开配置文件allowreg选项调为yes后" href="https://gitee.com/somebottle/BottleBlog/blob/master/README.md#3%E7%99%BB%E5%BD%95%E7%A8%8B%E5%BA%8F%E5%9F%BA%E4%BA%8Ebottlelogin%E8%BF%9B%E5%85%A5adminbottleloginlconfig%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6allowreg%E9%80%89%E9%A1%B9%E8%B0%83%E4%B8%BAyes%E5%90%8E"></a></h4>
+   <h4><a id="访问registerphp进行注册注册完毕后请务必关闭allowreg至no" href="https://gitee.com/somebottle/BottleBlog/blob/master/README.md#%E8%AE%BF%E9%97%AEregisterphp%E8%BF%9B%E8%A1%8C%E6%B3%A8%E5%86%8C%E6%B3%A8%E5%86%8C%E5%AE%8C%E6%AF%95%E5%90%8E%E8%AF%B7%E5%8A%A1%E5%BF%85%E5%85%B3%E9%97%ADallowreg%E8%87%B3no"></a></h4>
+   <h4><a id="bottlelogin更改密码的程序在editpassphp" href="https://gitee.com/somebottle/BottleBlog/blob/master/README.md#bottlelogin%E6%9B%B4%E6%94%B9%E5%AF%86%E7%A0%81%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%9C%A8editpassphp"></a></h4>
+   <h4><a id="4登录进入后台初始化敬请享用吧" href="https://gitee.com/somebottle/BottleBlog/blob/master/README.md#4%E7%99%BB%E5%BD%95%E8%BF%9B%E5%85%A5%E5%90%8E%E5%8F%B0%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%AC%E8%AF%B7%E4%BA%AB%E7%94%A8%E5%90%A7"></a></h4>
+   <hr />
+   <h3><span style="font-weight: bold;">隐藏功能</span></h3>
+  </div>
+  <div>
+   标签默认页面-示例：
+   <a href="https://imbottle.com/?tag" target="_blank">https://imbottle.com/?tag</a>  
+  </div>
+  <p><img src="https://camo.githubusercontent.com/98972021acac0215f487dc79b5d28ad45ace7dbc/687474703a2f2f7777322e73696e61696d672e636e2f6d77313032342f6131356234616665677931667070346478303661776a32316863306d6e6d7871" style="max-width:100%;" /></p>
+  <hr />
+  <h3><span style="font-weight: bold;">进阶说明</span></h3>
+  <div>
+   <img src="https://i.loli.net/2018/04/07/5ac8193b2d04d.jpg" style="max-width:100%;" />
+  </div>
+  <div>
+   <h4></h4>
+   <h5>
+    <ul>
+     <li><span style="font-weight: bold;">预缓存系统</span></li>
+    </ul></h5>
+   <p>该系统主要是出于最开始写缓存系统的时候，我发现每当进入一个页面，这个页面才会被缓存，而每当</p>
+   <p>发布页面和文章时，又会清除一些，这样一来效率就不是很高 ..</p>
+   <p>于是我就想到搞个一次性能把全站大多数页面缓存的东西——预缓存系统..</p>
+   <p>在后台主页面底部进入预缓存，一键就可以全站多数页面缓存..(<span style="font-weight: bold; background-color: rgb(255, 255, 255); color: rgb(194, 79, 74);">PS:如果内容较多，一段时间内会占用</span></p>
+   <p><span style="font-weight: bold; background-color: rgb(255, 255, 255); color: rgb(194, 79, 74);">服务器内存.预缓存时千万不要退出页面</span>)</p>
+   <p>经过本人测试，缓存了的页面可以省去很多PHP计算环节，有效提高速度.</p>
+   <hr />
+   <h5>
+    <ul>
+     <li><span style="font-weight: bold;">模板与主题</span></li>
+    </ul></h5>
+   <p>这是最近刚刚开发出来的新功能..热乎着呢..</p>
+   <p>下载的安装包内内置了一个极简主题（基于pppploi8大佬的模板）</p>
+   <p><span style="font-weight: bold;">介绍一下简单的结构和函数:</span></p>
+   <ul>
+    <li>comment.php —— 评论模板（评论代码放这里）</li>
+    <li>index.php —— 总模板</li>
+    <li>style.css —— 补充样式</li>
+   </ul>
+   <h4><span style="font-weight: bold;">PS:模板开发体验可能不是很好，例如标签页的生成函数我就保留在模板里面..</span></h4>
+  </div>
+  <div>
+   <span style="font-weight: bold;">函数部分</span>
+  </div>
+  <div>
+   <ul>
+    <li>bottlename() —— 获取站点名字</li>
+    <li>bottlemeta() —— 获取站点描述(为什么是meta?!!)</li>
+    <li>bottlehost() —— 获取站点主地址(用于加载主题)</li>
+    <li>bottleavatar () —— 获取头像网络地址</li>
+    <li>bottlebeian() —— 获取备案号</li>
+    <li>getmenu() —— 获得菜单</li>
+    <li>themeurl(path) —— 获得某个文件在主题目录下的路径【例】themeurl(“style.css”)</li>
+    <li>contenturl() —— 获得内容目录./contents的路径</li>
+    <li>postpagenum() —— 获得总页码数</li>
+    <li>getag(总值,取位) —— 获取浏览器地址栏的标签参数值</li>
+    <li>getposttag() —— 获得一篇文章的标签值</li>
+    <li>changedate(日期（ymd格式）) —— 将Ymd格式日期转换为Y-m-d</li>
+    <li>getxt() —— 内部切割函数</li>
+  </ul>
+  </div>
+ </body>
+</html>
+## 模板常用
+* bb_showpost()——文章显示模块
+* bb_pagetitle()——页面标题
+* bb_pagecontent()——已经Markdown解析了的页面内容
+* bb_posttitle()——文章标题
+* bb_postcontent()——已经Markdown解析了的文章内容
+* bb_postdate()——文章日期
+* bb_posttag()——文章标题
+* bb_postwz()——文章固定ID
+* bb_nowpagetitle()——获取当前页面的标题，return例如“搜索页-”
+###  [模板编写简介](#!bottleblog/template)
+   
+<!--[PostContentEnd]-->
+<!--[PostTag]-->日常<!--[PostTagEnd]-->
+<!--[PostID]-->5<!--[PostIDEnd]-->
+<div style='display:none;'><!--[PageType]-->post.html<!--[PageTypeEnd]--></div>
+<script src="./main.js?233"></script>
+<script>B.tpcheck();</script>
+</body>
+</div>

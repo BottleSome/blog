@@ -1,0 +1,68 @@
+<!--LoadingArea-->
+<style>
+body{
+	margin:0 auto;
+	overflow-x:hidden;
+}
+.loading{
+	position:fixed;
+	opacity:1;
+	z-index:200;
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	background-color:#FFFFFF;
+	transition:1s ease;
+}
+.loadingpic{
+	position:relative;
+	margin:0 auto;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+}
+</style>
+<div class='loading' id='loading'><img src='./loadingcloth.gif' class='loadingpic'></img></div>
+<!--LoadingAreaEnd-->
+<div id='container'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--[MainTitle]--><title>PHP-让程序在服务器一直执行-Bottle小站</title><!--[MainTitleEnd]-->
+<!--description-->
+<meta name="description" content="&nbsp;&nbsp;作为一个PHP初学者肯定少不了对PHP守护的了解，很久之前我就想过：  
+
+> 诶怎么让PHP一直在后台执行呢？  
+
+&nbsp;&nbsp;今天我总算找到了方法~ " />
+<!--Keywords-->
+<meta name="keywords" content="咸鱼技术,学习,PHP,Bottle小站" />
+</head>
+<body>
+<!--[PostTitle]-->PHP-让程序在服务器一直执行<!--[PostTitleEnd]-->
+<!--[PostDate]-->20180710<!--[PostDateEnd]-->
+<!--[PostContent]-->&nbsp;&nbsp;作为一个PHP初学者肯定少不了对PHP守护的了解，很久之前我就想过：  
+
+> 诶怎么让PHP一直在后台执行呢？  
+
+&nbsp;&nbsp;今天我总算找到了方法~  
+![](https://api.xbottle.top/i.php?u=https://wx4.sinaimg.cn/large/ed039e1fgy1ft52pi06noj20aj06idfw)  
+&nbsp;&nbsp;如图，**ignore_user_abort();** 用来让程序在后台运行而忽略用户终止.  
+
+&nbsp;&nbsp;**set_time_limit(0);**则是让服务器允许这个程序一直执行下去。最大执行时间设置为无限  
+
+&nbsp;&nbsp;当然，没有一个可以无限执行的程序也是没用的，**while(true)**则提供了一个&nbsp;&nbsp;
+无限循环...而**sleep**是为了防止循环太快而间隔几秒&nbsp;&nbsp;
+
+这样一个简单的后台程序就完成了.
+
+&nbsp;&nbsp;值得一提，为了让程序停止我留了一手break，如果不这样，这个程序会不停执行，除非你在服务器停止，不然会一直执行下去！
+
+---------------------------------------------
+<!--[PostContentEnd]-->
+<!--[PostTag]-->咸鱼技术,学习,PHP<!--[PostTagEnd]-->
+<!--[PostID]-->213<!--[PostIDEnd]-->
+<div style='display:none;'><!--[PageType]-->post.html<!--[PageTypeEnd]--></div>
+<script src="./main.js?233"></script>
+<script>B.tpcheck();</script>
+</body>
+</div>
