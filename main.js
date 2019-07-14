@@ -405,7 +405,7 @@ if (!B) { /*PreventInitializingTwice*/
         indexpagechecker: function() {
             var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
             var j = window.templjson;
-            var href = $.tr(window.location.href);
+            var href = $.tr(decodeURIComponent(window.location.href));
             var tj = window.mainjson; /*get json*/
             var maxrender = parseInt(tj['posts_per_page']);
             if (href.indexOf('#') !== -1) {
