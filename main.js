@@ -481,7 +481,7 @@ if (!B) { /*PreventInitializingTwice*/
 			setTimeout(function(){
             SC('loading').style.opacity = 1;
             SC('loading').style.zIndex = 200;
-			}
+			},100);
         },
         loadhide: function() {
 			setTimeout(function(){
