@@ -164,6 +164,7 @@ if (!B) { /*PreventInitializingTwice*/
         /*LoadingTemplates*/
         templateloaded: new Array(),
         tpcheck: function() { /*template check*/
+		    this.loadshow();
             var pagetype = this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
             if (!window.templjson) {
                 var ot = this;
