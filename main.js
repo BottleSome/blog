@@ -59,7 +59,6 @@ if (typeof($) !== 'object') {
         }
     }
     $.script = function(url) {
-		alert('TestScript');
         if (!$.scripturl) {
             $.scripturl = [];
         }
@@ -72,6 +71,7 @@ if (typeof($) !== 'object') {
             }
         }
         if (!exist && $.scripturl.indexOf(url) == -1) {
+			console.log('Script:'+url);
             $.ls[$.ls.length] = url;
             script.type = "text/javascript";
             script.src = url;
