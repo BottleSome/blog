@@ -254,7 +254,6 @@ if (!B) { /*PreventInitializingTwice*/
         searchw: '',
         hashexist: false,
         renderer: function() {
-			this.loadshow();
             var j = window.templjson;
             md = new showdown.Converter();
             var cloth = window.htmls[j['templatehtmls']['cloth']];
@@ -577,12 +576,12 @@ if (!B) { /*PreventInitializingTwice*/
         B.loadshow();
     },
     false);
-    /*window.addEventListener('pjaxfinish',
+    window.addEventListener('pjaxfinish',
 
     function() {
         B.loadhide();
     },
-    false);*/
+    false);
 } /*Simple PJAX For Front MAIN - SomeBottle*/
 var mainhost = window.location.host;
 var dt = new Date().getTime();
@@ -612,7 +611,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
             if (ts.LoadedPage[ehref]) { /*临时缓存*/
                 $.ht(ts.LoadedPage[ehref], e, false);
-                window.dispatchEvent(ts.PJAXFinish);
+                setTimeout(function(){window.dispatchEvent(ts.PJAXFinish);},1000);
             } else {
                 var cache = q('r', ehref, '', '', ''); /*获取缓存信息*/
                 if (cache['c']) { /*如果有缓存*/
