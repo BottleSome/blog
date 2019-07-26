@@ -726,3 +726,4 @@ function timestamp() {
     var a = new Date().getTime();
     return a;
 }
+B.tpcheck();/*Activate Template Checker*/
