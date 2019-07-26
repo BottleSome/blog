@@ -131,7 +131,7 @@ if (!B) { /*PreventInitializingTwice*/
 		console.log('LoadingPage Load Failed');
         }
     }, 'get', '', true); 
-    $.ht("<script src='./library.js'></script>" + SC('container').innerHTML, 'container');/*Include Library*/
+    $.script('./library.js');/*Include Library*/
     window.htmls = new Object();
     var B = { /*B Part*/
         moreperpage: 0,
