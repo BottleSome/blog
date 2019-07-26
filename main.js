@@ -254,6 +254,7 @@ if (!B) { /*PreventInitializingTwice*/
         searchw: '',
         hashexist: false,
         renderer: function() {
+			this.loadshow();
             var j = window.templjson;
             md = new showdown.Converter();
             var cloth = window.htmls[j['templatehtmls']['cloth']];
@@ -576,12 +577,12 @@ if (!B) { /*PreventInitializingTwice*/
         B.loadshow();
     },
     false);
-    window.addEventListener('pjaxfinish',
+    /*window.addEventListener('pjaxfinish',
 
     function() {
         B.loadhide();
     },
-    false);
+    false);*/
 } /*Simple PJAX For Front MAIN - SomeBottle*/
 var mainhost = window.location.host;
 var dt = new Date().getTime();
