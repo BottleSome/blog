@@ -170,8 +170,7 @@ if (!B) { /*PreventInitializingTwice*/
                 var d = k.split(p2)[0];
                 return d;
             } catch (e) {
-				console.log('Ge
-                return gt(p1,p2,ct);
+                return false;
             }
         },
         templonload: 0,
