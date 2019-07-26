@@ -93,9 +93,12 @@ if (typeof($) !== 'object') {
             } else {
 				try{/*Oh...No Errors!*/
 				    var h=os[o].innerHTML;
+					if($.lss!==h){
+						$.lss=h;
 					h=B.r(h,'/*','');
 					h=B.r(h,'*/','');
                     eval(h);/*去除注释执行*/
+					}
 				}
 				catch(e){
 					console.log('Page script Error: '+e.message);
