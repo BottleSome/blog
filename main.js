@@ -89,16 +89,16 @@ if (typeof($) !== 'object') {
             if (os[o].src !== undefined && os[o].src !== null && os[o].src !== '') {
                 $.script(os[o].src);
             } else {
-				if(scinclude){
 				try{/*Oh...No Errors!*/
 				    var h=os[o].innerHTML;
+					if(scinclude){/*是否去除注释执行*/
 					h=B.r(h,'/*','');
 					h=B.r(h,'*/','');
-                    eval(h);/*去除注释执行*/
+					}
+                    eval(h);
 				}
 				catch(e){
 					console.log('Page script Error: '+e.message);
-				}
 				}
             }
         }
