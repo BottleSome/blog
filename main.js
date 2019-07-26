@@ -71,7 +71,6 @@ if (typeof($) !== 'object') {
             }
         }
         if (!exist && $.scripturl.indexOf(url) == -1) {
-			console.log('Script:'+url);
             $.ls[$.ls.length] = url;
             script.type = "text/javascript";
             script.src = url;
@@ -152,13 +151,11 @@ if (!B) { /*PreventInitializingTwice*/
 		preventscript:function(){
 			var e = document.getElementsByTagName('html')[0];
 			var sc=e.getElementsByTagName('script');
-			console.log(sc);
 			for(var i in sc){
 				if(sc[i].src&&$.scripturl.indexOf(sc[i].src)==-1){
 					$.scripturl.push(sc[i].src);
 				}
 			}
-			console.log($.scripturl);
 		},
         gt: function(p1, p2, ct = false) { /*htmlget*/
             var e;
