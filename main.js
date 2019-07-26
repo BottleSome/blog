@@ -274,7 +274,7 @@ if (!B) { /*PreventInitializingTwice*/
                 if (isNaN(date)) {
                     render6 = render6.split('<!--PostEnd-->')[0] + '<!--PostEnd-->';
                 }
-                $.ht(render6, 'container',false);
+                $.ht(render6, 'container');
                 this.loadhide();
             } else if (pagetype == j['templatehtmls']['postlist']) {
                 var ot = this;
