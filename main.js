@@ -6,7 +6,7 @@ if (typeof($) !== 'object') {
     $.ls = new Array();
     $.lss = '';
     $.aj = function(p, d, sf, m, hd, as) { /*(path,data,success or fail,method,authheader,async)*/
-	if(p!=='false'){/*奇妙的false问题*/
+	if(p!=='false'&&p){/*奇妙的false问题*/
         var xhr = new XMLHttpRequest();
         var hm = '';
         for (var ap in d) {
@@ -116,15 +116,6 @@ if (typeof($) !== 'object') {
     }
 }
 if (!B) { /*PreventInitializingTwice*/
-        function preventscript(){
-			var e = document.getElementsByTagName('html')[0];
-			var sc=e.getElementsByTagName('script');
-			for(var i in sc){
-				if(sc[i].src&&$.scripturl.indexOf(sc[i].src)==-1){
-					$.scripturl.push(sc[i].src);
-				}
-			}
-		}
     /*Include LoadingPage*/
 	if(localStorage['obottle-ldpage']){
 		var e = document.getElementsByTagName('html')[0].innerHTML;
@@ -157,6 +148,15 @@ if (!B) { /*PreventInitializingTwice*/
             var e = document.getElementsByTagName('html')[0].innerHTML;
             document.getElementsByTagName('html')[0].innerHTML = this.r(e, o, p);
         },
+		preventscript:function(){
+			var e = document.getElementsByTagName('html')[0];
+			var sc=e.getElementsByTagName('script');
+			for(var i in sc){
+				if(sc[i].src&&$.scripturl.indexOf(sc[i].src)==-1){
+					$.scripturl.push(sc[i].src);
+				}
+			}
+		},
         gt: function(p1, p2, ct = false) { /*htmlget*/
             var e;
             if (!ct) {
@@ -177,7 +177,7 @@ if (!B) { /*PreventInitializingTwice*/
         templateloaded: new Array(),
         tpcheck: function() { /*template check*/
 		    this.loadshow();
-			preventscript();/*剔除已加载scripts*/
+			this.preventscript();/*剔除已加载scripts*/
             var pagetype = this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
             if (!window.templjson) {
                 var ot = this;
