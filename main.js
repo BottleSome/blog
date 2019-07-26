@@ -76,7 +76,7 @@ if (typeof($) !== 'object') {
             document.body.appendChild(script);
         }
     }
-    $.ht = function(h, e,srcinclude=true) {
+    $.ht = function(h, e,scinclude=true) {/*(html,element,run script or not when ht)*/
         var ht = SC(e);
         if (!ht) {
             console.log('Unable to find the Element:' + e);
@@ -87,10 +87,9 @@ if (typeof($) !== 'object') {
         var scr = '';
         for (var o = 0; o < os.length; o++) {
             if (os[o].src !== undefined && os[o].src !== null && os[o].src !== '') {
-				if(srcinclude){
                 $.script(os[o].src);
-				}
             } else {
+				if(scinclude){
 				try{/*Oh...No Errors!*/
 				    var h=os[o].innerHTML;
 					h=B.r(h,'/*','');
@@ -99,6 +98,7 @@ if (typeof($) !== 'object') {
 				}
 				catch(e){
 					console.log('Page script Error: '+e.message);
+				}
 				}
             }
         }
@@ -597,25 +597,25 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             }
             window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
 			if(ts.LoadedPage[ehref]){/*临时缓存*/
-				$.ht(ts.LoadedPage[ehref], e);
+				$.ht(ts.LoadedPage[ehref], e,false);
 				window.dispatchEvent(ts.PJAXFinish);
 			}else{
             var cache = q('r', ehref, '', '', ''); /*获取缓存信息*/
             if (cache['c']) { /*如果有缓存*/
                 usecache = true;
-                $.ht(cache['c'], e); /*预填装缓存*/
+                $.ht(cache['c'], e,false); /*预填装缓存*/
             }
             $.aj(href, {}, {
                 success: function(m) {
                     ts.recenturl = href;
 					ts.LoadedPage[ehref]=m;
                     if (!usecache) {
-                        $.ht(m, e);
+                        $.ht(m, e,false);
                         q('w', ehref, m, timestamp(), '');
                     } else {
                         if (cache['c'] !== m) { /*缓存需要更新了*/
                             q('w', ehref, m, timestamp(), '');
-                            $.ht(m, e);
+                            $.ht(m, e,false);
                         } else {
                             q('e', ehref, '', '', 1); /*更新缓存读取次数*/
                         }
