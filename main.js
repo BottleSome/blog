@@ -87,9 +87,17 @@ if (typeof($) !== 'object') {
         var scr = '';
         for (var o = 0; o < os.length; o++) {
             if (os[o].src !== undefined && os[o].src !== null && os[o].src !== '') {
-                $.script(os[o].src);
+                /*$.script(os[o].src);*//*script现在可以直接加载了，无须.script*/
             } else {
-                eval(os[o].innerHTML);
+				try{/*Oh...No Errors!*/
+				    var h=os[o].innerHTML;
+					h=B.r(h,'/*','');
+					h=B.r(h,'*/','');
+                    eval(h);/*去除注释执行*/
+				}
+				catch(e){
+					console.log('Page script Error: '+e.message);
+				}
             }
         }
     }
