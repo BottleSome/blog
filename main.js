@@ -116,6 +116,15 @@ if (typeof($) !== 'object') {
     }
 }
 if (!B) { /*PreventInitializingTwice*/
+        function preventscript(){
+			var e = document.getElementsByTagName('html')[0];
+			var sc=e.getElementsByTagName('script');
+			for(var i in sc){
+				if(sc[i].src&&$.scripturl.indexOf(sc[i].src)==-1){
+					$.scripturl.push(sc[i].src);
+				}
+			}
+		}
     /*Include LoadingPage*/
 	if(localStorage['obottle-ldpage']){
 		var e = document.getElementsByTagName('html')[0].innerHTML;
@@ -148,15 +157,6 @@ if (!B) { /*PreventInitializingTwice*/
             var e = document.getElementsByTagName('html')[0].innerHTML;
             document.getElementsByTagName('html')[0].innerHTML = this.r(e, o, p);
         },
-		preventscript:function(){
-			var e = document.getElementsByTagName('html')[0];
-			var sc=e.getElementsByTagName('script');
-			for(var i in sc){
-				if(sc[i].src&&$.scripturl.indexOf(sc[i].src)==-1){
-					$.scripturl.push(sc[i].src);
-				}
-			}
-		},
         gt: function(p1, p2, ct = false) { /*htmlget*/
             var e;
             if (!ct) {
@@ -177,7 +177,7 @@ if (!B) { /*PreventInitializingTwice*/
         templateloaded: new Array(),
         tpcheck: function() { /*template check*/
 		    this.loadshow();
-			this.preventscript();/*剔除已加载scripts*/
+			preventscript();/*剔除已加载scripts*/
             var pagetype = this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
             if (!window.templjson) {
                 var ot = this;
