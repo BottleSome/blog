@@ -76,7 +76,7 @@ if (typeof($) !== 'object') {
             document.body.appendChild(script);
         }
     }
-    $.ht = function(h, e,scinclude=true) {/*(html,element,run script or not when ht)*/
+    $.ht = function(h, e, scinclude = true) { /*(html,element,run script or not when ht)*/
         var ht = SC(e);
         if (!ht) {
             console.log('Unable to find the Element:' + e);
@@ -89,17 +89,17 @@ if (typeof($) !== 'object') {
             if (os[o].src !== undefined && os[o].src !== null && os[o].src !== '') {
                 $.script(os[o].src);
             } else {
-				try{/*Oh...No Errors!*/
-				    var h=os[o].innerHTML;
-					if(scinclude){/*是否去除注释执行*/
-					h=B.r(h,'/*','');
-					h=B.r(h,'*/','');
-					}
+                try { /*Oh...No Errors!*/
+                    var h = os[o].innerHTML;
+                    if (scinclude) { /*是否去除注释执行*/
+                        h = B.r(h, '/*', '');
+                        h = B.r(h, '*/', '');
+                    }
                     eval(h);
-				}
-				catch(e){
-					console.log('Page script Error: '+e.message);
-				}
+                }
+ catch (e) {
+                    console.log('Page script Error: ' + e.message);
+                }
             }
         }
     }
@@ -114,8 +114,20 @@ if (typeof($) !== 'object') {
     }
 }
 if (!B) { /*PreventInitializingTwice*/
-    /*Include MdJS*/
-    $.ht("<script src='./library.js'></script>" + SC('container').innerHTML, 'container');
+    /*Include LoadingPage*/
+	if(localStorage['obottle-ldpage']){
+		var e = document.getElementsByTagName('html')[0].innerHTML;
+		document.getElementsByTagName('html')[0].innerHTML = e.replace('<!--[LoadingArea]-->',localStorage['obottle-ldpage']);
+	}
+    $.aj('./loading.html', '', {
+        success: function(m, p) {
+            B.hr('<!--[LoadingArea]-->',m);
+			localStorage['obottle-ldpage']=m;
+        },
+        failed: function(m) { /*Failed*/
+        }
+    }, 'get', '', true); 
+    $.ht("<script src='./library.js'></script>" + SC('container').innerHTML, 'container');/*Include Library*/
     window.htmls = new Object();
     var B = { /*Replace Part*/
         moreperpage: 0,
@@ -169,7 +181,7 @@ if (!B) { /*PreventInitializingTwice*/
                     return o.tpcheck();
                 },
                 200);
-            } else if (typeof showdown!=='object') { /*Markdown is not ready!*/
+            } else if (typeof showdown !== 'object') { /*Markdown is not ready!*/
                 var o = this;
                 setTimeout(function() {
                     return o.tpcheck();
@@ -185,28 +197,28 @@ if (!B) { /*PreventInitializingTwice*/
                 for (var i in j['necessary']) {
                     if (o.templateloaded.indexOf(j['necessary'][i]) == -1) {
                         o.templonload += 1;
-						var usecache=false;
-						var cache = q('r','template-'+j['necessary'][i], '', '', ''); /*Test Cache*/
-						if (cache['c']) { /*如果有缓存，先装载缓存*/
+                        var usecache = false;
+                        var cache = q('r', 'template-' + j['necessary'][i], '', '', ''); /*Test Cache*/
+                        if (cache['c']) { /*如果有缓存，先装载缓存*/
                             usecache = true;
-                            var p=j['necessary'][i];
-							console.log('Template using cache:'+p);
-							window.htmls[p]=cache['c'];
-							o.templateloaded.push(p);
+                            var p = j['necessary'][i];
+                            console.log('Template using cache:' + p);
+                            window.htmls[p] = cache['c'];
+                            o.templateloaded.push(p);
                             o.templonload -= 1;
                         }
                         $.aj(j['necessary'][i], '', {
                             success: function(m, p) {
                                 window.htmls[p] = m;
-								if(!usecache){
-                                o.templateloaded.push(p);
-                                o.templonload -= 1;
-								q('w','template-'+p, m, timestamp(), '');
-								}else if(cache['c']!==m){/*缓存需要更新*/
-									q('w','template-'+p, m, timestamp(), '');
-								}else{/*增加缓存读取次数*/
-									q('e','template-'+p, '', '', 1);
-								}
+                                if (!usecache) {
+                                    o.templateloaded.push(p);
+                                    o.templonload -= 1;
+                                    q('w', 'template-' + p, m, timestamp(), '');
+                                } else if (cache['c'] !== m) { /*缓存需要更新*/
+                                    q('w', 'template-' + p, m, timestamp(), '');
+                                } else { /*增加缓存读取次数*/
+                                    q('e', 'template-' + p, '', '', 1);
+                                }
                             },
                             failed: function(m) { /*Failed*/
                             }
@@ -366,7 +378,7 @@ if (!B) { /*PreventInitializingTwice*/
                     }
                 } /*Generate Finish*/
                 var timer = setInterval(function() { /*CheckTagPage*/
-                    if ( window.location.href.indexOf(j['generatehtmls']['tags']) == -1 && window.location.href.indexOf((j['generatehtmls']['tags']).replace('.html', '')) == -1) { /*跳离tag页了*/
+                    if (window.location.href.indexOf(j['generatehtmls']['tags']) == -1 && window.location.href.indexOf((j['generatehtmls']['tags']).replace('.html', '')) == -1) { /*跳离tag页了*/
                         PJAX.sel('container');
                         PJAX.start();
                         clearInterval(timer);
@@ -494,16 +506,16 @@ if (!B) { /*PreventInitializingTwice*/
             }
         },
         loadshow: function() {
-			setTimeout(function(){
-            SC('loading').style.opacity = 1;
-            SC('loading').style.zIndex = 200;
-			},100);
+            setTimeout(function() {
+                SC('loading').style.opacity = 1;
+                SC('loading').style.zIndex = 200;
+            }, 100);
         },
         loadhide: function() {
-			setTimeout(function(){
-            SC('loading').style.opacity = 0;
-            SC('loading').style.zIndex = -1;
-			},100);
+            setTimeout(function() {
+                SC('loading').style.opacity = 0;
+                SC('loading').style.zIndex = -1;
+            }, 100);
         },
         more: function() {
             var j = window.templjson;
@@ -577,7 +589,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
         index: window.history.state === null ? 1 : window.history.state.page,
         PJAXStart: new CustomEvent('pjaxstart'),
         PJAXFinish: new CustomEvent('pjaxfinish'),
-		LoadedPage:{},
+        LoadedPage: {},
         lasthref: window.location.href,
         preventurl: new Array(),
         recenturl: '',
@@ -586,47 +598,47 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             this.replace = r;
         },
         jump: function(href) {
-			var ehref=encodeURIComponent(href);
+            var ehref = encodeURIComponent(href);
             var ts = this;
             var usecache = false; /*是否使用缓存*/
-			var e = ts.replace;
+            var e = ts.replace;
             if (ts.recenturl.indexOf('#') !== -1 && href.indexOf('#') !== -1) { /*防止Tag页面的跳转问题*/
                 return false;
             } else if (ts.recenturl.indexOf('#') == -1 && href.indexOf('#') !== -1) {
                 B.nowpage = 0; /*防止页码bug*/
             }
             window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
-			if(ts.LoadedPage[ehref]){/*临时缓存*/
-				$.ht(ts.LoadedPage[ehref], e,false);
-				window.dispatchEvent(ts.PJAXFinish);
-			}else{
-            var cache = q('r', ehref, '', '', ''); /*获取缓存信息*/
-            if (cache['c']) { /*如果有缓存*/
-                usecache = true;
-                $.ht(cache['c'], e,false); /*预填装缓存*/
-            }
-            $.aj(href, {}, {
-                success: function(m) {
-                    ts.recenturl = href;
-					ts.LoadedPage[ehref]=m;
-                    if (!usecache) {
-                        $.ht(m, e,false);
-                        q('w', ehref, m, timestamp(), '');
-                    } else {
-                        if (cache['c'] !== m) { /*缓存需要更新了*/
-                            q('w', ehref, m, timestamp(), '');
-                            $.ht(m, e,false);
-                        } else {
-                            q('e', ehref, '', '', 1); /*更新缓存读取次数*/
-                        }
-                    }
-                    window.dispatchEvent(ts.PJAXFinish);
-                },
-                failed: function(m) {
-                    window.dispatchEvent(ts.PJAXFinish);
+            if (ts.LoadedPage[ehref]) { /*临时缓存*/
+                $.ht(ts.LoadedPage[ehref], e, false);
+                window.dispatchEvent(ts.PJAXFinish);
+            } else {
+                var cache = q('r', ehref, '', '', ''); /*获取缓存信息*/
+                if (cache['c']) { /*如果有缓存*/
+                    usecache = true;
+                    $.ht(cache['c'], e, false); /*预填装缓存*/
                 }
-            }, 'get', '', true);
-			}
+                $.aj(href, {}, {
+                    success: function(m) {
+                        ts.recenturl = href;
+                        ts.LoadedPage[ehref] = m;
+                        if (!usecache) {
+                            $.ht(m, e, false);
+                            q('w', ehref, m, timestamp(), '');
+                        } else {
+                            if (cache['c'] !== m) { /*缓存需要更新了*/
+                                q('w', ehref, m, timestamp(), '');
+                                $.ht(m, e, false);
+                            } else {
+                                q('e', ehref, '', '', 1); /*更新缓存读取次数*/
+                            }
+                        }
+                        window.dispatchEvent(ts.PJAXFinish);
+                    },
+                    failed: function(m) {
+                        window.dispatchEvent(ts.PJAXFinish);
+                    }
+                }, 'get', '', true);
+            }
         },
         start: function() {
             var ts = this;
