@@ -157,6 +157,7 @@ if (!B) { /*PreventInitializingTwice*/
 					$.scripturl.push(sc[i].src);
 				}
 			}
+			console.log($.scripturl);
 		},
         gt: function(p1, p2, ct = false) { /*htmlget*/
             var e;
