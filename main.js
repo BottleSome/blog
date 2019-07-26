@@ -586,6 +586,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
 			var ehref=encodeURIComponent(href);
             var ts = this;
             var usecache = false; /*是否使用缓存*/
+			var e = ts.replace;
             if (ts.recenturl.indexOf('#') !== -1 && href.indexOf('#') !== -1) { /*防止Tag页面的跳转问题*/
                 return false;
             } else if (ts.recenturl.indexOf('#') == -1 && href.indexOf('#') !== -1) {
@@ -599,12 +600,10 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             var cache = q('r', ehref, '', '', ''); /*获取缓存信息*/
             if (cache['c']) { /*如果有缓存*/
                 usecache = true;
-                var e = ts.replace;
                 $.ht(cache['c'], e); /*预填装缓存*/
             }
             $.aj(href, {}, {
                 success: function(m) {
-                    var e = ts.replace;
                     ts.recenturl = href;
 					ts.LoadedPage[ehref]=m;
                     if (!usecache) {
