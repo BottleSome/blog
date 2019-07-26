@@ -172,7 +172,7 @@ if (!B) { /*PreventInitializingTwice*/
                     return o.tpcheck();
                 },
                 200);
-            } else if (typeof markdownit!=='function') { /*Markdown is not ready!*/
+            } else if (!window.markdownit()) { /*Markdown is not ready!*/
                 var o = this;
                 setTimeout(function() {
                     return o.tpcheck();
@@ -245,7 +245,7 @@ if (!B) { /*PreventInitializingTwice*/
         hashexist: false,
         renderer: function() {
             var j = window.templjson;
-            md = new MarkdownIt();
+            md = window.markdownit();
             var cloth = window.htmls[j['templatehtmls']['cloth']];
             var main = window.htmls[j['templatehtmls']['main']];
             var comment = window.htmls[j['templatehtmls']['comment']];
