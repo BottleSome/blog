@@ -6,6 +6,7 @@ if (typeof($) !== 'object') {
     $.ls = new Array();
     $.lss = '';
     $.aj = function(p, d, sf, m, hd, as) { /*(path,data,success or fail,method,authheader,async)*/
+	if(p!=='false'){/*奇妙的false问题*/
         var xhr = new XMLHttpRequest();
         var hm = '';
         for (var ap in d) {
@@ -46,6 +47,7 @@ if (typeof($) !== 'object') {
                 sf.failed(xhr.status, p);
             }
         }
+	}
     }
     var SC = function(e) {
         if (e == 'body') {
