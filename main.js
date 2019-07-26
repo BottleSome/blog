@@ -152,6 +152,7 @@ if (!B) { /*PreventInitializingTwice*/
 		preventscript:function(){
 			var e = document.getElementsByTagName('html')[0];
 			var sc=e.getElementsByTagName('script');
+			console.log(sc);
 			for(var i in sc){
 				if(sc[i].src&&$.scripturl.indexOf(sc[i].src)==-1){
 					$.scripturl.push(sc[i].src);
@@ -179,7 +180,6 @@ if (!B) { /*PreventInitializingTwice*/
         templateloaded: new Array(),
         tpcheck: function() { /*template check*/
 		    this.loadshow();
-			this.preventscript();/*剔除已加载scripts*/
             var pagetype = this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
             if (!window.templjson) {
                 var ot = this;
@@ -205,6 +205,7 @@ if (!B) { /*PreventInitializingTwice*/
                 },
                 200);
             } else {
+				this.preventscript();/*剔除已加载scripts*/
                 var o = this;
                 var j = window.templjson;
                 j['necessary'].push(pagetype); /*Pagetype Pushed*/
