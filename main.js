@@ -171,13 +171,13 @@ if (!B) { /*PreventInitializingTwice*/
                 setTimeout(function() {
                     return o.tpcheck();
                 },
-                500);
-            } else if (!MarkdownIt()) { /*Markdown is not ready!*/
+                200);
+            } else if (typeof markdownit!=='function') { /*Markdown is not ready!*/
                 var o = this;
                 setTimeout(function() {
                     return o.tpcheck();
                 },
-                500);
+                200);
             } else {
                 var o = this;
                 var j = window.templjson;
