@@ -118,7 +118,7 @@ if (typeof($) !== 'object') {
 }
 if (!B) { /*PreventInitializingTwice*/
     /*Include MdJS*/
-    //$.ht("<script src='./library.js'></script>" + SC('container').innerHTML, 'container');
+    $.ht("<script src='./library.js'></script>" + SC('container').innerHTML, 'container');
     window.htmls = new Object();
     var B = { /*Replace Part*/
         moreperpage: 0,
@@ -167,6 +167,12 @@ if (!B) { /*PreventInitializingTwice*/
                     }
                 }, 'get', '', true);
             } else if (!window.mainjson && window.templjson['usemain'].indexOf(pagetype) !== -1) { /*Some pages are in need of Main.json*/
+                var o = this;
+                setTimeout(function() {
+                    return o.tpcheck();
+                },
+                500);
+            } else if (!MarkdownIt()) { /*Markdown is not ready!*/
                 var o = this;
                 setTimeout(function() {
                     return o.tpcheck();
@@ -239,7 +245,7 @@ if (!B) { /*PreventInitializingTwice*/
         hashexist: false,
         renderer: function() {
             var j = window.templjson;
-            md = new Markdown.Converter();
+            md = new MarkdownIt();
             var cloth = window.htmls[j['templatehtmls']['cloth']];
             var main = window.htmls[j['templatehtmls']['main']];
             var comment = window.htmls[j['templatehtmls']['comment']];
@@ -253,7 +259,7 @@ if (!B) { /*PreventInitializingTwice*/
                 var pid = this.gt('<!--[PostID]-->', '<!--[PostIDEnd]-->'); /*Get Post ID*/
                 var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
                 var post = window.htmls[j['templatehtmls']['post']];
-                var render11 = this.r(post, '{[postcontent]}', md.makeHtml(content.trim())); /*Analyse md*/
+                var render11 = this.r(post, '{[postcontent]}', md.render(content.trim())); /*Analyse md*/
                 var render12 = this.r(render11, '{[posttitle]}', title);
                 var alltags = [];
                 if (isNaN(date)) {
@@ -285,7 +291,7 @@ if (!B) { /*PreventInitializingTwice*/
                 var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
                 var realtitle = pagetitle.replace('-', ''); /*Remove - */
                 var pt = window.htmls[j['templatehtmls']['postlist']];
-                var render11 = this.r(pt, '{[postitems]}', md.makeHtml(content.trim())); /*Analyse md*/
+                var render11 = this.r(pt, '{[postitems]}', md.render(content.trim())); /*Analyse md*/
                 var render2 = this.r(main, '{[contents]}', render11);
                 var render3 = this.r(cloth, '{[main]}', render2);
                 var render4 = this.r(render3, '{[title]}', realtitle);
