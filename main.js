@@ -574,6 +574,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
         index: window.history.state === null ? 1 : window.history.state.page,
         PJAXStart: new CustomEvent('pjaxstart'),
         PJAXFinish: new CustomEvent('pjaxfinish'),
+		LoadedPage:{},
         lasthref: window.location.href,
         preventurl: new Array(),
         recenturl: '',
@@ -582,6 +583,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             this.replace = r;
         },
         jump: function(href) {
+			var ehref=encodeURIComponent(href);
             var ts = this;
             var usecache = false; /*是否使用缓存*/
             if (ts.recenturl.indexOf('#') !== -1 && href.indexOf('#') !== -1) { /*防止Tag页面的跳转问题*/
@@ -590,7 +592,11 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                 B.nowpage = 0; /*防止页码bug*/
             }
             window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
-            var cache = q('r', encodeURIComponent(href), '', '', ''); /*获取缓存信息*/
+			if(ts.LoadedPage[ehref]){/*临时缓存*/
+				$.ht(ehref, e);
+				window.dispatchEvent(ts.PJAXFinish);
+			}else{
+            var cache = q('r', ehref, '', '', ''); /*获取缓存信息*/
             if (cache['c']) { /*如果有缓存*/
                 usecache = true;
                 var e = ts.replace;
@@ -600,15 +606,16 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                 success: function(m) {
                     var e = ts.replace;
                     ts.recenturl = href;
+					ts.LoadedPage[ehref]=m;
                     if (!usecache) {
                         $.ht(m, e);
-                        q('w', encodeURIComponent(href), m, timestamp(), '');
+                        q('w', ehref, m, timestamp(), '');
                     } else {
                         if (cache['c'] !== m) { /*缓存需要更新了*/
-                            q('w', encodeURIComponent(href), m, timestamp(), '');
+                            q('w', ehref, m, timestamp(), '');
                             $.ht(m, e);
                         } else {
-                            q('e', encodeURIComponent(href), '', '', 1); /*更新缓存读取次数*/
+                            q('e', ehref, '', '', 1); /*更新缓存读取次数*/
                         }
                     }
                     window.dispatchEvent(ts.PJAXFinish);
@@ -617,6 +624,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                     window.dispatchEvent(ts.PJAXFinish);
                 }
             }, 'get', '', true);
+			}
         },
         start: function() {
             var ts = this;
