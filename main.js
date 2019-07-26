@@ -152,7 +152,7 @@ if (!B) { /*PreventInitializingTwice*/
 			var e = document.getElementsByTagName('html')[0];
 			var sc=e.getElementsByTagName('script');
 			for(var i in sc){
-				if(sc[i].src){
+				if(sc[i].src&&$.scripturl.indexOf(sc[i].src)==-1){
 					$.scripturl.push(sc[i].src);
 				}
 			}
