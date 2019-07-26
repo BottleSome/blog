@@ -633,7 +633,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                                 q('e', ehref, '', '', 1); /*更新缓存读取次数*/
                             }
                         }
-                        window.dispatchEvent(ts.PJAXFinish);
+                        setTimeout(function(){window.dispatchEvent(ts.PJAXFinish)},1000);
                     },
                     failed: function(m) {
                         window.dispatchEvent(ts.PJAXFinish);
