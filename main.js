@@ -118,7 +118,7 @@ if (typeof($) !== 'object') {
 }
 if (!B) { /*PreventInitializingTwice*/
     /*Include MdJS*/
-    $.ht("<script src='./library.js'></script>" + SC('container').innerHTML, 'container');
+    //$.ht("<script src='./library.js'></script>" + SC('container').innerHTML, 'container');
     window.htmls = new Object();
     var B = { /*Replace Part*/
         moreperpage: 0,
