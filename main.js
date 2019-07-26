@@ -59,6 +59,7 @@ if (typeof($) !== 'object') {
         }
     }
     $.script = function(url) {
+		alert('TestScript');
         if (!$.scripturl) {
             $.scripturl = [];
         }
@@ -169,7 +170,8 @@ if (!B) { /*PreventInitializingTwice*/
                 var d = k.split(p2)[0];
                 return d;
             } catch (e) {
-                return false;
+				console.log('Ge
+                return gt(p1,p2,ct);
             }
         },
         templonload: 0,
