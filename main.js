@@ -172,7 +172,7 @@ if (!B) { /*PreventInitializingTwice*/
                     return o.tpcheck();
                 },
                 200);
-            } else if (!showdown.Converter()) { /*Markdown is not ready!*/
+            } else if (typeof showdown!=='object') { /*Markdown is not ready!*/
                 var o = this;
                 setTimeout(function() {
                     return o.tpcheck();
