@@ -76,7 +76,7 @@ if (typeof($) !== 'object') {
             document.body.appendChild(script);
         }
     }
-    $.ht = function(h, e) {
+    $.ht = function(h, e,srcinclude=true) {
         var ht = SC(e);
         if (!ht) {
             console.log('Unable to find the Element:' + e);
@@ -87,7 +87,9 @@ if (typeof($) !== 'object') {
         var scr = '';
         for (var o = 0; o < os.length; o++) {
             if (os[o].src !== undefined && os[o].src !== null && os[o].src !== '') {
-                /*$.script(os[o].src);*//*script现在可以直接加载了，无须.script*/
+				if(srcinclude){
+                $.script(os[o].src);
+				}
             } else {
 				try{/*Oh...No Errors!*/
 				    var h=os[o].innerHTML;
@@ -272,7 +274,7 @@ if (!B) { /*PreventInitializingTwice*/
                 if (isNaN(date)) {
                     render6 = render6.split('<!--PostEnd-->')[0] + '<!--PostEnd-->';
                 }
-                $.ht(render6, 'container');
+                $.ht(render6, 'container',false);
                 this.loadhide();
             } else if (pagetype == j['templatehtmls']['postlist']) {
                 var ot = this;
