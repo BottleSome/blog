@@ -594,7 +594,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             }
             window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
 			if(ts.LoadedPage[ehref]){/*临时缓存*/
-				$.ht(ehref, e);
+				$.ht(ts.LoadedPage[ehref], e);
 				window.dispatchEvent(ts.PJAXFinish);
 			}else{
             var cache = q('r', ehref, '', '', ''); /*获取缓存信息*/
