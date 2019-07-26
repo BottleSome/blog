@@ -172,7 +172,7 @@ if (!B) { /*PreventInitializingTwice*/
                     return o.tpcheck();
                 },
                 200);
-            } else if (!window.markdownit()) { /*Markdown is not ready!*/
+            } else if (!showdown.Converter()) { /*Markdown is not ready!*/
                 var o = this;
                 setTimeout(function() {
                     return o.tpcheck();
@@ -245,7 +245,7 @@ if (!B) { /*PreventInitializingTwice*/
         hashexist: false,
         renderer: function() {
             var j = window.templjson;
-            md = window.markdownit();
+            md = new showdown.Converter();
             var cloth = window.htmls[j['templatehtmls']['cloth']];
             var main = window.htmls[j['templatehtmls']['main']];
             var comment = window.htmls[j['templatehtmls']['comment']];
@@ -259,7 +259,7 @@ if (!B) { /*PreventInitializingTwice*/
                 var pid = this.gt('<!--[PostID]-->', '<!--[PostIDEnd]-->'); /*Get Post ID*/
                 var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
                 var post = window.htmls[j['templatehtmls']['post']];
-                var render11 = this.r(post, '{[postcontent]}', md.render(content.trim())); /*Analyse md*/
+                var render11 = this.r(post, '{[postcontent]}', md.makeHtml(content.trim())); /*Analyse md*/
                 var render12 = this.r(render11, '{[posttitle]}', title);
                 var alltags = [];
                 if (isNaN(date)) {
@@ -291,7 +291,7 @@ if (!B) { /*PreventInitializingTwice*/
                 var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
                 var realtitle = pagetitle.replace('-', ''); /*Remove - */
                 var pt = window.htmls[j['templatehtmls']['postlist']];
-                var render11 = this.r(pt, '{[postitems]}', md.render(content.trim())); /*Analyse md*/
+                var render11 = this.r(pt, '{[postitems]}', md.makeHtml(content.trim())); /*Analyse md*/
                 var render2 = this.r(main, '{[contents]}', render11);
                 var render3 = this.r(cloth, '{[main]}', render2);
                 var render4 = this.r(render3, '{[title]}', realtitle);
