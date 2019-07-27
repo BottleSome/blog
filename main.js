@@ -327,6 +327,7 @@ if (!B) { /*PreventInitializingTwice*/
 				/*修复more按钮的bug - 20190727*/
 				setTimeout(function(){
 				if(ot.switchpage>0){
+					console.log('[DEBUG]自动复原More');
 					var mi=0;
 					var or=ot.switchpage;
 					while(mi<or){
