@@ -337,7 +337,9 @@ if (!B) { /*PreventInitializingTwice*/
                     render6 = render6.split('<!--PostEnd-->')[0] + '<!--PostEnd-->';
                 }
                 $.ht(render6, 'container');
-				setTimeout(function(){ot.lazycheck();},1200);
+				transitionchecker('loading',function(){
+					ot.lazycheck();
+				});
                 ot.loadhide();
             } else if (pagetype == j['templatehtmls']['postlist']) {
                 var ot = this;
