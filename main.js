@@ -184,13 +184,20 @@ if (!B) { /*PreventInitializingTwice*/
 			return i.innerHTML;
 		},
 		lazycheck:function(){/*检查scroll，来自https://segmentfault.com/a/1190000010744417*/
+		function getTop(e) {
+            var T = e.offsetTop;
+            while(e = e.offsetParent) {
+                T += e.offsetParent;
+            }
+            return T;
+        }
             //可见区域顶部高度
-            var visibleTop = document.documentElement.clientHeight;
-			var scrollH=document.documentElement.scrollTop;
+            var H = window.innerHeight;
+            var S = document.documentElement.scrollTop || document.body.scrollTop;
             var es=document.getElementsByTagName('img');
 			for(var i in es){
-				var cty=es[i].offsetTop;
-				if((cty-scrollH)<visibleTop){
+				var cty=getTop(es[i]);
+				if(H + S>cty){
 					console.log((cty-scrollH)+':'+visibleTop);
 					if(es[i].name!=='undefined'&&es[i].name){
 					var lazy=es[i].name;
