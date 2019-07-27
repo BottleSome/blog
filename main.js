@@ -325,7 +325,7 @@ if (!B) { /*PreventInitializingTwice*/
                 this.itempage = parseInt(tj['posts_per_page']);
                 $.ht(render4, 'container');
 				var nowswitch=ot.switchpage;
-				setInterval(function(){console.log(ot.switchpage);},500);
+				setInterval(function(){console.log(ot.switchpage+':'+nowswitch);},500);
 				/*修复more按钮的bug - 20190727*/
 				if(nowswitch>0){
 					console.log('[DEBUG]自动复原More');
