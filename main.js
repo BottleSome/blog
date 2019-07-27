@@ -311,7 +311,7 @@ if (!B) { /*PreventInitializingTwice*/
                 var pid = this.gt('<!--[PostID]-->', '<!--[PostIDEnd]-->'); /*Get Post ID*/
                 var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
                 var post = window.htmls[j['templatehtmls']['post']];
-                var render11 = this.r(post, '{[postcontent]}', md.makeHtml(content.trim())); /*Analyse md*/
+                var render11 = this.r(post, '{[postcontent]}', lazypre(md.makeHtml(content.trim()))); /*Analyse md*/
                 var render12 = this.r(render11, '{[posttitle]}', title);
                 var alltags = [];
                 if (isNaN(date)) {
