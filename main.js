@@ -192,9 +192,11 @@ if (!B) { /*PreventInitializingTwice*/
 			for(var i in es){
 				var cty=es[i].offsetTop+(es[i].offsetHeight * 0.8);
 				if(cty>visibleTop&&cty<visibleBottom){
+					if(es[i].name!==undefined){
 					var lazy=es[i].name;
 					es[i].name='';
 					es[i].src=lazy.split(':')[1];
+					}
 				}
 			}
 		},
