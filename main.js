@@ -582,8 +582,8 @@ if (!B) { /*PreventInitializingTwice*/
                 SC('postitems').innerHTML = listrender;
                 this.switchpage = 0;
                 this.realpage += 1;
-                window.location.href = '#' + this.realpage;
 				PJAX.pause();
+                window.location.href = '#' + this.realpage;
             } else {
                 SC('postitems').innerHTML = SC('postitems').innerHTML + listrender;
                 this.switchpage += 1;
