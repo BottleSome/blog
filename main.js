@@ -324,12 +324,13 @@ if (!B) { /*PreventInitializingTwice*/
                 var render4 = this.r(render4, '{[pagetype]}', pagetype); /*SetPageType*/
                 this.itempage = parseInt(tj['posts_per_page']);
                 $.ht(render4, 'container');
+				var nowswitch=ot.switchpage;
 				/*修复more按钮的bug - 20190727*/
 				setTimeout(function(){
-				if(ot.switchpage>0){
+				if(nowswitch>0){
 					console.log('[DEBUG]自动复原More');
 					var mi=0;
-					var or=ot.switchpage;
+					var or=nowswitch;
 					while(mi<or){
 						ot.switchpage-=1;
 						ot.more();
