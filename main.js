@@ -183,15 +183,14 @@ if (!B) { /*PreventInitializingTwice*/
 			}
 			return i.innerHTML;
 		},
-		lazycheck:function(){/*检查scroll，来自https://blog.csdn.net/jiangzeyin_/article/details/79481215*/
-			//滚动条高度+视窗高度 = 可见区域底部高度
-            var visibleBottom = window.scrollY + document.documentElement.clientHeight;
+		lazycheck:function(){/*检查scroll，来自https://segmentfault.com/a/1190000010744417*/
             //可见区域顶部高度
-            var visibleTop = window.scrollY;
+            var visibleTop = document.documentElement.clientHeight;
+			var scrollH=document.documentElement.scrollTop;
             var es=document.getElementsByTagName('img');
 			for(var i in es){
-				var cty=es[i].offsetTop+(es[i].offsetHeight * 0.8);
-				if(cty>visibleTop&&cty<visibleBottom){
+				var cty=es[i].offsetTop;
+				if((cty-scrollH)<visibleTop){
 					if(es[i].name!=='undefined'&&es[i].name){
 					var lazy=es[i].name;
 					es[i].name='';
