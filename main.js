@@ -329,8 +329,8 @@ if (!B) { /*PreventInitializingTwice*/
 					var mi=0;
 					var or=ot.switchpage;
 					while(mi<or){
-						console.log('[DEBUG]'+ot.switchpage+':'+'执行');
 						ot.more();
+						ot.switchpage-=1;
 						mi+=1;
 					}
 				}
