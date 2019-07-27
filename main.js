@@ -603,7 +603,27 @@ if (!B) { /*PreventInitializingTwice*/
         B.loadhide();
     },
     false);
-} /*Simple PJAX For Front MAIN - SomeBottle*/
+}
+function transitionchecker(e,func){/*css3变换检查器(元素,执行完毕执行的函数)*/
+       var ts='';
+       var tss = {
+         'transition':'transitionend',
+         'OTransition':'oTransitionEnd',
+         'MozTransition':'transitionend',
+         'WebkitTransition':'webkitTransitionEnd'
+       };/*兼容多浏览器*/
+	   for(var i in tss){
+		   if(SC(e).style[i]!==undefined){
+			   ts=tss[i];
+		   }
+	   }
+	   function doit(){
+		   func();
+		   SC(e).removeEventListener(ts,doit);
+	   }
+	   SC(e).addEventListener(ts,doit);
+}	
+/*Simple PJAX For Front MAIN - SomeBottle*/
 var mainhost = window.location.host;
 var dt = new Date().getTime();
 if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
@@ -630,6 +650,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                 B.nowpage = 0; /*防止页码bug*/
             }
             window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
+			transitionchecker('loading',function(){console.log('finished');});
 			setTimeout(function(){
             if (ts.LoadedPage[ehref]) { /*临时缓存*/
                 $.ht(ts.LoadedPage[ehref], e, false);
@@ -662,7 +683,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                     }
                 }, 'get', '', true);
             }
-			},500);
+			},2000);
         },
         start: function() {
             var ts = this;
