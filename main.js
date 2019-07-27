@@ -326,8 +326,9 @@ if (!B) { /*PreventInitializingTwice*/
                 $.ht(render4, 'container');
 				/*修复more按钮的bug - 20190727*/
 				if(ot.switchpage>0){
-					var mi=1;
-					while(mi<=ot.switchpage){
+					var mi=0;
+					var or=ot.switchpage;
+					while(mi<or){
 						console.log('[DEBUG]'+ot.switchpage+':'+'执行');
 						ot.more();
 						mi+=1;
