@@ -324,11 +324,9 @@ if (!B) { /*PreventInitializingTwice*/
                 var render4 = this.r(render4, '{[pagetype]}', pagetype); /*SetPageType*/
                 this.itempage = parseInt(tj['posts_per_page']);
                 $.ht(render4, 'container');
-				var nowswitch=ot.switchpage;
-				console.log(ot.switchpage+':'+nowswitch);
 				/*修复more按钮的bug - 20190727*/
 				setTimeout(function(){
-				if(nowswitch>0&&ot.morehtml!==''){
+				if(ot.morehtml!==''){
 					console.log('[DEBUG]自动复原More');
 					SC('postitems').innerHTML+=ot.morehtml;
 				}
