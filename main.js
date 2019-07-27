@@ -329,6 +329,8 @@ if (!B) { /*PreventInitializingTwice*/
                     if (ot.gt('<!--[PageType]', '[PageTypeEnd]-->') !== j['templatehtmls']['postlist']) { /*跳离index页了*/
                         PJAX.sel('container');
                         PJAX.start();
+						/*修复more按钮的bug - 20190727*/
+						ot.switchpage=0;
                         clearInterval(timer);
                         return false;
                     }
@@ -478,22 +480,12 @@ if (!B) { /*PreventInitializingTwice*/
                     if (!isNaN(pg)) {
                         var pnum = parseInt(pg) - 1;
                         if (ot.nowpage !== pnum) {
-							var latestmore=ot.switchpage;
                             ot.nowpage = pnum;
                             ot.itempage = maxrender * pnum * ot.moreperpage;
                             SC('postitems').innerHTML = '';
                             ot.more(); /*顺序不要颠倒!*/
                             ot.realpage = pnum + 1;
                             ot.switchpage = 0;
-							/*修复more按钮的bug - 20190727*/
-							if(latestmore>0){
-								console.log('[DEBUG]复原More');
-								var pmore=0;
-								while(pmore<latestmore){
-									ot.more;
-									pmore+=1;
-								}
-							}
                         }
                     }
                 } else { /*Search mode*/
