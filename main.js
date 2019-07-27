@@ -337,6 +337,7 @@ if (!B) { /*PreventInitializingTwice*/
 						ot.more();
 						mi+=1;
 					}
+					ot.switchpage=nowswitch;/*恢复switchpage*/
 				}
 				},1000);
                 this.loadhide();
