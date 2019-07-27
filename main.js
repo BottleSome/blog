@@ -327,7 +327,6 @@ if (!B) { /*PreventInitializingTwice*/
 				var nowswitch=ot.switchpage;
 				setInterval(function(){console.log(ot.switchpage);},500);
 				/*修复more按钮的bug - 20190727*/
-				setTimeout(function(){
 				if(nowswitch>0){
 					console.log('[DEBUG]自动复原More');
 					var mi=0;
@@ -339,7 +338,6 @@ if (!B) { /*PreventInitializingTwice*/
 					}
 					ot.switchpage=nowswitch;/*恢复switchpage*/
 				}
-				},1000);
                 this.loadhide();
                 var timer = setInterval(function() { /*CheckIndexPage*/
                     if (ot.gt('<!--[PageType]', '[PageTypeEnd]-->') !== j['templatehtmls']['postlist']) { /*跳离index页了*/
