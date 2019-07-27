@@ -323,17 +323,7 @@ if (!B) { /*PreventInitializingTwice*/
                 var render4 = this.r(render3, '{[title]}', realtitle);
                 var render4 = this.r(render4, '{[pagetype]}', pagetype); /*SetPageType*/
                 this.itempage = parseInt(tj['posts_per_page']);
-				var latestmore=ot.morehtml;
-				var latestmorep=ot.switchpage;
                 $.ht(render4, 'container');
-				/*修复more按钮的bug - 20190727*/
-				setTimeout(function(){
-				if(latestmore!==''){
-					console.log('[DEBUG]自动复原More');
-					SC('postitems').innerHTML+=latestmore;
-					ot.switchpage=latestmorep;
-				}
-				},1000);
                 this.loadhide();
                 var timer = setInterval(function() { /*CheckIndexPage*/
                     if (ot.gt('<!--[PageType]', '[PageTypeEnd]-->') !== j['templatehtmls']['postlist']) { /*跳离index页了*/
@@ -481,27 +471,37 @@ if (!B) { /*PreventInitializingTwice*/
             var tj = window.mainjson; /*get json*/
             var maxrender = parseInt(tj['posts_per_page']);
             if (href.indexOf('#') !== -1) {
-                this.hashexist = true;
+				var ot=this;
+                ot.hashexist = true;
                 var pg = href.split('#')[1];
                 if (href.indexOf('#!') == -1) {
                     if (!isNaN(pg)) {
                         var pnum = parseInt(pg) - 1;
-                        if (this.nowpage !== pnum) {
-                            this.nowpage = pnum;
-                            this.itempage = maxrender * pnum * this.moreperpage;
+                        if (ot.nowpage !== pnum) {
+							var latestmore=ot.switchpage;
+                            ot.nowpage = pnum;
+                            ot.itempage = maxrender * pnum * ot.moreperpage;
                             SC('postitems').innerHTML = '';
-                            this.more(); /*顺序不要颠倒!*/
-                            this.realpage = pnum + 1;
-							this.morehtml='';
-                            this.switchpage = 0;
+                            ot.more(); /*顺序不要颠倒!*/
+                            ot.realpage = pnum + 1;
+                            ot.switchpage = 0;
+							/*修复more按钮的bug - 20190727*/
+							if(latestmore>0){
+								console.log('[DEBUG]复原More');
+								var pmore=0;
+								while(pmore<latestmore){
+									ot.more;
+									pmore+=1;
+								}
+							}
                         }
                     }
                 } else { /*Search mode*/
                     var rendertp = '';
                     var item = window.htmls[j['templatehtmls']['postitem']];
                     var v = href.split('#!')[1];
-                    if (v !== this.searchw) {
-                        this.searchw = v;
+                    if (v !== ot.searchw) {
+                        ot.searchw = v;
                         var pt = tj['postindex'];
                         for (var i in pt) {
                             var tt = Base64.decode(pt[i]['title']);
@@ -528,7 +528,6 @@ if (!B) { /*PreventInitializingTwice*/
             } else {
                 if (this.hashexist) {
                     this.realpage = 1;
-					this.morehtml='';
                     this.switchpage = 0;
                     this.hashexist = false;
                 }
@@ -546,7 +545,7 @@ if (!B) { /*PreventInitializingTwice*/
                 SC('loading').style.zIndex = -1;
             }, 100);
         },
-		morehtml:'',
+		morehtmls:{},
         more: function() {
             var j = window.templjson;
             var start = this.itempage + 1;
@@ -590,11 +589,9 @@ if (!B) { /*PreventInitializingTwice*/
                 window.scrollTo(0, 0);
                 SC('postitems').innerHTML = listrender;
                 this.switchpage = 0;
-				this.morehtml='';
                 this.realpage += 1;
                 window.location.href = '#' + this.realpage;
             } else {
-				this.morehtml+=listrender;
                 SC('postitems').innerHTML = SC('postitems').innerHTML + listrender;
                 this.switchpage += 1;
             }
