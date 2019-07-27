@@ -629,6 +629,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                 B.nowpage = 0; /*防止页码bug*/
             }
             window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
+			setTimeout(function(){
             if (ts.LoadedPage[ehref]) { /*临时缓存*/
                 $.ht(ts.LoadedPage[ehref], e, false);
                 setTimeout(function(){window.dispatchEvent(ts.PJAXFinish);},1000);
@@ -660,6 +661,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                     }
                 }, 'get', '', true);
             }
+			},500);
         },
         start: function() {
             var ts = this;
