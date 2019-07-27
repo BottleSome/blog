@@ -304,15 +304,16 @@ if (!B) { /*PreventInitializingTwice*/
             var pagetype = this.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
             var tj = window.mainjson; /*get json*/
             if (pagetype == j['templatehtmls']['post']) {
-                var content = this.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
-                var title = this.gt('<!--[PostTitle]-->', '<!--[PostTitleEnd]-->'); /*Get Post Title*/
-                var date = this.gt('<!--[PostDate]-->', '<!--[PostDateEnd]-->'); /*Get Post Date*/
-                var tags = this.gt('<!--[PostTag]-->', '<!--[PostTagEnd]-->'); /*Get Post Content*/
-                var pid = this.gt('<!--[PostID]-->', '<!--[PostIDEnd]-->'); /*Get Post ID*/
-                var pagetitle = (this.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
+				var ot=this;
+                var content = ot.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
+                var title = ot.gt('<!--[PostTitle]-->', '<!--[PostTitleEnd]-->'); /*Get Post Title*/
+                var date = ot.gt('<!--[PostDate]-->', '<!--[PostDateEnd]-->'); /*Get Post Date*/
+                var tags = ot.gt('<!--[PostTag]-->', '<!--[PostTagEnd]-->'); /*Get Post Content*/
+                var pid = ot.gt('<!--[PostID]-->', '<!--[PostIDEnd]-->'); /*Get Post ID*/
+                var pagetitle = (ot.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
                 var post = window.htmls[j['templatehtmls']['post']];
-                var render11 = this.r(post, '{[postcontent]}', this.lazypre(md.makeHtml(content.trim()))); /*Analyse md*/
-                var render12 = this.r(render11, '{[posttitle]}', title);
+                var render11 = ot.r(post, '{[postcontent]}', ot.lazypre(md.makeHtml(content.trim()))); /*Analyse md*/
+                var render12 = ot.r(render11, '{[posttitle]}', title);
                 var alltags = [];
                 if (isNaN(date)) {
                     tags = '页面';
@@ -324,20 +325,20 @@ if (!B) { /*PreventInitializingTwice*/
                     });
                     tags = tags.substr(0, tags.length - 1);
                 }
-                var render13 = this.r(render12, '{[posttags]}', tags);
-                var render14 = this.r(render13, '{[postdate]}', date);
-                var render2 = this.r(main, '{[contents]}', render14);
-                var render3 = this.r(cloth, '{[main]}', render2);
-                var render4 = this.r(render3, '{[title]}', pagetitle);
-                var render5 = this.r(render4, '{[comments]}', comment); /*LoadCommentsForPost*/
-                var render6 = this.r(render5, '{[pid]}', pid); /*SetPid*/
-                var render6 = this.r(render6, '{[pagetype]}', pagetype); /*SetPageType*/
+                var render13 = ot.r(render12, '{[posttags]}', tags);
+                var render14 = ot.r(render13, '{[postdate]}', date);
+                var render2 = ot.r(main, '{[contents]}', render14);
+                var render3 = ot.r(cloth, '{[main]}', render2);
+                var render4 = ot.r(render3, '{[title]}', pagetitle);
+                var render5 = ot.r(render4, '{[comments]}', comment); /*LoadCommentsForPost*/
+                var render6 = ot.r(render5, '{[pid]}', pid); /*SetPid*/
+                var render6 = ot.r(render6, '{[pagetype]}', pagetype); /*SetPageType*/
                 if (isNaN(date)) {
                     render6 = render6.split('<!--PostEnd-->')[0] + '<!--PostEnd-->';
                 }
                 $.ht(render6, 'container');
-				this.lazycheck();
-                this.loadhide();
+				setTimeout(function(){ot.lazycheck();},1200);
+                ot.loadhide();
             } else if (pagetype == j['templatehtmls']['postlist']) {
                 var ot = this;
                 var content = this.gt('<!--[PostContent]-->', '<!--[PostContentEnd]-->'); /*Get Post Content*/
