@@ -326,8 +326,10 @@ if (!B) { /*PreventInitializingTwice*/
                 $.ht(render4, 'container');
 				/*修复more按钮的bug - 20190727*/
 				if(ot.switchpage>0){
-					for(var i=0;i>=ot.switchpage;i++){
+					var mi=0;
+					while(mi<ot.switchpage){
 						ot.more();
+						mi+=1;
 					}
 				}
                 this.loadhide();
