@@ -198,7 +198,6 @@ if (!B) { /*PreventInitializingTwice*/
 			for(var i in es){
 				var cty=getTop(es[i]);
 				if(H + S>cty){
-					console.log((cty-scrollH)+':'+visibleTop);
 					if(es[i].name!=='undefined'&&es[i].name){
 					var lazy=es[i].name;
 					es[i].name='';
