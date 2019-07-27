@@ -329,8 +329,8 @@ if (!B) { /*PreventInitializingTwice*/
 					var mi=0;
 					var or=ot.switchpage;
 					while(mi<or){
-						ot.more();
 						ot.switchpage-=1;
+						ot.more();
 						mi+=1;
 					}
 				}
