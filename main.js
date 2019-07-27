@@ -550,6 +550,7 @@ if (!B) { /*PreventInitializingTwice*/
                 SC('loading').style.zIndex = -1;
             }, 100);
         },
+		morehtml:'',
         more: function() {
             var j = window.templjson;
             var start = this.itempage + 1;
@@ -593,9 +594,11 @@ if (!B) { /*PreventInitializingTwice*/
                 window.scrollTo(0, 0);
                 SC('postitems').innerHTML = listrender;
                 this.switchpage = 0;
+				this.morehtml='';
                 this.realpage += 1;
                 window.location.href = '#' + this.realpage;
             } else {
+				this.morehtml+=listrender;
                 SC('postitems').innerHTML = SC('postitems').innerHTML + listrender;
                 this.switchpage += 1;
             }
