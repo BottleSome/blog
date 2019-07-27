@@ -324,12 +324,14 @@ if (!B) { /*PreventInitializingTwice*/
                 var render4 = this.r(render4, '{[pagetype]}', pagetype); /*SetPageType*/
                 this.itempage = parseInt(tj['posts_per_page']);
 				var latestmore=ot.morehtml;
+				var latestmorep=ot.switchpage;
                 $.ht(render4, 'container');
 				/*修复more按钮的bug - 20190727*/
 				setTimeout(function(){
 				if(latestmore!==''){
 					console.log('[DEBUG]自动复原More');
 					SC('postitems').innerHTML+=latestmore;
+					ot.switchpage=latestmorep;
 				}
 				},1000);
                 this.loadhide();
