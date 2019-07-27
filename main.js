@@ -183,8 +183,7 @@ if (!B) { /*PreventInitializingTwice*/
 			}
 			return i.innerHTML;
 		},
-		lazycheck:function(){/*检查scroll，来自https://segmentfault.com/a/1190000010744417*/
-            //可见区域顶部高度
+		lazycheck:function(){
             var H = window.innerHeight;
             var S = document.documentElement.scrollTop || document.body.scrollTop;
             var es=document.getElementsByTagName('img');
@@ -337,6 +336,7 @@ if (!B) { /*PreventInitializingTwice*/
                     render6 = render6.split('<!--PostEnd-->')[0] + '<!--PostEnd-->';
                 }
                 $.ht(render6, 'container');
+				this.lazycheck();
                 this.loadhide();
             } else if (pagetype == j['templatehtmls']['postlist']) {
                 var ot = this;
