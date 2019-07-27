@@ -328,16 +328,9 @@ if (!B) { /*PreventInitializingTwice*/
 				console.log(ot.switchpage+':'+nowswitch);
 				/*修复more按钮的bug - 20190727*/
 				setTimeout(function(){
-				if(nowswitch>0){
+				if(nowswitch>0&&ot.morehtml!==''){
 					console.log('[DEBUG]自动复原More');
-					var mi=0;
-					var or=nowswitch;
-					while(mi<or){
-						ot.switchpage-=1;
-						ot.more();
-						mi+=1;
-					}
-					ot.switchpage=nowswitch;/*恢复switchpage*/
+					SC('postitems').innerHTML+=ot.morehtml;
 				}
 				},1000);
                 this.loadhide();
