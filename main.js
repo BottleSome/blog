@@ -325,6 +325,7 @@ if (!B) { /*PreventInitializingTwice*/
                 this.itempage = parseInt(tj['posts_per_page']);
                 $.ht(render4, 'container');
 				/*修复more按钮的bug - 20190727*/
+				setTimeout(function(){
 				if(ot.switchpage>0){
 					var mi=0;
 					var or=ot.switchpage;
@@ -334,6 +335,7 @@ if (!B) { /*PreventInitializingTwice*/
 						mi+=1;
 					}
 				}
+				},1000);
                 this.loadhide();
                 var timer = setInterval(function() { /*CheckIndexPage*/
                     if (ot.gt('<!--[PageType]', '[PageTypeEnd]-->') !== j['templatehtmls']['postlist']) { /*跳离index页了*/
