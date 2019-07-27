@@ -328,6 +328,7 @@ if (!B) { /*PreventInitializingTwice*/
 				if(ot.switchpage>0){
 					var mi=0;
 					while(mi<ot.switchpage){
+						console.log('[DEBUG]'+ot.switchpage+':'+'执行');
 						ot.more();
 						mi+=1;
 					}
