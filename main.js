@@ -639,8 +639,8 @@ if (!B) { /*PreventInitializingTwice*/
             }
             this.itempage = this.itempage + maxrender;
             if (this.switchpage >= (this.moreperpage - 1)) {
-                this.scrolltop(20,1);
                 SC('postitems').innerHTML = listrender;
+				this.scrolltop(20,2);
                 this.switchpage = 0;
                 this.realpage += 1;
 				PJAX.pause();
