@@ -147,7 +147,7 @@ if (!B) { /*PreventInitializingTwice*/
 		scrolltop:function(){
 			var nt=document.body.scrollTop;
 			var stages=Math.floor(parseInt(nt)/3);/*分成加速、匀速、减速三段*/
-			var v1=10;/*加速到10px/s*/
+			var v1=20;/*加速到10px/s*/
 			var vmin=1;/*最小减速到1px/s*/
 			var a1=(Math.pow(v1,2))/(stages*2);/*2ax=V²*/
 			var vn=0;/*当前速度*/
