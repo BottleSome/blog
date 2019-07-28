@@ -158,8 +158,7 @@ if (!B) { /*PreventInitializingTwice*/
 					document.body.scrollTop=parseInt(ntnow)-vn;
 				}else if(parseInt(ntnow)>(stages)){/*第二阶段*/
 					document.body.scrollTop=parseInt(ntnow)-vn;
-				}else if(parseInt(ntnow)>(stages)){/*第三阶段*/
-				console.log('第三阶段');
+				}else if(parseInt(ntnow)<=(stages)){/*第三阶段*/
 				    vn-=a1;
 					if(vn<=vmin){
 						vn=vmin;
