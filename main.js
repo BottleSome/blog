@@ -144,11 +144,11 @@ if (!B) { /*PreventInitializingTwice*/
             }
             return a;
         },
-		scrolltop:function(){
+		scrolltop:function(maxspeed,minspeed){
 			var nt=document.body.scrollTop;
 			var stages=Math.floor(parseInt(nt)/3);/*分成加速、匀速、减速三段*/
-			var v1=20;/*加速到10px/s*/
-			var vmin=1;/*最小减速到1px/s*/
+			var v1=maxspeed;/*加速到maxspeed px/s*/
+			var vmin=minspeed;/*最小减速到minspeed px/s*/
 			var a1=(Math.pow(v1,2))/(stages*2);/*2ax=V²*/
 			var vn=0;/*当前速度*/
 			var st=setInterval(function(){
@@ -639,7 +639,7 @@ if (!B) { /*PreventInitializingTwice*/
             }
             this.itempage = this.itempage + maxrender;
             if (this.switchpage >= (this.moreperpage - 1)) {
-                window.scrollTo(0, 0);
+                this.scrolltop(20,1);
                 SC('postitems').innerHTML = listrender;
                 this.switchpage = 0;
                 this.realpage += 1;
