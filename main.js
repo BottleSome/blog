@@ -544,6 +544,7 @@ if (!B) { /*PreventInitializingTwice*/
 					start=parseInt(tj['postnum'])-1;
 				}
 				while(start>=(range1-(t-1))){
+					console.log(start);
 					var pt=tj['postindex'][start.toString()];
 					if(pt['link']&&pt){/*有页面*/
 					this.itempage+=1;
