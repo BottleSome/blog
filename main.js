@@ -388,7 +388,7 @@ if (!B) { /*PreventInitializingTwice*/
 					var pt=tj['postindex'][pid];
 					var counter=1;
 					var nip=ot.itempage;
-					if(counter<=nip){
+					if(counter<nip){
 						if(pt['link']){
 							ot.itempage+=1;
 						}
