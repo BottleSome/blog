@@ -383,6 +383,18 @@ if (!B) { /*PreventInitializingTwice*/
                 var render4 = this.r(render3, '{[title]}', realtitle);
                 var render4 = this.r(render4, '{[pagetype]}', pagetype); /*SetPageType*/
                 this.itempage = parseInt(tj['posts_per_page']);
+				for(var po in tj['dateindex']){
+					var pid=po.replace('post','');
+					var pt=tj['postindex'][pid];
+					var counter=1;
+					var nip=ot.itempage;
+					if(counter<=nip){
+						if(pt['link']){
+							ot.itempage+=1;
+						}
+						counter+=1;
+					}
+				}
                 $.ht(render4, 'container');
                 this.loadhide();
                 var timer = setInterval(function() { /*CheckIndexPage*/
