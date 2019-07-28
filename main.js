@@ -529,6 +529,7 @@ if (!B) { /*PreventInitializingTwice*/
         },
 		itempagechecker:function(first,t){/*防止因为排除页面导致的文章列表重复(开始id,检索数量)开始id<0则从索引末尾开始*/
 		    var tj = window.mainjson; /*get json*/
+			var exarr=[];
 			if(first<0){
 				first=0;
 			}
@@ -538,8 +539,15 @@ if (!B) { /*PreventInitializingTwice*/
 			for(var i in tj['dateindex']){
 				var pid=i.replace('post','');
 				var pt=tj['postindex'][pid];
+				if(pt['link']){
+					exarr.push(pid);
+				}
+			}
+			for(var i in tj['dateindex']){
+				var pid=i.replace('post','');
+				var pt=tj['postindex'][pid];
 				if(count>=start&&count<end){/*计算文章*/
-					if(pt['link']){
+					if(exarr.indexOf(pid)!==-1){
 						this.itempage+=1;
 						if(first<0){/*-1情况下往往t是没有经过页面排除的*/
 							t+=1;
