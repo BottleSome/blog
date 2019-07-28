@@ -615,7 +615,7 @@ if (!B) { /*PreventInitializingTwice*/
                 if (start <= itemid) {
 					console.log('[DEBUG]PageStart:'+start);
                     if (counter < maxrender) {
-						console.log('[DEBUG]Counter:'+start);
+						console.log('[DEBUG]Counter:'+start+' ID:'+i);
                         var pid = i.replace('post', '');
                         var pt = tj['postindex'][pid];
                         if (!pt['link']) { /*排除页面在外*/
