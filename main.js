@@ -626,6 +626,7 @@ if (!B) { /*PreventInitializingTwice*/
                             listrender += render4; /*渲染到列表模板*/
                         } else {
                             counter -= 1;
+							start-=1;
                         }
                         counter += 1;
                     }
