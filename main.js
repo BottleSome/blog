@@ -613,7 +613,9 @@ if (!B) { /*PreventInitializingTwice*/
             var postids = tj['dateindex'];
             for (var i in postids) {
                 if (start <= itemid) {
-                    if (counter <= maxrender) {
+					console.log('[DEBUG]PageStart:'+start);
+                    if (counter < maxrender) {
+						console.log('[DEBUG]Counter:'+start);
                         var pid = i.replace('post', '');
                         var pt = tj['postindex'][pid];
                         if (!pt['link']) { /*排除页面在外*/
