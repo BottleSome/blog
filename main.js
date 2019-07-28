@@ -541,6 +541,10 @@ if (!B) { /*PreventInitializingTwice*/
 				if(count>=start&&count<end){/*计算文章*/
 					if(pt['link']){
 						this.itempage+=1;
+						if(first<0){/*-1情况下往往t是没有经过页面排除的*/
+							t+=1;
+							end=first+t;
+						}
 					}
 				}
 			    count+=1;
