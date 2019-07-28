@@ -383,7 +383,6 @@ if (!B) { /*PreventInitializingTwice*/
                 var render4 = this.r(render3, '{[title]}', realtitle);
                 var render4 = this.r(render4, '{[pagetype]}', pagetype); /*SetPageType*/
                 this.itempage = parseInt(tj['posts_per_page']);
-				ot.itempagechecker(-1,ot.itempage);
                 $.ht(render4, 'container');
                 this.loadhide();
                 var timer = setInterval(function() { /*CheckIndexPage*/
@@ -527,37 +526,6 @@ if (!B) { /*PreventInitializingTwice*/
                 }
             }
         },
-		itempagechecker:function(first,t){/*防止因为排除页面导致的文章列表重复(开始id,检索数量)开始id<0则从索引末尾开始*/
-		    var tj = window.mainjson; /*get json*/
-			var exarr=[];
-			if(first<0){
-				first=0;
-			}
-			var start=first;
-			var end=first+t;
-			var count=0;
-			for(var i in tj['dateindex']){
-				var pid=i.replace('post','');
-				var pt=tj['postindex'][pid];
-				if(pt['link']){
-					exarr.push(pid);
-				}
-			}
-			for(var i in tj['dateindex']){
-				var pid=i.replace('post','');
-				var pt=tj['postindex'][pid];
-				if(count>=start&&count<end){/*计算文章*/
-					if(exarr.indexOf(pid)!==-1){
-						this.itempage+=1;
-						if(first<0){/*-1情况下往往t是没有经过页面排除的*/
-							t+=1;
-							end=first+t;
-						}
-					}
-				}
-			    count+=1;
-			}
-		},
         indexpagechecker: function() {
             var eh = document.getElementsByTagName('html')[0].innerHTML; /*Get All html*/
             var j = window.templjson;
@@ -575,7 +543,6 @@ if (!B) { /*PreventInitializingTwice*/
                             ot.nowpage = pnum;
 							var allps=maxrender * pnum * ot.moreperpage;/*根据页码计算当前页*/
                             ot.itempage = allps;
-							ot.itempagechecker(-1,allps);
                             SC('postitems').innerHTML = '';
                             ot.more(); /*顺序不要颠倒!*/
                             ot.realpage = pnum + 1;
@@ -659,6 +626,7 @@ if (!B) { /*PreventInitializingTwice*/
                             var render4 = B.r(render3, '{[postitemlink]}', 'post-' + pid + '.html');
                             listrender += render4; /*渲染到列表模板*/
                         } else {
+							this.itempage+=1;
                             counter -= 1;
                         }
                         counter += 1;
@@ -674,7 +642,6 @@ if (!B) { /*PreventInitializingTwice*/
                 SC('morebtn').style.display = 'block';
             }
             this.itempage = this.itempage + maxrender;
-			this.itempagechecker(start,counter-start);
             if (this.switchpage >= (this.moreperpage - 1)) {
                 SC('postitems').innerHTML = listrender;
 				this.scrolltop(20,2);
