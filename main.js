@@ -383,7 +383,7 @@ if (!B) { /*PreventInitializingTwice*/
                 var render4 = this.r(render3, '{[title]}', realtitle);
                 var render4 = this.r(render4, '{[pagetype]}', pagetype); /*SetPageType*/
                 this.itempage = parseInt(tj['posts_per_page']);
-				ot.itempagechecker(-1,0,ot.itempage);
+				ot.itempagechecker(-1,ot.itempage);
                 $.ht(render4, 'container');
                 this.loadhide();
                 var timer = setInterval(function() { /*CheckIndexPage*/
@@ -527,40 +527,23 @@ if (!B) { /*PreventInitializingTwice*/
                 }
             }
         },
-		itempagechecker:function(range1,range2,t=0){/*防止因为排除页面导致的文章列表重复(开始pid,终止pid)[range2>range1]*/
+		itempagechecker:function(first,t){/*防止因为排除页面导致的文章列表重复(开始id,检索数量)开始id<0则从索引末尾开始*/
 		    var tj = window.mainjson; /*get json*/
-			if(t==0){
-			var start=range1;
-			while(start<=range2){
-				if(tj['postindex'][start.toString()]){
-				var pt=tj['postindex'][start.toString()];
-				if(pt['link']&&pt){/*有页面*/
-					this.itempage+=1;
-				}
-				start+=1;
-				}else{
-					start-=1;
-				}
+			if(first<0){
+				first=0;
 			}
-			}else{
-				var start=range1;
-				var end=range1-(t-1);
-				if(start<0){
-					start=parseInt(tj['postnum'])-1;
-					end=start-(t-1);
-				}
-				while(start>=end){
-					console.log(start);
-					if(tj['postindex'][start.toString()]){
-					var pt=tj['postindex'][start.toString()];
-					if(pt['link']&&pt){/*有页面*/
-					this.itempage+=1;
-				    }
-					start-=1;
-					}else{
-						start+=1;
+			var start=first;
+			var end=first+t;
+			var count=0;
+			for(var i in tj['dateindex']){
+				var pid=i.replace('post','');
+				var pt=tj['postindex'][pid];
+				if(count>=start&&count<end){/*计算文章*/
+					if(pt['link']){
+						this.itempage+=1;
 					}
 				}
+			    count+=1;
 			}
 		},
         indexpagechecker: function() {
@@ -580,7 +563,7 @@ if (!B) { /*PreventInitializingTwice*/
                             ot.nowpage = pnum;
 							var allps=maxrender * pnum * ot.moreperpage;/*根据页码计算当前页*/
                             ot.itempage = allps;
-							ot.itempagechecker(-1,0,allps);
+							ot.itempagechecker(-1,allps);
                             SC('postitems').innerHTML = '';
                             ot.more(); /*顺序不要颠倒!*/
                             ot.realpage = pnum + 1;
@@ -678,9 +661,8 @@ if (!B) { /*PreventInitializingTwice*/
             } else {
                 SC('morebtn').style.display = 'block';
             }
-			var preitem=this.itempage;
             this.itempage = this.itempage + maxrender;
-			this.itempagechecker(preitem,this.itempage);
+			this.itempagechecker(start,counter-start);
             if (this.switchpage >= (this.moreperpage - 1)) {
                 SC('postitems').innerHTML = listrender;
 				this.scrolltop(20,2);
