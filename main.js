@@ -532,7 +532,8 @@ if (!B) { /*PreventInitializingTwice*/
 			if(t==0){
 			var start=range1;
 			while(start<=range2){
-				if(tj['postindex'][start.toString()]['link']){/*有页面*/
+				var pt=tj['postindex'][start.toString()];
+				if(pt['link']&&pt){/*有页面*/
 					this.itempage+=1;
 				}
 				start+=1;
@@ -543,7 +544,8 @@ if (!B) { /*PreventInitializingTwice*/
 					start=parseInt(tj['postnum'])-1;
 				}
 				while(start>=(range1-(t-1))){
-					if(tj['postindex'][start.toString()]['link']){/*有页面*/
+					var pt=tj['postindex'][start.toString()];
+					if(pt['link']&&pt){/*有页面*/
 					this.itempage+=1;
 				    }
 					start-=1;
