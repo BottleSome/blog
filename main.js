@@ -553,6 +553,7 @@ if (!B) { /*PreventInitializingTwice*/
                     if (!isNaN(pg)) {
                         var pnum = parseInt(pg) - 1;
                         if (ot.nowpage !== pnum) {
+							console.log('PageEXIST!');
                             ot.nowpage = pnum;
 							var allps=maxrender * pnum * ot.moreperpage;/*根据页码计算当前页*/
                             ot.itempage = allps;
