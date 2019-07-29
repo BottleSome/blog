@@ -782,7 +782,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             ts.recenturl = window.location.href;
             var p = document.getElementsByTagName("a");
             for (var i in p) {
-                p[i].onclick = function(e) {
+				p[i].addEventListener('click',function(e) {
                     if (ts.preventurl.indexOf(this.href) !== -1) {
                         return true;
                     } else {
@@ -790,7 +790,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                         e.preventDefault();
                         ts.jump(this.href);
                     }
-                };
+                },false);/*监听A标签*/
             }
 			/*回退或者前进时触发*/
 			window.addEventListener('popstate',PJAX.pjaxautojump,false);
