@@ -231,7 +231,8 @@ if (!B) { /*PreventInitializingTwice*/
         templonload: 0,
         /*LoadingTemplates*/
         templateloaded: new Array(),
-		tpcheckstatu:false,
+		tpcheckstatu:false,/*模板拼接状态*/
+		loadstatu:false,/*加载div显示状态*/
         tpcheck: function() { /*template check*/
 		    var ot=this,o=this;
 			ot.tpcheckstatu=true;/*正在检查模板*/
@@ -555,7 +556,7 @@ if (!B) { /*PreventInitializingTwice*/
                     if (!isNaN(pg)) {
                         var pnum = parseInt(pg) - 1;
                         if (ot.nowpage !== pnum) {
-							ot.searchw='';/*重置搜索词*/
+							ot.searchw='';/*不在搜索模式,重置搜索词*/
                             ot.nowpage = pnum;
 							var allps=maxrender * pnum * ot.moreperpage;/*根据页码计算当前页*/
                             ot.itempage = allps;
@@ -606,16 +607,16 @@ if (!B) { /*PreventInitializingTwice*/
 							setTimeout(function(){return process();},500);/*如果没有需要的元素存在滞留一下*/
 						}
 						}
-						if(!ot.tpcheckstatu){/*如果模板拼接完毕就可以打印搜索结果了*/
+						if(!ot.tpcheckstatu&&!loadstatu){/*如果页面加载完,模板拼接完毕就可以打印搜索结果了*/
                            process();
 						}
                     }
-					if(ot.tpcheckstatu){/*如果模板未拼接完毕，清理搜索词延续循环(外层setInterval)*/
+					if(ot.tpcheckstatu||ot.loadstatu){/*如果模板未拼接完毕，清理搜索词延续循环(外层setInterval)*/
                         ot.searchw = '';
 					}
                 }
             } else {
-				ot.searchw='';/*重置搜索词*/
+				ot.searchw='';/*不在搜索模式,重置搜索词*/
                 if (ot.hashexist) {
                     ot.realpage = 1;
                     ot.switchpage = 0;
@@ -624,12 +625,14 @@ if (!B) { /*PreventInitializingTwice*/
             }
         },
         loadshow: function() {
+			this.loadstatu=true;
             setTimeout(function() {
                 SC('loading').style.opacity = 1;
                 SC('loading').style.zIndex = 200;
             }, 100);
         },
         loadhide: function() {
+			this.loadstatu=false;
             setTimeout(function() {
                 SC('loading').style.opacity = 0;
                 SC('loading').style.zIndex = -1;
