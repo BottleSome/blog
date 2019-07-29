@@ -771,12 +771,12 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             var p = document.getElementsByTagName("a");
             for (var i in p) {
                 p[i].onclick = function(e) {
-                    if (ts.preventurl.indexOf(ts.href) !== -1) {
+                    if (ts.preventurl.indexOf(this.href) !== -1) {
                         return true;
                     } else {
-                        window.history.pushState(null, null, ts.href); /*加入历史*/
+                        window.history.pushState(null, null, this.href); /*加入历史*/
                         e.preventDefault();
-                        ts.jump(ts.href);
+                        ts.jump(this.href);
                     }
                 };
             }
