@@ -565,7 +565,6 @@ if (!B) { /*PreventInitializingTwice*/
                         }
                     }
                 } else { /*Search mode*/
-				console.log('SearchEXIST!');
                     var rendertp = '';
                     var item = window.htmls[j['templatehtmls']['postitem']];
                     var v = href.split('#!')[1];
@@ -596,6 +595,7 @@ if (!B) { /*PreventInitializingTwice*/
                         }
 						function process(){/*局部函数*/
 						if(SC('postitems')&&SC('morebtn')){
+							console.log('SearchResultAttached');
 							window.scrollTo(0, 0);
                         SC('postitems').innerHTML = rendertp;
                         SC('morebtn').style.display = 'none';
