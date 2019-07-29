@@ -547,14 +547,13 @@ if (!B) { /*PreventInitializingTwice*/
             var maxrender = parseInt(tj['posts_per_page']);
 			var ot=this;
             if (href.indexOf('#') !== -1) {
-				console.log('HashEXIST!');
                 ot.hashexist = true;
                 var pg = href.split('#')[1];
                 if (href.indexOf('#!') == -1) {
                     if (!isNaN(pg)) {
                         var pnum = parseInt(pg) - 1;
                         if (ot.nowpage !== pnum) {
-							console.log('PageEXIST!');
+							ot.searchw='';/*重置搜索词*/
                             ot.nowpage = pnum;
 							var allps=maxrender * pnum * ot.moreperpage;/*根据页码计算当前页*/
                             ot.itempage = allps;
@@ -571,7 +570,6 @@ if (!B) { /*PreventInitializingTwice*/
                     var item = window.htmls[j['templatehtmls']['postitem']];
                     var v = href.split('#!')[1];
                     if (v !== ot.searchw) {
-						console.warn('Searching');
                         ot.searchw = v;
                         var pt = tj['postindex'];
                         for (var i in pt) {
@@ -614,6 +612,7 @@ if (!B) { /*PreventInitializingTwice*/
                     }
                 }
             } else {
+				ot.searchw='';/*重置搜索词*/
                 if (ot.hashexist) {
                     ot.realpage = 1;
                     ot.switchpage = 0;
