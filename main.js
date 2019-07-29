@@ -338,6 +338,7 @@ if (!B) { /*PreventInitializingTwice*/
 			}
 				ot.itempage-=1;/*项目会多计算一个，减去*/
 		},
+		loadstatu:false,/*是否正在加载*/
         renderer: function() {
 			var ot=this;
             var j = window.templjson;
@@ -570,7 +571,7 @@ if (!B) { /*PreventInitializingTwice*/
                     var item = window.htmls[j['templatehtmls']['postitem']];
                     var v = href.split('#!')[1];
                     if (v !== ot.searchw) {
-						console.log('Searching');
+						console.warn('Searching');
                         ot.searchw = v;
                         var pt = tj['postindex'];
                         for (var i in pt) {
@@ -595,10 +596,17 @@ if (!B) { /*PreventInitializingTwice*/
                         if (rendertp == '') {
                             rendertp = '<h2>啥都没找到</h2>';
                         }
-                        window.scrollTo(0, 0);
+						function process(){/*局部函数*/
+							window.scrollTo(0, 0);
                         SC('postitems').innerHTML = rendertp;
                         SC('morebtn').style.display = 'none';
                         PJAX.start(); /*refresh pjax links*/
+						}
+						if(!ot.loadstatu){
+                           process();
+						}else{/*如果有Loading等待loading换页完毕再渲染，免得没有渲染上去*/
+							transitionchecker('loading',process);
+						}
                     }
                 }
             } else {
@@ -610,12 +618,14 @@ if (!B) { /*PreventInitializingTwice*/
             }
         },
         loadshow: function() {
+			this.loadstatu=true;
             setTimeout(function() {
                 SC('loading').style.opacity = 1;
                 SC('loading').style.zIndex = 200;
             }, 100);
         },
         loadhide: function() {
+			this.loadstatu=false;
             setTimeout(function() {
                 SC('loading').style.opacity = 0;
                 SC('loading').style.zIndex = -1;
