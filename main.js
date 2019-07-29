@@ -570,6 +570,7 @@ if (!B) { /*PreventInitializingTwice*/
                     var item = window.htmls[j['templatehtmls']['postitem']];
                     var v = href.split('#!')[1];
                     if (v !== ot.searchw) {
+						console.log('Searching');
                         ot.searchw = v;
                         var pt = tj['postindex'];
                         for (var i in pt) {
