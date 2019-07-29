@@ -607,7 +607,7 @@ if (!B) { /*PreventInitializingTwice*/
 							setTimeout(function(){return process();},500);/*如果没有需要的元素存在滞留一下*/
 						}
 						}
-						if(!ot.tpcheckstatu&&!loadstatu){/*如果页面加载完,模板拼接完毕就可以打印搜索结果了*/
+						if(!ot.tpcheckstatu&&!ot.loadstatu){/*如果页面加载完,模板拼接完毕就可以打印搜索结果了*/
                            process();
 						}
                     }
@@ -625,14 +625,14 @@ if (!B) { /*PreventInitializingTwice*/
             }
         },
         loadshow: function() {
-			this.loadstatu=true;
+			this.loadstatu=true;/*加载未就绪*/
             setTimeout(function() {
                 SC('loading').style.opacity = 1;
                 SC('loading').style.zIndex = 200;
             }, 100);
         },
         loadhide: function() {
-			this.loadstatu=false;
+			this.loadstatu=false;/*加载就绪*/
             setTimeout(function() {
                 SC('loading').style.opacity = 0;
                 SC('loading').style.zIndex = -1;
