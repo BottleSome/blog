@@ -546,6 +546,7 @@ if (!B) { /*PreventInitializingTwice*/
             var maxrender = parseInt(tj['posts_per_page']);
 			var ot=this;
             if (href.indexOf('#') !== -1) {
+				console.log('HashEXIST!');
                 ot.hashexist = true;
                 var pg = href.split('#')[1];
                 if (href.indexOf('#!') == -1) {
