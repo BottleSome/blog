@@ -231,8 +231,10 @@ if (!B) { /*PreventInitializingTwice*/
         templonload: 0,
         /*LoadingTemplates*/
         templateloaded: new Array(),
+		tpcheckstatu:false,
         tpcheck: function() { /*template check*/
 		    var ot=this,o=this;
+			ot.tpcheckstatu=true;/*正在检查模板*/
 		    ot.loadshow();
             var pagetype = ot.gt('<!--[PageType]-->', '<!--[PageTypeEnd]-->'); /*Get Page Type*/
             if (!window.templjson) {
@@ -338,7 +340,6 @@ if (!B) { /*PreventInitializingTwice*/
 			}
 				ot.itempage-=1;/*项目会多计算一个，减去*/
 		},
-		loadstatu:false,/*是否正在加载*/
         renderer: function() {
 			var ot=this;
             var j = window.templjson;
@@ -488,6 +489,7 @@ if (!B) { /*PreventInitializingTwice*/
                 $.ht(render4, 'container');
                 ot.loadhide();
             }
+			ot.tpcheckstatu=false;/*模板检查拼接完毕*/
         },
         nowtag: '',
         alltaghtml: '',
@@ -576,14 +578,14 @@ if (!B) { /*PreventInitializingTwice*/
                             var cc = (Base64.decode(pt[i]['intro'])).toLowerCase();
                             var dd = (pt[i]['date']).toLowerCase();
                             var tg = (pt[i]['tags']).toLowerCase();
-							v=v.toLowerCase();
+							v=v.toLowerCase();/*大小写忽略*/
                             if (tt.indexOf(v) !== -1 || cc.indexOf(v) !== -1 || dd.indexOf(v) !== -1 || tg.indexOf(v) !== -1) {
                                 var render1 = B.r(item, '{[postitemtitle]}', tt);
                                 var render2 = B.r(render1, '{[postitemintro]}', cc + '...');
                                 var render3 = B.r(render2, '{[postitemdate]}', dd);
 								var render4;
 								if(!pt[i]['link']){
-                                render4 = B.r(render3, '{[postitemlink]}', 'post-' + i + '.html');
+                                render4 = B.r(render3, '{[postitemlink]}', 'post-' + i + '.html');/*把页面也算入*/
 								}else{
 									render4 = B.r(render3, '{[postitemlink]}', pt[i]['link'] + '.html');
 								}
@@ -601,15 +603,16 @@ if (!B) { /*PreventInitializingTwice*/
                         SC('morebtn').style.display = 'none';
                         PJAX.start(); /*refresh pjax links*/
 						}else{
-							setTimeout(function(){return process();},500);/*滞留一下*/
+							setTimeout(function(){return process();},500);/*如果没有需要的元素存在滞留一下*/
 						}
 						}
-						if(!ot.loadstatu){/*如果有Loading等待loading换页完毕再渲染，免得没有渲染上去*/
+						if(!ot.tpcheckstatu){/*如果模板拼接完毕就可以打印搜索结果了*/
                            process();
-						}else{
-							transitionchecker('loading',process);
 						}
                     }
+					if(ot.tpcheckstatu){/*如果模板未拼接完毕，清理搜索词延续循环(外层setInterval)*/
+                        ot.searchw = '';
+					}
                 }
             } else {
 				ot.searchw='';/*重置搜索词*/
@@ -621,14 +624,12 @@ if (!B) { /*PreventInitializingTwice*/
             }
         },
         loadshow: function() {
-			this.loadstatu=true;
             setTimeout(function() {
                 SC('loading').style.opacity = 1;
                 SC('loading').style.zIndex = 200;
             }, 100);
         },
         loadhide: function() {
-			this.loadstatu=false;
             setTimeout(function() {
                 SC('loading').style.opacity = 0;
                 SC('loading').style.zIndex = -1;
