@@ -782,7 +782,6 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             ts.recenturl = window.location.href;
             var p = document.getElementsByTagName("a");
             for (var i in p) {
-				if(p[i]){
 				p[i].addEventListener('click',function(e) {
                     if (ts.preventurl.indexOf(this.href) !== -1) {
                         return true;
@@ -792,7 +791,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                         ts.jump(this.href);
                     }
                 },false);/*监听A标签*/
-				}
+				console.log(p[i]);
             }
 			/*回退或者前进时触发*/
 			window.addEventListener('popstate',PJAX.pjaxautojump,false);
