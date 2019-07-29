@@ -12,11 +12,13 @@
   </a>
   <script>
   function topchecker(){
+    try{
    if(document.body.scrollTop<=0){
       document.getElementById('topback').style.display='none';
     }else{
       document.getElementById('topback').style.display='block';
     } 
+    }
   }
   window.addEventListener('scroll',topchecker,false);
   topchecker();
