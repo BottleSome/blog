@@ -791,7 +791,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                         ts.jump(this.href);
                     }
                 },false);/*监听A标签*/
-				console.log(p[i]);
+				console.log(typeof p[i].addEventListener);
             }
 			/*回退或者前进时触发*/
 			window.addEventListener('popstate',PJAX.pjaxautojump,false);
