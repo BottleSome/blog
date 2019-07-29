@@ -597,13 +597,19 @@ if (!B) { /*PreventInitializingTwice*/
                             rendertp = '<h2>啥都没找到</h2>';
                         }
 						function process(){/*局部函数*/
+						if(SC('postitems')&&SC('morebtn')){
 							window.scrollTo(0, 0);
                         SC('postitems').innerHTML = rendertp;
                         SC('morebtn').style.display = 'none';
                         PJAX.start(); /*refresh pjax links*/
+						}else{
+							setTimeout(function(){return process();},500);/*滞留一下*/
+						}
 						}
 						if(!ot.loadstatu){/*如果有Loading等待loading换页完毕再渲染，免得没有渲染上去*/
                            process();
+						}else{
+							transitionchecker('loading',process);
 						}
                     }
                 }
