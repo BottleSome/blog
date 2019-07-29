@@ -782,6 +782,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             ts.recenturl = window.location.href;
             var p = document.getElementsByTagName("a");
             for (var i in p) {
+				if(typeof(p[i].addEventListener)=='function'){/*防止不是函数的凑数*/
 				p[i].addEventListener('click',function(e) {
                     if (ts.preventurl.indexOf(this.href) !== -1) {
                         return true;
@@ -791,7 +792,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                         ts.jump(this.href);
                     }
                 },false);/*监听A标签*/
-				console.log(typeof p[i].addEventListener);
+				}
             }
 			/*回退或者前进时触发*/
 			window.addEventListener('popstate',PJAX.pjaxautojump,false);
