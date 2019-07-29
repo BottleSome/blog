@@ -564,6 +564,7 @@ if (!B) { /*PreventInitializingTwice*/
                         }
                     }
                 } else { /*Search mode*/
+				console.log('SearchEXIST!');
                     var rendertp = '';
                     var item = window.htmls[j['templatehtmls']['postitem']];
                     var v = href.split('#!')[1];
