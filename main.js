@@ -772,6 +772,11 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             }
 			});
         },
+		pjaxautojump:function(){
+			if (window.location.href.indexOf(mainhost) !== -1) {
+                    PJAX.jump(window.location.href);
+            }
+		},
         start: function() {
             var ts = this;
             ts.recenturl = window.location.href;
@@ -787,13 +792,8 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
                     }
                 };
             }
-			function startpjaxaction(){
-				if (window.location.href.indexOf(mainhost) !== -1) {
-                    PJAX.jump(window.location.href);
-                }
-			}
 			/*回退或者前进时触发*/
-			window.addEventListener('popstate',startpjaxaction,false);
+			window.addEventListener('popstate',PJAX.pjaxautojump,false);
             /*window.onpopstate = function(e) { 
                 if (window.location.href.indexOf(mainhost) !== -1) {
                     PJAX.jump(window.location.href);
@@ -801,7 +801,7 @@ if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
             }*/
         },
         pause: function() {
-			window.removeEventListener('popstate',startpjaxaction);/*移除实践，暂停pjax*/
+			window.removeEventListener('popstate',PJAX.pjaxautojump);/*移除实践，暂停pjax*/
         },
         autoprevent: function() {
             var ts = this;
