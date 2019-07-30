@@ -44,6 +44,9 @@
 2019.7.26-8.14这甚至不能被称为暑假，更像是调整学习、用来复习的一个短假期了吧..
 
 <script>/*
+var apset=setInterval(function(){
+if(APlayer){
+clearInterval(apset);
 const ap = new APlayer({
     container: document.getElementById('aplayer'),
     audio: [{
@@ -52,7 +55,9 @@ const ap = new APlayer({
         url: ' https://api.ohmyga.cn/netease/?type=url&id=534065323',
         cover: 'https://cdn2.imbottle.com/uploads/201907summary/sincerelycover.jpg'
     }]
+}
 });
+},1000);
 */</script>
 <!--[PostContentEnd]-->
 <!--[PostTag]-->总结,日常,电影<!--[PostTagEnd]-->
