@@ -360,6 +360,7 @@ if (!B) { /*PreventInitializingTwice*/
                 var pid = ot.gt('<!--[PostID]-->', '<!--[PostIDEnd]-->'); /*Get Post ID*/
                 var pagetitle = (ot.gt('<!--[MainTitle]-->', '<!--[MainTitleEnd]-->')).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
                 var post = window.htmls[j['templatehtmls']['post']];
+				console.log(content.trim());
                 var render11 = ot.r(post, '{[postcontent]}', ot.lazypre(md.makeHtml(content.trim()))); /*Analyse md*/
                 var render12 = ot.r(render11, '{[posttitle]}', title);
                 var alltags = [];
