@@ -50,10 +50,12 @@ var apset = setInterval(function() {
         clearInterval(apset);
         const ap = new APlayer({
             container: document.getElementById('aplayer'),
+            lrcType: 3,
             audio: [{
                 name: 'Sincerely',
                 artist: 'TRUE',
-                url: ' https://api.ohmyga.cn/netease/?type=url&id=534065323',
+                lrc:'https://api.xbottle.top/lrc/534065323',
+                url: ' https://api.xbottle.top/url/534065323',
                 cover: 'https://cdn2.imbottle.com/uploads/201907summary/sincerelycover.jpg'
             }]
         })
