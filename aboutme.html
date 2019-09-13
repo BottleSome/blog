@@ -8,7 +8,7 @@
 </head>
 <!--[LoadingArea]-->
 <div id='container'>
-<style>#container{opacity:0;}</style>
+<style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>
 <!--[MainTitle]--><title>关于我-Bottle小站</title><!--[MainTitleEnd]-->
 <body>
 <!--[PostTitle]-->关于我<!--[PostTitleEnd]-->
@@ -167,12 +167,13 @@ var apset = setInterval(function() {
         clearInterval(apset);
         const ap = new APlayer({
             container: document.getElementById('aplayer'),
+            lrcType:3,
             audio: [{
                 name: 'ぱられループ を歌ってみた (Jeku remix)',
                 artist: 'Jeku / aori',
-                url: ' https://api.ohmyga.cn/netease/?type=url&id=461124817',
+                url: ' https://api.xbottle.top/ne/url/461124817',
                 cover: 'https://cdn2.imbottle.com/covers/trytosingout.jpg',
-                lrc: 'https://api.ohmyga.cn/netease/?type=lrc&id=461124817'
+                lrc: 'https://api.xbottle.top/ne/lrc/461124817'
             }]
         })
         };
@@ -181,6 +182,7 @@ var apset = setInterval(function() {
 <!--[PostContentEnd]-->
 <!--[PostTag]--><!--[PostTagEnd]-->
 <!--[PostID]-->3<!--[PostIDEnd]-->
+<!--[PostCover]-->none<!--[PostCoverEnd]-->
 <div style='display:none;'><!--[PageType]-->post.html<!--[PageTypeEnd]--></div>
 <script src="./main.js?233"></script>
 <script>B.tpcheck();</script>
