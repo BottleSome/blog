@@ -8,7 +8,7 @@
 </head>
 <!--[LoadingArea]-->
 <div id='container'>
-<style>#container{opacity:0;}</style>
+<style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>
 <!--[MainTitle]--><title>马上要进入高三了-Bottle小站</title><!--[MainTitleEnd]-->
 <body>
 <!--[PostTitle]-->马上要进入高三了<!--[PostTitleEnd]-->
@@ -29,10 +29,12 @@ var apset = setInterval(function() {
         clearInterval(apset);
         const ap = new APlayer({
             container: document.getElementById('aplayer'),
+            lrcType:3,
             audio: [{
                 name: 'God Knows',
                 artist: '平野綾',
-                url: ' https://api.ohmyga.cn/netease/?type=url&id=27876224',
+                lrc:'https://api.xbottle.top/ne/lrc/27876224',
+                url: ' https://api.xbottle.top/ne/url/27876224',
                 cover: 'https://cdn2.imbottle.com/uploads/20190609/godknowscover.jpg'
             }]
         })
@@ -42,6 +44,7 @@ var apset = setInterval(function() {
 <!--[PostContentEnd]-->
 <!--[PostTag]-->日常<!--[PostTagEnd]-->
 <!--[PostID]-->243<!--[PostIDEnd]-->
+<!--[PostCover]-->none<!--[PostCoverEnd]-->
 <div style='display:none;'><!--[PageType]-->post.html<!--[PageTypeEnd]--></div>
 <script src="./main.js?233"></script>
 <script>B.tpcheck();</script>
