@@ -26,7 +26,6 @@ if (typeof($) !== 'object') {
         } else {
             xhr.open('post', p, as);
         }
-        xhr.setRequestHeader('Authorization', hd);
         if (m !== 'multipart/form-data') {
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.send(hm);
