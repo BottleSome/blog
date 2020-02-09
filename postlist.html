@@ -1,6 +1,13 @@
-<div class='posts'>
-  <h3 class='paneltitle'>Posts</h3>
-  <hr><div id='postitems'>{[postitems]}</div>
-  <button class='pagebtn' id='morebtn' onclick='B.more()'>More...</button></div>
+<div class="autopagerize_page_element">
+   <div class='content' id='content'>
+   <div id='postitems'>{[postitems]}</div>
+   <div class="pagination">
+     <ul class="clearfix">
+      <li class="next pagbuttons">
+       <a class="btn" role="navigation" id='morebtn' href="javascript:void(0);" onclick='B.more()'>More</a>
+      </li>
+     </ul>
+   </div>
+   </div>
   <!--[PageType]{[pagetype]}[PageTypeEnd]-->
-  <script>PJAX.autoprevent();PJAX.sel('container');PJAX.start();</script>
+  <script>PJAX.autoprevent();PJAX.sel('container');PJAX.start();$.script('https://cdn.jsdelivr.net/gh/BottleSome/blog@latest/datemaker.js');</script>

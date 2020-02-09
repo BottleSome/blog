@@ -1,11 +1,30 @@
 <!--Post-->
-<h3 class='posttitle'>{[posttitle]}</h3>
-<small class='small-date'>{[postdate]}</small>
-<div class='postbody'>{[postcontent]}</div>
-<small class='small-date' style='font-size:80%;'>标签：{[posttags]}
-  <!--<a href='#' class='taglink'>日常</a>--></small>
+<div class="autopagerize_page_element">
+	<div class="content">
+		<div class="post-page">
+			<div class="post animated fadeInDown">
+				<div class="post-title">
+					<h3><a>{[posttitle]}</a></h3>
+				</div>
+				<div class="post-content">
+					{[postcontent]}
+				</div>
+				<div class="post-footer">
+					<div class="meta">
+						<div class="info">
+							<i class="fa fa-sun-o"></i><span class="date">{[postdate]}</span><i class="fa fa-tag"></i>
+							{[posttags]}
+							<!--<a href='#' class='taglink'>日常</a>-->
+						</div>
+					</div>
+					<!--PostEnd-->
+					<!--Comment-->
+                    <div class='comments'>{[comments]}</div>
+					<!--Footer-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <script>PJAX.autoprevent();PJAX.sel('container');PJAX.start();</script>
 <!--[PageType]{[pagetype]}[PageTypeEnd]-->
-<!--PostEnd-->
-<!--Comment-->
-<div class='comments'>{[comments]}</div>
