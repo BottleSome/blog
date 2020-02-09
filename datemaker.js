@@ -26,7 +26,7 @@ function navchecker() {
             var e = navs[i].parentNode.parentNode;
             if (e.className == 'nav') {
                 var hr = window.location.href;
-                if (hr.indexOf(navs[i].href) !== -1) {
+                if ((navs[i].href!=='/'&&hr.indexOf(navs[i].href) !== -1)||navs[i].href=='/') {
                     navnum += 1;
                     if (navs[i] !== currentelement) {
                         currentelement ? (currentelement.className = '') : currentelement = currentelement;
