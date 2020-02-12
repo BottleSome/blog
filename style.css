@@ -36,8 +36,8 @@ html {
 
 .avatar {
 	border:none !important;
-	max-width:auto !important;
-	max-height:auto !important;
+	max-width:127px !important;
+	max-height:127px !important;
 	width: 127px !important;
 /*头像大小固定*/
 }
