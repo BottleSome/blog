@@ -1,3 +1,4 @@
+<!--Tags-->
 <div class="autopagerize_page_element">
 	<div class="content">
 		<div class="post-page">
@@ -15,3 +16,14 @@
 </div>
   <!--[PageType]{[pagetype]}[PageTypeEnd]-->
   <script>PJAX.autoprevent();PJAX.sel('container');PJAX.start();</script>
+  <!--TagsEnd-->
+  <!--TagItemTemplate-->
+[<a href='{[tagitemlink]}' class='itemlink'>{[tagitemtitle]}</a>]
+<!--TagItemTemplateEnd-->
+<!--TagListTemplate-->
+<span>{[tagcurrent]}</span>
+<ul style='padding-left:0px;'>{[taglist]}</ul>
+<!--TagListTemplateEnd-->
+<!--TagListItemTemplate-->
+<li><a class='taglink' href='{[taglistitemlink]}'>{[taglistitemtitle]}</a></li><!--日期：{[taglistitemdate]}-->
+<!--TagListItemTemplateEnd-->

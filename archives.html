@@ -1,3 +1,4 @@
+<!--Archives-->
 <div class="autopagerize_page_element">
 	<div class="content">
 		<div class="archive animated fadeInDown">
@@ -15,3 +16,19 @@
 </div>
   <!--[PageType]{[pagetype]}[PageTypeEnd]-->
   <script>PJAX.autoprevent();PJAX.sel('container');PJAX.start();</script>
+    <!--ArchivesEnd-->
+<!--ArchiveTemplate-->
+<div class="listing-title">{[archiveyear]}</div>
+<ul class='listing'>
+{[archiveitems]}
+</ul>
+<!--ArchiveTemplateEnd-->
+<!--ArchiveItemTemplate-->
+<div class="listing-item">
+<div class="listing-post">
+<a href="{[archiveitemlink]}" title="{[archiveitemtitle]}">{[archiveitemtitle]}</a><div class="post-time"><span class="date">{[archiveitemdate]}</span>
+</div>
+</div>
+</div>
+<!--ArchiveItemTemplateEnd-->
+<!--日期：{[archiveitemdate]}-->

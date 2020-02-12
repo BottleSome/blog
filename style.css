@@ -1,4 +1,21 @@
 /*Template:Anatole*/
+body {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: 'PingHei', 'PingFang SC', Helvetica Neue, 'Work Sans', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
+	font-size: 15px;
+	width: 100%;
+	margin: 0 auto 30px auto;
+	background-color: #fff;
+	padding: 0;
+	margin: 0;
+	line-height: 1.6em;
+}
+
+html {
+	background-color: #fff;
+	-webkit-font-smoothing: antialiased;
+}
+
 .sidebar {
 	width: 40%;
 	background-size: cover;
@@ -17,21 +34,9 @@
 	padding-top: 240px;
 }
 
-body {
-	color: rgba(0, 0, 0, 0.5);
-	font-family: 'PingHei', 'PingFang SC', Helvetica Neue, 'Work Sans', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
-	font-size: 15px;
-	width: 100%;
-	margin: 0 auto 30px auto;
-	background-color: #fff;
-	padding: 0;
-	margin: 0;
-	line-height: 1.6em;
-}
-
-html {
-	background-color: #fff;
-	-webkit-font-smoothing: antialiased;
+.avatar {
+	width: 127px !important;
+/*头像大小固定*/
 }
 
 .h3title {
@@ -304,9 +309,25 @@ pre {
 	color: #2E9AFE;
 }
 
+/*表格*/
+.post .post-content table {
+	display: block;
+	width: 100%;
+	overflow: auto;
+	word-break: keep-all;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.post .post-content td,.post .post-content th {
+	padding: 0.5rem 1rem;
+	border: 1px solid #e9ebec;
+	font-weight: bold;
+}
+
 .taglink {
 	text-decoration: none;
-	color: #bbbbbb;
+	color: #8F8F8F !important;
 }
 
 .comments {
@@ -327,20 +348,28 @@ pre {
 	width: 100%;
 }
 
-.archive h2 {
+.list-with-title .listing-title {
 	font-size: 24px;
 	color: #666666;
 	font-weight: 600;
-	line-height: 1.2em;
+	line-height: 2.2em;
 }
 
-.archive ul {
+.list-with-title .listing {
 	padding: 0;
-	margin: 30px;
 }
 
-.archive a {
+.list-with-title .listing .listing-post {
+	padding-bottom: 5px;
+}
+
+.list-with-title .listing .listing-post a {
 	color: #8F8F8F;
+}
+
+.list-with-title .listing .listing-post .post-time {
+	float: right;
+	color: #C5C5C5;
 }
 
 a:hover {
@@ -357,11 +386,11 @@ blockquote {
 	font: 14px/22px normal helvetica, sans-serif;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	margin-left: 50px;
+	margin-left: 0px;
 	padding-left: 15px;
-	padding-top: 10px;
+	padding-top: 5px;
 	padding-right: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 	border-left: 3px solid #ccc;
 	background-color: #f1f1f1
 }
