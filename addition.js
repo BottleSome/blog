@@ -1,6 +1,5 @@
-window.addEventListener('load',function(){B.nav({
+B.nav({
 	activeclass:'current',
     navclass:'navitem'
 });
 B.navcheck();
-});
