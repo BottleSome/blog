@@ -1,0 +1,11 @@
+<?php
+$a=0;
+while($a<=267){
+	if(file_exists('./post-'.$a.'.html')){
+		$r=file_get_contents('./post-'.$a.'.html');
+		$r=str_ireplace('<script>B.tpcheck();</script>','',$r);
+		file_put_contents('./post-'.$a.'.html',$r);
+	}
+	$a+=1;
+}
+?>
