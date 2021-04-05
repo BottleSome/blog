@@ -24,3 +24,4 @@ function pvplay() {
         }
     }, 1000);
 }
+pvplay();
