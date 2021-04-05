@@ -5,6 +5,7 @@ function checkvids() {
         var el = vdtags[i];
         if (el instanceof Element) {
             var vdsrc = el.getAttribute('pvsrc');
+            if(!vdsrc||vdsrc.length<=1) continue;
             if (Hls.isSupported()) {
                 hls[i] = new Hls();
                 hls[i].loadSource(vdsrc);
