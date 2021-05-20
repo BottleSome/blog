@@ -1,5 +1,5 @@
 B.nav({
-	activeclass:'current',
-    navclass:'navitem'
+    activeclass: 'current',
+    navclass: 'navbtn'
 });
 B.navcheck();
