@@ -1,1 +1,82 @@
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="从小时起我一直蛮喜欢免费低成本的东西，这也养成了我喜欢折腾的性格。好好想想，免费、稳定、速度这三者有共存过吗。没错，既然免费了，稳定和速度都成了待选项目。直到我遇到了onedrive（国际..." /><meta name="keywords" content="咸鱼技术,Bottle小站" /></head><!--[LoadingArea]--><div id='container'><style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>{(MainTitle)}<title>反向代理Onedrive之路-Bottle小站</title>{(MainTitleEnd)}<body>{(PostTitle)}反向代理Onedrive之路{(PostTitleEnd)}{(PostDate)}20210128{(PostDateEnd)}{(PostContent)}从小时起我一直蛮喜欢&lt;del&gt;免费&lt;/del&gt;低成本的东西，这也养成了我喜欢折腾的性格。好好想想，免费、稳定、速度这三者有共存过吗。没错，既然免费了，稳定和速度都成了待选项目。{{s}}{{s}}{{n}}{{n}}![the{{s}}truth](https://cdn2.imbottle.com/uploads/20210128od/truthoffree.jpeg){{s}}{{s}}{{n}}{{n}}直到我遇到了onedrive（国际版），我发现这玩意免费和稳定都有了，就缺了个那啥速度。这我可不能坐着不管了，得想点办法加快连接速度，方法总比困难多&lt;del&gt;（需要钱的方法除外）&lt;/del&gt;{{s}}{{s}}{{n}}{{n}}![the{{s}}truth](https://cdn2.imbottle.com/uploads/20210128od/bukunle.jpg){{s}}{{s}}{{n}}{{n}}一切要从去年初开始说起，在把Heymind的onedrive{{s}}workers版移植到PHP脚本&lt;del&gt;并加了一堆奇怪的功能后&lt;/del&gt;，我开始注意到分享出来直链的速度问题。{{s}}{{s}}{{s}}{{s}}{{n}}{{n}}&lt;bblock{{s}}style=&quot;display:none;&quot;&gt;{{n}}{{{n}}{{s}}&quot;title&quot;:{{s}}&quot;Blowing&quot;,{{n}}{{s}}&quot;artist&quot;:{{s}}&quot;NiL&quot;,{{n}}{{s}}&quot;src&quot;:{{s}}&quot;https://api.xbottle.top/ne/url/1484411556&quot;,{{n}}{{s}}&quot;cover&quot;:{{s}}&quot;https://api.xbottle.top/ne/cover/1484411556&quot;,{{n}}{{s}}&quot;float&quot;:{{s}}&quot;right&quot;{{n}}}{{n}}&lt;/bblock&gt;{{s}}{{s}}{{n}}{{n}}参考：&lt;a{{s}}href=&quot;https://www.zhihu.com/question/23558599&quot;{{s}}target=&quot;_blank&quot;&gt;微软为什么不在中国设{{s}}OneDrive{{s}}服务器？&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}微软国际服务因为特殊原因没有在大陆设立服务器，因此大多情况下对于我们来说其中大多数服务都是有一定延迟的（比如我去年开始用To-do记录事项，结果不同设备同步在高峰期很鸡肋）{{s}}{{s}}{{n}}{{n}}原来的oneindex有一项特色便是“不过服务器流量”，但在当前的情况看来实在满足不了很多需求。转念一想，反向代理onedrive说不定可行嘛！{{s}}{{s}}{{n}}{{n}}说干就干，我火速从服务器拉取了nginx的配置文件，proxy_pass往上面一甩，访问页面，砰的一下502{{s}}Bad{{s}}Gateway——{{s}}{{s}}{{n}}{{n}}![no{{s}}happiness](https://cdn2.imbottle.com/uploads/20210128od/happinessgonewithinaclap.jpg){{s}}{{s}}{{n}}{{n}}改了很多配置结果都不行，终究我放弃了使用nginx做反代。接下来怎么办呢？我左晃晃右看看，又晃到了卜卜口的站点，发现他那边现在新浪图床的图片全部用了反代（新浪图床之前开了防盗链）。我脑袋一热，此即吾所欲也！拿php写个反代脚本不就行了吗！**（现在想一下发现我真的需要扩展技术栈了，不能天天只绕着php跑了(ノへ￣、){{s}}）**{{s}}{{s}}{{n}}{{n}}说干就干，整体思路其实也蛮简单的：{{n}}&amp;gt;{{s}}1.首先从请求URI中拿到直链，判断是不是onedrive相关{{s}}{{s}}{{s}}{{n}}&amp;gt;{{s}}2.从onedrive源服务器抓取文件流和标头header，输出到页面上{{s}}{{s}}{{n}}{{n}}我于是拿出**get\_headers**和**file\_get\_content**，一个小时不到整了个反代出来。我兴致勃勃地试了一张图片的直链，很快图片出现在了页面上，我意犹未尽地上了一条视频直链，结果php临时内存就被撑爆了Σ(っ{{s}}°Д{{s}}°;)っ{{s}}{{s}}{{n}}{{n}}![大丈夫](https://cdn2.imbottle.com/uploads/20210128od/dazhangfu.jpg){{s}}{{s}}{{n}}{{n}}**file\_get\_content**会将文件先写到内存变量内等待操作，然而鉴于我只有一些小内存机，这个方案只能pass了（本身也性能堪忧）{{s}}{{s}}{{n}}{{n}}于是咱又开始到处逛，忽然看到我以前写BottleBlog用到了ob缓存和filesystem函数，发觉：这不是可行嘛！于是再次开工。这次延展一下想法，在我调用了**ob\_start();**后，输出到页面上的内容会被暂时保存在ob缓存中，只要我一小撮一小撮读取输出到ob缓存中然后flush();输出到浏览器，就能节省不少内存了。{{s}}{{s}}{{n}}{{n}}鼓捣了一个多小时，终于给整完了。主要思路是先由fopen开启文件流，在ob缓存区fread读取并推动文件指针，一部分一部分输出到页面上，最后由feof判断指针是否到文件末尾。测试了一下，一切顺利，我便火速给OdIndex写了个proxy配置项，这样可以直接引用我onedrive网盘的文件当直链了，妙哉。{{s}}{{s}}{{n}}{{n}}![GoodYeah](https://cdn2.imbottle.com/uploads/20210128od/goodyeah.jpg){{s}}{{s}}{{n}}{{n}}这之后我忙着备战高考去了。当一切尘埃落定，我又回来盘了一下这个简单的代理脚本，突然发现其只有简简单单的下载转发功能，当我在video标签内引入代理直链的时候发现浏览器要把视频全部下载到硬盘再播放，看了一下网络监视，发现我返回的是200{{s}}OK状态而不是206{{s}}Partial{{s}}Content.{{s}}{{s}}{{n}}{{n}}于是后来我首先是把返回码改成了206，再顺便顺应流媒体加了Range头，测试发现一切完好。但当我右键下载文件时却提示我“空文件，无法下载”，这个问题当时让我百思不得其解。直到在大学里摸鱼的一个下午，我突然又想回到状态码这件事上，于是写了个判断规则，如果用户请求的时候浏览器没有带range头就是要下载文件，返回200，简简单单就解决了...{{s}}{{s}}{{n}}{{n}}至此脚本文件本身已经没有问题，我便开始寻找能&lt;del&gt;白嫖&lt;/del&gt;托管这个代理脚本的服务。{{n}}{{n}}首先我在我自己仅有的几台外国机子上试了个遍，主要问题是上午反代效果还不错，但是到下午直至晚上速度直线下滑，于是咱暂时放弃了在自己机子上托管的想法，决定去找找类似于SAE的轻量云服务平台。{{s}}{{s}}{{n}}{{n}}果不其然，有天浏览v2ex帖子的时候咱发现了Heroku这家，便火速通过github部署上线了这个代理脚本，测试结果可谓是十分理想。美中不足的是这家服务商限制每个月550实例运行小时，如果绑定信用卡能升级到1000小时，咱现在手中也没信用卡，便放弃了这个想法。{{s}}{{s}}{{n}}{{n}}总算从大一上学期解放回到家，我第一件事便是测试heroku的线路在电信宽带下的表现如何（宿舍是移动网），结果有点出乎我所料——完全跑不动，看来只能继续折腾找落脚点了。{{s}}{{s}}{{n}}{{n}}![GoodYeah](https://cdn2.imbottle.com/uploads/20210128od/tired.jpg){{s}}{{s}}{{n}}{{n}}最开始咱找了几家免费的外国虚拟主机，效果都不佳。想花钱买点好的吧，发现大多数都是限制流量的，反代的一生之敌就是流量限制了！(ノへ￣、){{s}}{{s}}（不过虚拟主机服务面向也不包括我这个就是了）{{s}}{{s}}{{n}}{{n}}后来我绕了回来，用cloudflare{{s}}workers反代herokuapp，整了个套娃式结构，结果也是一到晚上直接跑不动。在网上搜到了半天，偶然看到一位博主写的nginx反代onedrive，好家伙，这波是回到梦开始的地方。{{s}}{{s}}{{n}}{{n}}依照这位博主的步骤，我竟然还成功了，nginx反代有个很奇怪的地方，我规则里写用二级目录和用根域名在实际速度效果上是一个地下一个天上，即使咱后来还把proxy_buffering给关了，依旧无济于事。根域名虽然速度效果非常可观，但是我发现服务器cpu飞彪，如果同时有两个人以上浏览相关资源服务器就快撑不住了，无奈我又只能放弃nginx反代回到php的脚本...{{s}}{{s}}{{s}}{{n}}{{n}}到最后我意识到，服务器逃不过高峰期的影响，我找个线路好的免费cdn不就行了...在网上搜了半天国际cdn，偶然发现随客云他们家有个免费的gjcdn，我便花了点时间接入并测试，发现无论是电信还是移动表现都非常好，而且日夜畅通，不过就是不知道他们家的免费服务能支持多久了...{{s}}{{s}}{{n}}{{n}}不过总算让我达到目的了，看到加载飞快的外链视频，我不禁露出了欣慰的笑容(๑•̀ㅂ•́)و✧{{s}}{{s}}{{n}}{{n}}（不过看hostloc老哥说好像onedrive{{s}}E3/E5的连接速度最近有明显回升，嘛，都无所谓了，咱用的个人版来着）{{s}}{{s}}{{n}}{{n}}来一段AMV助助兴~[我信了你的邪]{{s}}I{{s}}believe{{s}}what{{s}}you{{s}}said{{s}}{{s}}{{s}}来自up主**第谷新星**{{s}}{{s}}{{n}}{{n}}原视频链接：&lt;a{{s}}href=&quot;https://www.bilibili.com/video/BV1HX4y1T7Bz&quot;{{s}}target=&quot;_blank&quot;&gt;https://www.bilibili.com/video/BV1HX4y1T7Bz&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}&lt;video{{s}}src=&quot;https://od.xbottle.top/Videos/Abroad/[RickAstley]NeverGonnaGiveYouUp.mp4&quot;{{s}}controls=&quot;controls&quot;{{s}}style=&quot;max-width:100%;&quot;&gt;&lt;/video&gt;{{s}}{{s}}{{n}}{{n}}{{n}}&lt;script&gt;/*bblock.s();*/&lt;/script&gt;{{s}}{{s}}{(PostContentEnd)}{(PostTag)}咸鱼技术{(PostTagEnd)}{(PostID)}267{(PostIDEnd)}{(PostCover)}none{(PostCoverEnd)}<div style='display:none;'>{(PageType)}post.html{(PageTypeEnd)}</div><script src="./main.js?233"></script></body></div>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="从小时起我一直蛮喜欢免费低成本的东西，这也养成了我喜欢折腾的性格。好好想想，免费、稳定、速度这三者有共存过吗。没错，既然免费了，稳定和速度都成了待选项目。直到我遇到了onedrive（国际..." /><meta name="keywords" content="咸鱼技术,Bottle小站" /></head><loadingarea></loadingarea><div id='container'><style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>{(MainTitle)}<title>反向代理Onedrive之路-Bottle小站</title>{(MainTitleEnd)}<body>{(PostTitle)}反向代理Onedrive之路{(PostTitleEnd)}{(PostDate)}20210128{(PostDateEnd)}{(PostContent)}从小时起我一直蛮喜欢&lt;del&gt;免费&lt;/del&gt;低成本的东西，这也养成了我喜欢折腾的性格。好好想想，免费、稳定、速度这三者有共存过吗。没错，既然免费了，稳定和速度都成了待选项目。  
+
+![the truth](https://cdn2.imbottle.com/uploads/20210128od/truthoffree.jpeg)  
+
+直到我遇到了onedrive（国际版），我发现这玩意免费和稳定都有了，就缺了个那啥速度。这我可不能坐着不管了，得想点办法加快连接速度，方法总比困难多&lt;del&gt;（需要钱的方法除外）&lt;/del&gt;  
+
+![the truth](https://cdn2.imbottle.com/uploads/20210128od/bukunle.jpg)  
+
+一切要从去年初开始说起，在把Heymind的onedrive workers版移植到PHP脚本&lt;del&gt;并加了一堆奇怪的功能后&lt;/del&gt;，我开始注意到分享出来直链的速度问题。    
+
+&lt;bblock style=&quot;display:none;&quot;&gt;
+{
+ &quot;title&quot;: &quot;Blowing&quot;,
+ &quot;artist&quot;: &quot;NiL&quot;,
+ &quot;src&quot;: &quot;https://api.xbottle.top/ne/url/1484411556&quot;,
+ &quot;cover&quot;: &quot;https://api.xbottle.top/ne/cover/1484411556&quot;,
+ &quot;float&quot;: &quot;right&quot;
+}
+&lt;/bblock&gt;  
+
+参考：&lt;a href=&quot;https://www.zhihu.com/question/23558599&quot; target=&quot;_blank&quot;&gt;微软为什么不在中国设 OneDrive 服务器？&lt;/a&gt;  
+
+微软国际服务因为特殊原因没有在大陆设立服务器，因此大多情况下对于我们来说其中大多数服务都是有一定延迟的（比如我去年开始用To-do记录事项，结果不同设备同步在高峰期很鸡肋）  
+
+原来的oneindex有一项特色便是“不过服务器流量”，但在当前的情况看来实在满足不了很多需求。转念一想，反向代理onedrive说不定可行嘛！  
+
+说干就干，我火速从服务器拉取了nginx的配置文件，proxy_pass往上面一甩，访问页面，砰的一下502 Bad Gateway——  
+
+![no happiness](https://cdn2.imbottle.com/uploads/20210128od/happinessgonewithinaclap.jpg)  
+
+改了很多配置结果都不行，终究我放弃了使用nginx做反代。接下来怎么办呢？我左晃晃右看看，又晃到了卜卜口的站点，发现他那边现在新浪图床的图片全部用了反代（新浪图床之前开了防盗链）。我脑袋一热，此即吾所欲也！拿php写个反代脚本不就行了吗！**（现在想一下发现我真的需要扩展技术栈了，不能天天只绕着php跑了(ノへ￣、) ）**  
+
+说干就干，整体思路其实也蛮简单的：
+&amp;gt; 1.首先从请求URI中拿到直链，判断是不是onedrive相关   
+&amp;gt; 2.从onedrive源服务器抓取文件流和标头header，输出到页面上  
+
+我于是拿出**get\_headers**和**file\_get\_content**，一个小时不到整了个反代出来。我兴致勃勃地试了一张图片的直链，很快图片出现在了页面上，我意犹未尽地上了一条视频直链，结果php临时内存就被撑爆了Σ(っ °Д °;)っ  
+
+![大丈夫](https://cdn2.imbottle.com/uploads/20210128od/dazhangfu.jpg)  
+
+**file\_get\_content**会将文件先写到内存变量内等待操作，然而鉴于我只有一些小内存机，这个方案只能pass了（本身也性能堪忧）  
+
+于是咱又开始到处逛，忽然看到我以前写BottleBlog用到了ob缓存和filesystem函数，发觉：这不是可行嘛！于是再次开工。这次延展一下想法，在我调用了**ob\_start();**后，输出到页面上的内容会被暂时保存在ob缓存中，只要我一小撮一小撮读取输出到ob缓存中然后flush();输出到浏览器，就能节省不少内存了。  
+
+鼓捣了一个多小时，终于给整完了。主要思路是先由fopen开启文件流，在ob缓存区fread读取并推动文件指针，一部分一部分输出到页面上，最后由feof判断指针是否到文件末尾。测试了一下，一切顺利，我便火速给OdIndex写了个proxy配置项，这样可以直接引用我onedrive网盘的文件当直链了，妙哉。  
+
+![GoodYeah](https://cdn2.imbottle.com/uploads/20210128od/goodyeah.jpg)  
+
+这之后我忙着备战高考去了。当一切尘埃落定，我又回来盘了一下这个简单的代理脚本，突然发现其只有简简单单的下载转发功能，当我在video标签内引入代理直链的时候发现浏览器要把视频全部下载到硬盘再播放，看了一下网络监视，发现我返回的是200 OK状态而不是206 Partial Content.  
+
+于是后来我首先是把返回码改成了206，再顺便顺应流媒体加了Range头，测试发现一切完好。但当我右键下载文件时却提示我“空文件，无法下载”，这个问题当时让我百思不得其解。直到在大学里摸鱼的一个下午，我突然又想回到状态码这件事上，于是写了个判断规则，如果用户请求的时候浏览器没有带range头就是要下载文件，返回200，简简单单就解决了...  
+
+至此脚本文件本身已经没有问题，我便开始寻找能&lt;del&gt;白嫖&lt;/del&gt;托管这个代理脚本的服务。
+
+首先我在我自己仅有的几台外国机子上试了个遍，主要问题是上午反代效果还不错，但是到下午直至晚上速度直线下滑，于是咱暂时放弃了在自己机子上托管的想法，决定去找找类似于SAE的轻量云服务平台。  
+
+果不其然，有天浏览v2ex帖子的时候咱发现了Heroku这家，便火速通过github部署上线了这个代理脚本，测试结果可谓是十分理想。美中不足的是这家服务商限制每个月550实例运行小时，如果绑定信用卡能升级到1000小时，咱现在手中也没信用卡，便放弃了这个想法。  
+
+总算从大一上学期解放回到家，我第一件事便是测试heroku的线路在电信宽带下的表现如何（宿舍是移动网），结果有点出乎我所料——完全跑不动，看来只能继续折腾找落脚点了。  
+
+![GoodYeah](https://cdn2.imbottle.com/uploads/20210128od/tired.jpg)  
+
+最开始咱找了几家免费的外国虚拟主机，效果都不佳。想花钱买点好的吧，发现大多数都是限制流量的，反代的一生之敌就是流量限制了！(ノへ￣、)  （不过虚拟主机服务面向也不包括我这个就是了）  
+
+后来我绕了回来，用cloudflare workers反代herokuapp，整了个套娃式结构，结果也是一到晚上直接跑不动。在网上搜到了半天，偶然看到一位博主写的nginx反代onedrive，好家伙，这波是回到梦开始的地方。  
+
+依照这位博主的步骤，我竟然还成功了，nginx反代有个很奇怪的地方，我规则里写用二级目录和用根域名在实际速度效果上是一个地下一个天上，即使咱后来还把proxy_buffering给关了，依旧无济于事。根域名虽然速度效果非常可观，但是我发现服务器cpu飞彪，如果同时有两个人以上浏览相关资源服务器就快撑不住了，无奈我又只能放弃nginx反代回到php的脚本...   
+
+到最后我意识到，服务器逃不过高峰期的影响，我找个线路好的免费cdn不就行了...在网上搜了半天国际cdn，偶然发现随客云他们家有个免费的gjcdn，我便花了点时间接入并测试，发现无论是电信还是移动表现都非常好，而且日夜畅通，不过就是不知道他们家的免费服务能支持多久了...  
+
+不过总算让我达到目的了，看到加载飞快的外链视频，我不禁露出了欣慰的笑容(๑•̀ㅂ•́)و✧  
+
+（不过看hostloc老哥说好像onedrive E3/E5的连接速度最近有明显回升，嘛，都无所谓了，咱用的个人版来着）  
+
+来一段AMV助助兴~[我信了你的邪] I believe what you said   来自up主**第谷新星**  
+
+原视频链接：&lt;a href=&quot;https://www.bilibili.com/video/BV1HX4y1T7Bz&quot; target=&quot;_blank&quot;&gt;https://www.bilibili.com/video/BV1HX4y1T7Bz&lt;/a&gt;  
+
+&lt;video src=&quot;https://od.xbottle.top/Videos/Abroad/[RickAstley]NeverGonnaGiveYouUp.mp4&quot; controls=&quot;controls&quot; style=&quot;max-width:100%;&quot;&gt;&lt;/video&gt;  
+
+
+&lt;script&gt;/*bblock.s();*/&lt;/script&gt;  {(PostContentEnd)}{(PostTag)}咸鱼技术{(PostTagEnd)}{(PostID)}267{(PostIDEnd)}{(PostCover)}none{(PostCoverEnd)}<div style='display:none;'>{(PageType)}post.html{(PageTypeEnd)}</div><script src="./main.js?233"></script></body></div>

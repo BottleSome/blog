@@ -1,1 +1,119 @@
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="今日下午阳光正好，散步回家的我看到新文章有人发表了评论，便也回复了一下。转念一想，现在博客所用的Comment.B系统评论互动并不像别的博客有邮件提醒，导致略显冷漠，遂想着做个发邮件队列。想法一..." /><meta name="keywords" content="咸鱼技术,Bottle小站" /></head><!--[LoadingArea]--><div id='container'><style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>{(MainTitle)}<title>解决Office365订阅的SMTP服务器验证问题-Bottle小站</title>{(MainTitleEnd)}<body>{(PostTitle)}解决Office365订阅的SMTP服务器验证问题{(PostTitleEnd)}{(PostDate)}20210206{(PostDateEnd)}{(PostContent)}今日下午阳光正好，散步回家的我看到新文章有人发表了评论，便也回复了一下。转念一想，现在博客所用的Comment.B系统评论互动并不像别的博客有邮件提醒，导致略显冷漠，遂想着做个发邮件队列。{{s}}{{s}}{{n}}{{n}}想法一出，群里小伙伴很快给我推荐了PHPMailer类，快速上手后我先试了一下QQ邮箱的smtp服务器，响应速度很快。当然，喜欢折腾的咱怎么可能这么快就满足了呢！突然想起来我有E5订阅的微软账户，相比于QQ的额度肯定要大很多。于是我火速查询outlook的smtp服务器套了上去，问题便出现了：{{n}}{{n}}&amp;gt;{{s}}SMTP{{s}}Error:{{s}}Could{{s}}not{{s}}authenticate.{{s}}{{s}}{{n}}{{n}}这一波可谓是把我搞得满头雾水了，我把个人账号放上去验证试了一下发现可以正常发出邮件，偏偏到了E5订阅的这个账号就不行了。{{s}}{{s}}{{n}}{{n}}![smile{{s}}disappears](https://cdn2.imbottle.com/uploads/202102smtp/smiledisappears.png){{s}}{{s}}{{n}}{{n}}沉头思考了一会儿，想起来订阅套餐里还有个叫Exchange的玩意，我于是去365管理面板找了一下，确实找到了Exchange管理，顺带还摸到了相关文档。结果发现Exchange和outlook也是共通的，用的同一个smtp服务器...{{s}}{{s}}{{n}}{{n}}&lt;bblock{{s}}style=&quot;display:none;&quot;&gt;{{n}}{{{n}}{{s}}&quot;title&quot;:{{s}}&quot;GETCHA!&quot;,{{n}}{{s}}&quot;artist&quot;:{{s}}&quot;初音ミク{{s}}/{{s}}GUMI{{s}}/{{s}}ギガP{{s}}/{{s}}KIRA&quot;,{{n}}{{s}}&quot;src&quot;:{{s}}&quot;https://api.xbottle.top/ne/url/1479930555&quot;,{{n}}{{s}}&quot;cover&quot;:{{s}}&quot;https://api.xbottle.top/ne/cover/1479930555&quot;,{{n}}{{s}}&quot;float&quot;:{{s}}&quot;right&quot;{{n}}}{{n}}&lt;/bblock&gt;{{n}}{{n}}进入用户管理，我打开了邮件相关的设置，终于找到了一个相关的设置：{{s}}{{s}}{{n}}{{n}}![mail{{s}}app](https://cdn2.imbottle.com/uploads/202102smtp/managemailapp.png){{s}}{{s}}{{n}}{{n}}但“经过验证的smtp”那个选项我怎么改也是无济于事。{{n}}{{n}}接下来我开启了PHPMailer的DEBUG模式，输出调用信息，与此同时在谷歌上面搜了一下**Office365{{s}}smtp{{s}}Could{{s}}not{{s}}authenticate**，发现了一个微软社区的求助帖：{{s}}{{s}}{{n}}{{n}}![communityhelp](https://cdn2.imbottle.com/uploads/202102smtp/mscom.png){{s}}{{s}}{{n}}{{n}}&lt;a{{s}}href=&quot;https://answers.microsoft.com/en-us/msoffice/forum/msoffice_o365admin-mso_other-mso_o365b/office-365-smtp-authentication-failing-even-with/4e2dcfc4-2626-4c3b-a945-9ff1b3404539&quot;{{s}}target=&quot;_blank&quot;&gt;https://answers.microsoft.com/en-us/msoffice/forum/msoffice_o365admin-mso_other-mso_o365b/office-365-smtp-authentication-failing-even-with/4e2dcfc4-2626-4c3b-a945-9ff1b3404539&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}简直和我遇到的状况一模一样有木有！往下看了看发现有四页回答，我瞬间放心下来了。我认为一个有用的回答是这一个：{{s}}{{s}}{{n}}{{n}}![securityproblem](https://cdn2.imbottle.com/uploads/202102smtp/ifsecurity.png){{s}}{{s}}{{n}}{{n}}可能是微软**自带的安全策略**导致的问题。突然想起我登录用管理员账号创建的子账号时必须要MFA二步验证这事，我火速复现了一下，发现这玩意叫**安全默认值**。很快我查到了文档：{{s}}{{s}}{{n}}{{n}}&lt;a{{s}}href=&quot;https://docs.microsoft.com/zh-cn/azure/active-directory/fundamentals/concept-fundamentals-security-defaults#disabling-security-defaults&quot;{{s}}target=&quot;_blank&quot;&gt;https://docs.microsoft.com/zh-cn/azure/active-directory/fundamentals/concept-fundamentals-security-defaults#disabling-security-defaults&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}很快咱便**在Azure{{s}}Portal禁用了安全默认值**，还别说，这子账号登录真就不需要强制二步验证了。但是呢，smtp服务器还是返回无法验证的错误。（不过起码把子账号没法正常用的问题解决了，可喜可贺）{{s}}{{s}}{{s}}{{s}}{{n}}{{n}}![helpful{{s}}answer](https://cdn2.imbottle.com/uploads/202102smtp/helpfulanswer.png){{s}}{{s}}{{n}}{{n}}翻了一页终于找到解决问题的老铁了，我再重新审视了一下DEBUG信息，发现核心错误集中在**SmtpClientAuthentication{{s}}is{{s}}disabled{{s}}for{{s}}the{{s}}Mailbox.**这句话上，也就是说微软默认关闭了SmtpClientAuthentication服务以保证安全性，我们要做的是重开它。{{s}}{{s}}{{n}}{{n}}接下来我总结一下解决流程：{{s}}{{s}}{{n}}{{n}}1.{{s}}以管理员模式运行**Windows{{s}}Powershell**，首先参照文档安装**EXO{{s}}V2**模块：{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}&lt;a{{s}}href=&quot;https://docs.microsoft.com/zh-cn/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#install-and-maintain-the-exo-v2-module&quot;{{s}}target=&quot;_blank&quot;&gt;https://docs.microsoft.com/zh-cn/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#install-and-maintain-the-exo-v2-module&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}2.{{s}}接下来**先加载EXO{{s}}V2模块**：{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{s}}{{s}}{{s}}{{s}}Import-Module{{s}}ExchangeOnlineManagement{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}然后创建凭据请求：{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{s}}{{s}}{{s}}{{s}}$UserCredential{{s}}={{s}}Get-Credential{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{s}}{{s}}{{s}}{{s}}&lt;a{{s}}href=&quot;https://docs.microsoft.com/zh-cn/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps#connect-to-exchange-online-powershell-using-modern-authentication&quot;{{s}}target=&quot;_blank&quot;&gt;https://docs.microsoft.com/zh-cn/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps#connect-to-exchange-online-powershell-using-modern-authentication&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}3.{{s}}通过登录凭据创建Exchange会话：{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{s}}{{s}}{{s}}{{s}}$Session{{s}}={{s}}New-PSSession{{s}}-ConfigurationName{{s}}Microsoft.Exchange{{s}}-ConnectionUri{{s}}https://outlook.office365.com/powershell-liveid/{{s}}-Credential{{s}}$UserCredential{{s}}-Authentication{{s}}Basic{{s}}-AllowRedirection{{s}}{{s}}{{s}}{{n}}{{n}}{{s}}{{s}}{{s}}{{s}}Import-PSSession{{s}}$Session{{s}}-DisableNameChecking{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{s}}{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}后一步可能需要稍等一会儿，视网络情况而定{{s}}{{s}}{{s}}{{n}}{{n}}4.{{s}}检查配置：{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{s}}{{s}}{{s}}{{s}}Get-TransportConfig{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{s}}{{s}}{{s}}{{s}}八成能看到**SmtpClientAuthenticationDisabled**的值是True（如果是False还没法过smtp的验证那真的无能为力了）{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}{{n}}5.{{s}}改变SmtpClientAuthenticationDisabled配置项为false:{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{s}}{{s}}{{s}}{{s}}Set-TransportConfig{{s}}-SmtpClientAuthenticationDisabled{{s}}$false{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{s}}{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}可以使用Get-TransportConfig检查一下配置是否生效{{s}}{{s}}{{n}}{{n}}6.{{s}}销毁会话{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{s}}{{s}}{{s}}{{s}}Remove-PSSession{{s}}$Session{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}```{{n}}{{n}}7.{{s}}在Microsoft365管理中心（admin{{s}}center）：{{s}}{{s}}{{n}}{{s}}{{s}}{{s}}{{s}}选择用户-&amp;gt;点击用户名-&amp;gt;邮件-&amp;gt;管理电子邮件应用-&amp;gt;勾选**经过身份验证的SMTP**{{s}}{{s}}{{n}}{{n}}{{s}}{{s}}{{s}}{{s}}![laststep](https://cdn2.imbottle.com/uploads/202102smtp/laststep.png){{s}}{{s}}{{n}}{{n}}这样下来就大体完成了，最后可以做点工作来确保安全性。这里建议单独开一个不需要二步验证的子账号用来发送邮件，主账号还是开启二步验证确保安全：{{s}}{{s}}{{n}}{{n}}![mfa](https://cdn2.imbottle.com/uploads/202102smtp/mfa.png){{s}}{{s}}{{n}}{{n}}![mfa](https://cdn2.imbottle.com/uploads/202102smtp/mfa2.png){{s}}{{s}}{{n}}{{n}}再测试了一下smtp服务器，完美解决问题！{{s}}{{s}}{{n}}{{n}}![success](https://cdn2.imbottle.com/uploads/202102smtp/receive.png){{s}}{{s}}{{n}}{{n}}好了，是时候继续去折腾Comment.B的回复邮件提醒了，各位再会~{{s}}{{s}}{{n}}{{n}}![happy](https://cdn2.imbottle.com/uploads/202102smtp/guesshappy.jpg){{s}}{{s}}{{n}}{{n}}{{n}}&lt;script&gt;/*bblock.s();*/&lt;/script&gt;{{n}}{(PostContentEnd)}{(PostTag)}咸鱼技术{(PostTagEnd)}{(PostID)}268{(PostIDEnd)}{(PostCover)}none{(PostCoverEnd)}<div style='display:none;'>{(PageType)}post.html{(PageTypeEnd)}</div><script src="./main.js?233"></script></body></div>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="今日下午阳光正好，散步回家的我看到新文章有人发表了评论，便也回复了一下。转念一想，现在博客所用的Comment.B系统评论互动并不像别的博客有邮件提醒，导致略显冷漠，遂想着做个发邮件队列。想法一..." /><meta name="keywords" content="咸鱼技术,Bottle小站" /></head><loadingarea></loadingarea><div id='container'><style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>{(MainTitle)}<title>解决Office365订阅的SMTP服务器验证问题-Bottle小站</title>{(MainTitleEnd)}<body>{(PostTitle)}解决Office365订阅的SMTP服务器验证问题{(PostTitleEnd)}{(PostDate)}20210206{(PostDateEnd)}{(PostContent)}今日下午阳光正好，散步回家的我看到新文章有人发表了评论，便也回复了一下。转念一想，现在博客所用的Comment.B系统评论互动并不像别的博客有邮件提醒，导致略显冷漠，遂想着做个发邮件队列。  
+
+想法一出，群里小伙伴很快给我推荐了PHPMailer类，快速上手后我先试了一下QQ邮箱的smtp服务器，响应速度很快。当然，喜欢折腾的咱怎么可能这么快就满足了呢！突然想起来我有E5订阅的微软账户，相比于QQ的额度肯定要大很多。于是我火速查询outlook的smtp服务器套了上去，问题便出现了：
+
+&amp;gt; SMTP Error: Could not authenticate.  
+
+这一波可谓是把我搞得满头雾水了，我把个人账号放上去验证试了一下发现可以正常发出邮件，偏偏到了E5订阅的这个账号就不行了。  
+
+![smile disappears](https://cdn2.imbottle.com/uploads/202102smtp/smiledisappears.png)  
+
+沉头思考了一会儿，想起来订阅套餐里还有个叫Exchange的玩意，我于是去365管理面板找了一下，确实找到了Exchange管理，顺带还摸到了相关文档。结果发现Exchange和outlook也是共通的，用的同一个smtp服务器...  
+
+&lt;bblock style=&quot;display:none;&quot;&gt;
+{
+ &quot;title&quot;: &quot;GETCHA!&quot;,
+ &quot;artist&quot;: &quot;初音ミク / GUMI / ギガP / KIRA&quot;,
+ &quot;src&quot;: &quot;https://api.xbottle.top/ne/url/1479930555&quot;,
+ &quot;cover&quot;: &quot;https://api.xbottle.top/ne/cover/1479930555&quot;,
+ &quot;float&quot;: &quot;right&quot;
+}
+&lt;/bblock&gt;
+
+进入用户管理，我打开了邮件相关的设置，终于找到了一个相关的设置：  
+
+![mail app](https://cdn2.imbottle.com/uploads/202102smtp/managemailapp.png)  
+
+但“经过验证的smtp”那个选项我怎么改也是无济于事。
+
+接下来我开启了PHPMailer的DEBUG模式，输出调用信息，与此同时在谷歌上面搜了一下**Office365 smtp Could not authenticate**，发现了一个微软社区的求助帖：  
+
+![communityhelp](https://cdn2.imbottle.com/uploads/202102smtp/mscom.png)  
+
+&lt;a href=&quot;https://answers.microsoft.com/en-us/msoffice/forum/msoffice_o365admin-mso_other-mso_o365b/office-365-smtp-authentication-failing-even-with/4e2dcfc4-2626-4c3b-a945-9ff1b3404539&quot; target=&quot;_blank&quot;&gt;https://answers.microsoft.com/en-us/msoffice/forum/msoffice_o365admin-mso_other-mso_o365b/office-365-smtp-authentication-failing-even-with/4e2dcfc4-2626-4c3b-a945-9ff1b3404539&lt;/a&gt;  
+
+简直和我遇到的状况一模一样有木有！往下看了看发现有四页回答，我瞬间放心下来了。我认为一个有用的回答是这一个：  
+
+![securityproblem](https://cdn2.imbottle.com/uploads/202102smtp/ifsecurity.png)  
+
+可能是微软**自带的安全策略**导致的问题。突然想起我登录用管理员账号创建的子账号时必须要MFA二步验证这事，我火速复现了一下，发现这玩意叫**安全默认值**。很快我查到了文档：  
+
+&lt;a href=&quot;https://docs.microsoft.com/zh-cn/azure/active-directory/fundamentals/concept-fundamentals-security-defaults#disabling-security-defaults&quot; target=&quot;_blank&quot;&gt;https://docs.microsoft.com/zh-cn/azure/active-directory/fundamentals/concept-fundamentals-security-defaults#disabling-security-defaults&lt;/a&gt;  
+
+很快咱便**在Azure Portal禁用了安全默认值**，还别说，这子账号登录真就不需要强制二步验证了。但是呢，smtp服务器还是返回无法验证的错误。（不过起码把子账号没法正常用的问题解决了，可喜可贺）    
+
+![helpful answer](https://cdn2.imbottle.com/uploads/202102smtp/helpfulanswer.png)  
+
+翻了一页终于找到解决问题的老铁了，我再重新审视了一下DEBUG信息，发现核心错误集中在**SmtpClientAuthentication is disabled for the Mailbox.**这句话上，也就是说微软默认关闭了SmtpClientAuthentication服务以保证安全性，我们要做的是重开它。  
+
+接下来我总结一下解决流程：  
+
+1. 以管理员模式运行**Windows Powershell**，首先参照文档安装**EXO V2**模块：  
+    &lt;a href=&quot;https://docs.microsoft.com/zh-cn/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#install-and-maintain-the-exo-v2-module&quot; target=&quot;_blank&quot;&gt;https://docs.microsoft.com/zh-cn/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#install-and-maintain-the-exo-v2-module&lt;/a&gt;  
+
+2. 接下来**先加载EXO V2模块**：  
+    
+    ```
+    Import-Module ExchangeOnlineManagement   
+    ```  
+    
+    然后创建凭据请求：  
+    
+    ```
+    $UserCredential = Get-Credential   
+    ```
+    &lt;a href=&quot;https://docs.microsoft.com/zh-cn/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps#connect-to-exchange-online-powershell-using-modern-authentication&quot; target=&quot;_blank&quot;&gt;https://docs.microsoft.com/zh-cn/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps#connect-to-exchange-online-powershell-using-modern-authentication&lt;/a&gt;  
+
+3. 通过登录凭据创建Exchange会话：  
+    
+    ```
+    $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection   
+
+    Import-PSSession $Session -DisableNameChecking   
+    ```
+    
+    后一步可能需要稍等一会儿，视网络情况而定   
+
+4. 检查配置：  
+    
+    ```
+    Get-TransportConfig  
+    ```
+    八成能看到**SmtpClientAuthenticationDisabled**的值是True（如果是False还没法过smtp的验证那真的无能为力了） 
+    
+5. 改变SmtpClientAuthenticationDisabled配置项为false:  
+    
+    ```
+    Set-TransportConfig -SmtpClientAuthenticationDisabled $false  
+    ```
+    
+    可以使用Get-TransportConfig检查一下配置是否生效  
+
+6. 销毁会话  
+    
+    ```
+    Remove-PSSession $Session  
+    ```
+
+7. 在Microsoft365管理中心（admin center）：  
+    选择用户-&amp;gt;点击用户名-&amp;gt;邮件-&amp;gt;管理电子邮件应用-&amp;gt;勾选**经过身份验证的SMTP**  
+
+    ![laststep](https://cdn2.imbottle.com/uploads/202102smtp/laststep.png)  
+
+这样下来就大体完成了，最后可以做点工作来确保安全性。这里建议单独开一个不需要二步验证的子账号用来发送邮件，主账号还是开启二步验证确保安全：  
+
+![mfa](https://cdn2.imbottle.com/uploads/202102smtp/mfa.png)  
+
+![mfa](https://cdn2.imbottle.com/uploads/202102smtp/mfa2.png)  
+
+再测试了一下smtp服务器，完美解决问题！  
+
+![success](https://cdn2.imbottle.com/uploads/202102smtp/receive.png)  
+
+好了，是时候继续去折腾Comment.B的回复邮件提醒了，各位再会~  
+
+![happy](https://cdn2.imbottle.com/uploads/202102smtp/guesshappy.jpg)  
+
+
+&lt;script&gt;/*bblock.s();*/&lt;/script&gt;
+{(PostContentEnd)}{(PostTag)}咸鱼技术{(PostTagEnd)}{(PostID)}268{(PostIDEnd)}{(PostCover)}none{(PostCoverEnd)}<div style='display:none;'>{(PageType)}post.html{(PageTypeEnd)}</div><script src="./main.js?233"></script></body></div>

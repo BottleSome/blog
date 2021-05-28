@@ -1,1 +1,45 @@
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="  最近看了一篇皮皮凛的文章，瞬间被吸引了:&gt;https://qwq.best/dev/113.html什么？！，有jsdelivr这么好的东西？！好了不演了，其实早在之前我邂..." /><meta name="keywords" content="咸鱼技术,Bottle小站" /></head><!--[LoadingArea]--><div id='container'><style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>{(MainTitle)}<title>我一定要用上jsdelivr !-Bottle小站</title>{(MainTitleEnd)}<body>{(PostTitle)}我一定要用上jsdelivr !{(PostTitleEnd)}{(PostDate)}20200127{(PostDateEnd)}{(PostContent)}&lt;div{{s}}id=&quot;aplayer&quot;&gt;&lt;/div&gt;{{s}}{{s}}{{n}}{{n}}  最近看了一篇皮皮凛的文章，瞬间被吸引了:{{n}}&amp;gt;{{s}}https://qwq.best/dev/113.html{{s}}{{s}}{{s}}{{s}}{{n}}{{n}}什么？！，有jsdelivr这么好的东西？！{{s}}{{s}}{{n}}好了不演了，其实早在之前我邂逅过jsdelivr，当时发现这玩意有github仓库加速服务，便想着后来用于文件储存，至于为啥后来放弃了————因为缓存问题！{{s}}{{s}}{{n}}{{n}}皮皮凛的文章成功勾起了我对于jsdelivr的兴趣，当即把博客套上了jsdelivr...当然一切不会顺风顺水，马上就出现了错误：{{s}}{{s}}{{n}}{{n}}![](https://cdn2.imbottle.com/uploads/202001jsdelivr/cors.png){{s}}{{s}}{{s}}{{n}}{{n}}一眼望去，嗨，这玩意还设置了跨域？！于是借着谷歌盘了半天绕过跨域，啥都没整出来，后来定睛一看，只是请求头中多了个'authorization'而已，我晕!{{s}}{{s}}{{n}}{{n}}总算是兴高采烈地改完文件后，发现一个重大问题——博客main.json是频繁更新的，而jsdelivr缓存非常长时间....无奈我只能拿出api服务器，写了个爬最新commit的api。{{s}}{{s}}{{n}}{{n}}通过请求api，服务器爬取仓库最新commit标识，附加在jsdelivr的请求中后通过header跳转，总算是暂时解决了缓存问题。{{s}}{{s}}{{n}}{{n}}然而....api服务器的BottleWall还在测试中，不太稳定，测试了几次直接connection{{s}}lost了...而且转过头来，用个jsdelivr还要过自家的服务器，这算什么用法=A=....{{s}}{{s}}{{s}}{{n}}{{n}}好在**Ghosin**提醒我了可以让main.json有个随机后缀，这样就可以解决缓存的问题了。于是改了一天-O-发布器和前端main.js后，我总算是用上jsdelivr了!{{n}}现在博客的索引文件和library文件全都靠jsdelivr了，加载速度着实快了不少。我另外修改了一下加载逻辑，在文章页面加载不再需要索引文件~{{n}}{{n}}![](https://cdn2.imbottle.com/uploads/202001jsdelivr/vegetable.png){{s}}{{s}}{{s}}{{n}}{{n}}最新的-O-1.4.0版本已经在仓库Release.欢迎捧场~{{n}}{{n}}&lt;script&gt;/*{{n}}var{{s}}apset{{s}}={{s}}setInterval(function(){{s}}{{{n}}{{s}}{{s}}{{s}}{{s}}if{{s}}(APlayer){{s}}{{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}clearInterval(apset);{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}const{{s}}ap{{s}}={{s}}new{{s}}APlayer({{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}container:{{s}}document.getElementById('aplayer'),{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}lrcType:3,{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}audio:{{s}}[{{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}name:{{s}}'Wave',{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}artist:{{s}}'花たん',{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}url:{{s}}'{{s}}https://api.xbottle.top/ne/url/27548257',{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}cover:{{s}}'https://api.xbottle.top/ne/cover/27548257',{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}lrc:{{s}}'https://api.xbottle.top/ne/lrc/27548257'{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}}]{{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}}){{n}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}{{s}}};{{n}}},{{s}}1000);{{n}}*/&lt;/script&gt;{(PostContentEnd)}{(PostTag)}咸鱼技术{(PostTagEnd)}{(PostID)}253{(PostIDEnd)}{(PostCover)}none{(PostCoverEnd)}<div style='display:none;'>{(PageType)}post.html{(PageTypeEnd)}</div><script src="./main.js?233"></script></body></div>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="  最近看了一篇皮皮凛的文章，瞬间被吸引了:&gt;https://qwq.best/dev/113.html什么？！，有jsdelivr这么好的东西？！好了不演了，其实早在之前我邂..." /><meta name="keywords" content="咸鱼技术,Bottle小站" /></head><loadingarea></loadingarea><div id='container'><style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>{(MainTitle)}<title>我一定要用上jsdelivr !-Bottle小站</title>{(MainTitleEnd)}<body>{(PostTitle)}我一定要用上jsdelivr !{(PostTitleEnd)}{(PostDate)}20200127{(PostDateEnd)}{(PostContent)}&lt;div id=&quot;aplayer&quot;&gt;&lt;/div&gt;  
+
+  最近看了一篇皮皮凛的文章，瞬间被吸引了:
+&amp;gt; https://qwq.best/dev/113.html    
+
+什么？！，有jsdelivr这么好的东西？！  
+好了不演了，其实早在之前我邂逅过jsdelivr，当时发现这玩意有github仓库加速服务，便想着后来用于文件储存，至于为啥后来放弃了————因为缓存问题！  
+
+皮皮凛的文章成功勾起了我对于jsdelivr的兴趣，当即把博客套上了jsdelivr...当然一切不会顺风顺水，马上就出现了错误：  
+
+![](https://cdn2.imbottle.com/uploads/202001jsdelivr/cors.png)   
+
+一眼望去，嗨，这玩意还设置了跨域？！于是借着谷歌盘了半天绕过跨域，啥都没整出来，后来定睛一看，只是请求头中多了个'authorization'而已，我晕!  
+
+总算是兴高采烈地改完文件后，发现一个重大问题——博客main.json是频繁更新的，而jsdelivr缓存非常长时间....无奈我只能拿出api服务器，写了个爬最新commit的api。  
+
+通过请求api，服务器爬取仓库最新commit标识，附加在jsdelivr的请求中后通过header跳转，总算是暂时解决了缓存问题。  
+
+然而....api服务器的BottleWall还在测试中，不太稳定，测试了几次直接connection lost了...而且转过头来，用个jsdelivr还要过自家的服务器，这算什么用法=A=....   
+
+好在**Ghosin**提醒我了可以让main.json有个随机后缀，这样就可以解决缓存的问题了。于是改了一天-O-发布器和前端main.js后，我总算是用上jsdelivr了!
+现在博客的索引文件和library文件全都靠jsdelivr了，加载速度着实快了不少。我另外修改了一下加载逻辑，在文章页面加载不再需要索引文件~
+
+![](https://cdn2.imbottle.com/uploads/202001jsdelivr/vegetable.png)   
+
+最新的-O-1.4.0版本已经在仓库Release.欢迎捧场~
+
+&lt;script&gt;/*
+var apset = setInterval(function() {
+    if (APlayer) {
+        clearInterval(apset);
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            lrcType:3,
+            audio: [{
+                name: 'Wave',
+                artist: '花たん',
+                url: ' https://api.xbottle.top/ne/url/27548257',
+                cover: 'https://api.xbottle.top/ne/cover/27548257',
+                lrc: 'https://api.xbottle.top/ne/lrc/27548257'
+            }]
+        })
+        };
+}, 1000);
+*/&lt;/script&gt;{(PostContentEnd)}{(PostTag)}咸鱼技术{(PostTagEnd)}{(PostID)}253{(PostIDEnd)}{(PostCover)}none{(PostCoverEnd)}<div style='display:none;'>{(PageType)}post.html{(PageTypeEnd)}</div><script src="./main.js?233"></script></body></div>

@@ -1,1 +1,214 @@
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="去年年初我看到了meto萨摩的博客发了篇新文章：用图床看视频是什么体验看完后顿时十分向往，有着折腾魂的我也想整个，但当时还在备战高考，便暂时搁置了（随后差不多半年也忘了这事）直到今年寒假即将..." /><meta name="keywords" content="咸鱼技术,Bottle小站" /></head><!--[LoadingArea]--><div id='container'><style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>{(MainTitle)}<title>用图床看视频的体验·改-Bottle小站</title>{(MainTitleEnd)}<body>{(PostTitle)}用图床看视频的体验·改{(PostTitleEnd)}{(PostDate)}20210305{(PostDateEnd)}{(PostContent)}去年年初我看到了meto萨摩的博客发了篇新文章：{{s}}{{s}}{{n}}&lt;a{{s}}href=&quot;https://i-meto.com/hlsjs-upimg-wrapper/&quot;{{s}}target=&quot;_blank&quot;&gt;用图床看视频是什么体验&lt;/a&gt;{{s}}{{s}}{{n}}看完后顿时十分向往，有着折腾魂的我也想整个，但当时还在备战高考，便暂时搁置了（随后差不多半年也忘了这事）{{s}}{{s}}{{n}}{{n}}直到今年寒假即将结束的时候，我突然看到群友发了个meto的upimg-cli仓库，我瞬间就想起来之前看到的meto文章，结果点进去一看并不是那个东西（meto其实也说过不开源的），我遂想到要写个脚本来分片视频并上传。{{s}}{{s}}{{s}}{{s}}{{n}}{{n}}![HehHeh](https://cdn2.imbottle.com/uploads/20210301pv/hhh.jpg!/scale/30){{s}}{{s}}{{n}}{{n}}&lt;bblock{{s}}style=&quot;display:none;&quot;&gt;{{n}}{{{n}}{{s}}&quot;title&quot;:{{s}}&quot;ShadyShady&quot;,{{n}}{{s}}&quot;artist&quot;:{{s}}&quot;削除&quot;,{{n}}{{s}}&quot;src&quot;:{{s}}&quot;https://x.bottle.moe/ne/url/41644025&quot;,{{n}}{{s}}&quot;cover&quot;:{{s}}&quot;https://x.bottle.moe/ne/cover/41644025&quot;,{{n}}{{s}}&quot;float&quot;:{{s}}&quot;right&quot;{{n}}}{{n}}&lt;/bblock&gt;{{n}}{{n}}想法和万能群友说了后，有仁兄发了篇文章链接：{{n}}&lt;a{{s}}href=&quot;https://akarin.dev/2020/02/07/alicdn-video-hosting&quot;{{s}}target=&quot;_blank&quot;&gt;搞事情：用“图床”传视频...&lt;/a&gt;{{s}}{{s}}{{n}}Akarin的这篇文章写的很详细，可以说从头到尾部甚至评论区都是有用的。{{s}}{{s}}{{n}}{{n}}我于是顺着Akarin的思路写下去，视频分片写的很顺利，我顺便加了个大TS文件自动尝试压缩，但当我写到合并个别TS文件的时候差点被逻辑绕了进去...{{s}}{{s}}{{s}}{{n}}{{n}}##{{s}}合并TS文件的设计{{s}}{{s}}{{n}}{{n}}![秃了](https://cdn2.imbottle.com/uploads/20210301pv/thinktobare.jpg){{s}}{{s}}{{n}}{{n}}初步分片完毕后TS文件非常多且大小不一，为了减少上传时请求数，遂将部分小TS文件进行合并：{{s}}{{s}}{{n}}{{n}}![演示](https://cdn2.imbottle.com/uploads/20210301pv/TSMergeExample.gif){{s}}{{s}}{{n}}{{n}}最开始我的写法是遍历TS文件大小并循环，根据大小push{{s}}TS文件名进二维数组，每达到一次合并上限大小就进入到下一次循环。然后问题就出现了，到最后只留下一大坨条件语句，我自己都不太清楚要改哪里，第二天起床后果断给删了重来...{{s}}{{s}}{{s}}{{n}}{{n}}![旧写法](https://cdn2.imbottle.com/uploads/20210301pv/oldmethod.png){{s}}{{s}}{{n}}{{n}}这回理清了思路，要先从没法合并的大文件入手。先找到所有超过2M**（我设置的合并上限大小）**的大文件丢到单独的二维数组里去，而其余小文件共享一个大二维数组。之后再针对塞满小文件的二维数组按**合并出来的文件大小上限为2M**进行分割处理就行了，最后合并在一起的小文件就会塞在一个二维数组里，而本身就超过2M的大文件就形单影只地躺在一个二维数组里。{{s}}{{s}}{{s}}{{n}}{{n}}![过程展示](https://cdn2.imbottle.com/uploads/20210301pv/TSAgainMerge.gif){{s}}{{s}}{{n}}{{n}}最后foreach一下整个数组，按照分好的情况合并就行了。{{s}}{{s}}{{n}}{{n}}##{{s}}想办法压缩TS体积{{s}}{{s}}{{n}}{{n}}![仔细思索](https://cdn2.imbottle.com/uploads/20210301pv/thinkthink.jpg){{s}}{{s}}{{n}}{{n}}这一节好像没什么可说的，因为在后面简化了。在最开始写这个脚本的时候我用了一种很神奇的方法压制TS：先把音视频分离，然后单独压缩视频，再合并上去。{{n}}{{n}}这时是看了b站up**人在火星-刚下飞船**的文章:{{s}}&lt;a{{s}}href=&quot;https://www.bilibili.com/read/cv4461542/&quot;{{s}}target=&quot;_blank&quot;&gt;B站上传视频，要二压还是不二压&lt;/a&gt;{{s}}，简单摘了里面写的FFmpeg示例来用，结果直接压制后我发现合并TS的话播放有一半没有声音，遂采取了分离处理的方式。因为这个方法到最后**还是被舍弃**了，也不多停留...{{s}}{{s}}{{s}}{{n}}{{n}}![痛苦van分](https://cdn2.imbottle.com/uploads/20210301pv/painvan.jpg){{s}}{{s}}{{n}}{{n}}##{{s}}PHP{{s}}CLI常量和goto的使用{{s}}{{s}}{{n}}{{n}}PHP{{s}}CLI常量就是STDIN,STDOUT,STDERR这三个，咱本来想用STDIN实现和用户的简单交互，结果发现这几个常量是**不能在函数内引用**的，于是也就此作罢了。{{s}}{{n}}{{n}}除此之外我还试过PHP的goto，同样是不能在函数和循环内引用的。{{s}}{{s}}{{n}}{{n}}##{{s}}Hls播放跳跃{{s}}{{s}}{{n}}{{n}}![反复懵逼](https://cdn2.imbottle.com/uploads/20210301pv/whiledull.gif){{s}}{{s}}{{n}}{{n}}顺着Akarin点明的道路，我很快把初版脚本写出来了，火速分片个**日常OP**试试，然后发现...每次第一个片段0.ts播放完后进度条直接变成了8秒....{{s}}{{s}}{{s}}{{n}}{{n}}&lt;video{{s}}src=&quot;https://cdn2.imbottle.com/uploads/20210301pv/bug.webm&quot;{{s}}controls=&quot;controls&quot;{{s}}style=&quot;max-width:100%;&quot;&gt;{{n}}your{{s}}browser{{s}}does{{s}}not{{s}}support{{s}}the{{s}}video{{s}}tag{{n}}&lt;/video&gt;{{n}}{{n}}这个问题成功耗费了我几个小时的时间，因为国内关于ffmpeg的收录内容不够精确，只能去问谷歌娘了，到底还是一场空...{{s}}{{s}}{{s}}{{n}}{{n}}泡了杯茶，重新审视了一下，发现我拼接TS用的是FFmpeg的concat协议。于是转而换成了二进制拼接，再次运行脚本切片合并竟然就能正常播放了...去stackoverflow查了一下，很有可能是时间戳问题...不过能放就行~{{s}}{{s}}{{n}}{{n}}##{{s}}在iOS上播放伪装成图片文件的ts{{s}}{{s}}{{n}}{{n}}解决了Hls播放问题，我满意地重复看了几遍传到图床上的Rick{{s}}Astley金曲，顺便发到群里让群友体验一下。突然一句话惊醒了我：“iPhone上没法播放”。{{s}}{{s}}{{n}}{{n}}![喷水](https://cdn2.imbottle.com/uploads/20210301pv/spliting.jpg){{s}}{{s}}{{s}}{{n}}{{n}}折腾魂，燃起来了。虽然用的Akarin的方法，在Hls上挂了个自定义loader去掉ts文件前几十字节的图片，Akarin评论区也回复没法在iOS上实现，但是万一呢。于是我又开始折腾起iOS{{s}}Safari上播放的问题。{{s}}{{s}}{{n}}{{n}}搜了一圈，iOS的浏览器内核不支持MediaSourceExtension是摆在面上的原因了，这个真的没法解决。去找了其他的开源播放组件像video.js，dplayer.js，发现终究还是需要MSE的支持。{{s}}{{s}}{{n}}{{n}}一筹莫展之时，我突然发觉可能有些遗落的信息点。于是返回到Akarin那篇博文的评论区，发现有人提到了：{{s}}{{s}}{{n}}{{n}}![有用的评论](https://cdn2.imbottle.com/uploads/20210301pv/usefulcomment.png){{s}}{{s}}{{s}}{{s}}{{s}}{{n}}{{n}}这里得吐槽一句，国内m3u8文件详解方面的搜索结果真的不多。问了谷歌娘后发现真有**#EXT-X-BYTERANGE**，还搜到了博客园的文章：{{s}}&lt;a{{s}}href=&quot;https://www.cnblogs.com/tocy/p/hls-playlist-example.html&quot;{{s}}target=&quot;_blank&quot;&gt;HLS{{s}}playlist典型示例&lt;/a&gt;{{s}}。{{s}}{{s}}{{n}}{{n}}这个选项通过偏移量和长度来支持分片，看示例主要是针对单个文件(?)，不过方法摆在面前，我总得试试。{{s}}{{s}}{{n}}{{n}}查了一下{{s}}&lt;a{{s}}href=&quot;https://developer.apple.com/documentation/http_live_streaming/about_the_ext-x-version_tag&quot;{{s}}target=&quot;_blank&quot;&gt;苹果文档&lt;/a&gt;{{s}}并看了Hls.js的README指示，发现都支持BYTERANGE，兴奋起来了！{{s}}{{s}}{{n}}{{n}}```#EXT-X-BYTERANGE:{{s}}切割的长度[@偏移量]```，在{{s}}每行#EXTINF后加上这一句后，我兴奋地再次调试，然后在浏览器控制台收获了如下错误：{{s}}{{s}}{{n}}{{n}}```(index):1{{s}}Access{{s}}to{{s}}XMLHttpRequest{{s}}at{{s}}&#039;http://xxx/c094f37348949e33ce9c422e500dd7f642070833.png&#039;{{s}}from{{s}}origin{{s}}&#039;https://test.moe&#039;{{s}}has{{s}}been{{s}}blocked{{s}}by{{s}}CORS{{s}}policy:{{s}}Response{{s}}to{{s}}preflight{{s}}request{{s}}doesn&#039;t{{s}}pass{{s}}access{{s}}control{{s}}check:{{s}}It{{s}}does{{s}}not{{s}}have{{s}}HTTP{{s}}ok{{s}}status.```{{s}}{{s}}{{n}}{{n}}![发生什么了](https://cdn2.imbottle.com/uploads/20210301pv/whathappened.jpg!/scale/30){{s}}{{s}}{{s}}{{n}}{{n}}**这一段是2021.4.2补充的：**研究了一下发现问题出在使用BYTERANGE选项的时候浏览器会发送一个CORS跨域预检请求，而我在demo页面头部屏蔽发送了CORS内容以解决防盗链问题，由此发生了这种问题（现在换到了阿里图床就解决了，因为没防盗链）：{{s}}{{s}}{{n}}{{n}}![preflight](https://cdn2.imbottle.com/uploads/20210301pv/preflight.png){{s}}{{s}}{{n}}{{n}}相关问题的github{{s}}issue:{{s}}[https://github.com/google/shaka-player/issues/2227](https://github.com/google/shaka-player/issues/2227){{s}}{{s}}{{n}}{{n}}这之后我更新了脚本，如果面对的图床没有防盗链可以使用BYTERANGE头，这样可以**使用任意的伪装图片**{{s}}{{s}}{{n}}{{n}}查了半天硬是没找着发生什么问题了，只知道是浏览器预检查OPTION请求失败了，一直没找到解决方法。感觉快要绝望的时候，我突然心生侥幸：之前没试过不写自定义loader挂钩来调试，万一，万一呢，是吧!{{s}}{{s}}{{n}}{{n}}然后我去掉了hook，就——成功了{{s}}{{s}}{{n}}{{n}}大落大起不过如此，我又兴奋起来了，连忙让群友帮忙测试了一下，竟然真的可以在iOS{{s}}Safari中播放了！接着我又切了几个视频传上去，为了不麻烦群友，找了个试用测试平台，多试了几个iOS系统设备，发现都可以：{{s}}{{s}}{{n}}{{n}}![真实测试](https://cdn2.imbottle.com/uploads/20210301pv/realtest1.png){{s}}{{s}}{{s}}{{n}}{{n}}![真实测试](https://cdn2.imbottle.com/uploads/20210301pv/realtest2.png){{s}}{{s}}{{s}}{{n}}{{n}}激动之余，我开始琢磨这其中的奥秘。图片里藏文件，我立刻就想起了**贴吧老哥的图种：**{{s}}&lt;a{{s}}href=&quot;https://www.zhihu.com/question/31140164&quot;{{s}}target=&quot;_blank&quot;&gt;图种是什么原理？&lt;/a&gt;{{s}}{{s}}{{s}}{{n}}{{n}}jpg和png都有正常的文件尾标识，由此会忽略文件尾后面的数据，不影响观赏；与此同时rar格式也有标识性的文件头，所以可以直接用压缩查看器进行查看。{{n}}{{n}}我试着塞了个TS数据在一张gif图片后面，gif因为没有尾部标识无法正常显示，但是这个文件仍然能被Hls.js和Safari解析成Video{{s}}Transport{{s}}Stream。由此可见TS肯定有其标识性的文件头，查到的相关文章如下：{{s}}{{n}}{{n}}1.{{s}}&lt;a{{s}}href=&quot;https://www.cnblogs.com/renhui/p/10362640.html&quot;{{s}}target=&quot;_blank&quot;&gt;多媒体文件格式（四）：TS{{s}}格式&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}2.{{s}}&lt;a{{s}}href=&quot;https://blog.csdn.net/coloriy/article/details/79852682&quot;{{s}}target=&quot;_blank&quot;&gt;TS{{s}}文件格式解析&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}![二进制查看](https://cdn2.imbottle.com/uploads/20210301pv/hexhead1.png){{s}}{{s}}{{s}}{{n}}{{n}}0x47是TS包头固定字节，由解码器来寻找识别，由此浏览器才能正常播放图片数据后面的视频流。{{s}}{{s}}{{n}}{{n}}![nice](https://cdn2.imbottle.com/uploads/20210301pv/nice.jpg){{s}}{{s}}{{s}}{{n}}{{n}}##{{s}}重压制分片后的略大的TS文件{{s}}{{s}}{{n}}{{n}}这里就又返回到**想办法压缩TS体积**这一节了。起因是3月2日我想着还没测试过单独压制playlist中的一个ts文件后还能不能正常播放，于是便拿了Vladlove的OP影像mp4来试了一下。{{s}}{{s}}{{n}}{{n}}浏览器里调试的时候，我**双手合十蹲在板凳**上，但最不希望出现的事偏偏就又出现了——播放跳跃了{{s}}{{s}}{{n}}{{n}}![笑出强大](https://cdn2.imbottle.com/uploads/20210301pv/smilepower.jpg!/scale/50){{s}}{{s}}{{n}}{{n}}又到了头疼的地方，别的问题我还知道怎么搜，这个**播放时间轴跳跃**的问题我真的是怎么也搜不到想要的结果。到后面我转换思路，从FFmpeg出发，先去看出问题ts文件的属性和其他正常分片属性有什么区别。很快，我便发现——**Duration属性中start的值变成了1.4左右**{{s}}{{s}}{{n}}{{n}}既然是start，肯定和分片的开始时间有关系，看了其他几个切片，发现start这个值是累加的，到了压制过的这个分片就拉跨变成1.4..了。最后我得出了一个结论——**重压制过后的分片ts会失去原有的start属性！**{{s}}{{s}}{{n}}{{n}}搜了半天没找着怎么在压制的时候保留这个属性，但我找到了怎么修改这个属性：&lt;a{{s}}href=&quot;https://www.v2ex.com/t/520919&quot;{{s}}target=&quot;_blank&quot;&gt;如何使用{{s}}ffmpeg{{s}}修改视频的开始时间&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}我一想，既然能改，在准备压制TS的时候先记录原有的start值，等压制完毕后再附上去。{{n}}{{n}}加了几行记录start值的代码，改了一下压制TS部分的最后一行语句，结果执行失败了。一看：```(NOTE:{{s}}the{{s}}option{{s}}initial_offset{{s}}is{{s}}deprecated,you{{s}}can{{s}}use{{s}}output_ts_offset{{s}}instead{{s}}of{{s}}it)```，原来是FFmpeg已经弃用initial_offset了，换作output_ts_offset就行了：{{s}}{{s}}{{n}}{{n}}```ffmpeg{{s}}-i{{s}}1.ts{{s}}-vcodec{{s}}copy{{s}}-acodec{{s}}aac{{s}}-output_ts_offset{{s}}5.401711{{s}}test.ts```{{s}}{{s}}{{s}}{{n}}{{n}}5.401711是切片文件原有的start值，我直接附上去后进行调试，结果比上一次要好多了，虽然播放的时候仍然卡壳了，但我起码知道这个问题和start有关了。{{s}}{{s}}{{n}}{{n}}当然，该疑惑也得疑惑。为啥子我原模原样附上去还是有时间偏差？{{s}}{{s}}{{n}}{{n}}![excuseme](https://cdn2.imbottle.com/uploads/20210301pv/excuseme.jpg){{s}}{{s}}{{n}}{{n}}继续搜了一圈修改starttime的方法，找到了stackoverflow的一个条目：{{s}}&lt;a{{s}}href=&quot;https://stackoverflow.com/questions/43660160/ffmpeg-set-timecode-offset-in-output&quot;{{s}}target=&quot;_blank&quot;&gt;ffmpeg{{s}}set{{s}}timecode{{s}}offset{{s}}in{{s}}output&lt;/a&gt;{{s}}，好家伙，一看才知道FFmpeg**默认**有1.4左右的start值。{{s}}{{s}}{{n}}{{n}}回去用```ffmpeg{{s}}-i```看了一下0.ts，发现真的是这样。于是我转而又整出了一套很麻烦的方法：获取0.ts的start值后储存，在压制时设置start值时减去这个**默认**值，这样应该就是准确的了。{{s}}{{s}}{{n}}{{n}}然而整了一通之后我再次进行测试，发现还是会闪一下，说明拼接的不准确，又纳闷起来了：{{s}}{{s}}{{n}}{{n}}&lt;video{{s}}src=&quot;https://cdn2.imbottle.com/uploads/20210301pv/bug2.webm&quot;{{s}}controls=&quot;controls&quot;{{s}}style=&quot;max-width:100%;&quot;&gt;{{n}}your{{s}}browser{{s}}does{{s}}not{{s}}support{{s}}the{{s}}video{{s}}tag{{n}}&lt;/video&gt;{{n}}{{n}}很明显能看到主角美人回眸后画面明显闪了一下，虽然画面花一点就看不出来了，但作为折腾人我肯定不能坐视不管...{{s}}{{s}}{{s}}{{n}}{{n}}紧接着我把参数改成了：{{s}}{{s}}{{n}}{{n}}```-muxdelay{{s}}0{{s}}-c:v{{s}}copy{{s}}-c:a{{s}}copy{{s}}-muxpreload{{s}}0{{s}}-output_ts_offset{{s}}time```{{s}}{{s}}{{s}}{{n}}{{n}}上面这个参数是上一个stackoverflow问题的第二个回答中提供的，将muxdelay设置为0后设置start值时就不会有默认的1.4了，然而这样画面还是会闪一下。{{s}}{{s}}{{n}}{{n}}回头看，我觉得更有可能是压制过程的问题，我先将音视频分离，压制视频后再合并起来，但是在合并的时候音轨用的aac编码器，造成这个分片部分时间属性和其他分片不一样，播放的时候就有对齐问题。{{s}}{{s}}{{s}}{{s}}{{n}}{{n}}除此之外，我还考虑能不能简化整个压制过程，根本没必要音视频分离，很快我在FFmpeg文档里找到了CRF{{s}}Example：{{s}}&lt;a{{s}}href=&quot;https://trac.ffmpeg.org/wiki/Encode/H.264#CRFExample&quot;{{s}}target=&quot;_blank&quot;&gt;H.264{{s}}Video{{s}}Encoding{{s}}Guide&lt;/a&gt;{{s}}，直接用这样一句解决压制：{{s}}{{s}}{{n}}{{n}}```ffmpeg{{s}}-i{{s}}2.ts{{s}}-c:v{{s}}libx264{{s}}-preset{{s}}slow{{s}}-crf{{s}}22{{s}}-c:a{{s}}copy{{s}}test.ts```{{s}}{{s}}{{n}}{{n}}化繁为简，方为上策。再次调试的时候就一切正常了，不容易啊！{{s}}{{s}}{{n}}{{n}}![Iwipetear](https://cdn2.imbottle.com/uploads/20210301pv/tears.jpg!/scale/50){{s}}{{s}}{{n}}{{n}}仔细想想，我去掉-c:a{{s}}aac是不是就能一切正常了呢...害不管了，反正化繁为简了(｡･∀･)ﾉﾞ。{{s}}{{s}}{{s}}{{n}}{{n}}再想一下，刚开始concat合并是不是也是start值的问题呢...好像还真有这种可能。直接二进制合并的时候读取到的start值来自于合并的**第一个**ts分片，而ffmpeg{{s}}concat协议处理过后很有可能start值也和压制后一样变成默认值了！{{s}}{{s}}{{n}}{{n}}不过问题解决了，脚本也终于写好了，已经将分片的部分开源了（怎么可能把图床上传部分放出来呢！）{{n}}{{n}}四舍五入一下，我是不是有了**metowolf调侃的”涉及百万利润“**的项目了{{s}}{{s}}{{n}}{{n}}![2333](https://cdn2.imbottle.com/uploads/20210301pv/2333.jpg){{s}}{{s}}{{n}}{{n}}##{{s}}有感而发{{s}}{{s}}{{n}}{{n}}*{{s}}&lt;del&gt;为了测试传了好多伪装图片到b站图床&lt;/del&gt;，其实就是懒，完全可以改成本地{{s}}{{s}}{{n}}*{{s}}晚自习的时候看的ffmpeg文档（不要说出去哦）{{s}}{{s}}{{s}}{{n}}*{{s}}吵闹的宿舍环境我的效率竟然还蛮高的{{s}}{{s}}{{n}}*{{s}}思路的转换真的非常重要，不要死磕一个地方，很耗时间{{s}}{{s}}{{s}}{{n}}{{n}}##{{s}}项目地址{{n}}{{n}}Github:{{s}}&lt;a{{s}}href=&quot;https://github.com/SomeBottle/PicVid&quot;{{s}}target=&quot;_blank&quot;&gt;https://github.com/SomeBottle/PicVid&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}Demo:{{s}}&lt;a{{s}}href=&quot;https://pv.xbottle.top/demo&quot;{{s}}target=&quot;_blank&quot;&gt;https://pv.xbottle.top/demo&lt;/a&gt;{{s}}{{s}}{{n}}{{n}}非常感谢你能看到这里，诶嘿嘿~{{s}}{{s}}{{n}}{{n}}{{n}}{{n}}&lt;script&gt;/*bblock.s();*/&lt;/script&gt;{(PostContentEnd)}{(PostTag)}咸鱼技术{(PostTagEnd)}{(PostID)}269{(PostIDEnd)}{(PostCover)}none{(PostCoverEnd)}<div style='display:none;'>{(PageType)}post.html{(PageTypeEnd)}</div><script src="./main.js?233"></script></body></div>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="去年年初我看到了meto萨摩的博客发了篇新文章：用图床看视频是什么体验看完后顿时十分向往，有着折腾魂的我也想整个，但当时还在备战高考，便暂时搁置了（随后差不多半年也忘了这事）直到今年寒假即将..." /><meta name="keywords" content="咸鱼技术,Bottle小站" /></head><loadingarea></loadingarea><div id='container'><style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>{(MainTitle)}<title>用图床看视频的体验·改-Bottle小站</title>{(MainTitleEnd)}<body>{(PostTitle)}用图床看视频的体验·改{(PostTitleEnd)}{(PostDate)}20210305{(PostDateEnd)}{(PostContent)}去年年初我看到了meto萨摩的博客发了篇新文章：  
+&lt;a href=&quot;https://i-meto.com/hlsjs-upimg-wrapper/&quot; target=&quot;_blank&quot;&gt;用图床看视频是什么体验&lt;/a&gt;  
+看完后顿时十分向往，有着折腾魂的我也想整个，但当时还在备战高考，便暂时搁置了（随后差不多半年也忘了这事）  
+
+直到今年寒假即将结束的时候，我突然看到群友发了个meto的upimg-cli仓库，我瞬间就想起来之前看到的meto文章，结果点进去一看并不是那个东西（meto其实也说过不开源的），我遂想到要写个脚本来分片视频并上传。    
+
+![HehHeh](https://cdn2.imbottle.com/uploads/20210301pv/hhh.jpg!/scale/30)  
+
+&lt;bblock style=&quot;display:none;&quot;&gt;
+{
+ &quot;title&quot;: &quot;ShadyShady&quot;,
+ &quot;artist&quot;: &quot;削除&quot;,
+ &quot;src&quot;: &quot;https://x.bottle.moe/ne/url/41644025&quot;,
+ &quot;cover&quot;: &quot;https://x.bottle.moe/ne/cover/41644025&quot;,
+ &quot;float&quot;: &quot;right&quot;
+}
+&lt;/bblock&gt;
+
+想法和万能群友说了后，有仁兄发了篇文章链接：
+&lt;a href=&quot;https://akarin.dev/2020/02/07/alicdn-video-hosting&quot; target=&quot;_blank&quot;&gt;搞事情：用“图床”传视频...&lt;/a&gt;  
+Akarin的这篇文章写的很详细，可以说从头到尾部甚至评论区都是有用的。  
+
+我于是顺着Akarin的思路写下去，视频分片写的很顺利，我顺便加了个大TS文件自动尝试压缩，但当我写到合并个别TS文件的时候差点被逻辑绕了进去...   
+
+## 合并TS文件的设计  
+
+![秃了](https://cdn2.imbottle.com/uploads/20210301pv/thinktobare.jpg)  
+
+初步分片完毕后TS文件非常多且大小不一，为了减少上传时请求数，遂将部分小TS文件进行合并：  
+
+![演示](https://cdn2.imbottle.com/uploads/20210301pv/TSMergeExample.gif)  
+
+最开始我的写法是遍历TS文件大小并循环，根据大小push TS文件名进二维数组，每达到一次合并上限大小就进入到下一次循环。然后问题就出现了，到最后只留下一大坨条件语句，我自己都不太清楚要改哪里，第二天起床后果断给删了重来...   
+
+![旧写法](https://cdn2.imbottle.com/uploads/20210301pv/oldmethod.png)  
+
+这回理清了思路，要先从没法合并的大文件入手。先找到所有超过2M**（我设置的合并上限大小）**的大文件丢到单独的二维数组里去，而其余小文件共享一个大二维数组。之后再针对塞满小文件的二维数组按**合并出来的文件大小上限为2M**进行分割处理就行了，最后合并在一起的小文件就会塞在一个二维数组里，而本身就超过2M的大文件就形单影只地躺在一个二维数组里。   
+
+![过程展示](https://cdn2.imbottle.com/uploads/20210301pv/TSAgainMerge.gif)  
+
+最后foreach一下整个数组，按照分好的情况合并就行了。  
+
+## 想办法压缩TS体积  
+
+![仔细思索](https://cdn2.imbottle.com/uploads/20210301pv/thinkthink.jpg)  
+
+这一节好像没什么可说的，因为在后面简化了。在最开始写这个脚本的时候我用了一种很神奇的方法压制TS：先把音视频分离，然后单独压缩视频，再合并上去。
+
+这时是看了b站up**人在火星-刚下飞船**的文章: &lt;a href=&quot;https://www.bilibili.com/read/cv4461542/&quot; target=&quot;_blank&quot;&gt;B站上传视频，要二压还是不二压&lt;/a&gt; ，简单摘了里面写的FFmpeg示例来用，结果直接压制后我发现合并TS的话播放有一半没有声音，遂采取了分离处理的方式。因为这个方法到最后**还是被舍弃**了，也不多停留...   
+
+![痛苦van分](https://cdn2.imbottle.com/uploads/20210301pv/painvan.jpg)  
+
+## PHP CLI常量和goto的使用  
+
+PHP CLI常量就是STDIN,STDOUT,STDERR这三个，咱本来想用STDIN实现和用户的简单交互，结果发现这几个常量是**不能在函数内引用**的，于是也就此作罢了。 
+
+除此之外我还试过PHP的goto，同样是不能在函数和循环内引用的。  
+
+## Hls播放跳跃  
+
+![反复懵逼](https://cdn2.imbottle.com/uploads/20210301pv/whiledull.gif)  
+
+顺着Akarin点明的道路，我很快把初版脚本写出来了，火速分片个**日常OP**试试，然后发现...每次第一个片段0.ts播放完后进度条直接变成了8秒....   
+
+&lt;video src=&quot;https://cdn2.imbottle.com/uploads/20210301pv/bug.webm&quot; controls=&quot;controls&quot; style=&quot;max-width:100%;&quot;&gt;
+your browser does not support the video tag
+&lt;/video&gt;
+
+这个问题成功耗费了我几个小时的时间，因为国内关于ffmpeg的收录内容不够精确，只能去问谷歌娘了，到底还是一场空...   
+
+泡了杯茶，重新审视了一下，发现我拼接TS用的是FFmpeg的concat协议。于是转而换成了二进制拼接，再次运行脚本切片合并竟然就能正常播放了...去stackoverflow查了一下，很有可能是时间戳问题...不过能放就行~  
+
+## 在iOS上播放伪装成图片文件的ts  
+
+解决了Hls播放问题，我满意地重复看了几遍传到图床上的Rick Astley金曲，顺便发到群里让群友体验一下。突然一句话惊醒了我：“iPhone上没法播放”。  
+
+![喷水](https://cdn2.imbottle.com/uploads/20210301pv/spliting.jpg)   
+
+折腾魂，燃起来了。虽然用的Akarin的方法，在Hls上挂了个自定义loader去掉ts文件前几十字节的图片，Akarin评论区也回复没法在iOS上实现，但是万一呢。于是我又开始折腾起iOS Safari上播放的问题。  
+
+搜了一圈，iOS的浏览器内核不支持MediaSourceExtension是摆在面上的原因了，这个真的没法解决。去找了其他的开源播放组件像video.js，dplayer.js，发现终究还是需要MSE的支持。  
+
+一筹莫展之时，我突然发觉可能有些遗落的信息点。于是返回到Akarin那篇博文的评论区，发现有人提到了：  
+
+![有用的评论](https://cdn2.imbottle.com/uploads/20210301pv/usefulcomment.png)     
+
+这里得吐槽一句，国内m3u8文件详解方面的搜索结果真的不多。问了谷歌娘后发现真有**#EXT-X-BYTERANGE**，还搜到了博客园的文章： &lt;a href=&quot;https://www.cnblogs.com/tocy/p/hls-playlist-example.html&quot; target=&quot;_blank&quot;&gt;HLS playlist典型示例&lt;/a&gt; 。  
+
+这个选项通过偏移量和长度来支持分片，看示例主要是针对单个文件(?)，不过方法摆在面前，我总得试试。  
+
+查了一下 &lt;a href=&quot;https://developer.apple.com/documentation/http_live_streaming/about_the_ext-x-version_tag&quot; target=&quot;_blank&quot;&gt;苹果文档&lt;/a&gt; 并看了Hls.js的README指示，发现都支持BYTERANGE，兴奋起来了！  
+
+```#EXT-X-BYTERANGE: 切割的长度[@偏移量]```，在 每行#EXTINF后加上这一句后，我兴奋地再次调试，然后在浏览器控制台收获了如下错误：  
+
+```(index):1 Access to XMLHttpRequest at &#039;http://xxx/c094f37348949e33ce9c422e500dd7f642070833.png&#039; from origin &#039;https://test.moe&#039; has been blocked by CORS policy: Response to preflight request doesn&#039;t pass access control check: It does not have HTTP ok status.```  
+
+![发生什么了](https://cdn2.imbottle.com/uploads/20210301pv/whathappened.jpg!/scale/30)   
+
+**这一段是2021.4.2补充的：**研究了一下发现问题出在使用BYTERANGE选项的时候浏览器会发送一个CORS跨域预检请求，而我在demo页面头部屏蔽发送了CORS内容以解决防盗链问题，由此发生了这种问题（现在换到了阿里图床就解决了，因为没防盗链）：  
+
+![preflight](https://cdn2.imbottle.com/uploads/20210301pv/preflight.png)  
+
+相关问题的github issue: [https://github.com/google/shaka-player/issues/2227](https://github.com/google/shaka-player/issues/2227)  
+
+这之后我更新了脚本，如果面对的图床没有防盗链可以使用BYTERANGE头，这样可以**使用任意的伪装图片**  
+
+查了半天硬是没找着发生什么问题了，只知道是浏览器预检查OPTION请求失败了，一直没找到解决方法。感觉快要绝望的时候，我突然心生侥幸：之前没试过不写自定义loader挂钩来调试，万一，万一呢，是吧!  
+
+然后我去掉了hook，就——成功了  
+
+大落大起不过如此，我又兴奋起来了，连忙让群友帮忙测试了一下，竟然真的可以在iOS Safari中播放了！接着我又切了几个视频传上去，为了不麻烦群友，找了个试用测试平台，多试了几个iOS系统设备，发现都可以：  
+
+![真实测试](https://cdn2.imbottle.com/uploads/20210301pv/realtest1.png)   
+
+![真实测试](https://cdn2.imbottle.com/uploads/20210301pv/realtest2.png)   
+
+激动之余，我开始琢磨这其中的奥秘。图片里藏文件，我立刻就想起了**贴吧老哥的图种：** &lt;a href=&quot;https://www.zhihu.com/question/31140164&quot; target=&quot;_blank&quot;&gt;图种是什么原理？&lt;/a&gt;   
+
+jpg和png都有正常的文件尾标识，由此会忽略文件尾后面的数据，不影响观赏；与此同时rar格式也有标识性的文件头，所以可以直接用压缩查看器进行查看。
+
+我试着塞了个TS数据在一张gif图片后面，gif因为没有尾部标识无法正常显示，但是这个文件仍然能被Hls.js和Safari解析成Video Transport Stream。由此可见TS肯定有其标识性的文件头，查到的相关文章如下： 
+
+1. &lt;a href=&quot;https://www.cnblogs.com/renhui/p/10362640.html&quot; target=&quot;_blank&quot;&gt;多媒体文件格式（四）：TS 格式&lt;/a&gt;  
+
+2. &lt;a href=&quot;https://blog.csdn.net/coloriy/article/details/79852682&quot; target=&quot;_blank&quot;&gt;TS 文件格式解析&lt;/a&gt;  
+
+![二进制查看](https://cdn2.imbottle.com/uploads/20210301pv/hexhead1.png)   
+
+0x47是TS包头固定字节，由解码器来寻找识别，由此浏览器才能正常播放图片数据后面的视频流。  
+
+![nice](https://cdn2.imbottle.com/uploads/20210301pv/nice.jpg)   
+
+## 重压制分片后的略大的TS文件  
+
+这里就又返回到**想办法压缩TS体积**这一节了。起因是3月2日我想着还没测试过单独压制playlist中的一个ts文件后还能不能正常播放，于是便拿了Vladlove的OP影像mp4来试了一下。  
+
+浏览器里调试的时候，我**双手合十蹲在板凳**上，但最不希望出现的事偏偏就又出现了——播放跳跃了  
+
+![笑出强大](https://cdn2.imbottle.com/uploads/20210301pv/smilepower.jpg!/scale/50)  
+
+又到了头疼的地方，别的问题我还知道怎么搜，这个**播放时间轴跳跃**的问题我真的是怎么也搜不到想要的结果。到后面我转换思路，从FFmpeg出发，先去看出问题ts文件的属性和其他正常分片属性有什么区别。很快，我便发现——**Duration属性中start的值变成了1.4左右**  
+
+既然是start，肯定和分片的开始时间有关系，看了其他几个切片，发现start这个值是累加的，到了压制过的这个分片就拉跨变成1.4..了。最后我得出了一个结论——**重压制过后的分片ts会失去原有的start属性！**  
+
+搜了半天没找着怎么在压制的时候保留这个属性，但我找到了怎么修改这个属性：&lt;a href=&quot;https://www.v2ex.com/t/520919&quot; target=&quot;_blank&quot;&gt;如何使用 ffmpeg 修改视频的开始时间&lt;/a&gt;  
+
+我一想，既然能改，在准备压制TS的时候先记录原有的start值，等压制完毕后再附上去。
+
+加了几行记录start值的代码，改了一下压制TS部分的最后一行语句，结果执行失败了。一看：```(NOTE: the option initial_offset is deprecated,you can use output_ts_offset instead of it)```，原来是FFmpeg已经弃用initial_offset了，换作output_ts_offset就行了：  
+
+```ffmpeg -i 1.ts -vcodec copy -acodec aac -output_ts_offset 5.401711 test.ts```   
+
+5.401711是切片文件原有的start值，我直接附上去后进行调试，结果比上一次要好多了，虽然播放的时候仍然卡壳了，但我起码知道这个问题和start有关了。  
+
+当然，该疑惑也得疑惑。为啥子我原模原样附上去还是有时间偏差？  
+
+![excuseme](https://cdn2.imbottle.com/uploads/20210301pv/excuseme.jpg)  
+
+继续搜了一圈修改starttime的方法，找到了stackoverflow的一个条目： &lt;a href=&quot;https://stackoverflow.com/questions/43660160/ffmpeg-set-timecode-offset-in-output&quot; target=&quot;_blank&quot;&gt;ffmpeg set timecode offset in output&lt;/a&gt; ，好家伙，一看才知道FFmpeg**默认**有1.4左右的start值。  
+
+回去用```ffmpeg -i```看了一下0.ts，发现真的是这样。于是我转而又整出了一套很麻烦的方法：获取0.ts的start值后储存，在压制时设置start值时减去这个**默认**值，这样应该就是准确的了。  
+
+然而整了一通之后我再次进行测试，发现还是会闪一下，说明拼接的不准确，又纳闷起来了：  
+
+&lt;video src=&quot;https://cdn2.imbottle.com/uploads/20210301pv/bug2.webm&quot; controls=&quot;controls&quot; style=&quot;max-width:100%;&quot;&gt;
+your browser does not support the video tag
+&lt;/video&gt;
+
+很明显能看到主角美人回眸后画面明显闪了一下，虽然画面花一点就看不出来了，但作为折腾人我肯定不能坐视不管...   
+
+紧接着我把参数改成了：  
+
+```-muxdelay 0 -c:v copy -c:a copy -muxpreload 0 -output_ts_offset time```   
+
+上面这个参数是上一个stackoverflow问题的第二个回答中提供的，将muxdelay设置为0后设置start值时就不会有默认的1.4了，然而这样画面还是会闪一下。  
+
+回头看，我觉得更有可能是压制过程的问题，我先将音视频分离，压制视频后再合并起来，但是在合并的时候音轨用的aac编码器，造成这个分片部分时间属性和其他分片不一样，播放的时候就有对齐问题。    
+
+除此之外，我还考虑能不能简化整个压制过程，根本没必要音视频分离，很快我在FFmpeg文档里找到了CRF Example： &lt;a href=&quot;https://trac.ffmpeg.org/wiki/Encode/H.264#CRFExample&quot; target=&quot;_blank&quot;&gt;H.264 Video Encoding Guide&lt;/a&gt; ，直接用这样一句解决压制：  
+
+```ffmpeg -i 2.ts -c:v libx264 -preset slow -crf 22 -c:a copy test.ts```  
+
+化繁为简，方为上策。再次调试的时候就一切正常了，不容易啊！  
+
+![Iwipetear](https://cdn2.imbottle.com/uploads/20210301pv/tears.jpg!/scale/50)  
+
+仔细想想，我去掉-c:a aac是不是就能一切正常了呢...害不管了，反正化繁为简了(｡･∀･)ﾉﾞ。   
+
+再想一下，刚开始concat合并是不是也是start值的问题呢...好像还真有这种可能。直接二进制合并的时候读取到的start值来自于合并的**第一个**ts分片，而ffmpeg concat协议处理过后很有可能start值也和压制后一样变成默认值了！  
+
+不过问题解决了，脚本也终于写好了，已经将分片的部分开源了（怎么可能把图床上传部分放出来呢！）
+
+四舍五入一下，我是不是有了**metowolf调侃的”涉及百万利润“**的项目了  
+
+![2333](https://cdn2.imbottle.com/uploads/20210301pv/2333.jpg)  
+
+## 有感而发  
+
+* &lt;del&gt;为了测试传了好多伪装图片到b站图床&lt;/del&gt;，其实就是懒，完全可以改成本地  
+* 晚自习的时候看的ffmpeg文档（不要说出去哦）   
+* 吵闹的宿舍环境我的效率竟然还蛮高的  
+* 思路的转换真的非常重要，不要死磕一个地方，很耗时间   
+
+## 项目地址
+
+Github: &lt;a href=&quot;https://github.com/SomeBottle/PicVid&quot; target=&quot;_blank&quot;&gt;https://github.com/SomeBottle/PicVid&lt;/a&gt;  
+
+Demo: &lt;a href=&quot;https://pv.xbottle.top/demo&quot; target=&quot;_blank&quot;&gt;https://pv.xbottle.top/demo&lt;/a&gt;  
+
+非常感谢你能看到这里，诶嘿嘿~  
+
+
+
+&lt;script&gt;/*bblock.s();*/&lt;/script&gt;{(PostContentEnd)}{(PostTag)}咸鱼技术{(PostTagEnd)}{(PostID)}269{(PostIDEnd)}{(PostCover)}none{(PostCoverEnd)}<div style='display:none;'>{(PageType)}post.html{(PageTypeEnd)}</div><script src="./main.js?233"></script></body></div>
