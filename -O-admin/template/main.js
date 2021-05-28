@@ -1,3 +1,1230 @@
-/*FrontMainJS ver3.1.0 - SomeBottle*/
- /*q.js*/
-var md;if("object"!==typeof $){$={ls:[],lss:"",loadset:{},aj:function(a,c,d,h,g,f){if("false"!==a&&a){var l=new XMLHttpRequest,k="",m;for(m in c)k=k+m+"\x3d"+c[m]+"\x26";""!==g&&(a=g+a);k=k.substring(0,k.length-1);"get"==h?l.open("get",a,f):l.open("post",a,f);l.setRequestHeader("Content-type","application/x-www-form-urlencoded");l.send(k);l.onreadystatechange=function(){4==l.readyState&&200==l.status?d.success(l.responseText,a):4==l.readyState&&200!==l.status&&d.failed(l.status,a)};f||(void 0!==l.responseText?d.success(l.responseText,a):d.failed(l.status,a))}}};var SC=function(a){return"body"==a?document.body:"html"==a?document.getElementsByTagName("html")[0]:document.getElementById(a)};$.script=function(a){$.scripturl||($.scripturl=[]);var c=document.createElement("script"),d=!1,h;for(h in $.ls)if($.ls[h]==a){d=!0;break}d||-1!=$.scripturl.indexOf(a)||($.ls[$.ls.length]=a,c.type="text/javascript",c.src=a,$.scripturl.push(a),document.body.appendChild(c))};$.ht=function(a,c,d){d=void 0===d?!0:d;var h=SC(c);if(!h)return console.log("Unable to find the Element:"+c),!1;h.innerHTML=a;os=h.getElementsByTagName("script");for(c=0;c<os.length;c++)if(void 0!==os[c].src&&null!==os[c].src&&""!==os[c].src)$.script(os[c].src);else try{a=os[c].innerHTML,d&&(a=B.r(a,"/*",""),a=B.r(a,"*/","")),setTimeout(a,0)}catch(g){console.log("Page script Error: "+g.message)}os=null};$.tr=function(a){b=a.split("?");return b[1]?b[0]:a};$.dt=function(a){if(1E7<=Number(a)){a=String(a);var c=a.slice(-4),d=c.slice(-2),h=c.substring(0,2);return a.replace(c,"")+"-"+h+"-"+d}return a};$.rmhead=function(a){var c=document.createElement("html");c.innerHTML=a;a=c.getElementsByTagName("clothhead")[0];a.parentNode.removeChild(a);a=[c.innerHTML,a.innerHTML];c.remove();return a};$.addhead=function(a){var c=SC("html").getElementsByTagName("head")[0],d=c.getElementsByTagName("clothhead");if("html"!==c.parentNode.tagName.toLowerCase())return!1;0>=d.length?(d=document.createElement("clothhead"),d.innerHTML=a,c.appendChild(d)):d[0].innerHTML=a};$.title=function(a){var c=SC("html").getElementsByTagName("head")[0],d=c.getElementsByTagName("title");0>=d.length?(d=document.createElement("title"),d.innerHTML=a,c.appendChild(d)):d[0].innerHTML=a};$.ldparse=function(a){var c=document.createElement("html");c.innerHTML=a;(a=(a=c.getElementsByTagName("loadset"))?JSON.parse(a[0].innerHTML):!1)?$.loadset=a:console.log("Failed to initialize loading page.");c.remove()};$.ecls=function(a,c,d,h){d=void 0===d?!1:d;h=void 0===h?!1:h;a=a.split(":");var g=document.getElementsByTagName("html")[0],f;switch(a[0]){case "id":f=document.getElementById(a[1]);break;case "class":f=g.getElementsByClassName(a[1]);break;case "tag":f=g.getElementsByTagName(a[1])}if(h)return f;if(f instanceof Element)d?f.classList.remove(c):f.classList.add(c);else for(var l in f)f[l]instanceof Element&&(d?f[l].classList.remove(c):f[l].classList.add(c))}}if(!B){if(localStorage["obottle-ldpage"]){var e=SC("html").innerHTML,ldlocalused=!0;$.ldparse(localStorage["obottle-ldpage"]);SC("html").innerHTML=e.replace("\x3c!--[LoadingArea]--\x3e",localStorage["obottle-ldpage"])}else ldlocalused=!1;$.aj("./loading.html","",{success:function(a,c){ldlocalused||(B.hr("\x3c!--[LoadingArea]--\x3e",a),$.ldparse(a));localStorage["obottle-ldpage"]=a},failed:function(a){console.log("LoadingPage Load Failed")}},"get","",!0);$.script("./library.js");window.htmls={};var B={moreperpage:0,r:function(a,c,d,h,g){h=void 0===h?!1:h;g=void 0===g?!0:g;if(h)return"("==h?a.replace(new RegExp("\\{\\("+c+"\\)\\}",(g?"g":"")+"i"),d):a.replace(new RegExp("\\{\\["+c+"\\]\\}",(g?"g":"")+"i"),d);if(g)for(;-1!==a.indexOf(c);)a=a.replace(c,d);else a=a.replace(c,d);return a},navlist:{statu:!1,conf:{}},navcurrent:function(a){a=void 0===a?"":a;return((-1==a.indexOf("http")?a:a.replace(window.location.protocol+"//"+window.location.hostname,""))||window.location.pathname).replace(".html","")},navcheck:function(){var a=document.body,c=this.navlist.conf;if(this.navlist.statu){var a=a.getElementsByClassName(c.navclass),d=this.navcurrent(),h;for(h in a){var g=this.navcurrent(a[h].href),f=d.lastIndexOf(g),l=d.length,k=g.length;(d==g||f+k==l&&-1!==f)&&a[h]instanceof Element?a[h].classList.add(c.activeclass):a[h]instanceof Element&&a[h].classList.contains(c.activeclass)&&a[h].classList.remove(c.activeclass)}}},nav:function(a){this.navlist.statu=!0;this.navlist.conf=a},scrolltop:function(a,c){var d=Math.floor(parseInt(document.body.scrollTop)/3),h=Math.pow(a,2)/(2*d),g=0,f=setInterval(function(){var a=document.body.scrollTop;parseInt(a)>2*d?(g+=h,document.body.scrollTop=parseInt(a)-g):parseInt(a)>d?document.body.scrollTop=parseInt(a)-g:parseInt(a)<=d&&(g-=h,g<=c&&(g=c),0>=parseInt(a)?(document.body.scrollTop=0,clearInterval(f)):document.body.scrollTop=parseInt(a)-g)},10)},hc:function(a){return a=a.replace(/&amp;/g,"\x26").replace(/&lt;/g,"\x3c").replace(/&gt;/g,"\x3e")},hr:function(a,c){var d=SC("html").innerHTML;SC("html").innerHTML=this.r(d,a,c)},unrnspace:function(a){a=a.replace(/{{s}}/g," ");a=a.replace(/{{rn}}/g,"\r\n");return a=a.replace(/{{n}}/g,"\n")},deltemptags:function(a){return a.replace(/\{\((.*?)\)\}/g,"")},preventscript:function(){var a=SC("html").getElementsByTagName("script"),c;for(c in a)a[c].src&&-1==$.scripturl.indexOf(a[c].src)&&$.scripturl.push(a[c].src)},dehtml:function(a){return a.replace(/&amp;/g,"\x26").replace(/&lt;/g,"\x3c").replace(/&gt;/g,"\x3e").replace(/&nbsp;/g," ").replace(/&#039;/g,"'").replace(/&#39;/g,"'").replace(/&quot;/g,'"')},gt:function(a,c,d,h){d=void 0===d?!1:d;h=void 0===h?!1:h;d=d?d:SC("html").innerHTML;try{var g=h?d.split(a)[1]:d.split(new RegExp("\\{\\("+a+"\\)\\}","i"))[1],f=h?g.split(c)[0]:g.split(new RegExp("\\{\\("+c+"\\)\\}","i"))[0];return this.dehtml(f)}catch(l){return!1}},lazypre:function(a){var c=document.createElement("div");c.innerHTML=a;a=c.getElementsByTagName("img");for(var d in a)if(a[d].src){var h=a[d].src;a[d].src="data:image/gif;base64,R0lGODlhkAGQAYAAAP///wAAACH5BAEAAAAALAAAAACQAZABAAL/hI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2jef6zvf+DwwKh8Si8YhMKpfMpvMJjUqn1Kr1is1qt9yu9wsOi8fksvmMTqvX7Lb7DY/L5/S6/Y7P6/f8vv8PGCg4SFhoeIiYqLjI2Oj4CBkpOUlZaXmJmam5ydnp+QkaKjpKWmp6ipqqusra6voKGys7S1tre4ubq7vL2+v7CxwsPExcbHyMnKy8zNzs/AwdLT1NXW19jZ2tvc3d7f0NHi4+Tl5ufo6err7O3u7+Dh8vP09fb3+Pn6+/z9/v/w8woMCBBAsaPIgwocKFDBs6fAgxosSJFCtavIgxo8aN/xw7evwIMqTIkSRLmjyJMqXKlSxbunwJM6bMmTRr2ryJM6fOnTx7+vwJNKjQoUSLGj2KNKnSpUybOn0KNarUqVSrWr2KNavWrVy7ev0KNqzYsWTLmj2LNq3atWzbun0LN67cuXTr2r2LN6/evXz7+v0LOLDgwYQLGz6MOLHixYwbO34MObLkyZQrW76MObPmzZw7e/4MOrTo0aRLmz6NOrXq1axbu34NO7bs2bRr276NO7fu3bx7+/4NPLjw4cSLGz+OPLny5cybO38OPbr06dSrW7+OPbv27dy7e/8OPrz48eTLmz+PPr369ezbu38PP778+fTr27+PP7/+/fz7+03/D2CAAg5IYIEGHohgggouyGCDDj4IYYQSTkhhhRZeiGGGGm7IYYcefghiiCKOSGKJJp6IYooqrshiiy6+CGOMMs5IY4023ohjjm0UAAA7";""!==a[d].style.width&&(h=h+"[width]"+a[d].style.width);a[d].setAttribute("data-src","[lazy]"+h);a[d].style.width="100%"}d=c.innerHTML;c.remove();return d},lazycheck:function(){var a=window.innerHeight,c=document.documentElement.scrollTop||document.body.scrollTop,d=document.getElementsByTagName("img"),h;for(h in d)if(a+c>d[h].offsetTop){var g=d[h].getAttribute("data-src");if("undefined"!==g&&g){d[h].setAttribute("data-src","");var f=g.split("[lazy]")[1];-1!==f.indexOf("[width]")?(g=f.split("[width]"),d[h].src=g[0],d[h].style.width=g[1]):(d[h].src=g.split("[lazy]")[1],d[h].style.width="auto")}}},templonload:0,templateloaded:[],tpcheckstatu:!1,loadstatu:!1,tpcheck:function(a,c){c=void 0===c?!1:c;var d=this,h=this;if(!d.tpcheckstatu||(void 0===a?0:a)){d.tpcheckstatu=!0;d.loadshow();var g=d.gt("PageType","PageTypeEnd",c);if(window.templjson)if(window.mainjson||-1===window.templjson.usemain.indexOf(g))if("object"!==typeof showdown)setTimeout(function(){return h.tpcheck(!0,c)},50);else if(localStorage["obottle-ldpage"]){d.preventscript();var f=window.templjson;f.necessary.push(g);g==f.templatehtmls.postlist&&f.necessary.push(f.templatehtmls.postitem);for(var l in f.necessary)if(-1==h.templateloaded.indexOf(f.necessary[l])){h.templonload+=1;var k=!1,m=q("r","template-"+f.necessary[l],"","","");m.c&&(k=!0,g=f.necessary[l],console.log("Template using cache:"+g),window.htmls[g]=m.c,h.templateloaded.push(g),--h.templonload);$.aj(f.necessary[l],"",{success:function(a,c){window.htmls[c]=a;k?m.c!==a?q("w","template-"+c,a,timestamp(),""):q("e","template-"+c,"","",1):(h.templateloaded.push(c),--h.templonload,q("w","template-"+c,a,timestamp(),""))},failed:function(a){console.log("Necessary HTML Load Failed...")}},"get","",!0)}var p=setInterval(function(){0>=h.templonload&&(clearInterval(p),h.renderer(c))},50),f=null}else setTimeout(function(){return h.tpcheck(!0,c)},50);else window.mainjsonrequest||(window.mainjsonrequest=!0,$.aj(window.templjson.mainjson,"",{success:function(a){window.mainjson=JSON.parse(a.replace(/[\r\n]/g,""));d.moreperpage=parseInt(window.mainjson.more_per_page)},failed:function(a){console.log("MainJson Load Failed")}},"get","",!0)),setTimeout(function(){return h.tpcheck(!0,c)},50);else $.aj("template.json","",{success:function(a){window.templjson=JSON.parse(a);return d.tpcheck(!0,c)},failed:function(a){console.log("TemplateJson Load Failed.")}},"get","",!0)}},itempage:0,switchpage:0,nowpage:0,realpage:1,searchw:"",hashexist:!1,rendering:!1,itempagefixer:function(){var a=window.mainjson,c=1,d;for(d in a.dateindex){var h=this.itempage,g=d.replace("post",""),g=a.postindex[g];c<=h&&g.link&&(this.itempage+=1);c+=1}--this.itempage},cd:function(a){for(;-1!==a.indexOf("\x3cifcover\x3e");){var c=B.gt("\x3cifcover\x3e","\x3c/ifcover\x3e",a,!0);a=B.r(a,"\x3cifcover\x3e"+c+"\x3c/ifcover\x3e","")}return a},clothmainrendered:!1,checkfirstrender:function(){var a=window.templjson,c=window.htmls[a.templatehtmls.cloth],a=window.htmls[a.templatehtmls.main];this.clothmainrendered||(console.log("first render"),a=this.r(a,"contents","\x3cdiv id\x3d'contentcontainer'\x3e\x3c/div\x3e",!0),c=this.r(c,"main",a,!0),c=$.rmhead(c),$.ht(this.deltemptags(c[0]),"container"),$.addhead(c[1]),this.clothmainrendered=!0)},back:function(){window.history.go(-1)},renderer:function(a){a=void 0===a?!1:a;var c=this;if(!c.rendering){c.rendering=!0;var d=window.templjson;md=new showdown.Converter;var h=window.htmls[d.templatehtmls.comment],g=c.gt("PageType","PageTypeEnd",a),f=window.mainjson;if(g==d.templatehtmls.post){var l=c.gt("PostContent","PostContentEnd",a),k=c.gt("PostTitle","PostTitleEnd",a),m=c.gt("PostDate","PostDateEnd",a),p=c.gt("PostTag","PostTagEnd",a),n=c.gt("PostID","PostIDEnd",a),f=c.gt("PostCover","PostCoverEnd",a);a=c.gt("MainTitle","MainTitleEnd",a).replace(/<\/?.+?>/g,"");l=c.r(window.htmls[d.templatehtmls.post],"postcontent",c.lazypre(md.makeHtml(c.hc(c.unrnspace(l.trim())))),!0);k=c.r(l,"posttitle",k,!0);l=[];isNaN(m)?p="\u9875\u9762":(l=p.split(","),p="",l.forEach(function(a,c){p=p+'\x3ca href\x3d"'+d.generatehtmls.tags+"#"+encodeURIComponent(a)+'" class\x3d"taglink"\x3e'+a+"\x3c/a\x3e,"}),p=p.substr(0,p.length-1));k=c.r(k,"posttags",p,!0);k=c.r(k,"postdate",$.dt(m),!0);k=c.r(k,"comments",h,!0);n=c.r(k,"pid",n,!0);n=c.r(n,"pagetype",g,!0);n=c.r(n,"PageType","\x3c!--[PageType]","(",!1);n=c.r(n,"PageTypeEnd","[PageTypeEnd]--\x3e","(",!1);n=f&&"none"!==f&&""!==f?c.r(n,"postcover",f,!0):c.cd(n);isNaN(m)&&(g=n.split("{(:PostEnd)}")[0]+"\x3c!--PostEnd--\x3e",f="\x3c!--Footer--\x3e"+n.split("{(Footer:)}")[1],n=g+f);c.checkfirstrender();$.title(a);$.ht(c.deltemptags(n),"contentcontainer");anichecker($.ecls($.loadset.listening,"",!1,!0),function(){c.lazycheck()});n=f=null}else if(g==d.templatehtmls.postlist){l=c.gt("PostContent","PostContentEnd",a);a=c.gt("MainTitle","MainTitleEnd",a).replace(/<\/?.+?>/g,"");a=a.replace("-","");k=window.htmls[d.templatehtmls.postlist];m=c.gt("PostListTemplate","PostListTemplateEnd",k);n=c.gt("MoreBtn","MoreBtnEnd",k);k=c.gt("BackBtn","BackBtnEnd",k);m=c.r(m,"morebtn","\x3cdiv id\x3d'morebtn'\x3e"+n+"\x3c/div\x3e",!0);m=c.r(m,"backbtn","\x3cdiv id\x3d'backbtn'\x3e"+k+"\x3c/div\x3e",!0);l=c.r(m,"postitems","\x3cdiv id\x3d'postitems'\x3e"+md.makeHtml(c.unrnspace(l.trim()))+"\x3c/div\x3e",!0);k=c.r(l,"pagetype",g,!0);k=c.r(k,"PageType","\x3c!--[PageType]","(",!1);k=c.r(k,"PageTypeEnd","[PageTypeEnd]--\x3e","(",!1);c.itempage=parseInt(f.posts_per_page);c.itempagefixer();c.checkfirstrender();$.title(a);$.ht(c.deltemptags(k),"contentcontainer");var k=null,r=setInterval(function(){if(c.gt("\x3c!--[PageType]","[PageTypeEnd]--\x3e",!1,!0)!==d.templatehtmls.postlist)return console.log("jumped out of index"),PJAX.sel("contentcontainer"),PJAX.start(),c.switchpage=0,clearInterval(r),!1;c.indexpagechecker()},100)}else if(g==d.templatehtmls.archives){a=c.gt("MainTitle","MainTitleEnd",a).replace(/<\/?.+?>/g,"");var m=window.htmls[d.templatehtmls.archives],h=c.gt("Archives","ArchivesEnd",m),t=c.gt("ArchiveTemplate","ArchiveTemplateEnd",m),C=c.gt("ArchiveItemTemplate","ArchiveItemTemplateEnd",m),y=f.dateindex,v="",u="",z=0;for(l in y){m=y[l].toString().substring(0,4);m!==z&&(z=m,""!==u&&(v=c.r(v,"archiveitems",u,!0),u=""),v+=c.r(t,"archiveyear",m,!0));var n=l.replace("post",""),k=Base64.decode(f.postindex[n].title),m=f.postindex[n].date,A="",A=f.postindex[n].link?f.postindex[n].link+".html":"post-"+n+".html",n=c.r(C,"archiveitemlink",A,!0),n=c.r(n,"archiveitemtitle",k,!0),n=c.r(n,"archiveitemdate",$.dt(m),!0),u=u+n}""!==u&&(v=c.r(v,"archiveitems",u,!0));l=c.r(h,"archives",v+"\x3c/ul\x3e",!0);k=c.r(l,"pagetype",g,!0);k=c.r(k,"PageType","\x3c!--[PageType]","(",!1);k=c.r(k,"PageTypeEnd","[PageTypeEnd]--\x3e","(",!1);c.checkfirstrender();$.title(a);$.ht(c.deltemptags(k),"contentcontainer");k=null}else if(g==d.templatehtmls.tags){a=c.gt("MainTitle","MainTitleEnd",a).replace(/<\/?.+?>/g,"");var m=window.htmls[d.templatehtmls.tags],k=c.gt("Tags","TagsEnd",m),D=c.gt("TagItemTemplate","TagItemTemplateEnd",m),l=$.tr(window.location.href),w="",f=f.postindex,x=[];for(n in f)m=f[n].tags.split(","),m.forEach(function(a,c){""!==a&&-1==x.indexOf(a)&&x.push(a)});x.forEach(function(a,d){var f=c.r(D,"tagitemtitle",a,!0),f=c.r(f,"tagitemlink","#"+encodeURIComponent(a),!0);w+=f});c.alltaghtml=w;-1!==l.indexOf("#")&&(f=l.split("#")[1],c.nowtag=f,"alltags"!==f&&(w="\x3cscript\x3eB.taguper('"+f+"');PJAX.sel('contentcontainer');PJAX.start();\x3c/script\x3e"));r=setInterval(function(){if(-1==window.location.href.indexOf(d.generatehtmls.tags)&&-1==window.location.href.indexOf(d.generatehtmls.tags.replace(".html","")))return PJAX.sel("contentcontainer"),PJAX.start(),clearInterval(r),!1;c.tagpagechecker()},100);l=c.r(k,"tags","\x3cdiv id\x3d'contenttags'\x3e"+w+"\x3c/div\x3e",!0);k=c.r(l,"pagetype",g,!0);k=c.r(k,"PageType","\x3c!--[PageType]","(",!1);k=c.r(k,"PageTypeEnd","[PageTypeEnd]--\x3e","(",!1);c.checkfirstrender();$.title(a);$.ht(c.deltemptags(k),"contentcontainer");k=null}c.tpcheckstatu=!1;c.rendering=!1;PJAX.autoprevent();PJAX.sel("contentcontainer");PJAX.start();c.navcheck();window.dispatchEvent(PJAX.PJAXFinish)}},nowtag:"",alltaghtml:"",taguper:function(a){a=decodeURIComponent(a);SC("html");var c=this,d=window.htmls[window.templjson.templatehtmls.tags],h=c.gt("TagListTemplate","TagListTemplateEnd",d),g=c.gt("TagListItemTemplate","TagListItemTemplateEnd",d),f=window.mainjson,d=f.dateindex,l=f.postindex,f=[],k="",m;for(m in d)d=m.replace("post",""),-1!==l[d].tags.indexOf(a)&&f.push(d);k+="\x3cul\x3e";f.forEach(function(a,d){var f=l[a],h="post-"+a+".html",m=$.dt(f.date);f.link&&(h=f.link+".html");h=c.r(g,"taglistitemlink",h,!0);h=c.r(h,"taglistitemtitle",Base64.decode(f.title),!0);h=c.r(h,"taglistitemdate",$.dt(m),!0);k+=h});k=c.r(h,"taglist",k,!0);k=c.r(k,"tagcurrent",a,!0);SC("contenttags").innerHTML=k;k=null},tagpagechecker:function(){SC("html");var a=$.tr(window.location.href);-1==a.indexOf("#")?(PJAX.pause(),window.location.replace(a+"#alltags"),PJAX.start()):(a=a.split("#")[1],this.nowtag!==a&&(this.nowtag=a,"alltags"==a?SC("contenttags")&&(SC("contenttags").innerHTML=this.alltaghtml):this.taguper(a),PJAX.start()))},indexpagechecker:function(){SC("html");var a=window.templjson,c=$.tr(decodeURIComponent(window.location.href)),d=window.mainjson,h=parseInt(d.posts_per_page);if(-1!==c.indexOf("#")){this.hashexist=!0;var g=c.split("#")[1];if(-1==c.indexOf("#!")){if(!isNaN(g)){var f=parseInt(g)-1;this.nowpage!==f&&(console.log("hash changed"),this.searchw="",this.nowpage=f,this.itempage=h*f*this.moreperpage,this.itempagefixer(),SC("postitems").innerHTML="",this.more(!0),this.realpage=f+1,this.switchpage=0)}}else{var l="",a=window.htmls[a.templatehtmls.postitem],h=this.gt("PostItem","PostItemEnd",a),a=this.gt("NoItem","NoItemEnd",a),c=c.split("#!")[1];if(c!==this.searchw){var k=function(){SC("postitems")&&SC("morebtn")?(window.scrollTo(0,0),SC("postitems").innerHTML=l,SC("morebtn").style.display="none",PJAX.start()):setTimeout(function(){return k()},200)};this.searchw=c;d=d.postindex;for(f in d){var m=Base64.decode(d[f].title).toLowerCase(),p=Base64.decode(d[f].intro).toLowerCase(),n=d[f].date.toLowerCase(),g=d[f].tags,r=g.toLowerCase(),c=c.toLowerCase();if(-1!==m.indexOf(c)||-1!==p.indexOf(c)||-1!==n.indexOf(c)||-1!==r.indexOf(c))m=B.r(h,"postitemtitle",m,!0),p=B.r(m,"postitemintro",p+"...",!0),n=B.r(p,"postitemdate",$.dt(n),!0),g=B.r(n,"postitemtags",g.replace(/,/g,"\u00b7"),!0),g=d[f].link?B.r(g,"postitemlink",d[f].link+".html",!0):B.r(g,"postitemlink","post-"+f+".html",!0),g=d[f].cover?B.r(g,"postcover",d[f].cover,!0):this.cd(g),l+=g,g=null}""==l&&(l=a);this.tpcheckstatu||this.loadstatu||k()}if(this.tpcheckstatu||this.loadstatu)this.searchw=""}}else this.searchw="",this.hashexist&&(this.realpage=1,this.switchpage=0,this.hashexist=!1)},loadshow:function(){this.loadstatu=!0;if($.loadset.animations){var a=$.loadset.animations["in"],c=$.loadset.animations.out,d;for(d in a)$.ecls(d,a[d]);for(d in c)$.ecls(d,c[d],!0)}},loadhide:function(){this.loadstatu=!1;var a=$.loadset.animations.out,c=$.loadset.animations["in"],d;for(d in a)$.ecls(d,a[d]);for(d in c)$.ecls(d,c[d],!0)},morehtmls:{},more:function(a){a=void 0===a?!1:a;var c=this.itempage+1,d=0,h=0,g="",f=window.mainjson,l=window.htmls[window.templjson.templatehtmls.postitem],k=this.gt("PostItem","PostItemEnd",l),l=this.gt("NoItem","NoItemEnd",l),m=parseInt(f.posts_per_page),p=f.dateindex,n;for(n in p)if(c<=h){if(d<m){var r=n.replace("post",""),p=f.postindex[r];if(p.link)this.itempage+=1,--d;else var t=B.r(k,"postitemtitle",Base64.decode(p.title),!0),t=B.r(t,"postitemintro",Base64.decode(p.intro)+"...",!0),t=B.r(t,"postitemdate",$.dt(p.date),!0),t=B.r(t,"postitemtags",p.tags.replace(/,/g,"\u00b7"),!0),r=B.r(t,"postitemlink","post-"+r+".html",!0),r=p.cover?B.r(r,"postcover",p.cover,!0):this.cd(r),g=g+r;d+=1}}else h+=1;""==g?(g=l,SC("morebtn").style.display="none"):SC("morebtn").style.display="block";this.itempage+=m;this.switchpage>=this.moreperpage-1&&!a?(SC("postitems").innerHTML=g,this.scrolltop(20,2),this.switchpage=0,this.realpage+=1,PJAX.pause(),window.location.href="#"+this.realpage):(SC("postitems").innerHTML=SC("postitems").innerHTML+g,this.switchpage+=1);SC("backbtn")&&(1==this.realpage?SC("backbtn").style.display="none":SC("backbtn").style.display="block");PJAX.start()}};window.addEventListener("scroll",B.lazycheck,!1);window.addEventListener("pjaxstart",function(){B.loadshow()},!1);window.addEventListener("pjaxfinish",function(){B.loadhide()},!1)}function anichecker(a,c){function d(){c();a.removeEventListener(h,d)}var h="",g={animation:"animationend",OAnimation:"oAnimationEnd",MozAnimation:"animationend",WebkitAnimation:"webkitAnimationEnd"},f;for(f in g)void 0!==a.style[f]&&(h=g[f]);a.addEventListener(h,d)}var mainhost=window.location.host,dt=(new Date).getTime();if(void 0==PJAX||null==PJAX)var PJAX={index:null===window.history.state?1:window.history.state.page,PJAXStart:new CustomEvent("pjaxstart"),PJAXFinish:new CustomEvent("pjaxfinish"),LoadedPage:{},lasthref:window.location.href,preventurl:[],recenturl:"",replace:"",statu:!0,sel:function(a){this.replace=a},jump:function(a){var c=encodeURIComponent(a),d=this,h=!1,g=d.replace;""==g&&(g="contentcontainer");if(-1!==d.recenturl.indexOf("#")&&-1!==a.indexOf("#"))return!1;-1==d.recenturl.indexOf("#")&&-1!==a.indexOf("#")&&(B.nowpage=0);window.dispatchEvent(d.PJAXStart);anichecker($.ecls($.loadset.listening,"",!1,!0),function(){window.scrollTo(0,0);if(d.LoadedPage[c])d.clearevent(),B.tpcheck(!1,d.LoadedPage[c]);else{var f=q("r",c,"","","");f.c&&(h=!0,d.clearevent(),B.tpcheck(!1,f.c));$.aj(a,{},{success:function(g){d.recenturl=a;d.LoadedPage[c]=g;h?f.c!==g?(q("w",c,g,timestamp(),""),d.clearevent(),B.tpcheck(!1,g)):q("e",c,"","",1):(d.clearevent(),B.tpcheck(!1,g),q("w",c,g,timestamp(),""))},failed:function(a){window.dispatchEvent(d.PJAXFinish)}},"get","",!0)}})},pjaxautojump:function(){PJAX.recenturl.split("#")[0]==window.location.href&&(window.history.replaceState(null,null,window.location.href+"#1"),PJAX.jump(window.location.href+"#1"));-1!==window.location.href.indexOf(mainhost)&&PJAX.jump(window.location.href)},clickevent:function(a){if(-1===PJAX.preventurl.indexOf(this.href)&&this.href&&""!=this.href)window.history.pushState(null,null,this.href),a.preventDefault(),PJAX.jump(this.href);else return!0},clearevent:function(){var a=document.getElementsByTagName("a"),c;for(c in a)"function"==typeof a[c].removeEventListener&&a[c].removeEventListener("click",this.clickevent)},start:function(){this.statu=!0;this.recenturl=window.location.href;this.clearevent();var a=document.getElementsByTagName("a"),c;for(c in a){var d=a[c]instanceof Element?a[c].getAttribute("onclick"):null;"function"!=typeof a[c].addEventListener||d||(a[c].setAttribute("pjax",""),a[c].addEventListener("click",this.clickevent,!1))}window.addEventListener("popstate",PJAX.pjaxautojump,!1)},pause:function(){this.statu=!1;window.removeEventListener("popstate",PJAX.pjaxautojump)},autoprevent:function(){var a=document.getElementsByTagName("a"),c=window.location.host,d;for(d in a)void 0!==a[d].href&&-1==a[d].href.indexOf(c)&&this.preventurl.push(a[d].href)}};function q(a,c,d,h,g){"undefined"==typeof localStorage.obottle&&(localStorage.obottle="{}");var f=0,l="",k=JSON.parse(localStorage.obottle),m=[];"undefined"!==typeof k[c]&&(f=k[c].t,l=k[c].h);if("w"==a){k=JSON.parse(localStorage.obottle);a={};a.h=d;a.t=h;a.rt=0;k[c]=a;try{localStorage.obottle=JSON.stringify(k)}catch(n){for(var p in k)(20>=Number(k[p].rt)||172800<=Number(h)-Number(k[p].t))&&delete k[p];localStorage.obottle=JSON.stringify(k)}}else{if("r"==a)return m.t=f,m.c=l,m;"e"==a&&(k=JSON.parse(localStorage.obottle),k[c].rt=Number(k[c].rt)+g,localStorage.obottle=JSON.stringify(k))}}function timestamp(){return(new Date).getTime()}B.tpcheck();
+/*FrontMainJS ver4.0.0 - SomeBottle*/
+/*q.js*/
+var md;
+if (typeof ($) !== 'object') {
+    $ = new Object();
+    $.ls = new Array();
+    $.lss = '';
+    $.loadset = new Object(); /*加载页配置*/
+    $.loadingjs = 0;/*正在用$.script载入的外部js数量，这个数量不归零，文章页面中script标签内的js不会执行*/
+    $.aj = function (p, d, sf, m, proxy, as) { /*(path,data,success or fail,method,proxyurl,async)*/
+        if (p !== 'false' && p) { /*奇妙的false问题*/
+            var xhr = new XMLHttpRequest();
+            var hm = '';
+            for (var ap in d) {
+                hm = hm + ap + '=' + d[ap] + '&';
+            }
+            if (proxy !== '') {
+                p = proxy + p;
+            }
+            hm = hm.substring(0, hm.length - 1);
+            if (m == 'get') {
+                xhr.open('get', p, as);
+            } else {
+                xhr.open('post', p, as);
+            } /*PS:此处ajax代码相较后台进行了简化，去除了前台无用语句*/
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send(hm);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    sf.success(xhr.responseText, p);
+                } else if (xhr.readyState == 4 && xhr.status !== 200) {
+                    sf.failed(xhr.status, p);
+                }
+            };
+            if (!as) {
+                if (xhr.responseText !== undefined) {
+                    sf.success(xhr.responseText, p);
+                } else {
+                    sf.failed(xhr.status, p);
+                }
+            }
+        }
+    }
+    var SC = function (e) { /*元素选择器*/
+        if (e == 'body') {
+            return document.body;
+        } else if (e == 'html') {
+            return document.getElementsByTagName('html')[0];
+        } else {
+            return document.getElementById(e);
+        }
+    }
+    $.script = function (url) { /*外部js加载器，页面已经加载的不会重复加载*/
+        if (!$.scripturl) {
+            $.scripturl = [];
+        }
+        var script = document.createElement("script");
+        var exist = false;
+        for (var up in $.ls) {
+            if ($.ls[up] == url) {
+                exist = true;
+                break;
+            }
+        }
+        if (!exist && $.scripturl.indexOf(url) == -1) {
+            $.loadingjs += 1;/*有外部js正在载入*/
+            $.ls[$.ls.length] = url;
+            script.type = "text/javascript";
+            script.src = url;
+            $.scripturl.push(url);
+            document.body.appendChild(script);
+            var scriptloaded = function sl() {
+                $.loadingjs -= 1;/*这个外部js载入完毕*/
+                this.removeEventListener("load", scriptloaded, false);
+            }.bind(script);
+            script.addEventListener("load", scriptloaded, false);
+        }
+        script = null;
+    }
+    $.scriptcircle = function (content, retry = 0) {/*20210522执行脚本的延迟函数，在$.script导入的js没有完全载入之前页面中的js会在此处滞留。所有js载入成功后会执行页面中的js*/
+        if ($.loadingjs > 0) {
+            setTimeout(function () { $.scriptcircle(content, retry + 1) }, 100);/*循环延迟*/
+        } else {
+            for (var i in content) setTimeout("try{" + content[i] + "}catch(e){console.log('Page script Error: ' + e.message);}", 0);
+        }
+    }
+    $.ht = function (h, e, scinclude = true) { /*元素内容设置器(html,element,run script or not when ht)*/
+        var ht = SC(e), pagescripts = [];
+        if (!ht) {
+            console.log('Unable to find the Element:' + e);
+            return false;
+        }
+        ht.innerHTML = h;
+        os = ht.getElementsByTagName('script');
+        for (var o = 0; o < os.length; o++) {
+            if (os[o].src !== undefined && os[o].src !== null && os[o].src !== '') {
+                $.script(os[o].src);
+            } else {
+                var h = os[o].innerHTML;
+                if (scinclude) { /*是否去除注释执行*/
+                    h = B.r(h, '/*', '');
+                    h = B.r(h, '*/', '');
+                }
+                pagescripts.push(h);/*综合一下页面中的js*/
+            }
+        }
+        $.scriptcircle(pagescripts);
+        ht = os = null; /*释放*/
+    }
+    $.tr = function (url) { /*PreventURLProblem(Fuck QQ Querying URI*/
+        var a = url;
+        b = a.split('?');
+        if (b[1]) {
+            return b[0];
+        } else {
+            return a;
+        }
+    }
+    $.dt = function (v) { /*date transformer*/
+        if (Number(v) >= 10000000) {
+            var dt = String(v),
+                md = dt.slice(-4),
+                d = md.slice(-2),
+                m = md.substring(0, 2),
+                y = dt.replace(md, ''),
+                changed = y + '-' + m + '-' + d;
+            return changed;
+        } else {
+            return v;
+        }
+    }
+    $.rmhead = function (html) { /*去头并返回处理后的内容*/
+        var tp = document.createElement('html');
+        tp.innerHTML = html;
+        var head = tp.getElementsByTagName('clothhead')[0]; /*获得cloth.html内的头*/
+        head.parentNode.removeChild(head);
+        var rt = [tp.innerHTML, head.innerHTML];
+        tp.remove(); /*移除临时元素*/
+        head = tp = null;
+        return rt;
+    }
+    $.addhead = function (hd) { /*接头霸王*/
+        var e = SC('html'),
+            head = e.getElementsByTagName('head')[0],
+            clothhead = head.getElementsByTagName('clothhead');
+        if (head.parentNode.tagName.toLowerCase() !== 'html') return false; /*父级元素不是html就算了*/
+        if (clothhead.length <= 0) { /*还没有渲染cloth的头部*/
+            var cloth = document.createElement('clothhead');
+            cloth.innerHTML = hd;
+            head.appendChild(cloth);
+            cloth = null;
+        } else { /*渲染过了，直接改*/
+            clothhead[0].innerHTML = hd;
+        }
+        head = clothhead = null;
+    }
+    $.title = function (t) { /*修改页面<title>*/
+        var e = SC('html'),
+            head = e.getElementsByTagName('head')[0],
+            title = head.getElementsByTagName('title');
+        if (title.length <= 0) { /*还没有加过<title>*/
+            var te = document.createElement('title');
+            te.innerHTML = t;
+            head.appendChild(te);
+        } else {
+            title[0].innerHTML = t;
+        }
+    }
+    $.ldparse = function (ld) { /*解析loading页面*/
+        var ht = document.createElement('html');
+        ht.innerHTML = ld;
+        var obj = ht.getElementsByTagName('loadset'),
+            set = obj ? JSON.parse(obj[0].innerHTML) : false; /*获得设置JSON*/
+        if (set) {
+            $.loadset = set;
+        } else { /*获取配置失败*/
+            console.log('Failed to initialize loading page.');
+        }
+        ht.remove(); /*移除临时元素*/
+        ht = obj = null;
+    }
+    $.ecls = function (v, clsv, rmv = false, returne = false) { /*元素class应用(选择器,值,是否移除,是否返回元素)*/
+        var ps = v.split(':'),
+            content = document.getElementsByTagName('html')[0],
+            es;
+        switch (ps[0]) {
+            case 'id':
+                es = document.getElementById(ps[1]);
+                break;
+            case 'class':
+                es = content.getElementsByClassName(ps[1]);
+                break;
+            case 'tag':
+                es = content.getElementsByTagName(ps[1]);
+                break;
+        }
+        if (returne) return es; /*返回元素*/
+        if (!(es instanceof Element)) {
+            for (var i in es) {
+                es[i] instanceof Element ? (rmv ? es[i].classList.remove(clsv) : es[i].classList.add(clsv)) : es = es;
+            }
+        } else {
+            rmv ? es.classList.remove(clsv) : es.classList.add(clsv);
+        }
+        es = content = null;
+    }
+}
+if (!B) { /*PreventInitializingTwice*/
+    /*Include LoadingPage*/
+    if (localStorage['obottle-ldpage']) {
+        var e = SC('html').innerHTML,
+            ldlocalused = true;
+        $.ldparse(localStorage['obottle-ldpage']); /*解析加载页*/
+        SC('html').innerHTML = e.replace('<loadingarea></loadingarea>', localStorage['obottle-ldpage']);
+    } else {
+        var ldlocalused = false;
+    }
+    $.aj('./loading.otp.html', '', {
+        success: function (m, p) {
+            if (!ldlocalused) { /*如果本地已经有了就不热更新了20200808*/
+                B.hr('<loadingarea></loadingarea>', m);
+                $.ldparse(m); /*解析加载页*/
+            }
+            localStorage['obottle-ldpage'] = m;
+        },
+        failed: function (m) { /*Failed*/
+            console.log('LoadingPage Load Failed');
+        }
+    }, 'get', '', true);
+    $.script('./library.js'); /*Include Library Once*/
+    $.script('./search.js'); /*Include Search.js Once*/
+    window.htmls = new Object();
+    var B = { /*B Part*/
+        moreperpage: 0,
+        r: function (a, o, p, tp = false, g = true) { /*别改这里！，没有写错！(All,Original,ReplaceStr,IfReplaceAll,IfTemplate(false,'[','('))*/
+            if (tp) return tp == '(' ? a.replace(new RegExp('\\{\\(' + o + '\\)\\}', (g ? 'g' : '') + 'i'), p) : a.replace(new RegExp('\\{\\[' + o + '\\]\\}', (g ? 'g' : '') + 'i'), p); /*20201229替换{[xxx]}和{(xxx)}一类模板，这样写目的主要是利用正则忽略大小写进行匹配*/
+            if (g) {
+                while (a.indexOf(o) !== -1) {
+                    a = a.replace(o, p);
+                }
+            } else {
+                a = a.replace(o, p);
+            }
+            return a;
+        },
+        navlist: {
+            statu: false,
+            conf: {}
+        },
+        navcurrent: function (v = '') { /*getcurrentnav*/
+            return ((-1 == v.indexOf('http') ? v = v : (v.replace(window.location.protocol + '//' + window.location.hostname, ''))) || window.location.pathname).replace('.html', ''); /*割掉尾巴*/
+        },
+        navcheck: function () { /*modify html*/
+            var c = document.body,
+                o = this,
+                cl = o.navlist.conf;
+            if (o.navlist.statu) {
+                var e = c.getElementsByClassName(cl.navclass),
+                    path = o.navcurrent();
+                for (var i in e) { /*20201229更改算法*/
+                    var p = o.navcurrent(e[i].href),
+                        pathpos = path.lastIndexOf(p),
+                        pathlen = path.length,
+                        hreflen = p.length;
+                    if ((path == p || (pathpos + hreflen == pathlen && pathpos !== -1)) && e[i] instanceof Element) {
+                        e[i].classList.add(cl.activeclass); /*设置为焦点*/
+                    } else if (e[i] instanceof Element) {
+                        (e[i].classList.contains(cl.activeclass)) ? (e[i].classList.remove(cl.activeclass)) : p = p; /*取消其他的焦点*/
+                    }
+                }
+                e = null;
+            }
+            c = null;
+        },
+        nav: function (v) {
+            var o = this;
+            o.navlist.statu = true;
+            o.navlist.conf = v;
+        },
+        scrolltop: function (maxspeed, minspeed) {
+            var nt = document.body.scrollTop;
+            var stages = Math.floor(parseInt(nt) / 3); /*分成加速、匀速、减速三段*/
+            var v1 = maxspeed; /*加速到maxspeed px/s*/
+            var vmin = minspeed; /*最小减速到minspeed px/s*/
+            var a1 = (Math.pow(v1, 2)) / (stages * 2); /*2ax=V²*/
+            var vn = 0; /*当前速度*/
+            var st = setInterval(function () {
+                var ntnow = document.body.scrollTop;
+                if (parseInt(ntnow) > (stages * 2)) {
+                    vn += a1;
+                    document.body.scrollTop = parseInt(ntnow) - vn;
+                } else if (parseInt(ntnow) > (stages)) { /*第二阶段*/
+                    document.body.scrollTop = parseInt(ntnow) - vn;
+                } else if (parseInt(ntnow) <= (stages)) { /*第三阶段*/
+                    vn -= a1;
+                    if (vn <= vmin) {
+                        vn = vmin;
+                    }
+                    if (parseInt(ntnow) <= 0) {
+                        document.body.scrollTop = 0;
+                        clearInterval(st);
+                    } else {
+                        document.body.scrollTop = parseInt(ntnow) - vn;
+                    }
+                }
+            }, 10);
+        },
+        hc: function (v) { /*反转义html的某些字符*/
+            v = ((v.replace(/&amp;/g, "&")).replace(/&lt;/g, "<")).replace(/&gt;/g, ">");
+            return v;
+        },
+        hr: function (o, p) { /*htmlreplace*/
+            var e = SC('html').innerHTML;
+            SC('html').innerHTML = this.r(e, o, p);
+        },
+        deltemptags: function (h) { /*删除模板多余的标识符，像{(xxx)}一类*/
+            return h.replace(/\{\((.*?)\)\}/g, '');
+        },
+        preventscript: function () {
+            var e = SC('html');
+            var sc = e.getElementsByTagName('script');
+            for (var i in sc) {
+                if (sc[i].src && $.scripturl.indexOf(sc[i].src) == -1) {
+                    $.scripturl.push(sc[i].src);
+                }
+            }
+            sc = null;
+        },
+        dehtml: function (h) { /*decodehtml*/
+            var temp = h.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ").replace(/&#039;/g, "\'").replace(/&#39;/g, "\'").replace(/&quot;/g, "\"");
+            return temp;
+        },
+        gt: function (p1, p2, ct = false, ntp = false) { /*htmlget(between,and,content,NotTemplate=false)*/
+            var e;
+            if (!ct) {
+                e = SC('html').innerHTML;
+            } else {
+                e = ct;
+            }
+            try { /*ntp=false，也就是模板中匹配的时候，默认匹配{(xxx)}和{(xxx)}之间的内容*/
+                var k = ntp ? e.split(p1)[1] : e.split(new RegExp('\\{\\(' + p1 + '\\)\\}', 'i'))[1]; /*正则支持大小写忽略*/
+                var d = ntp ? k.split(p2)[0] : k.split(new RegExp('\\{\\(' + p2 + '\\)\\}', 'i'))[0];
+                return this.dehtml(d);
+            } catch (e) {
+                return false;
+            }
+        },
+        lazypre: function (c) { /*处理Lazyload图片*/
+            var i = document.createElement('div');
+            i.innerHTML = c;
+            var s = i.getElementsByTagName('img');
+            for (var p in s) {
+                if (s[p].src) {
+                    var sr = s[p].src;
+                    s[p].src = 'data:image/gif;base64,R0lGODlhkAGQAYAAAP///wAAACH5BAEAAAAALAAAAACQAZABAAL/hI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2jef6zvf+DwwKh8Si8YhMKpfMpvMJjUqn1Kr1is1qt9yu9wsOi8fksvmMTqvX7Lb7DY/L5/S6/Y7P6/f8vv8PGCg4SFhoeIiYqLjI2Oj4CBkpOUlZaXmJmam5ydnp+QkaKjpKWmp6ipqqusra6voKGys7S1tre4ubq7vL2+v7CxwsPExcbHyMnKy8zNzs/AwdLT1NXW19jZ2tvc3d7f0NHi4+Tl5ufo6err7O3u7+Dh8vP09fb3+Pn6+/z9/v/w8woMCBBAsaPIgwocKFDBs6fAgxosSJFCtavIgxo8aN/xw7evwIMqTIkSRLmjyJMqXKlSxbunwJM6bMmTRr2ryJM6fOnTx7+vwJNKjQoUSLGj2KNKnSpUybOn0KNarUqVSrWr2KNavWrVy7ev0KNqzYsWTLmj2LNq3atWzbun0LN67cuXTr2r2LN6/evXz7+v0LOLDgwYQLGz6MOLHixYwbO34MObLkyZQrW76MObPmzZw7e/4MOrTo0aRLmz6NOrXq1axbu34NO7bs2bRr276NO7fu3bx7+/4NPLjw4cSLGz+OPLny5cybO38OPbr06dSrW7+OPbv27dy7e/8OPrz48eTLmz+PPr369ezbu38PP778+fTr27+PP7/+/fz7+03/D2CAAg5IYIEGHohgggouyGCDDj4IYYQSTkhhhRZeiGGGGm7IYYcefghiiCKOSGKJJp6IYooqrshiiy6+CGOMMs5IY4023ohjjm0UAAA7';
+                    if (s[p].style.width !== '') {
+                        sr = sr + '[width]' + s[p].style.width; /*记录元素原本的样式*/
+                    }
+                    s[p].setAttribute('data-src', '[lazy]' + sr);
+                    s[p].style.width = '100%';
+                }
+            }
+            var rt = i.innerHTML;
+            i.remove(); /*移除临时元素*/
+            i = s = null;
+            return rt;
+        },
+        lazycheck: function () { /*包租婆————怎么没水了呢？*/
+            var H = window.innerHeight;
+            var S = document.documentElement.scrollTop || document.body.scrollTop;
+            var es = document.getElementsByTagName('img');
+            for (var i in es) {
+                var cty = es[i].offsetTop;
+                if (H + S > cty) {
+                    var lazy = es[i].getAttribute('data-src');
+                    if (lazy !== 'undefined' && lazy) {
+                        es[i].setAttribute('data-src', '');
+                        var mainsrc = lazy.split('[lazy]')[1];
+                        if (mainsrc.indexOf('[width]') !== -1) {
+                            var sp = mainsrc.split('[width]');
+                            es[i].src = sp[0];
+                            es[i].style.width = sp[1]; /*恢复原来的width样式*/
+                        } else {
+                            es[i].src = lazy.split('[lazy]')[1];
+                            es[i].style.width = 'auto';
+                        }
+                    }
+                }
+            }
+            es = null;
+        },
+        templonload: 0,
+        /*LoadedTemplates*/
+        templateloaded: new Array(),
+        tpcheckstatu: false,
+        /*模板拼接状态*/
+        loadstatu: false,
+        /*加载div显示状态*/
+        tpcheck: function (re = false, ct = false) { /*template check(re=是否轮询,ct=是否指定内容)*/
+            var ot = this,
+                o = this;
+            if (!ot.tpcheckstatu || re) { /*防止短时间内重复检查模板20200805*/
+                ot.tpcheckstatu = true; /*正在检查模板*/
+                ot.loadshow();
+                var pagetype = ot.gt('PageType', 'PageTypeEnd', ct); /*Get Page Type*/
+                if (!window.templjson) {
+                    $.aj('template.json', '', {
+                        success: function (m) {
+                            window.templjson = JSON.parse(m);
+                            return ot.tpcheck(true, ct);
+                        },
+                        failed: function (m) { /*Failed*/
+                            console.log('TemplateJson Load Failed.');
+                        }
+                    }, 'get', '', true);
+                } else if (!window.mainjson && window.templjson['usemain'].indexOf(pagetype) !== -1) { /*Some pages are in need of Main.json*/
+                    if (!window.mainjsonrequest) { /*Include Mainjson*/
+                        window.mainjsonrequest = true; /*make request flag*/
+                        $.aj(window.templjson['mainjson'], '', {
+                            success: function (m) {
+                                window.mainjson = JSON.parse(m.replace(/[\r\n]/g, ""));
+                                ot.moreperpage = parseInt(window.mainjson['more_per_page']); /*Update moreperpage*/
+                            },
+                            failed: function (m) { /*Failed*/
+                                console.log('MainJson Load Failed');
+                            }
+                        }, 'get', '', true);
+                    }
+                    setTimeout(function () {
+                        return o.tpcheck(true, ct);
+                    },
+                        25);
+                } else if (typeof showdown !== 'object' || typeof Base64 !== 'object' || !localStorage['obottle-ldpage']) { /*Markdown or Base64 or loadingpage is not ready!*/
+                    setTimeout(function () {
+                        return o.tpcheck(true, ct);
+                    },
+                        25);
+                } else {
+                    ot.preventscript(); /*剔除已加载scripts*/
+                    var j = window.templjson;
+                    j['necessary'].push(pagetype); /*Pagetype Pushed*/
+                    if (pagetype == j['templatehtmls']['postlist']) {
+                        j['necessary'].push(j['templatehtmls']['postitem']); /*Extra Load*/
+                    }
+                    for (var i in j['necessary']) {
+                        if (o.templateloaded.indexOf(j['necessary'][i]) == -1) {
+                            o.templonload += 1;
+                            var usecache = false;
+                            var cache = q('r', 'template-' + j['necessary'][i], '', '', ''); /*Test Cache*/
+                            if (cache['c']) { /*如果有缓存，先装载缓存*/
+                                usecache = true;
+                                var p = j['necessary'][i];
+                                console.log('Template using cache:' + p);
+                                window.htmls[p] = cache['c'];
+                                o.templateloaded.push(p);
+                                o.templonload -= 1;
+                            }
+                            $.aj(j['necessary'][i], '', {
+                                success: function (m, p) {
+                                    window.htmls[p] = m;
+                                    if (!usecache) {
+                                        o.templateloaded.push(p);
+                                        o.templonload -= 1;
+                                        q('w', 'template-' + p, m, timestamp(), '');
+                                    } else if (cache['c'] !== m) { /*缓存需要更新*/
+                                        q('w', 'template-' + p, m, timestamp(), '');
+                                    } else { /*增加缓存读取次数*/
+                                        q('e', 'template-' + p, '', '', 1);
+                                    }
+                                },
+                                failed: function (m) { /*Failed*/
+                                    console.log('Necessary HTML Load Failed...');
+                                }
+                            }, 'get', '', true);
+                        }
+                    }
+                    var timer = setInterval(function () {
+                        if (o.templonload <= 0) {
+                            clearInterval(timer);
+                            o.renderer(ct); /*Call the renderer*/
+                        }
+                    },
+                        50); /*加快页面速度，我也是加把劲骑士！*/
+                    j = null; /*释放*/
+                }
+            }
+        },
+        itempage: 0,
+        switchpage: 0,
+        nowpage: 0,
+        realpage: 1,
+        searchw: '',
+        hashexist: false,
+        rendering: false,
+        /*渲染状态，同时队列中只能有一次渲染20200805*/
+        itempagefixer: function () {
+            var ot = this;
+            var tj = window.mainjson; /*get json*/
+            var counter = 1; /*项目计数*/
+            for (var po in tj['dateindex']) {
+                var nip = ot.itempage; /*重要！不要调换位置*/
+                var pid = po.replace('post', '');
+                var pt = tj['postindex'][pid];
+                if (counter <= nip) {
+                    if (pt['link']) {
+                        ot.itempage += 1;
+                    }
+                }
+                counter += 1;
+            }
+            ot.itempage -= 1; /*项目会多计算一个，减去*/
+        },
+        cd: function (rc) { /*covercutter封面<ifcover>去除器*/
+            var rst = rc;
+            while (rst.indexOf('<ifcover>') !== -1) {
+                var coverhtml = B.gt('<ifcover>', '</ifcover>', rst, true);
+                rst = B.r(rst, '<ifcover>' + coverhtml + '</ifcover>', ''); /*没有封面图就删掉整段*/
+            }
+            return rst;
+        },
+        clothmainrendered: false,
+        /*渲染过的cloth,main放在这里*/
+        checkfirstrender: function () { /*检查是不是第一次渲染，如果是就渲染cloth,main并喷到网页上*/
+            var ot = this,
+                j = window.templjson,
+                cloth = window.htmls[j['templatehtmls']['cloth']],
+                main = window.htmls[j['templatehtmls']['main']];
+            if (!ot.clothmainrendered) { /*还没有渲染cloth,main模板*/
+                console.log('first render');
+                var render1 = ot.r(main, 'contents', '<div id=\'contentcontainer\'></div>', true); /*预设好id以便后面调用*/
+                var render2 = ot.r(cloth, 'main', render1, true);
+                var ghead = $.rmhead(render2); /*把cloth内的头部去掉，咱分头行动*/
+                $.ht(ot.deltemptags(ghead[0]), 'container'); /*先把外皮给渲染出来*/
+                $.addhead(ghead[1]); /*把头接到head里面去*/
+                ot.clothmainrendered = true;
+            }
+        },
+        back: function () { /*返回上一页*/
+            window.history.go(-1);
+        },
+        turnback: function () {/*根据hash返回文章列表上一页*/
+            let current = this.realpage;
+            window.location.href = window.location.protocol + '//' +
+                window.location.host + window.location.pathname + '#' + (current > 1 ? (current - 1) : 1);
+        },
+        renderer: function (fcontent = false) { /*(fcontent=是否指定内容)*/
+            var ot = this;
+            if (!ot.rendering) {
+                ot.rendering = true; /*示意正在渲染20200805*/
+                var j = window.templjson;
+                md = new showdown.Converter();
+                var comment = window.htmls[j['templatehtmls']['comment']];
+                var pagetype = ot.gt('PageType', 'PageTypeEnd', fcontent); /*Get Page Type*/
+                var tj = window.mainjson; /*get json*/
+                if (pagetype == j['templatehtmls']['post']) {
+                    var content = ot.gt('PostContent', 'PostContentEnd', fcontent); /*Get Post Content*/
+                    var title = ot.gt('PostTitle', 'PostTitleEnd', fcontent); /*Get Post Title*/
+                    var date = ot.gt('PostDate', 'PostDateEnd', fcontent); /*Get Post Date*/
+                    var tags = ot.gt('PostTag', 'PostTagEnd', fcontent); /*Get Post Content*/
+                    var pid = ot.gt('PostID', 'PostIDEnd', fcontent); /*Get Post ID*/
+                    var cover = ot.gt('PostCover', 'PostCoverEnd', fcontent); /*Get Post Cover*/
+                    var pagetitle = (ot.gt('MainTitle', 'MainTitleEnd', fcontent)).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
+                    var post = window.htmls[j['templatehtmls']['post']];
+                    var render11 = ot.r(post, 'postcontent', ot.lazypre(md.makeHtml(ot.hc(content.trim()))), true); /*unescape and Analyse md*/
+                    var render12 = ot.r(render11, 'posttitle', title, true);
+                    var alltags = [];
+                    if (isNaN(date)) {
+                        tags = '页面';
+                    } else { /*Tag Process*/
+                        alltags = tags.split(',');
+                        tags = '';
+                        alltags.forEach(function (i, v) {
+                            tags = tags + '<a href="' + j['generatehtmls']['tags'] + '#' + encodeURIComponent(i) + '" class="taglink">' + i + '</a>,';
+                        });
+                        tags = tags.substr(0, tags.length - 1); /*去掉末尾逗号*/
+                    }
+                    var render13 = ot.r(render12, 'posttags', tags, true);
+                    var render14 = ot.r(render13, 'postdate', $.dt(date), true);
+                    var render15 = ot.r(render14, 'comments', comment, true); /*LoadCommentsForPost*/
+                    var render16 = ot.r(render15, 'pid', pid, true); /*SetPid*/
+                    render16 = ot.r(render16, 'pagetype', pagetype, true); /*SetPageType*/
+                    render16 = ot.r(render16, 'PageType', '<!--[PageType]', '(', false); /*SetPageType*/
+                    render16 = ot.r(render16, 'PageTypeEnd', '[PageTypeEnd]-->', '(', false); /*SetPageType*/
+                    /*CoverProcess*/
+                    if (cover && cover !== 'none' && cover !== '') {
+                        render16 = ot.r(render16, 'postcover', cover, true); /*设定封面*/
+                    } else { /*没有封面，按标签一起删掉*/
+                        render16 = ot.cd(render16);
+                    }
+                    if (isNaN(date)) { /*不是页面，就不显示评论了*/
+                        var r7 = render16.split('{(:PostEnd)}')[0] + '<!--PostEnd-->';
+                        var r8 = '<!--Footer-->' + render16.split('{(Footer:)}')[1];
+                        render16 = r7 + r8;
+                    }
+                    ot.checkfirstrender(); /*检查是否已经在页面中渲染cloth和main 20210125*/
+                    $.title(pagetitle); /*设置title*/
+                    $.ht(ot.deltemptags(render16), 'contentcontainer');
+                    anichecker($.ecls($.loadset['listening'], '', false, true), function () {
+                        ot.lazycheck(); /*LazyLoad初次检测*/
+                    });
+                    render16 = tj = null; /*释放*/
+                } else if (pagetype == j['templatehtmls']['postlist']) {
+                    var content = ot.gt('PostContent', 'PostContentEnd', fcontent); /*Get Post Content*/
+                    var pagetitle = (ot.gt('MainTitle', 'MainTitleEnd', fcontent)).replace(/<\/?.+?>/g, ""); /*Get Page Title(No html characters)*/
+                    var pt = window.htmls[j['templatehtmls']['postlist']];
+                    var ptt = ot.gt('PostListTemplate', 'PostListTemplateEnd', pt),
+                        morebtn = ot.gt('MoreBtn', 'MoreBtnEnd', pt),
+                        backbtn = ot.gt('BackBtn', 'BackBtnEnd', pt);
+                    ptt = ot.r(ptt, 'morebtn', '<span id=\'morebtn\'>' + morebtn + '</span>', true);
+                    ptt = ot.r(ptt, 'backbtn', '<span id=\'backbtn\'>' + backbtn + '</span>', true);
+                    var render11 = ot.r(ptt, 'postitems', '<div id=\'postitems\'>' + md.makeHtml((content.trim())) + '</div>', true); /*Analyse md*/
+                    var render12 = ot.r(render11, 'pagetype', pagetype, true); /*SetPageType*/
+                    render12 = ot.r(render12, 'PageType', '<!--[PageType]', '(', false); /*SetPageType*/
+                    render12 = ot.r(render12, 'PageTypeEnd', '[PageTypeEnd]-->', '(', false); /*SetPageType*/
+                    ot.itempage = parseInt(tj['posts_per_page']);
+                    ot.itempagefixer(); /*修复因忽略页面而造成的列表重复*/
+                    ot.checkfirstrender(); /*检查是否已经在页面中渲染cloth和main 20210125*/
+                    $.title(pagetitle); /*设置标题*/
+                    $.ht(ot.deltemptags(render12), 'contentcontainer');
+                    render12 = null; /*释放*/
+                    ot.backchecker();/*检查是否显示后退按钮*/
+                    ot.indexpagechecker();
+                    var timer = setInterval(function () { /*CheckIndexPage*/
+                        if (ot.gt('<!--[PageType]', '[PageTypeEnd]-->', false, true) !== j['templatehtmls']['postlist']) { /*跳离index页了*/
+                            console.log('jumped out of index');
+                            PJAX.sel('contentcontainer');
+                            PJAX.start(); /*修复more按钮的bug - 20190727*/
+                            ot.switchpage = 0;
+                            clearInterval(timer);
+                            return false;
+                        }
+                        ot.indexpagechecker();
+                    }, 100);
+                } else if (pagetype == j['templatehtmls']['archives']) {
+                    var pagetitle = (ot.gt('MainTitle', 'MainTitleEnd', fcontent)).replace(/<\/?.+?>/g, ""),
+                        /*Get Page Title(No html characters)*/
+                        ar = window.htmls[j['templatehtmls']['archives']],
+                        /*get entire html*/
+                        archivemain = ot.gt('Archives', 'ArchivesEnd', ar),
+                        /*Get archive main html*/
+                        archivetemp = ot.gt('ArchiveTemplate', 'ArchiveTemplateEnd', ar),
+                        /*get section template*/
+                        archiveitemtemp = ot.gt('ArchiveItemTemplate', 'ArchiveItemTemplateEnd', ar),
+                        /*get item template*/
+                        /*Generate Archives*/
+                        din = tj['dateindex'],
+                        renderar = '',
+                        /*archive section render*/
+                        renderarit = '',
+                        /*archive item render*/
+                        year = 0;
+                    for (var td in din) {
+                        var t = (din[td].toString()).substring(0, 4); /*get years*/
+                        if (t !== year) {
+                            year = t;
+                            if (renderarit !== '') renderar = ot.r(renderar, 'archiveitems', renderarit, true), renderarit = ''; /*apply items to section*/
+                            renderar += ot.r(archivetemp, 'archiveyear', t, true); /*render year section*/
+                        }
+                        var pid = td.replace('post', ''),
+                            title = Base64.decode(tj['postindex'][pid]['title']),
+                            date = tj['postindex'][pid]['date'],
+                            itemlink = '';
+                        if (!tj['postindex'][pid]['link']) { /*render items*/
+                            itemlink = 'post-' + pid + '.html';
+                        } else {
+                            itemlink = tj['postindex'][pid]['link'] + '.html';
+                        }
+                        var itemrender = ot.r(archiveitemtemp, 'archiveitemlink', itemlink, true),
+                            itemrender = ot.r(itemrender, 'archiveitemtitle', title, true),
+                            itemrender = ot.r(itemrender, 'archiveitemdate', $.dt(date), true);
+                        renderarit += itemrender;
+                    }
+                    if (renderarit !== '') renderar = ot.r(renderar, 'archiveitems', renderarit, true); /*apply items to section#2*/
+                    renderar += '</ul>'; /*Generate Finish*/
+                    var render11 = ot.r(archivemain, 'archives', renderar, true); /*渲染模板部分*/
+                    //var render4 = ot.r(render3, 'title', pagetitle, true);
+                    var render12 = ot.r(render11, 'pagetype', pagetype, true); /*SetPageType*/
+                    render12 = ot.r(render12, 'PageType', '<!--[PageType]', '(', false); /*SetPageType*/
+                    render12 = ot.r(render12, 'PageTypeEnd', '[PageTypeEnd]-->', '(', false); /*SetPageType*/
+                    ot.checkfirstrender(); /*检查是否已经在页面中渲染cloth和main 20210125*/
+                    $.title(pagetitle); /*设置标题*/
+                    $.ht(ot.deltemptags(render12), 'contentcontainer');
+                    render12 = null; /*释放*/
+                } else if (pagetype == j['templatehtmls']['tags']) {
+                    var pagetitle = (ot.gt('MainTitle', 'MainTitleEnd', fcontent)).replace(/<\/?.+?>/g, ""),
+                        /*Get Page Title(No html characters)*/
+                        tgs = window.htmls[j['templatehtmls']['tags']],
+                        tagmain = ot.gt('Tags', 'TagsEnd', tgs),
+                        /*Get tag main html*/
+                        tagitemtemp = ot.gt('TagItemTemplate', 'TagItemTemplateEnd', tgs),
+                        /*get item template*/
+                        href = $.tr(window.location.href),
+                        /*Generate Tags*/
+                        rendertg = '',
+                        pts = tj['postindex'],
+                        tagarr = new Array();
+                    for (var i in pts) {
+                        var t = pts[i]['tags'].split(',');
+                        t.forEach(function (item, index) {
+                            if (item !== '' && tagarr.indexOf(item) == -1) {
+                                tagarr.push(item);
+                            }
+                        });
+                    }
+                    tagarr.forEach(function (item, index) {
+                        var g = ot.r(tagitemtemp, 'tagitemtitle', item, true); /*replace and render*/
+                        g = ot.r(g, 'tagitemlink', '#' + encodeURIComponent(item), true);
+                        rendertg += g;
+                    });
+                    ot.alltaghtml = rendertg;
+                    if (href.indexOf('#') !== -1) {
+                        var pg = href.split('#')[1];
+                        ot.nowtag = pg;
+                        if (pg !== 'alltags') {
+                            rendertg = '<script>B.taguper(\'' + pg + '\');PJAX.sel(\'contentcontainer\');PJAX.start();</script>';
+                        }
+                    } /*Generate Finish*/
+                    var timer = setInterval(function () { /*CheckTagPage*/
+                        if (window.location.href.indexOf(j['generatehtmls']['tags']) == -1 && window.location.href.indexOf((j['generatehtmls']['tags']).replace('.html', '')) == -1) { /*跳离tag页了*/
+                            PJAX.sel('contentcontainer');
+                            PJAX.start();
+                            clearInterval(timer);
+                            return false;
+                        }
+                        ot.tagpagechecker();
+                    },
+                        100);
+                    var render11 = ot.r(tagmain, 'tags', '<div id=\'contenttags\'>' + rendertg + '</div>', true);
+                    var render12 = ot.r(render11, 'pagetype', pagetype, true); /*SetPageType*/
+                    render12 = ot.r(render12, 'PageType', '<!--[PageType]', '(', false); /*SetPageType*/
+                    render12 = ot.r(render12, 'PageTypeEnd', '[PageTypeEnd]-->', '(', false); /*SetPageType*/
+                    ot.checkfirstrender(); /*检查是否已经在页面中渲染cloth和main 20210125*/
+                    $.title(pagetitle); /*设置标题*/
+                    $.ht(ot.deltemptags(render12), 'contentcontainer');
+                    render12 = null; /*释放*/
+                }
+                ot.tpcheckstatu = false; /*模板检查拼接完毕*/
+                ot.rendering = false; /*渲染完毕，空出队列20200805*/
+                /*PJAX监听刷新*/
+                PJAX.autoprevent();
+                PJAX.sel('contentcontainer');
+                PJAX.start();
+                ot.navcheck(); /*进行导航栏检查*/
+                window.dispatchEvent(PJAX.PJAXFinish); /*调用事件隐藏loading浮层20201229*/
+            }
+        },
+        backchecker: function () {/*检查后退按钮是否显示*/
+            if (this.realpage == 1) {
+                SC('backbtn').style.display = 'none';
+            } else {
+                SC('backbtn').style.display = 'initial';
+            }
+        },
+        nowtag: '',
+        alltaghtml: '',
+        taguper: function (tg) { /*渲染特定标签索引的文章列表*/
+            tg = decodeURIComponent(tg);
+            var eh = SC('html').innerHTML,
+                ot = this,
+                j = window.templjson,
+                tgs = window.htmls[j['templatehtmls']['tags']],
+                /*get main tag html*/
+                taglisttemp = ot.gt('TagListTemplate', 'TagListTemplateEnd', tgs),
+                /*get item template*/
+                taglistitemtemp = ot.gt('TagListItemTemplate', 'TagListItemTemplateEnd', tgs),
+                /*get item template*/
+                tj = window.mainjson; /*get json*/
+            var dti = tj['dateindex'];
+            var pts = tj['postindex'];
+            var postlist = new Array();
+            var rendertgs = '';
+            for (var i in dti) { /*Sel Posts in the order of date*/
+                var pid = i.replace('post', '');
+                if (pts[pid]['tags'].indexOf(tg) !== -1) {
+                    postlist.push(pid);
+                }
+            }
+            rendertgs += '<ul>';
+            postlist.forEach(function (it, id) {
+                var post = pts[it];
+                var lk = 'post-' + it + '.html',
+                    date = $.dt(post['date']);
+                if (post['link']) {
+                    lk = post['link'] + '.html';
+                }
+                var g = ot.r(taglistitemtemp, 'taglistitemlink', lk, true);
+                g = ot.r(g, 'taglistitemtitle', Base64.decode(post['title']), true);
+                g = ot.r(g, 'taglistitemdate', $.dt(date), true);
+                rendertgs += g;
+            });
+            rendertgs = ot.r(taglisttemp, 'taglist', rendertgs, true);
+            rendertgs = ot.r(rendertgs, 'tagcurrent', tg, true);
+            SC('contenttags').innerHTML = rendertgs;
+            rendertgs = null; /*释放*/
+        },
+        tagpagechecker: function () { /*标签页hash更新检查器*/
+            var ot = this;
+            var eh = SC('html').innerHTML; /*Get All html*/
+            var href = $.tr(window.location.href);
+            if (href.indexOf('#') == -1) {
+                PJAX.pause();
+                window.location.replace(href + '#alltags'); /*利用replace防止浏览器记录history导致无法回退的bug*/
+                PJAX.start();
+            } else {
+                var pg = href.split('#')[1];
+                if (ot.nowtag !== pg) {
+                    ot.nowtag = pg;
+                    if (pg == 'alltags') {
+                        if (SC('contenttags')) {
+                            SC('contenttags').innerHTML = ot.alltaghtml;
+                        }
+                    } else {
+                        ot.taguper(pg);
+                    }
+                    PJAX.start();
+                }
+            }
+        },
+        indexpagechecker: function () {
+            var eh = SC('html').innerHTML; /*Get All html*/
+            var j = window.templjson;
+            var href = $.tr(decodeURIComponent(window.location.href));
+            var tj = window.mainjson; /*get json*/
+            var maxrender = parseInt(tj['posts_per_page']);
+            var ot = this;
+            if (href.indexOf('#') !== -1) {
+                ot.hashexist = true;
+                var pg = href.split('#')[1];
+                if (href.indexOf('#!') == -1) {
+                    if (!isNaN(pg)) {
+                        var pnum = parseInt(pg) - 1;
+                        if (ot.nowpage !== pnum) {
+                            console.log('hash changed');
+                            ot.searchw = ''; /*不在搜索模式,重置搜索词*/
+                            ot.nowpage = pnum;
+                            var allps = maxrender * pnum * ot.moreperpage; /*根据页码计算当前页*/
+                            ot.itempage = allps;
+                            ot.itempagefixer(); /*修复因忽略页面而造成的列表重复*/
+                            SC('postitems').innerHTML = '';
+                            ot.more(true); /*顺序不要颠倒!*/
+                            ot.realpage = pnum + 1;
+                            ot.switchpage = 0;
+                        }
+                    }
+                } else { /*Search mode*/
+                    var item = window.htmls[j['templatehtmls']['postitem']],
+                        ptitem = ot.gt('PostItem', 'PostItemEnd', item),
+                        /*有项目的模板*/
+                        noitem = ot.gt('NoItem', 'NoItemEnd', item); /*无项目的模板*/
+                    var v = href.split('#!')[1];
+                    if (v !== ot.searchw) {
+                        ot.searchw = v;
+                        var pt = tj['postindex'];
+                        function renderlist(postindexes, id, title = false, intro = false, date = false, tgs = false) {
+                            var rendertp = '';
+                            let pt = postindexes, i = id, tt = title || (Base64.decode(pt[i]['title'])), cc = intro || (Base64.decode(pt[i]['intro'])), dd = date || (pt[i]['date']), tags = tgs || pt[i]['tags'];
+                            var render1 = B.r(ptitem, 'postitemtitle', tt, true);
+                            var render2 = B.r(render1, 'postitemintro', cc + '...', true);
+                            var render3 = B.r(render2, 'postitemdate', $.dt(dd), true);
+                            var render35 = B.r(render3, 'postitemtags', tags.replace(/,/g, '·'), true); /*20201229加入对于文章列表单项模板中tags的支持*/
+                            var render4;
+                            if (!pt[i]['link']) {
+                                render4 = B.r(render35, 'postitemlink', 'post-' + i + '.html', true); /*把页面也算入*/
+                            } else {
+                                render4 = B.r(render35, 'postitemlink', pt[i]['link'] + '.html', true);
+                            }
+                            if (pt[i]['cover']) { /*如果有封面*/
+                                render4 = B.r(render4, 'postcover', pt[i]['cover'], true); /*把页面也算入*/
+                            } else {
+                                render4 = ot.cd(render4); /*没有封面就删掉整段<ifcover>*/
+                            }
+                            rendertp += render4; /*渲染到列表模板*/
+                            render4 = null; /*释放*/
+                            return rendertp;
+                        }
+                        for (var i in pt) {
+                            var tt = (Base64.decode(pt[i]['title'])).toLowerCase();
+                            var cc = (Base64.decode(pt[i]['intro'])).toLowerCase();
+                            var dd = (pt[i]['date']).toLowerCase();
+                            var tags = pt[i]['tags'],
+                                tg = tags.toLowerCase(), rendertp = '';
+                            v = v.toLowerCase(); /*大小写忽略*/
+                            if (tt.indexOf(v) !== -1 || cc.indexOf(v) !== -1 || dd.indexOf(v) !== -1 || tg.indexOf(v) !== -1) {
+                                rendertp += renderlist(pt, i, tt, cc, dd, tags);
+                            }
+                        }
+                        if (rendertp == '') {
+                            rendertp = noitem;
+                        }
+                        function process() { /*局部函数*/
+                            if (SC('postitems') && SC('morebtn')) {
+                                window.scrollTo(0, 0);
+                                SC('postitems').innerHTML = rendertp;
+                                if (typeof ot.searchinj == "function") ot.searchinj(pt, v, (ids) => {
+                                    let rendertp = '';
+                                    for (var i in ids) rendertp += renderlist(pt, i);
+                                    if (rendertp == '') return false;
+                                    SC('postitems').innerHTML = rendertp;
+                                    PJAX.start();
+                                });/*外部搜索search.js介入*/
+                                SC('morebtn').style.display = 'none';
+                                PJAX.start(); /*refresh pjax links*/
+                            } else {
+                                setTimeout(function () {
+                                    return process();
+                                }, 10); /*如果没有需要的元素存在滞留一下*/
+                            }
+                        }
+                        if (!ot.tpcheckstatu && !ot.loadstatu) { /*如果页面加载完,模板拼接完毕就可以打印搜索结果了*/
+                            process();
+                        }
+                    }
+                    if (ot.tpcheckstatu || ot.loadstatu) { /*如果模板未拼接完毕，清理搜索词延续循环(外层setInterval)*/
+                        ot.searchw = '';
+                    }
+                }
+            } else {
+                ot.searchw = ''; /*不在搜索模式,重置搜索词*/
+                if (ot.hashexist) {
+                    ot.realpage = 1;
+                    ot.switchpage = 0;
+                    ot.hashexist = false;
+                }
+            }
+        },
+        loadshow: function () {
+            this.loadstatu = true; /*加载未就绪*/
+            if ($.loadset['animations']) {
+                var es = $.loadset['animations']['in'],
+                    eo = $.loadset['animations']['out'];
+                for (var i in es) {
+                    $.ecls(i, es[i]);
+                }
+                for (var i in eo) {
+                    $.ecls(i, eo[i], true); /*移除元素*/
+                }
+            }
+        },
+        loadhide: function () {
+            this.loadstatu = false; /*加载就绪*/
+            var es = $.loadset['animations']['out'],
+                eo = $.loadset['animations']['in'];
+            for (var i in es) {
+                $.ecls(i, es[i]);
+            }
+            for (var i in eo) {
+                $.ecls(i, eo[i], true); /*移除元素*/
+            }
+        },
+        morehtmls: {},
+        more: function (nochangehash = false) { /*(是否阻止改变hash(用于适配indexpagechecker20200812)*/
+            var ot = this;
+            var j = window.templjson;
+            var start = ot.itempage + 1; /*当前列表起始文章id*/
+            var counter = 0;
+            var itemid = 0;
+            var listrender = '';
+            var tj = window.mainjson; /*get json*/
+            var item = window.htmls[j['templatehtmls']['postitem']],
+                ptitem = ot.gt('PostItem', 'PostItemEnd', item),
+                /*有项目的模板*/
+                noitem = ot.gt('NoItem', 'NoItemEnd', item); /*无项目的模板*/
+            var maxrender = parseInt(tj['posts_per_page']);
+            var end = start + maxrender;
+            var postids = tj['dateindex'];
+            var overpages = 0;
+            for (var i in postids) {
+                if (start <= itemid) {
+                    if (counter < maxrender) {
+                        var pid = i.replace('post', '');
+                        var pt = tj['postindex'][pid];
+                        if (!pt['link']) { /*排除页面在外*/
+                            var render1 = B.r(ptitem, 'postitemtitle', Base64.decode(pt.title), true);
+                            var render2 = B.r(render1, 'postitemintro', Base64.decode(pt.intro) + '...', true);
+                            var render3 = B.r(render2, 'postitemdate', $.dt(pt.date), true);
+                            var render35 = B.r(render3, 'postitemtags', pt.tags.replace(/,/g, '·'), true); /*20201229加入对于文章列表单项模板中tags的支持*/
+                            var render4 = B.r(render35, 'postitemlink', 'post-' + pid + '.html', true);
+                            if (pt['cover']) { /*如果有封面*/
+                                render4 = B.r(render4, 'postcover', pt['cover'], true); /*把页面也算入*/
+                            } else {
+                                render4 = ot.cd(render4); /*没有封面就删掉所有<ifcover>*/
+                            }
+                            listrender += render4; /*渲染到列表模板*/
+                        } else {
+                            ot.itempage += 1;
+                            counter -= 1;
+                        }
+                        counter += 1;
+                    } else {
+                        overpages += 1; /*剩余没加载文章数量*/
+                    }
+                } else {
+                    itemid += 1;
+                }
+            }
+            if (listrender == '') { /*没有更多文章了*/
+                listrender = noitem;
+                SC('morebtn').style.display = 'none';
+            } else {
+                SC('morebtn').style.display = 'initial';
+            }
+            ot.itempage = ot.itempage + maxrender;
+            if (ot.switchpage >= (ot.moreperpage - 1) && !nochangehash) { /*nochangehash搭配indexpagefixer20200812*/
+                SC('postitems').innerHTML = listrender;
+                ot.scrolltop(20, 2);
+                ot.switchpage = 0;
+                ot.realpage += 1;
+                PJAX.pause();
+                window.location.href = '#' + ot.realpage;
+            } else {
+                SC('postitems').innerHTML = SC('postitems').innerHTML + listrender;
+                ot.switchpage += 1;
+            }
+            ot.backchecker();
+            PJAX.start(); /*refresh pjax links*/
+        }
+    };
+    window.addEventListener('scroll', B.lazycheck, false); /*LazyLoadCheck*/
+    window.addEventListener('pjaxstart',
+
+        function () { /*加载动画*/
+            B.loadshow();
+        },
+        false);
+    window.addEventListener('pjaxfinish',
+
+        function () {
+            B.loadhide();
+        },
+        false);
+}
+
+function anichecker(e, func) { /*css3变换检查器(元素,执行完毕执行的函数)*/
+    var ts = '';
+    var tss = {
+        'animation': 'animationend',
+        'OAnimation': 'oAnimationEnd',
+        'MozAnimation': 'animationend',
+        'WebkitAnimation': 'webkitAnimationEnd'
+    }; /*兼容多浏览器*/
+    for (var i in tss) {
+        if (e.style[i] !== undefined) {
+            ts = tss[i];
+        }
+    }
+
+    function doit() {
+        func();
+        e.removeEventListener(ts, doit);
+    }
+    e.addEventListener(ts, doit);
+} /*Simple PJAX For Front MAIN - SomeBottle*/
+var mainhost = window.location.host;
+var dt = new Date().getTime();
+if (PJAX == undefined || PJAX == null) { /*防止重初始化*/
+    var PJAX = {
+        index: window.history.state === null ? 1 : window.history.state.page,
+        PJAXStart: new CustomEvent('pjaxstart'),
+        PJAXFinish: new CustomEvent('pjaxfinish'),
+        LoadedPage: {},
+        lasthref: window.location.href,
+        preventurl: new Array(),
+        recenturl: '',
+        replace: '',
+        statu: true,
+        sel: function (r) {
+            this.replace = r;
+        },
+        jump: function (href) {
+            var ehref = encodeURIComponent(href);
+            var ts = this;
+            var usecache = false; /*是否使用缓存*/
+            var e = ts.replace;
+            if (e == '') {
+                e = 'contentcontainer'; /*默认指定container*/
+            }
+            var listener; /*初始化监听器*/
+            if (ts.recenturl.indexOf('#') !== -1 && href.indexOf('#') !== -1) { /*防止Tag页面的跳转问题*/
+                return false;
+            } else if (ts.recenturl.indexOf('#') == -1 && href.indexOf('#') !== -1) {
+                B.nowpage = 0; /*防止页码bug*/
+            }
+            window.dispatchEvent(ts.PJAXStart); /*激活事件来显示加载动画*/
+            anichecker($.ecls($.loadset['listening'], '', false, true), function () {
+                window.scrollTo(0, 0); /*滚动到头部*/
+                if (ts.LoadedPage[ehref]) { /*临时缓存*/
+                    ts.clearevent(); /*清除之前的监听器*/
+                    B.tpcheck(false, ts.LoadedPage[ehref]); /*因为tpcheck末尾已经有loadhide，此处没必要anichecker20201229*/
+                } else {
+                    var cache = q('r', ehref, '', '', ''); /*获取缓存信息*/
+                    if (cache['c']) { /*如果有缓存*/
+                        usecache = true; /*本地缓存使用模式*/
+                        ts.clearevent(); /*清除之前的监听器*/
+                        B.tpcheck(false, cache['c']); /*预填装缓存*/
+                    }
+                    $.aj(href, {}, {
+                        success: function (m) {
+                            ts.recenturl = href;
+                            ts.LoadedPage[ehref] = m;
+                            if (!usecache) { /*如果没有使用本地缓存就缓存传输过来的数据*/
+                                ts.clearevent(); /*清除之前的监听器*/
+                                B.tpcheck(false, m);
+                                q('w', ehref, m, timestamp(), '');
+                            } else {
+                                if (cache['c'] !== m) { /*缓存需要更新了，把新数据写入本地*/
+                                    q('w', ehref, m, timestamp(), '');
+                                    ts.clearevent();
+                                    B.tpcheck(false, m);
+                                } else {
+                                    q('e', ehref, '', '', 1); /*更新缓存读取次数*/
+                                }
+                            } /*因为tpcheck末尾已经有loadhide，此处没必要anichecker20201229*/
+                        },
+                        failed: function (m) {
+                            window.dispatchEvent(ts.PJAXFinish);
+                        }
+                    }, 'get', '', true);
+                }
+            });
+        },
+        pjaxautojump: function () {
+            if (PJAX.recenturl.split('#')[0] == window.location.href) { /*用于处理首页没有hash和有hash页码时回退跳转的问题20200808*/
+                window.history.replaceState(null, null, window.location.href + '#1'); /*从https://xxx/#2回退到https://xxx/时自动变成https://xxx/#1跳转到页码1(不改变历史)20200808*/
+                PJAX.jump(window.location.href + '#1');
+            }
+            if (window.location.href.indexOf(mainhost) !== -1) { /*回退时跳转20200808*/
+                PJAX.jump(window.location.href);
+            }
+        },
+        clickevent: function (e) {
+            if (PJAX.preventurl.indexOf(this.href) !== -1 || !this.href || this.href == '') {
+                return true;
+            } else {
+                window.history.pushState(null, null, this.href); /*加入历史*/
+                e.preventDefault();
+                PJAX.jump(this.href);
+            }
+        },
+        clearevent: function () { /*移除所有a标签事件*/
+            var ts = this,
+                p = document.getElementsByTagName("a");
+            for (var i in p) {
+                if (typeof (p[i].removeEventListener) == 'function') { /*防止不是函数的凑数*/
+                    p[i].removeEventListener('click', ts.clickevent); /*取消监听A标签*/
+                }
+            }
+            p = null;
+        },
+        start: function () {
+            var ts = this;
+            ts.statu = true; /*启动*/
+            ts.recenturl = window.location.href;
+            ts.clearevent(); /*先清除之前的监听器*/
+            var p = document.getElementsByTagName("a");
+            for (var i in p) {
+                var onc = p[i] instanceof Element ? p[i].getAttribute('onclick') : null; /*检查a标签是否有onclick属性20210126*/
+                if (typeof (p[i].addEventListener) == 'function' && !onc) { /*防止不是元素的凑数，a标签带onclick属性就不监听了20210126*/
+                    p[i].setAttribute('pjax', ''); /*设置标识*/
+                    p[i].addEventListener('click', ts.clickevent, false); /*监听A标签*/
+                }
+            } /*回退时触发*/
+            window.addEventListener('popstate', PJAX.pjaxautojump, false);
+            p = null;
+        },
+        pause: function () {
+            this.statu = false; /*暂停*/
+            window.removeEventListener('popstate', PJAX.pjaxautojump); /*移除实践，暂停pjax*/
+        },
+        autoprevent: function () {
+            var ts = this;
+            var p = document.getElementsByTagName("a");
+            var h = window.location.host;
+            for (var i in p) {
+                if (p[i].href !== undefined) {
+                    if (p[i].href.indexOf(h) == -1) {
+                        ts.preventurl.push(p[i].href);
+                    }
+                }
+            }
+            p = null;
+        }
+    };
+} /*CacheArea - Thank you OBottle*/
+
+function q(md, k, c, t, rt) { /*(mode,key,content,timestamp,readtime)*/
+    /*初始化本地cache*/
+    if (typeof localStorage.obottle == 'undefined') {
+        localStorage.obottle = '{}';
+    }
+    var timestamp = 0,
+        cache = '',
+        caches = JSON.parse(localStorage.obottle),
+        rs = new Array();
+    if (typeof caches[k] !== 'undefined') {
+        timestamp = caches[k].t;
+        cache = caches[k].h;
+    }
+    if (md == 'w') {
+        var caches = JSON.parse(localStorage.obottle);
+        var cc = new Object();
+        cc.h = c;
+        cc.t = t;
+        cc.rt = 0; /*使用缓存次数*/
+        caches[k] = cc;
+        try {
+            localStorage.obottle = JSON.stringify(caches);
+        } catch (e) {
+            for (var d in caches) {
+                if (Number(caches[d].rt) <= 20 || Number(t) - Number(caches[d].t) >= 172800) { /*自动清理缓存空间*/
+                    delete caches[d];
+                }
+            }
+            localStorage.obottle = JSON.stringify(caches);
+        }
+    } else if (md == 'r') {
+        rs['t'] = timestamp;
+        rs['c'] = cache;
+        return rs;
+    } else if (md == 'e') {
+        var caches = JSON.parse(localStorage.obottle);
+        caches[k].rt = Number(caches[k].rt) + rt;
+        localStorage.obottle = JSON.stringify(caches);
+    }
+} /*GetTimestamp*/
+
+function timestamp() {
+    var a = new Date().getTime();
+    return a;
+}
+B.tpcheck(); /*Activate Template Checker*/
