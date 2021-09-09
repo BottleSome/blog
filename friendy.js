@@ -21,7 +21,7 @@
                 res(ot.links);
             }; /*已经载入了列表*/
             if (url) {
-                $.aj(json, [], {
+                $.ft(json, [], {
                     success: function (m) {
                         ot.links = JSON.parse(m);
                         ot.linkloaded = true;
@@ -30,7 +30,7 @@
                     failed: function (m) {
                         console.log('Failed to get links.');
                     }
-                }, "get", "", true);
+                }, "get", "");
             } else {
                 ot.links = JSON.parse(json);
                 ot.linkloaded = true;
