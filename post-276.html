@@ -1,5 +1,20 @@
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"><!--description--><meta name="description" content="本文章在Github撰写，同时在博客园进行了发布。最近学数据库概论学到了关系数据库的关系代数了。哎嘛，真的把我整晕了，尤其是关系代数的使用，很容易让人被蒙在鼓里。对我来说槽点最大的莫过..." /><!--Keywords--><meta name="keywords" content="学习,小记,Bottle小站" /></head><loadingarea></loadingarea><div id='container'><style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>
-{(MainTitle)}<title>关系数据库de关系代数小记-Bottle小站</title>{(MainTitleEnd)}<body>{(PostTitle)}关系数据库de关系代数小记{(PostTitleEnd)}{(PostDate)}20211018{(PostDateEnd)}{(PostContent)}本文章在 [Github](https://github.com/cat-note/bottleofcat/blob/main/Database/DatabaseRelationalAlgebra.md) 撰写，同时在 [博客园](https://www.cnblogs.com/somebottle/p/database_relational_algebra.html) 进行了发布。
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--description-->
+<meta name="description" content="本文章在Github撰写，同时在博客园进行了发布。最近学数据库概论学到了关系数据库的关系代数了。哎嘛，真的把我整晕了，尤其是关系代数的使用，很容易让人被蒙在鼓里。对我来说槽点最大的莫过..." />
+<!--Keywords-->
+<meta name="keywords" content="学习,小记,Bottle小站" />
+</head>
+<loadingarea></loadingarea>
+<div id='container'>
+<style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>
+{(MainTitle)}<title>【动画解释】关系数据库de关系代数小记-Bottle小站</title>{(MainTitleEnd)}
+<body>
+{(PostTitle)}【动画解释】关系数据库de关系代数小记{(PostTitleEnd)}
+{(PostDate)}20211018{(PostDateEnd)}
+{(PostContent)}
+本文章在 [Github](https://github.com/cat-note/bottleofcat/blob/main/Database/DatabaseRelationalAlgebra.md) 撰写，同时在 [博客园](https://www.cnblogs.com/somebottle/p/database_relational_algebra.html) 进行了发布。
 
 最近学数据库概论学到了**关系数据库**的关系代数了。 哎嘛，真的把我整晕了，尤其是关系代数的使用，很容易让人被蒙在鼓里。  
 
@@ -129,14 +144,14 @@
 
     为什么这里是 **广义笛卡尔积** 呢？我们先看 **笛卡尔积** 算了什么：  
 
-    &amp;gt; 笛卡尔乘积是指在数学中，两个集合X和Y的笛卡尔积（Cartesian product），又称直积，表示为X×Y，第一个对象是X的成员而第二个对象是Y的所有可能有序对的其中一个成员 
-    &amp;gt;&amp;gt; 摘自某百科  
+    &gt; 笛卡尔乘积是指在数学中，两个集合X和Y的笛卡尔积（Cartesian product），又称直积，表示为X×Y，第一个对象是X的成员而第二个对象是Y的所有可能有序对的其中一个成员 
+    &gt;&gt; 摘自某百科  
 
     这个概念看得我脑袋嗡嗡的，什么叫 **“第二个对象是Y的所有可能有序对的其中一个成员”** ？结合例子琢磨了一会儿，我结合离散数学教材关于笛卡尔积的定义梳理了一下：  
 
-    &amp;gt; 笛卡尔乘积是指在数学中，两个集合X和Y的笛卡尔积，又称直积，表示为X×Y。X中的元素作为第一个元素，Y中的元素作为第二个元素，构成有序对。而笛卡尔积就是所有这样的有序对构成的一个集合。  
+    &gt; 笛卡尔乘积是指在数学中，两个集合X和Y的笛卡尔积，又称直积，表示为X×Y。X中的元素作为第一个元素，Y中的元素作为第二个元素，构成有序对。而笛卡尔积就是所有这样的有序对构成的一个集合。  
 
-    接下来我们回到这里，**域** 其实就是一个 **集合**，结合上文，**笛卡尔积是在域上面的一种\&amp;lt;集合\&amp;gt;运算** ，下面放个简单的例子：   
+    接下来我们回到这里，**域** 其实就是一个 **集合**，结合上文，**笛卡尔积是在域上面的一种\&lt;集合\&gt;运算** ，下面放个简单的例子：   
 
     ![cartesian1-2021-10-08](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/cartesian1-2021-10-08.webp)
 
@@ -161,7 +176,7 @@
 
     ![generalizedcartesian1-2021-10-10](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/generalizedcartesian1-2021-10-10.webp)
 
-    &amp;gt; 两个分别为 **n目** 和 **m目** 的关系R和S的广义笛卡尔积是一个 **(n+m)列(目)** 的元组的集合(新关系)。元组的 **前n列** 是 **关系R** 的一个元组，**后m列** 是 **关系S** 的一个元组。若R有k1个元组，S有k2个元组，则关系R和关系S的广义笛卡尔积有 **k1 × k2** 个元组。  
+    &gt; 两个分别为 **n目** 和 **m目** 的关系R和S的广义笛卡尔积是一个 **(n+m)列(目)** 的元组的集合(新关系)。元组的 **前n列** 是 **关系R** 的一个元组，**后m列** 是 **关系S** 的一个元组。若R有k1个元组，S有k2个元组，则关系R和关系S的广义笛卡尔积有 **k1 × k2** 个元组。  
 
     进行广义笛卡尔积时对两个关系的要求是比较宽松的：  
 
@@ -209,7 +224,7 @@
     |       | ＜  | 小于   |
     |       | ≤  | 小于等于 |
     |       | =  | 等于   |
-    |       | &amp;lt;&amp;gt; | 不等于  |
+    |       | &lt;&gt; | 不等于  |
     | 逻辑运算符 | ┐  | 非    |
     |       | ∧  | 与(且) |
     |       | ∨  | 或    |
@@ -232,7 +247,7 @@
     
     * 选择语句形如 **σF(关系)** ，其中**F**是 **逻辑表达式** 。当遇到让逻辑表达式为 **真** 的 **元组** 时，该语句会将其选择出来。  
 
-    * 逻辑表达式形如 **A θ B** ，也就是 **将A表达式和B表达式进行比较**，**θ** 是比较运算符。举几个例子：```StudentAge &amp;gt; 17``` , ```17 &amp;lt; StudentAge``` , ```CourseNum ≥ StudentNum``` , ```StudentName = &#039;Jerry&#039;```。  
+    * 逻辑表达式形如 **A θ B** ，也就是 **将A表达式和B表达式进行比较**，**θ** 是比较运算符。举几个例子：```StudentAge &gt; 17``` , ```17 &lt; StudentAge``` , ```CourseNum ≥ StudentNum``` , ```StudentName = &#039;Jerry&#039;```。  
 
     * 上面的例子中```StudentAge``` , ```StudentName```一类是属性名，而```17``` , ```&#039;Jerry&#039;``` 一类则是常量。  
 
@@ -675,4 +690,12 @@
 * [关系代数的基本运算 - keelii](https://keelii.com/2017/02/19/basic-operations-of-relation-algebra/)  
 
 
-&lt;script&gt;/*bblock.s();*/&lt;/script&gt;{(PostContentEnd)}{(PostTag)}学习,小记{(PostTagEnd)}{(PostID)}276{(PostIDEnd)}{(PostCover)}none{(PostCoverEnd)}<div style='display:none;'>{(PageType)}post.otp.html{(PageTypeEnd)}</div><script src="./main.js?233"></script></body></div>
+&lt;script&gt;/*bblock.s();*/&lt;/script&gt;
+{(PostContentEnd)}
+{(PostTag)}学习,小记{(PostTagEnd)}
+{(PostID)}276{(PostIDEnd)}
+{(PostCover)}none{(PostCoverEnd)}
+<div style='display:none;'>{(PageType)}post.otp.html{(PageTypeEnd)}</div>
+<script src="./main.js?233"></script>
+</body>
+</div>
