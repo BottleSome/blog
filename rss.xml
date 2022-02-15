@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>Bottle小站</title>
+    <link>https://bottle.moe/</link>
+    <description>SomeBottle的小站</description>
+    <item>
+        <title>邻居们~</title>
+        <link>https://bottle.moe/links.html</link>
+        <guid>https://bottle.moe/links.html</guid>
+        <description><![CDATA[{ "title": "…to mo da ti ?", "artist": "sasakure.UK", "src": "https://api.xbottle.top/ne/url/378...]]></description>
+        
+        <pubDate>Tue, 15 Feb 2022 09:45:45 GMT</pubDate>
+    </item>
+    <item>
+        <title>Python正则表达式细节小记</title>
+        <link>https://bottle.moe/post-280.html</link>
+        <guid>https://bottle.moe/post-280.html</guid>
+        <description><![CDATA[最近做Python课实验发现正则表达式和它在py中的的标准库re有很多能多琢磨一下的点，遂决定写成一篇小记，以后想复习能再来看看。#名词因为不同文献书籍对正则表达式的描述有差别，我在这里列出一...]]></description>
+        <category><![CDATA[Python]]></category><category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
+        <pubDate>Fri, 05 Nov 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>关于我</title>
+        <link>https://bottle.moe/aboutme.html</link>
+        <guid>https://bottle.moe/aboutme.html</guid>
+        <description><![CDATA[/**//**//*try{cleartime();}catch(e){}*/我是SomeBottle.英文昵称源于以前我喜欢收集瓶子的习惯，先前名字是Sam..后来觉得太土了，就自...]]></description>
+        
+        <pubDate>Sun, 31 Oct 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>MORE 探寻更多...</title>
+        <link>https://bottle.moe/intro.html</link>
+        <guid>https://bottle.moe/intro.html</guid>
+        <description><![CDATA[.post-contentimg{max-width:20px;}.topbackpic{max-width:100%;}#[音乐盒]♪♪#[搜索文章]🤔#[标签页]🔖#[实验室...]]></description>
+        
+        <pubDate>Sun, 31 Oct 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>【动画解释】关系数据库de关系代数小记</title>
+        <link>https://bottle.moe/post-276.html</link>
+        <guid>https://bottle.moe/post-276.html</guid>
+        <description><![CDATA[本文章在Github撰写，同时在博客园进行了发布。最近学数据库概论学到了关系数据库的关系代数了。哎嘛，真的把我整晕了，尤其是关系代数的使用，很容易让人被蒙在鼓里。对我来说槽点最大的莫过...]]></description>
+        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
+        <pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>关于-赞助</title>
+        <link>https://bottle.moe/aboutme-donate.html</link>
+        <guid>https://bottle.moe/aboutme-donate.html</guid>
+        <description><![CDATA[我一直在用比较低廉的机子。希望你能出一份力，让我能有个更好用的服务器或者搞一碗泡面吃~另外如果不希望匿名，可以在捐助的时候备注一下~爱发电！https://afdian.net/@s...]]></description>
+        
+        <pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>大物实验有效数字与测量值小记</title>
+        <link>https://bottle.moe/post-275.html</link>
+        <guid>https://bottle.moe/post-275.html</guid>
+        <description><![CDATA[不得不说，大学物理实验这个有效数字和测量值的表达真的把我搞晕了，老师也就粗略过了一下绪论，结果实验报告要求又严格…这里根据网上搜集到的资料和个人理解做个总结，也以便后期参考我学校使用的教材：《大...]]></description>
+        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
+        <pubDate>Wed, 22 Sep 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>JS小记：闭...闭包？</title>
+        <link>https://bottle.moe/post-274.html</link>
+        <guid>https://bottle.moe/post-274.html</guid>
+        <description><![CDATA[最近在重打JavaScript基础…看廖雪峰博客的基础教程时看到了闭包这个字眼，但有点意思的是文章并没有更进一步去探讨闭包到底是什么，而是列出代码让大家去体会。但既然是打基础，我觉着有疑惑的概念...]]></description>
+        <category><![CDATA[咸鱼技术]]></category><category><![CDATA[JavaScript]]></category><category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
+        <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>青岛&amp;威海小游流水账</title>
+        <link>https://bottle.moe/post-273.html</link>
+        <guid>https://bottle.moe/post-273.html</guid>
+        <description><![CDATA[高中三年因为学业忙碌和其他各种原因没能和家人一起出去游玩一趟，今年暑假咱就计划了去看看海~结果事出意料，7月底疫情又来了，但咨询了一下发现酒店和飞机都很难办理退款手续，研究了一下发现山东和湖北情...]]></description>
+        <category><![CDATA[日常]]></category><category><![CDATA[游玩]]></category>
+        <pubDate>Tue, 31 Aug 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>简掠大一下学期生活</title>
+        <link>https://bottle.moe/post-272.html</link>
+        <guid>https://bottle.moe/post-272.html</guid>
+        <description><![CDATA[大一下学期总体给我的印象就是接踵而至的小任务和小烦恼，这里就简单写个小记掠过一下~学习变困难了些当拿到大一下学期的课表时我就开始暗叹不妙了，一大敌人啪的一下就打在了我面前：有机化学...]]></description>
+        <category><![CDATA[日常]]></category><category><![CDATA[校园]]></category><category><![CDATA[学习]]></category><category><![CDATA[奋斗]]></category>
+        <pubDate>Wed, 25 Aug 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>再见了，我的友基数位板</title>
+        <link>https://bottle.moe/post-271.html</link>
+        <guid>https://bottle.moe/post-271.html</guid>
+        <description><![CDATA[四月中旬的时候我参与了学校的艺创杯视频创作比赛，规划视频草稿的时候决定加一点点动画部分在里面直到五月头我才开始做动画这部分，结果发现这数位板画出的这线条怎么也不直，弯弯扭扭的。想了一下，我技术再...]]></description>
+        <category><![CDATA[日常]]></category><category><![CDATA[感慨]]></category><category><![CDATA[记忆]]></category>
+        <pubDate>Tue, 18 May 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>大一上学期生活剪影</title>
+        <link>https://bottle.moe/post-270.html</link>
+        <guid>https://bottle.moe/post-270.html</guid>
+        <description><![CDATA[多图预警！主要内容：院运动会，环服比赛，神奇的高数老师，拿到流媒体纪念品，激动人心的英语选课，室友的一天，武汉寒潮，麦当劳排队，初雪，期末考试。嘛，因为学习太忙了（懒），本来我要详细记录的大一上...]]></description>
+        <category><![CDATA[校园]]></category><category><![CDATA[日常]]></category><category><![CDATA[学习]]></category><category><![CDATA[奋斗]]></category>
+        <pubDate>Mon, 05 Apr 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>用图床看视频的体验·改</title>
+        <link>https://bottle.moe/post-269.html</link>
+        <guid>https://bottle.moe/post-269.html</guid>
+        <description><![CDATA[去年年初我看到了meto萨摩的博客发了篇新文章：用图床看视频是什么体验看完后顿时十分向往，有着折腾魂的我也想整个，但当时还在备战高考，便暂时搁置了（随后差不多半年也忘了这事）直到今年寒假即将...]]></description>
+        <category><![CDATA[咸鱼技术]]></category>
+        <pubDate>Fri, 05 Mar 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>解决Office365订阅的SMTP服务器验证问题</title>
+        <link>https://bottle.moe/post-268.html</link>
+        <guid>https://bottle.moe/post-268.html</guid>
+        <description><![CDATA[今日下午阳光正好，散步回家的我看到新文章有人发表了评论，便也回复了一下。转念一想，现在博客所用的Comment.B系统评论互动并不像别的博客有邮件提醒，导致略显冷漠，遂想着做个发邮件队列。想法一...]]></description>
+        <category><![CDATA[咸鱼技术]]></category>
+        <pubDate>Sat, 06 Feb 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>反向代理Onedrive之路</title>
+        <link>https://bottle.moe/post-267.html</link>
+        <guid>https://bottle.moe/post-267.html</guid>
+        <description><![CDATA[从小时起我一直蛮喜欢免费低成本的东西，这也养成了我喜欢折腾的性格。好好想想，免费、稳定、速度这三者有共存过吗。没错，既然免费了，稳定和速度都成了待选项目。直到我遇到了onedrive（国际...]]></description>
+        <category><![CDATA[咸鱼技术]]></category>
+        <pubDate>Thu, 28 Jan 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>搜索页OvO</title>
+        <link>https://bottle.moe/search.html</link>
+        <guid>https://bottle.moe/search.html</guid>
+        <description><![CDATA[输入文章内容或者标题以搜索....(回车)input{border:1pxsolid#ccc;border-radius:2px;color:#000;font-family:'OpenSans...]]></description>
+        
+        <pubDate>Tue, 26 Jan 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>向大学说你好</title>
+        <link>https://bottle.moe/post-266.html</link>
+        <guid>https://bottle.moe/post-266.html</guid>
+        <description><![CDATA[千盼万盼终于到了大学开学的这一天，咱要向大学说：你好。主要内容：大学第一天，军训，开课前活动，第一天开课，第一次班聚会多图预警，本站点自带lazyload，用流量的童鞋请谨慎浏览.大学第一天...]]></description>
+        <category><![CDATA[校园]]></category><category><![CDATA[总结]]></category><category><![CDATA[日常]]></category><category><![CDATA[吃货]]></category>
+        <pubDate>Tue, 06 Oct 2020 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>九月初那些事儿</title>
+        <link>https://bottle.moe/post-265.html</link>
+        <guid>https://bottle.moe/post-265.html</guid>
+        <description><![CDATA[九月初我遇到的事和参与的活动还是有几件的，在这里做一下总结主要内容：录取通知书，月初轰趴活动，和同学去看望老师，集结室友后方多图，博客自带lazyload，流量用户请谨慎翻阅....]]></description>
+        <category><![CDATA[总结]]></category><category><![CDATA[友情]]></category><category><![CDATA[校园]]></category><category><![CDATA[日常]]></category><category><![CDATA[游玩]]></category><category><![CDATA[吃货]]></category>
+        <pubDate>Sat, 19 Sep 2020 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>💬Comment.B评论框</title>
+        <link>https://bottle.moe/post-264.html</link>
+        <guid>https://bottle.moe/post-264.html</guid>
+        <description><![CDATA[回想当年，仍记得Comment.B开坑时些瓶壮志凌云的景象。如今，过了将近两年，我终于把这个坑给填上了！图中页脚还有萌评论的残留体（储存在localStorage里），卜卜口啊，快回来维...]]></description>
+        <category><![CDATA[咸鱼技术]]></category>
+        <pubDate>Fri, 18 Sep 2020 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>八月二三事</title>
+        <link>https://bottle.moe/post-263.html</link>
+        <guid>https://bottle.moe/post-263.html</guid>
+        <description><![CDATA[简单总结一下，这个八月过得那叫一个——充实！主要内容：博客五周年，被录取情况，生日，合作视频博客五周年自开始运营起博客已经走过了五周年，期间数据无一丢失（有时候杞人忧天的习惯真的还...]]></description>
+        <category><![CDATA[日常]]></category><category><![CDATA[生日]]></category><category><![CDATA[周年]]></category><category><![CDATA[学习]]></category>
+        <pubDate>Sat, 29 Aug 2020 00:00:00 GMT</pubDate>
+    </item>
+    
+</channel>
+</rss>

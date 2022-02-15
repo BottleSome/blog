@@ -1,0 +1,1 @@
+{"siteUrl":"https://bottle.moe/","siteDesc":"SomeBottle的小站","siteTitle":"Bottle小站","rss":true,"sitemap":true,"postLinkPattern":"bottle-{pid}","beforePreview":"<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/SomeBottle/BBlock@1.4.1/bblock.m.css\" />\n<script src=\"https://cdn.jsdelivr.net/gh/SomeBottle/BBlock@1.4.1/bblock.m.js\"></script>","syncCfg":true}
