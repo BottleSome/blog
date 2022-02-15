@@ -21,16 +21,14 @@
                 res(ot.links);
             }; /*已经载入了列表*/
             if (url) {
-                $.ft(json, [], {
-                    success: function (m) {
+                $.ft(json)
+                    .then(m => {
                         ot.links = JSON.parse(m);
                         ot.linkloaded = true;
                         res(ot.links);
-                    },
-                    failed: function (m) {
+                    }, rej => {
                         console.log('Failed to get links.');
-                    }
-                }, "get", "");
+                    });
             } else {
                 ot.links = JSON.parse(json);
                 ot.linkloaded = true;
