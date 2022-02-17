@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>关于我</title>
+        <link>https://bottle.moe/aboutme.html</link>
+        <guid>https://bottle.moe/aboutme.html</guid>
+        <description><![CDATA[我是SomeBottle.英文昵称源于以前我喜欢收集瓶子的习惯，先前名字是Sam..后来觉得太土了，就自己取了个SomeBottle.# 捐款小站的发展需要持续的动力！点我前往# MOTTOStay hungry, stay foolish.# 个人博客对我来说是什么展开查看个人博客对我来说是分享想法，记录生活的一个有温度的地方。很喜欢博主7gugu的一句话：现在太多学CS的,仅仅是把Blog变成...]]></description>
+        
+        <pubDate>Thu, 17 Feb 2022 17:07:18 GMT</pubDate>
+    </item>
+    <item>
         <title>邻居们~</title>
         <link>https://bottle.moe/links.html</link>
         <guid>https://bottle.moe/links.html</guid>
@@ -19,14 +27,6 @@
         <description><![CDATA[最近做Python课实验发现正则表达式和它在py中的的标准库re有很多能多琢磨一下的点，遂决定写成一篇小记，以后想复习能再来看看。#名词因为不同文献书籍对正则表达式的描述有差别，我在这里列出一...]]></description>
         <category><![CDATA[Python]]></category><category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
         <pubDate>Fri, 05 Nov 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>关于我</title>
-        <link>https://bottle.moe/aboutme.html</link>
-        <guid>https://bottle.moe/aboutme.html</guid>
-        <description><![CDATA[/**//**//*try{cleartime();}catch(e){}*/我是SomeBottle.英文昵称源于以前我喜欢收集瓶子的习惯，先前名字是Sam..后来觉得太土了，就自...]]></description>
-        
-        <pubDate>Sun, 31 Oct 2021 00:00:00 GMT</pubDate>
     </item>
     <item>
         <title>MORE 探寻更多...</title>
