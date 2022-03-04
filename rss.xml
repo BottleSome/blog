@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>关于-赞助</title>
+        <link>https://bottle.moe/aboutme-donate.html</link>
+        <guid>https://bottle.moe/aboutme-donate.html</guid>
+        <description><![CDATA[# 我一直在用比较低廉的机子。希望你能出一份力，让我能有个更好用的服务器或者搞一碗泡面吃~另外如果不希望匿名，可以在捐助的时候备注一下~爱发电！微信&amp;支付宝# 记录感谢大家的支持！日期数额SponsorPlatform留言2020.5.2215￥匿名朋友n*e微信收款2020.2.1025￥匿名朋友微信收款2020.210￥BigGaySheep,OMG,匿名朋友爱发电2021.2.118...]]></description>
+        
+        <pubDate>Fri, 04 Mar 2022 11:52:23 GMT</pubDate>
+    </item>
+    <item>
         <title>关于我</title>
         <link>https://bottle.moe/aboutme.html</link>
         <guid>https://bottle.moe/aboutme.html</guid>
@@ -50,14 +58,6 @@
         <guid>https://bottle.moe/post-276.html</guid>
         <description><![CDATA[本文章在Github撰写，同时在博客园进行了发布。最近学数据库概论学到了关系数据库的关系代数了。哎嘛，真的把我整晕了，尤其是关系代数的使用，很容易让人被蒙在鼓里。对我来说槽点最大的莫过...]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
-        <pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>关于-赞助</title>
-        <link>https://bottle.moe/aboutme-donate.html</link>
-        <guid>https://bottle.moe/aboutme-donate.html</guid>
-        <description><![CDATA[我一直在用比较低廉的机子。希望你能出一份力，让我能有个更好用的服务器或者搞一碗泡面吃~另外如果不希望匿名，可以在捐助的时候备注一下~爱发电！https://afdian.net/@s...]]></description>
-        
         <pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate>
     </item>
     <item>
