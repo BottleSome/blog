@@ -5,12 +5,20 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>想法子记忆Vi/Vim常用操作及指令</title>
+        <link>https://bottle.moe/bottle-282.html</link>
+        <guid>https://bottle.moe/bottle-282.html</guid>
+        <description><![CDATA[本笔记有特殊目录，点击开启：在Linux系统中编辑文本总是离不开一位老帮手——Vi。而因为其诞生的年代有些久远，有些操作在现在看来可能有点“反直觉”。于是我决定写这样一篇小笔记，记录一下我记忆Vi的这些这些 常用 操作和指令的方法（主要靠的是英语和图示了）。当然，正如“好记性不如烂笔头”所言，多实践才是熟练掌握技能的王道。# 关于Vi/Vim名词本身Vi代表的可能是Visual Instrumen...]]></description>
+        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[Vim]]></category><category><![CDATA[Linux]]></category>
+        <pubDate>Sat, 23 Apr 2022 15:09:20 GMT</pubDate>
+    </item>
+    <item>
         <title>关于我</title>
         <link>https://bottle.moe/aboutme.html</link>
         <guid>https://bottle.moe/aboutme.html</guid>
-        <description><![CDATA[我是SomeBottle.英文昵称源于以前我喜欢收集瓶子的习惯，先前名字是Sam..后来觉得太土了，就自己取了个SomeBottle.# 捐款小站的发展需要持续的动力！点我前往# MOTTOStay hungry, stay foolish.# 个人博客对我来说是什么展开查看个人博客对我来说是分享想法，记录生活的一个有温度的地方。很喜欢博主7gugu的一句话：现在太多学CS的,仅仅是把Blog变成...]]></description>
+        <description><![CDATA[我是SomeBottle.英文昵称源于以前我喜欢收集瓶子的习惯，先前名字是Sam..后来觉得太土了，就自己取了个SomeBottle.# 捐赠小站的发展需要持续的动力！点我前往# MOTTOStay hungry, stay foolish.# 个人博客对我来说是什么展开查看个人博客对我来说是分享想法，记录生活的一个有温度的地方。很喜欢博主7gugu的一句话：现在太多学CS的,仅仅是把Blog变成...]]></description>
         
-        <pubDate>Thu, 24 Mar 2022 14:10:43 GMT</pubDate>
+        <pubDate>Tue, 19 Apr 2022 01:32:29 GMT</pubDate>
     </item>
     <item>
         <title>关于-赞助</title>
@@ -18,7 +26,7 @@
         <guid>https://bottle.moe/aboutme-donate.html</guid>
         <description><![CDATA[# 我一直在用比较低廉的机子。希望你能出一份力，让我能有个更好用的服务器或者搞一碗泡面吃~另外如果不希望匿名，可以在捐助的时候备注一下~爱发电！微信&amp;支付宝# 记录感谢大家的支持！日期数额SponsorPlatform留言2020.5.2215￥匿名朋友n*e微信收款2020.2.1025￥匿名朋友微信收款2020.210￥BigGaySheep,OMG,匿名朋友爱发电2021.2.118...]]></description>
         
-        <pubDate>Fri, 04 Mar 2022 11:52:23 GMT</pubDate>
+        <pubDate>Sun, 27 Mar 2022 10:46:11 GMT</pubDate>
     </item>
     <item>
         <title>暑日至寒天，掠过大二上</title>
@@ -155,14 +163,6 @@
         <description><![CDATA[九月初我遇到的事和参与的活动还是有几件的，在这里做一下总结主要内容：录取通知书，月初轰趴活动，和同学去看望老师，集结室友后方多图，博客自带lazyload，流量用户请谨慎翻阅....]]></description>
         <category><![CDATA[总结]]></category><category><![CDATA[友情]]></category><category><![CDATA[校园]]></category><category><![CDATA[日常]]></category><category><![CDATA[游玩]]></category><category><![CDATA[吃货]]></category>
         <pubDate>Sat, 19 Sep 2020 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>💬Comment.B评论框</title>
-        <link>https://bottle.moe/post-264.html</link>
-        <guid>https://bottle.moe/post-264.html</guid>
-        <description><![CDATA[回想当年，仍记得Comment.B开坑时些瓶壮志凌云的景象。如今，过了将近两年，我终于把这个坑给填上了！图中页脚还有萌评论的残留体（储存在localStorage里），卜卜口啊，快回来维...]]></description>
-        <category><![CDATA[咸鱼技术]]></category>
-        <pubDate>Fri, 18 Sep 2020 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
