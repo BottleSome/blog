@@ -10,7 +10,7 @@
         <guid>https://bottle.moe/bottle-282.html</guid>
         <description><![CDATA[本笔记有特殊目录，点击开启：在Linux系统中编辑文本总是离不开一位老帮手——Vi。而因为其诞生的年代有些久远，有些操作在现在看来可能有点“反直觉”。于是我决定写这样一篇小笔记，记录一下我记忆Vi的这些这些 常用 操作和指令的方法（主要靠的是英语和图示了）。当然，正如“好记性不如烂笔头”所言，多实践才是熟练掌握技能的王道。# 关于Vi/Vim名词本身Vi代表的可能是Visual Instrumen...]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[Vim]]></category><category><![CDATA[Linux]]></category>
-        <pubDate>Sat, 23 Apr 2022 15:11:33 GMT</pubDate>
+        <pubDate>Sat, 23 Apr 2022 15:12:38 GMT</pubDate>
     </item>
     <item>
         <title>关于我</title>
