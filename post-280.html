@@ -16,7 +16,7 @@
 {(PostContent)}
 最近做Python课实验发现**正则表达式**和它在py中的的**标准库re**有很多能多琢磨一下的点，遂决定写成一篇小记，以后想复习能再来看看。  
 
-![fuwafuwa-2021-11-02](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/fuwafuwa-2021-11-02.gif)  
+![fuwafuwa-2021-11-02](https://assets.xbottle.top/img/fuwafuwa-2021-11-02.gif)  
 
 ## 名词  
 
@@ -144,7 +144,7 @@ re.findall(r&#039;(.)\1&#039;,st) # 很明显这样写更好
     [A-Za-z]*
     ``` 
 
-    ![sweat-2021-11-02](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/sweat-2021-11-02.jpg)  
+    ![sweat-2021-11-02](https://assets.xbottle.top/img/sweat-2021-11-02.jpg)  
 
     咳咳，有点偏了，继续讲回来。**要匹配的正则表达式**在```(?&lt;=[pattern])```后面，所以匹配的时候是**往后看的**，所以```(?&lt;=[pattern])```就叫```look-behind```。  
 
@@ -171,7 +171,7 @@ re.findall(r&#039;(.)\1&#039;,st) # 很明显这样写更好
     |*|匹配前面的子模式**0次或多次**|
     |+|匹配前面的子模式**1次或多次**|
 
-    ![speechless-2021-11-02](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/speechless-2021-11-02.jpg)  
+    ![speechless-2021-11-02](https://assets.xbottle.top/img/speechless-2021-11-02.jpg)  
 
     要好好记住哦~
     &lt;/details&gt;
@@ -228,7 +228,7 @@ re.findall(r&#039;(.)\1&#039;,st) # 很明显这样写更好
     |(?:[subpattern])|is better than| 空格than|
     |(?&lt;=[subpattern])|better than| 空格than|
 
-    ![idontunderstand-2021-11-03](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/idontunderstand-2021-11-03.jpg)
+    ![idontunderstand-2021-11-03](https://assets.xbottle.top/img/idontunderstand-2021-11-03.jpg)
 
     根据上面的结果总结一下：  
 
@@ -281,7 +281,7 @@ re.findall(r&#039;(.)\1&#039;,st) # 很明显这样写更好
 
     当然这些模式匹配的结果都没能如我愿，实在忍不住了，我还是把中间部分改成了```.*?```，然后就成了！  
 
-    ![wahhhhh-2021-11-03](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/wahhhhh-2021-11-03.jpg)  
+    ![wahhhhh-2021-11-03](https://assets.xbottle.top/img/wahhhhh-2021-11-03.jpg)  
 
     ```
     (?&lt;=\s)([A-Za-z]*)(?=,).*?(?&lt;=x)(\d{4})
@@ -330,7 +330,7 @@ re.findall(r&#039;(.)\1&#039;,st) # 很明显这样写更好
 
     很容易能发现```\w```，```\s```，```\n```，```\v```，```\t```，```\r```一类元字符其实都是可以在中括号```[]```中正常发挥 **元字符的作用** 的，其他还有```\b```等元字符。在**中括号中**使用他们无非是 **有没有意义** 的问题，Python并不会报错。  
 
-    ![thinking-2021-11-03](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/thinking-2021-11-03.jpg)
+    ![thinking-2021-11-03](https://assets.xbottle.top/img/thinking-2021-11-03.jpg)
 
     那么再试试这些吧：  
 
@@ -377,7 +377,7 @@ re.findall(r&#039;(.)\1&#039;,st) # 很明显这样写更好
 
     &gt; 此处的num是指一个表示子模式序号的正整数。例如，&quot;(.)\1&quot;匹配两个连续的相同字符  
 
-    ![whattheheck-2021-11-03](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/whattheheck-2021-11-03.jpg)  
+    ![whattheheck-2021-11-03](https://assets.xbottle.top/img/whattheheck-2021-11-03.jpg)  
 
     刚开始我是真没懂这是啥意思，以为是重复引用前面的子模式：  
 
@@ -472,7 +472,7 @@ re.findall(r&#039;(.)\1&#039;,st) # 很明显这样写更好
 
     好啊，没问题啊！那我们先去子模式买点**扩展语法**!  
 
-    ![noproblemo-2021-11-03](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/noproblemo-2021-11-03.jpg)  
+    ![noproblemo-2021-11-03](https://assets.xbottle.top/img/noproblemo-2021-11-03.jpg)  
 
     在Python里还有个子模式扩展语法可以给**整个模块应用**多个修饰符(flags)，它就是 ```(?修饰符们)```：  
 
@@ -533,7 +533,7 @@ re.findall(r&#039;(.)\1&#039;,st) # 很明显这样写更好
 
     但使用了```re.M```后，对于**多行字符串**来说，```^```不仅匹配了字符串的开头，还 **匹配了每一行的开头**；而```$```也匹配了 **每一行的结尾和字符串的结尾**，接下来举几个例子：  
 
-    ![makeexample-2021-11-03](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/makeexample-2021-11-03.jpg)  
+    ![makeexample-2021-11-03](https://assets.xbottle.top/img/makeexample-2021-11-03.jpg)  
 
     ```python
     import re
@@ -582,7 +582,7 @@ re.findall(r&#039;(.)\1&#039;,st) # 很明显这样写更好
 
     ```re.X```是一个**能增加正则表达式可读性**的修饰符，让写正则变得更优雅~ ヽ(✿ﾟ▽ﾟ)ノ  
 
-    ![elegant-2021-11-03](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/elegant-2021-11-03.jpg)  
+    ![elegant-2021-11-03](https://assets.xbottle.top/img/elegant-2021-11-03.jpg)  
 
     我们先直接上例子：  
 
@@ -697,7 +697,7 @@ re.findall(r&#039;(.)\1&#039;,st) # 很明显这样写更好
 
 在咱看来，**正则表达式**和**SQL语句**有一个共性，就是其在其所处的体系中是通式般的存在：正则表达式几乎可以在所有编程语言中进行使用，而SQL语句也可以在标准化关系数据库管理系统中进行使用。  
 
-![gaitubao_Fjmtb33KUZe-9H0u05lo8I35ilZT-2021-11-03](https://cdn.jsdelivr.net/gh/cat-note/bottleassets@latest/img/gaitubao_Fjmtb33KUZe-9H0u05lo8I35ilZT-2021-11-03.jpg)
+![gaitubao_Fjmtb33KUZe-9H0u05lo8I35ilZT-2021-11-03](https://assets.xbottle.top/img/gaitubao_Fjmtb33KUZe-9H0u05lo8I35ilZT-2021-11-03.jpg)
 
 本人文笔不佳，写的可能有点粗糙。希望这篇小记对大家掌握正则表达式有一定的帮助，感谢各位的耐心阅读。(　ﾟ∀ﾟ) ﾉ♡
 
