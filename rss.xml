@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>简记C语言清空输入残留内容</title>
+        <link>https://bottle.moe/bottle-284.html</link>
+        <guid>https://bottle.moe/bottle-284.html</guid>
+        <description><![CDATA[为了在命令行程序中实现和用户的交互，我们编写的程序的运行过程中往往涉及到对标准输入/输出流的多次读写。在C语言中接受用户输入这一块，有着一个老生常谈的问题：“怎么样及时清空输入流中的数据？”这也是这篇小笔记的主题内容。]]></description>
+        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[C]]></category>
+        <pubDate>Thu, 14 Jul 2022 12:29:06 GMT</pubDate>
+    </item>
+    <item>
         <title>【小记】与指针和二维数组过几招</title>
         <link>https://bottle.moe/bottle-283.html</link>
         <guid>https://bottle.moe/bottle-283.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[输入文章内容或者标题以搜索....(回车)input{border:1pxsolid#ccc;border-radius:2px;color:#000;font-family:'OpenSans...]]></description>
         
         <pubDate>Tue, 26 Jan 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>向大学说你好</title>
-        <link>https://bottle.moe/post-266.html</link>
-        <guid>https://bottle.moe/post-266.html</guid>
-        <description><![CDATA[千盼万盼终于到了大学开学的这一天，咱要向大学说：你好。主要内容：大学第一天，军训，开课前活动，第一天开课，第一次班聚会多图预警，本站点自带lazyload，用流量的童鞋请谨慎浏览.大学第一天...]]></description>
-        <category><![CDATA[校园]]></category><category><![CDATA[总结]]></category><category><![CDATA[日常]]></category><category><![CDATA[吃货]]></category>
-        <pubDate>Tue, 06 Oct 2020 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
