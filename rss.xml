@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>【小记】与指针和二维数组过几招</title>
+        <link>https://bottle.moe/bottle-283.html</link>
+        <guid>https://bottle.moe/bottle-283.html</guid>
+        <description><![CDATA[在C/C++中有个叫指针的玩意存在感极其强烈，而说到指针又不得不提到内存管理。现在时不时能听到一些朋友说指针很难，实际上说的是内存操作和管理方面的难。（这篇笔记咱也会结合自己的理解简述一些相关的内存知识）最近在写C程序使用指针的时候遇到了几个让我印象深刻的地方，这里记录一下，以便今后回顾。“经一蹶者长一智，今日之失，未必不为后日之得。” - 王阳明《与薛尚谦书》]]></description>
+        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[C]]></category>
+        <pubDate>Thu, 14 Jul 2022 12:13:41 GMT</pubDate>
+    </item>
+    <item>
         <title>想法子记忆Vi/Vim常用操作及指令</title>
         <link>https://bottle.moe/bottle-282.html</link>
         <guid>https://bottle.moe/bottle-282.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[千盼万盼终于到了大学开学的这一天，咱要向大学说：你好。主要内容：大学第一天，军训，开课前活动，第一天开课，第一次班聚会多图预警，本站点自带lazyload，用流量的童鞋请谨慎浏览.大学第一天...]]></description>
         <category><![CDATA[校园]]></category><category><![CDATA[总结]]></category><category><![CDATA[日常]]></category><category><![CDATA[吃货]]></category>
         <pubDate>Tue, 06 Oct 2020 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>九月初那些事儿</title>
-        <link>https://bottle.moe/post-265.html</link>
-        <guid>https://bottle.moe/post-265.html</guid>
-        <description><![CDATA[九月初我遇到的事和参与的活动还是有几件的，在这里做一下总结主要内容：录取通知书，月初轰趴活动，和同学去看望老师，集结室友后方多图，博客自带lazyload，流量用户请谨慎翻阅....]]></description>
-        <category><![CDATA[总结]]></category><category><![CDATA[友情]]></category><category><![CDATA[校园]]></category><category><![CDATA[日常]]></category><category><![CDATA[游玩]]></category><category><![CDATA[吃货]]></category>
-        <pubDate>Sat, 19 Sep 2020 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
