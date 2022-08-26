@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>打开吧，20岁的大门</title>
+        <link>https://bottle.moe/bottle-285.html</link>
+        <guid>https://bottle.moe/bottle-285.html</guid>
+        <description><![CDATA[不知不觉，咱已经到达20岁的大门前了，在走过这扇门后，teenager这个词也要离我而去了。在经历了零零星星的不甘亦或是喜悦后，我算是从异想天开的小毛孩长成了现在30%异想天开的一坨大男孩了。为什么是30%异想天开呢？因为在成长过程中，我逐渐抛弃了些根本难以实现的想法，现实终究是骨感的哈。说回来因为我的生日卡在开学报到这个点，以至于每年到这个时候我是既欣喜，又有点悲伤滴啊。(谈到开学，20岁正好也...]]></description>
+        <category><![CDATA[生日]]></category><category><![CDATA[日常]]></category>
+        <pubDate>Fri, 26 Aug 2022 05:39:20 GMT</pubDate>
+    </item>
+    <item>
         <title>简记C语言清空输入残留内容</title>
         <link>https://bottle.moe/bottle-284.html</link>
         <guid>https://bottle.moe/bottle-284.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[从小时起我一直蛮喜欢免费低成本的东西，这也养成了我喜欢折腾的性格。好好想想，免费、稳定、速度这三者有共存过吗。没错，既然免费了，稳定和速度都成了待选项目。直到我遇到了onedrive（国际...]]></description>
         <category><![CDATA[咸鱼技术]]></category>
         <pubDate>Thu, 28 Jan 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>搜索页OvO</title>
-        <link>https://bottle.moe/search.html</link>
-        <guid>https://bottle.moe/search.html</guid>
-        <description><![CDATA[输入文章内容或者标题以搜索....(回车)input{border:1pxsolid#ccc;border-radius:2px;color:#000;font-family:'OpenSans...]]></description>
-        
-        <pubDate>Tue, 26 Jan 2021 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
