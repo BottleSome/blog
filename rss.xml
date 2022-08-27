@@ -13,6 +13,14 @@
         <pubDate>Fri, 26 Aug 2022 05:39:20 GMT</pubDate>
     </item>
     <item>
+        <title>关于我</title>
+        <link>https://bottle.moe/aboutme.html</link>
+        <guid>https://bottle.moe/aboutme.html</guid>
+        <description><![CDATA[我是SomeBottle.英文昵称源于以前我喜欢收集瓶子的习惯，先前名字是Sam..后来觉得太土了，就自己取了个SomeBottle.这是“关于我”页面。]]></description>
+        
+        <pubDate>Sat, 27 Aug 2022 04:55:57 GMT</pubDate>
+    </item>
+    <item>
         <title>简记C语言清空输入残留内容</title>
         <link>https://bottle.moe/bottle-284.html</link>
         <guid>https://bottle.moe/bottle-284.html</guid>
@@ -35,14 +43,6 @@
         <description><![CDATA[在Linux系统中编辑文本总是离不开一位老帮手——Vi。而因为其诞生的年代有些久远，有些操作在现在看来可能有点“反直觉”。于是我决定写这样一篇小笔记，记录一下我记忆Vi的这些这些 常用 操作和指令的方法（主要靠的是英语和图示了）。当然，正如“好记性不如烂笔头”所言，多实践才是熟练掌握技能的王道。]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[Vim]]></category><category><![CDATA[Linux]]></category>
         <pubDate>Fri, 20 May 2022 10:55:52 GMT</pubDate>
-    </item>
-    <item>
-        <title>关于我</title>
-        <link>https://bottle.moe/aboutme.html</link>
-        <guid>https://bottle.moe/aboutme.html</guid>
-        <description><![CDATA[我是SomeBottle.英文昵称源于以前我喜欢收集瓶子的习惯，先前名字是Sam..后来觉得太土了，就自己取了个SomeBottle.# 捐赠小站的发展需要持续的动力！点我前往# MOTTOStay hungry, stay foolish.# 个人博客对我来说是什么展开查看个人博客对我来说是分享想法，记录生活的一个有温度的地方。很喜欢博主7gugu的一句话：现在太多学CS的,仅仅是把Blog变成...]]></description>
-        
-        <pubDate>Tue, 19 Apr 2022 01:32:29 GMT</pubDate>
     </item>
     <item>
         <title>关于-赞助</title>
