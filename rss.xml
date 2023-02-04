@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>关于我</title>
+        <link>https://bottle.moe/aboutme.html</link>
+        <guid>https://bottle.moe/aboutme.html</guid>
+        <description><![CDATA[我是SomeBottle，这是咱的“关于我”页面。]]></description>
+        
+        <pubDate>Sat, 04 Feb 2023 06:12:46 GMT</pubDate>
+    </item>
+    <item>
         <title>暑烧一夏，回顾一下（二）</title>
         <link>https://bottle.moe/bottle-288.html</link>
         <guid>https://bottle.moe/bottle-288.html</guid>
@@ -27,14 +35,6 @@
         <description><![CDATA[不知不觉，咱已经到达20岁的大门前了，在走过这扇门后，teenager这个词也要离我而去了。在经历了零零星星的不甘亦或是喜悦后，我算是从异想天开的小毛孩长成了现在30%异想天开的一坨大男孩了。为什么是30%异想天开呢？因为在成长过程中，我逐渐抛弃了些根本难以实现的想法，现实终究是骨感的哈。说回来因为我的生日卡在开学报到这个点，以至于每年到这个时候我是既欣喜，又有点悲伤滴啊。(谈到开学，20岁正好也...]]></description>
         <category><![CDATA[生日]]></category><category><![CDATA[日常]]></category>
         <pubDate>Fri, 26 Aug 2022 05:39:20 GMT</pubDate>
-    </item>
-    <item>
-        <title>关于我</title>
-        <link>https://bottle.moe/aboutme.html</link>
-        <guid>https://bottle.moe/aboutme.html</guid>
-        <description><![CDATA[我是SomeBottle.英文昵称源于以前我喜欢收集瓶子的习惯，先前名字是Sam..后来觉得太土了，就自己取了个SomeBottle.这是“关于我”页面。]]></description>
-        
-        <pubDate>Sat, 27 Aug 2022 04:57:39 GMT</pubDate>
     </item>
     <item>
         <title>简记C语言清空输入残留内容</title>

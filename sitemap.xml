@@ -1,7 +1,12 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://bottle.moe/</loc>
-        <lastmod>2023-01-04T05:20:52+00:00</lastmod>
+        <lastmod>2023-02-04T06:12:48+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://bottle.moe/aboutme.html</loc>
+        <lastmod>2023-02-04T06:12:46+00:00</lastmod>
+        
     </url>
     <url>
         <loc>https://bottle.moe/bottle-288.html</loc>
@@ -16,11 +21,6 @@
     <url>
         <loc>https://bottle.moe/bottle-285.html</loc>
         <lastmod>2022-08-26T05:39:20+00:00</lastmod>
-        
-    </url>
-    <url>
-        <loc>https://bottle.moe/aboutme.html</loc>
-        <lastmod>2022-08-27T04:57:39+00:00</lastmod>
         
     </url>
     <url>
