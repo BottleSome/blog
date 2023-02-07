@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>寒风腊月起，回首大三上</title>
+        <link>https://bottle.moe/bottle-289.html</link>
+        <guid>https://bottle.moe/bottle-289.html</guid>
+        <description><![CDATA[你瞧这时间，如寒冬腊月的风一般在指缝间穿行流走......这篇小记中咱会回顾一下大三上发生在咱身边的一些事儿。]]></description>
+        <category><![CDATA[日常]]></category><category><![CDATA[学习]]></category><category><![CDATA[校园]]></category><category><![CDATA[总结]]></category>
+        <pubDate>Tue, 07 Feb 2023 13:48:27 GMT</pubDate>
+    </item>
+    <item>
         <title>关于我</title>
         <link>https://bottle.moe/aboutme.html</link>
         <guid>https://bottle.moe/aboutme.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[多图预警！主要内容：院运动会，环服比赛，神奇的高数老师，拿到流媒体纪念品，激动人心的英语选课，室友的一天，武汉寒潮，麦当劳排队，初雪，期末考试。嘛，因为学习太忙了（懒），本来我要详细记录的大一上...]]></description>
         <category><![CDATA[校园]]></category><category><![CDATA[日常]]></category><category><![CDATA[学习]]></category><category><![CDATA[奋斗]]></category>
         <pubDate>Mon, 05 Apr 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>用图床看视频的体验·改</title>
-        <link>https://bottle.moe/post-269.html</link>
-        <guid>https://bottle.moe/post-269.html</guid>
-        <description><![CDATA[去年年初我看到了meto萨摩的博客发了篇新文章：用图床看视频是什么体验看完后顿时十分向往，有着折腾魂的我也想整个，但当时还在备战高考，便暂时搁置了（随后差不多半年也忘了这事）直到今年寒假即将...]]></description>
-        <category><![CDATA[咸鱼技术]]></category>
-        <pubDate>Fri, 05 Mar 2021 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
