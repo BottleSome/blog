@@ -1,4 +1,29 @@
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="去年年初我看到了meto萨摩的博客发了篇新文章：用图床看视频是什么体验看完后顿时十分向往，有着折腾魂的我也想整个，但当时还在备战高考，便暂时搁置了（随后差不多半年也忘了这事）直到今年寒假即将..." /><meta name="keywords" content="咸鱼技术,Bottle小站" /></head><loadingarea></loadingarea><div id='container'><style>#container{opacity:0;word-wrap:break-word;word-break:break-all;max-width:50%;overflow:hidden}</style>{(MainTitle)}<title>用图床看视频的体验·改-Bottle小站</title>{(MainTitleEnd)}<body>{(PostTitle)}用图床看视频的体验·改{(PostTitleEnd)}{(PostDate)}20210305{(PostDateEnd)}{(PostContent)}去年年初我看到了meto萨摩的博客发了篇新文章：  
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="去年年初我看到了meto萨摩的博客发了篇新文章：用图床看视频是什么体验看完后顿时十分向往，有着折腾魂的我也想整个，但当时还在备战高考，便暂时搁置了（随后差不多半年也忘了这事）直到今年寒假即将..." />
+
+<meta name="keywords" content="咸鱼技术,Bottle小站" />
+</head>
+<loadingarea></loadingarea>
+<div id="container">
+<style>
+        #container {
+            opacity: 0;
+            word-wrap: break-word;
+            word-break: break-all;
+            max-width: 50%;
+            overflow: hidden
+        }
+    </style>
+{(MainTitle)}
+<title>用图床看视频的体验·改-Bottle小站</title>
+{(MainTitleEnd)}
+<body>
+{(PostTitle)}用图床看视频的体验·改{(PostTitleEnd)}
+{(PostDate)}20210305{(PostDateEnd)}
+{(PostContent)} 去年年初我看到了meto萨摩的博客发了篇新文章：  
 &lt;a href=&quot;https://i-meto.com/hlsjs-upimg-wrapper/&quot; target=&quot;_blank&quot;&gt;用图床看视频是什么体验&lt;/a&gt;  
 看完后顿时十分向往，有着折腾魂的我也想整个，但当时还在备战高考，便暂时搁置了（随后差不多半年也忘了这事）  
 
@@ -96,17 +121,23 @@ your browser does not support the video tag
 
 ![发生什么了](https://cdn2.imbottle.com/uploads/20210301pv/whathappened.jpg!/scale/30)   
 
-**这一段是2021.4.2补充的：**研究了一下发现问题出在使用BYTERANGE选项的时候浏览器会发送一个CORS跨域预检请求，而我在demo页面头部屏蔽发送了CORS内容以解决防盗链问题，由此发生了这种问题（现在换到了阿里图床就解决了，因为没防盗链）：  
+-----
+
+**2021.4.2补充**：研究了一下发现问题出在使用BYTERANGE选项的时候浏览器会发送一个CORS跨域预检请求，而我在demo页面头部屏蔽发送了CORS内容以解决防盗链问题，由此发生了这种问题（现在换到了阿里图床就解决了，因为没防盗链）：  
 
 ![preflight](https://cdn2.imbottle.com/uploads/20210301pv/preflight.png)  
 
 相关问题的github issue: [https://github.com/google/shaka-player/issues/2227](https://github.com/google/shaka-player/issues/2227)  
 
-这之后我更新了脚本，如果面对的图床没有防盗链可以使用BYTERANGE头，这样可以**使用任意的伪装图片**  
+这之后我更新了脚本，如果面对的图床没有防盗链则可以使用BYTERANGE头，这样可以**使用任意的伪装图片**。  
+
+-------
 
 查了半天硬是没找着发生什么问题了，只知道是浏览器预检查OPTION请求失败了，一直没找到解决方法。感觉快要绝望的时候，我突然心生侥幸：之前没试过不写自定义loader挂钩来调试，万一，万一呢，是吧!  
 
-然后我去掉了hook，就——成功了  
+然后我去掉了hook，就——成功了。
+
+**2024.1.19更新**：现在**不支持**这种方式了，仅支持使用BYTERANGE指定字节范围。  
 
 大落大起不过如此，我又兴奋起来了，连忙让群友帮忙测试了一下，竟然真的可以在iOS Safari中播放了！接着我又切了几个视频传上去，为了不麻烦群友，找了个试用测试平台，多试了几个iOS系统设备，发现都可以：  
 
@@ -211,4 +242,13 @@ Demo: &lt;a href=&quot;https://pv.xbottle.top/demo&quot; target=&quot;_blank&quo
 
 
 
-&lt;script&gt;/*bblock.s();*/&lt;/script&gt;{(PostContentEnd)}{(PostTag)}咸鱼技术{(PostTagEnd)}{(PostID)}269{(PostIDEnd)}{(PostCover)}none{(PostCoverEnd)}<div style='display:none;'>{(PageType)}post.otp.html{(PageTypeEnd)}</div><script src="./barn/main.js?233"></script></body></div>
+&lt;script&gt;/*bblock.s();*/&lt;/script&gt; {(PostContentEnd)}
+{(PostTag)}咸鱼技术{(PostTagEnd)}
+{(PostID)}269{(PostIDEnd)}
+{(PostCover)}none{(PostCoverEnd)}
+{(PubTime)}1705655629619{(PubTimeEnd)}
+{(EditTime)}1705655629619{(EditTimeEnd)}
+<div style="display:none;">{(PageType)}post.otp.html{(PageTypeEnd)}</div>
+<script src="./barn/main.js"></script>
+</body>
+</div>
