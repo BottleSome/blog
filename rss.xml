@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>【小记】Docker容器间SSH公钥自动交换实现免密登录的一次尝试</title>
+        <link>https://bottle.moe/bottle-291.html</link>
+        <guid>https://bottle.moe/bottle-291.html</guid>
+        <description><![CDATA[本文主要介绍个人为了利用docker部署伪分布式Hadoop，在Docker容器间实现SSH自动公钥交换、免密登录的一次尝试。]]></description>
+        <category><![CDATA[学习]]></category><category><![CDATA[Linux]]></category><category><![CDATA[Docker]]></category><category><![CDATA[小记]]></category><category><![CDATA[Hadoop]]></category>
+        <pubDate>Fri, 26 Jan 2024 13:43:08 GMT</pubDate>
+    </item>
+    <item>
         <title>初试后，到达迷茫的路口</title>
         <link>https://bottle.moe/bottle-290.html</link>
         <guid>https://bottle.moe/bottle-290.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[今日下午阳光正好，散步回家的我看到新文章有人发表了评论，便也回复了一下。转念一想，现在博客所用的Comment.B系统评论互动并不像别的博客有邮件提醒，导致略显冷漠，遂想着做个发邮件队列。想法一...]]></description>
         <category><![CDATA[咸鱼技术]]></category>
         <pubDate>Sat, 06 Feb 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>反向代理Onedrive之路</title>
-        <link>https://bottle.moe/post-267.html</link>
-        <guid>https://bottle.moe/post-267.html</guid>
-        <description><![CDATA[从小时起我一直蛮喜欢免费低成本的东西，这也养成了我喜欢折腾的性格。好好想想，免费、稳定、速度这三者有共存过吗。没错，既然免费了，稳定和速度都成了待选项目。直到我遇到了onedrive（国际...]]></description>
-        <category><![CDATA[咸鱼技术]]></category>
-        <pubDate>Thu, 28 Jan 2021 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
