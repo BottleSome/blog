@@ -10,7 +10,7 @@
         <guid>https://bottle.moe/bottle-291.html</guid>
         <description><![CDATA[本文主要介绍个人为了利用docker部署伪分布式Hadoop，在Docker容器间实现SSH自动公钥交换、免密登录的一次尝试。]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[Linux]]></category><category><![CDATA[Docker]]></category><category><![CDATA[小记]]></category><category><![CDATA[Hadoop]]></category>
-        <pubDate>Fri, 26 Jan 2024 13:43:08 GMT</pubDate>
+        <pubDate>Sat, 27 Jan 2024 05:00:22 GMT</pubDate>
     </item>
     <item>
         <title>初试后，到达迷茫的路口</title>
