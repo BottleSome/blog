@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>【斩虫】Hadoop中作业执行刚开始就挂掉的两种情况</title>
+        <link>https://bottle.moe/bottle-292.html</link>
+        <guid>https://bottle.moe/bottle-292.html</guid>
+        <description><![CDATA[这篇笔记咱主要记录了Hadoop执行Job时可能出现的 /bin/java: No such file or directory 以及 java.lang.reflect.InaccessibleObjectException 问题。]]></description>
+        <category><![CDATA[斩虫]]></category><category><![CDATA[Linux]]></category><category><![CDATA[Hadoop]]></category><category><![CDATA[咸鱼技术]]></category>
+        <pubDate>Mon, 05 Feb 2024 11:45:42 GMT</pubDate>
+    </item>
+    <item>
         <title>【小记】Docker容器间SSH公钥自动交换实现免密登录的一次尝试</title>
         <link>https://bottle.moe/bottle-291.html</link>
         <guid>https://bottle.moe/bottle-291.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[去年年初我看到了meto萨摩的博客发了篇新文章：用图床看视频是什么体验看完后顿时十分向往，有着折腾魂的我也想整个，但当时还在备战高考，便暂时搁置了（随后差不多半年也忘了这事）直到今年寒假即将...]]></description>
         <category><![CDATA[咸鱼技术]]></category>
         <pubDate>Fri, 19 Jan 2024 09:13:49 GMT</pubDate>
-    </item>
-    <item>
-        <title>解决Office365订阅的SMTP服务器验证问题</title>
-        <link>https://bottle.moe/post-268.html</link>
-        <guid>https://bottle.moe/post-268.html</guid>
-        <description><![CDATA[今日下午阳光正好，散步回家的我看到新文章有人发表了评论，便也回复了一下。转念一想，现在博客所用的Comment.B系统评论互动并不像别的博客有邮件提醒，导致略显冷漠，遂想着做个发邮件队列。想法一...]]></description>
-        <category><![CDATA[咸鱼技术]]></category>
-        <pubDate>Sat, 06 Feb 2021 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
