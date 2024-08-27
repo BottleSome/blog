@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>【食谱】麻婆豆腐</title>
+        <link>https://bottle.moe/bottle-296.html</link>
+        <guid>https://bottle.moe/bottle-296.html</guid>
+        <description><![CDATA[麻婆豆腐算是经典下饭菜了，既然要用来下饭，料肯定要加的猛一点。]]></description>
+        <category><![CDATA[食谱]]></category><category><![CDATA[日常]]></category><category><![CDATA[吃货]]></category>
+        <pubDate>Tue, 27 Aug 2024 03:16:05 GMT</pubDate>
+    </item>
+    <item>
         <title>【食谱】投没投炒蛋</title>
         <link>https://bottle.moe/bottle-295.html</link>
         <guid>https://bottle.moe/bottle-295.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[大一下学期总体给我的印象就是接踵而至的小任务和小烦恼，这里就简单写个小记掠过一下~学习变困难了些当拿到大一下学期的课表时我就开始暗叹不妙了，一大敌人啪的一下就打在了我面前：有机化学...]]></description>
         <category><![CDATA[日常]]></category><category><![CDATA[校园]]></category><category><![CDATA[学习]]></category><category><![CDATA[奋斗]]></category>
         <pubDate>Wed, 25 Aug 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>再见了，我的友基数位板</title>
-        <link>https://bottle.moe/post-271.html</link>
-        <guid>https://bottle.moe/post-271.html</guid>
-        <description><![CDATA[四月中旬的时候我参与了学校的艺创杯视频创作比赛，规划视频草稿的时候决定加一点点动画部分在里面直到五月头我才开始做动画这部分，结果发现这数位板画出的这线条怎么也不直，弯弯扭扭的。想了一下，我技术再...]]></description>
-        <category><![CDATA[日常]]></category><category><![CDATA[感慨]]></category><category><![CDATA[记忆]]></category>
-        <pubDate>Tue, 18 May 2021 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
