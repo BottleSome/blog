@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>【小记】探探学习平台的字体混淆</title>
+        <link>https://bottle.moe/bottle-297.html</link>
+        <guid>https://bottle.moe/bottle-297.html</guid>
+        <description><![CDATA[这篇笔记主要记录了个人对某学习平台字体混淆（防复制）的基本分析和反混淆思路。字体混淆有时候也被用作反爬机制。]]></description>
+        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[逆向工程]]></category><category><![CDATA[JavaScript]]></category>
+        <pubDate>Sat, 26 Oct 2024 05:58:14 GMT</pubDate>
+    </item>
+    <item>
         <title>【食谱】麻婆豆腐</title>
         <link>https://bottle.moe/bottle-296.html</link>
         <guid>https://bottle.moe/bottle-296.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[高中三年因为学业忙碌和其他各种原因没能和家人一起出去游玩一趟，今年暑假咱就计划了去看看海~结果事出意料，7月底疫情又来了，但咨询了一下发现酒店和飞机都很难办理退款手续，研究了一下发现山东和湖北情...]]></description>
         <category><![CDATA[日常]]></category><category><![CDATA[游玩]]></category>
         <pubDate>Tue, 31 Aug 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>简掠大一下学期生活</title>
-        <link>https://bottle.moe/post-272.html</link>
-        <guid>https://bottle.moe/post-272.html</guid>
-        <description><![CDATA[大一下学期总体给我的印象就是接踵而至的小任务和小烦恼，这里就简单写个小记掠过一下~学习变困难了些当拿到大一下学期的课表时我就开始暗叹不妙了，一大敌人啪的一下就打在了我面前：有机化学...]]></description>
-        <category><![CDATA[日常]]></category><category><![CDATA[校园]]></category><category><![CDATA[学习]]></category><category><![CDATA[奋斗]]></category>
-        <pubDate>Wed, 25 Aug 2021 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
