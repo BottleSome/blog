@@ -12,12 +12,6 @@
         "url": "https://www.ghostchu.com/"
     },
     {
-        "name": "蝉时雨",
-        "desc": "蝉鸣如雨，花宵道中",
-        "pic": "https://cdn2.imbottle.com/links/chanshiyu.com.jpg",
-        "url": "https://chanshiyu.com"
-    },
-    {
         "name": "FBIチルノ",
         "desc": "よろしく!!私はエフビエです!",
         "pic": "https://cdn2.imbottle.com/links/fbicirno.github.io.jpg",
@@ -30,15 +24,9 @@
         "url": "https://akarin.dev"
     },
     {
-        "name": "MysterySir",
-        "desc": "心有猛虎，细嗅蔷薇",
-        "pic": "https://cdn2.imbottle.com/links/mysterysir.jpg",
-        "url": "https://blog.say521.cn/"
-    },
-    {
         "name": "小太",
-        "desc": "（自称）一个啥也不会的five",
-        "pic": "https://sdn.geekzu.org/avatar/ad5babe8213864d97007267d9e130291?s=400",
+        "desc": "（自称）或许是一个笨蛋",
+        "pic": "https://cdn2.imbottle.com/links/baka.fun.jpg",
         "url": "https://baka.fun/"
     },
     {
@@ -81,7 +69,7 @@
         "name": "Nutssss",
         "desc": "一个爱好钻研技术的咸鱼",
         "pic": "https://s2.ax1x.com/2020/02/16/39EaG9.png",
-        "url": "https://n0ts.cn/"
+        "url": "https://n0ts.top/"
     },
     {
         "name": "Eltrac",
@@ -105,19 +93,7 @@
         "name": "季悠然",
         "desc": "新的开始",
         "pic": "https://cdn2.imbottle.com/links/exia.xyz.jpg",
-        "url": "https://gundam.exia.xyz/"
-    },
-    {
-        "name": "KasuganoSora",
-        "desc": "零梦的博客",
-        "pic": "https://cdn2.imbottle.com/links/lo-li.cn.jpg",
-        "url": "https://lo-li.cn/"
-    },
-    {
-        "name": "XiaoLin",
-        "desc": "小霖的梦花园",
-        "pic": "https://cdn2.imbottle.com/links/xiaolin.in.jpg",
-        "url": "https://xiaolin.in"
+        "url": "https://blog.mitsuha.space/"
     },
     {
         "name": "Subilan",
@@ -127,9 +103,9 @@
     },
     {
         "name": "OhMyGa",
-        "desc": "一只想咸鱼翻身的萌新",
-        "pic": "https://cdn2.imbottle.com/links/ohmyga.cn.jpg",
-        "url": "https://blog.ohmyga.cn/"
+        "desc": "欧欧の魔法屋",
+        "pic": "https://cdn2.imbottle.com/links/ohmyga.dev.png",
+        "url": "https://ohmyga.dev/"
     },
     {
         "name": "Hans362",
