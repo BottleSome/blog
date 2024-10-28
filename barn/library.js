@@ -36,6 +36,6 @@ B.callAfterRender((pageType) => {
         // 仅在文章页面渲染数学公式
         setTimeout(function () {
             MathJax.typesetPromise();
-        }, 500);
+        }, 1500);
     }
 });
