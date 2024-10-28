@@ -29,6 +29,10 @@ window.MathJax = {
     svg: {
         fontCache: 'global'
     },
+    startup: {
+        // 脚本载入时先不要渲染公式，避免 bug
+        typeset: false
+    }
 };
 $.script('https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.2.0/es5/tex-mml-svg.min.js')
 B.callAfterRender((pageType) => {
@@ -37,6 +41,6 @@ B.callAfterRender((pageType) => {
         // 仅在文章页面渲染数学公式
         setTimeout(function () {
             MathJax.typesetPromise();
-        }, 1500);
+        }, 500);
     }
 });
