@@ -7,15 +7,9 @@
 	top:0;
 	left:0;
 	margin:0 auto;
-	background-color:#FFFFFF;
+	background-color:#494949;
 }
-#loadingpic{
-	position:fixed;
-	margin:0 auto;
-	left:50%;
-	top:50%;
-	transform:translate(-50%,-50%);
-}
+
 @keyframes loadin{
    0% {
      opacity:0;
@@ -34,6 +28,57 @@
      opacity:0;
    }
 }
+@keyframes jumping{
+   0% {
+	 transform:translate(-50%,-50%);
+	 animation-timing-function: ease-out;
+   }
+   20%{
+	 transform:translate(-50%,-100%) scaleX(80%);
+	 animation-timing-function: linear;
+   }
+   50%{
+	 transform:translate(-50%,-135%) scaleX(100%);
+	 animation-timing-function: linear;
+   }
+   55%{
+	 transform:translate(-50%,-140%) scaleX(103%);
+	 animation-timing-function: linear;
+   }
+   70%{
+	 transform:translate(-50%,-135%) scaleX(95%);
+	 animation-timing-function: linear;
+   }
+   80%{
+	 transform:translate(-50%,-115%);
+	 animation-timing-function: ease-in;
+   }
+   90%{
+	 transform:translate(-50%,-50%);
+	 animation-timing-function: ease-out;
+   }
+   95%{
+	 transform:translate(-50%,-50%) scale(110%,80%);
+	 animation-timing-function: ease-in;
+   }
+   100%{
+	 transform:translate(-50%,-50%);
+   }
+}
+.dot{
+	position:fixed;
+	margin:0 auto;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+	display: block;
+	width:1.8em;
+	height:1.8em;
+	background-color:#fff;
+	border-radius:50%;
+	animation:jumping 1s ease infinite;
+}
+
 .loadshow{
     animation:loadin 0.2s ease forwards;
 }
@@ -41,7 +86,7 @@
     animation:loadout 0.2s ease forwards;
 }
 </style>
-<div class='loading' id='loading'><img src='{[barndir]}loadingcloth.gif' id='loadingpic'></img></div>
+<div class='loading' id='loading'><span class="dot"></span></div> 
 <loadset style='display:none'>
 {
 	"animations": {
