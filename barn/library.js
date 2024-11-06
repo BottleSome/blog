@@ -1,7 +1,7 @@
 /*Libraries to import*/
 /*这里是博客必须用到的库，请不要改动base64这一个库*/
 /*dankogai/js-base64*/
-$.script("https://cdn.imbottle.com/npm/js-base64@latest/base64.min.js");
+$.script("https://cdn.imbottle.com/static_files/base64/base64.min.js");
 /*markdown-it/markdown-it*/
 $.script("https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/markdown-it/12.3.2/markdown-it.min.js");
 /*markdown-it-anchor */
