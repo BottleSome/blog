@@ -10,7 +10,7 @@
         <guid>https://bottle.moe/bottle-298.html</guid>
         <description><![CDATA[麻麻再也不用担心我的 matplotlib 渲染不出中文字符了！本笔记还简要地从源码角度介绍了一下实现原理。  ]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[Python]]></category><category><![CDATA[数据可视化]]></category>
-        <pubDate>Sat, 23 Nov 2024 09:49:08 GMT</pubDate>
+        <pubDate>Sat, 23 Nov 2024 15:33:50 GMT</pubDate>
     </item>
     <item>
         <title>【小记】探探学习平台的字体混淆</title>
