@@ -10,7 +10,7 @@
         <guid>https://bottle.moe/bottle-299.html</guid>
         <description><![CDATA[这篇笔记主要记录了咱在 Google Colab 以及 AutoDL 平台上测试运行 GPU 容器时的踩坑和爬出坑的过程，涉及到 apptainer 和 udocker 这两个容器管理工具。]]></description>
         <category><![CDATA[Linux]]></category><category><![CDATA[咸鱼技术]]></category><category><![CDATA[斩虫]]></category><category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[Docker]]></category>
-        <pubDate>Mon, 27 Jan 2025 04:03:06 GMT</pubDate>
+        <pubDate>Mon, 27 Jan 2025 04:35:24 GMT</pubDate>
     </item>
     <item>
         <title>【小记】Matplotlib 中设置自定义中文字体的正确姿势</title>
