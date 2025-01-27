@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>【小记】在 Google Colab 等平台上运行 GPU 容器</title>
+        <link>https://bottle.moe/bottle-299.html</link>
+        <guid>https://bottle.moe/bottle-299.html</guid>
+        <description><![CDATA[这篇笔记主要记录了咱在 Google Colab 以及 AutoDL 平台上测试运行 GPU 容器时的踩坑和爬出坑的过程，涉及到 apptainer 和 udocker 这两个容器管理工具。]]></description>
+        <category><![CDATA[Linux]]></category><category><![CDATA[咸鱼技术]]></category><category><![CDATA[斩虫]]></category><category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[Docker]]></category>
+        <pubDate>Mon, 27 Jan 2025 04:03:06 GMT</pubDate>
+    </item>
+    <item>
         <title>【小记】Matplotlib 中设置自定义中文字体的正确姿势</title>
         <link>https://bottle.moe/bottle-298.html</link>
         <guid>https://bottle.moe/bottle-298.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[不得不说，大学物理实验这个有效数字和测量值的表达真的把我搞晕了，老师也就粗略过了一下绪论，结果实验报告要求又严格…这里根据网上搜集到的资料和个人理解做个总结，也以便后期参考我学校使用的教材：《大...]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
         <pubDate>Wed, 22 Sep 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>JS小记：闭...闭包？</title>
-        <link>https://bottle.moe/post-274.html</link>
-        <guid>https://bottle.moe/post-274.html</guid>
-        <description><![CDATA[最近在重打JavaScript基础…看廖雪峰博客的基础教程时看到了闭包这个字眼，但有点意思的是文章并没有更进一步去探讨闭包到底是什么，而是列出代码让大家去体会。但既然是打基础，我觉着有疑惑的概念...]]></description>
-        <category><![CDATA[咸鱼技术]]></category><category><![CDATA[JavaScript]]></category><category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
-        <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
