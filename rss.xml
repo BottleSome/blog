@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>初踏征程，研途漫漫</title>
+        <link>https://bottle.moe/bottle-300.html</link>
+        <guid>https://bottle.moe/bottle-300.html</guid>
+        <description><![CDATA[秋散冬至，冬去春来。不知从何时起，人生的时间轴像开启了倍速效果一样开始飞速推进起来。简单总结一下研一上的生活叭~  ]]></description>
+        <category><![CDATA[日常]]></category><category><![CDATA[学习]]></category><category><![CDATA[总结]]></category><category><![CDATA[校园]]></category>
+        <pubDate>Sun, 16 Mar 2025 10:53:00 GMT</pubDate>
+    </item>
+    <item>
         <title>【小记】在 Google Colab 等平台上运行 GPU 容器</title>
         <link>https://bottle.moe/bottle-299.html</link>
         <guid>https://bottle.moe/bottle-299.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[本文章在Github撰写，同时在博客园进行了发布。最近学数据库概论学到了关系数据库的关系代数了。哎嘛，真的把我整晕了，尤其是关系代数的使用，很容易让人被蒙在鼓里。对我来说槽点最大的莫过...]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
         <pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>大物实验有效数字与测量值小记</title>
-        <link>https://bottle.moe/post-275.html</link>
-        <guid>https://bottle.moe/post-275.html</guid>
-        <description><![CDATA[不得不说，大学物理实验这个有效数字和测量值的表达真的把我搞晕了，老师也就粗略过了一下绪论，结果实验报告要求又严格…这里根据网上搜集到的资料和个人理解做个总结，也以便后期参考我学校使用的教材：《大...]]></description>
-        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
-        <pubDate>Wed, 22 Sep 2021 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
