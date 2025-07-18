@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>【食谱】家常豆腐</title>
+        <link>https://bottle.moe/bottle-302.html</link>
+        <guid>https://bottle.moe/bottle-302.html</guid>
+        <description><![CDATA[转眼研一就过去了，虽然多少有些心累，但是吃饭上真不能亏待自己吧！我可以是科研草履虫，但草履虫未尝没有研究烹饪美食的梦想！这回咱就试了试家常豆腐的做法。  ]]></description>
+        <category><![CDATA[食谱]]></category><category><![CDATA[日常]]></category><category><![CDATA[吃货]]></category>
+        <pubDate>Fri, 18 Jul 2025 13:14:31 GMT</pubDate>
+    </item>
+    <item>
         <title>初踏征程，研途漫漫</title>
         <link>https://bottle.moe/bottle-300.html</link>
         <guid>https://bottle.moe/bottle-300.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[最近做Python课实验发现正则表达式和它在py中的的标准库re有很多能多琢磨一下的点，遂决定写成一篇小记，以后想复习能再来看看。#名词因为不同文献书籍对正则表达式的描述有差别，我在这里列出一...]]></description>
         <category><![CDATA[Python]]></category><category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
         <pubDate>Fri, 05 Nov 2021 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-        <title>【动画解释】关系数据库de关系代数小记</title>
-        <link>https://bottle.moe/post-276.html</link>
-        <guid>https://bottle.moe/post-276.html</guid>
-        <description><![CDATA[本文章在Github撰写，同时在博客园进行了发布。最近学数据库概论学到了关系数据库的关系代数了。哎嘛，真的把我整晕了，尤其是关系代数的使用，很容易让人被蒙在鼓里。对我来说槽点最大的莫过...]]></description>
-        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
-        <pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
