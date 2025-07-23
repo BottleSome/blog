@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>【食谱】伪·吉野家牛肉饭</title>
+        <link>https://bottle.moe/bottle-303.html</link>
+        <guid>https://bottle.moe/bottle-303.html</guid>
+        <description><![CDATA[这道菜不仅简单，而且健康，零油添加哦！老少咸宜啊有木有！  ]]></description>
+        <category><![CDATA[食谱]]></category><category><![CDATA[日常]]></category><category><![CDATA[吃货]]></category>
+        <pubDate>Wed, 23 Jul 2025 04:22:14 GMT</pubDate>
+    </item>
+    <item>
         <title>【食谱】家常豆腐</title>
         <link>https://bottle.moe/bottle-302.html</link>
         <guid>https://bottle.moe/bottle-302.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[转眼就到寒假了，主博客都快长草了，是时候总结一下过去这段时间了！（屁嘞！寒假都结束了喂，你这篇文章写了多久啊ヽ(｀⌒´メ)ノ）这篇总结之所以憋了这么久是因为这段时间一直在更新博客系统，现在终于整完了。（你每天都码的话1月就能写完吧喂）咳咳...闲话不多说，我们开始！# 暑假接上一篇日常小记青岛&amp;威海小游流水账，之后剩下的暑假日子咱过得算是比较悠闲了：炒菜吃为了成为将来的家庭主夫以后能照顾好...]]></description>
         <category><![CDATA[日常]]></category><category><![CDATA[校园]]></category><category><![CDATA[学习]]></category><category><![CDATA[奋斗]]></category><category><![CDATA[总结]]></category>
         <pubDate>Sun, 20 Feb 2022 12:58:01 GMT</pubDate>
-    </item>
-    <item>
-        <title>Python正则表达式细节小记</title>
-        <link>https://bottle.moe/post-280.html</link>
-        <guid>https://bottle.moe/post-280.html</guid>
-        <description><![CDATA[最近做Python课实验发现正则表达式和它在py中的的标准库re有很多能多琢磨一下的点，遂决定写成一篇小记，以后想复习能再来看看。#名词因为不同文献书籍对正则表达式的描述有差别，我在这里列出一...]]></description>
-        <category><![CDATA[Python]]></category><category><![CDATA[学习]]></category><category><![CDATA[小记]]></category>
-        <pubDate>Fri, 05 Nov 2021 00:00:00 GMT</pubDate>
     </item>
     
 </channel>
