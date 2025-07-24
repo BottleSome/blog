@@ -3,7 +3,7 @@
 /*dankogai/js-base64*/
 $.script("https://cdn.imbottle.com/static_files/base64/base64.min.js");
 /*markdown-it/markdown-it*/
-$.script("https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/markdown-it/12.3.2/markdown-it.min.js");
+$.script("https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/markdown-it/12.3.2/markdown-it.min.js");
 /*markdown-it-anchor */
 $.script("https://bottle-ghproxy.ghostchu.com/static/markdownItAnchor.umd.js");
 
