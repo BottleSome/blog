@@ -3,7 +3,7 @@
 /*dankogai/js-base64*/
 $.script("https://cdn.imbottle.com/static_files/base64/base64.min.js");
 /*markdown-it/markdown-it*/
-$.script("https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/markdown-it/12.3.2/markdown-it.min.js");
+$.script("https://cdn.bytedance.com/cdn/expire-1-M/markdown-it/12.3.2/markdown-it.min.js");
 /*markdown-it-anchor */
 $.script("https://bottle-ghproxy.ghostchu.com/static/markdownItAnchor.umd.js");
 
@@ -34,7 +34,7 @@ window.MathJax = {
         typeset: false
     }
 };
-$.script('https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.2.0/es5/tex-mml-svg.min.js')
+$.script('https://cdn.bytedance.com/cdn/expire-1-M/mathjax/3.2.0/es5/tex-mml-svg.min.js')
 B.callAfterRender((pageType) => {
     if (pageType === 'post.otp.html') {
         console.log('Starting to render math formulas.');
