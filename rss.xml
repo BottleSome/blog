@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>博客十周年暨单身 23 周年纪念日</title>
+        <link>https://bottle.moe/bottle-304.html</link>
+        <guid>https://bottle.moe/bottle-304.html</guid>
+        <description><![CDATA[2015 年 8 月 23 日，命运的齿轮开始转动......]]></description>
+        <category><![CDATA[周年]]></category><category><![CDATA[生日]]></category><category><![CDATA[记忆]]></category><category><![CDATA[日常]]></category><category><![CDATA[随笔]]></category>
+        <pubDate>Wed, 27 Aug 2025 15:19:53 GMT</pubDate>
+    </item>
+    <item>
         <title>【食谱】伪·吉野家牛肉饭</title>
         <link>https://bottle.moe/bottle-303.html</link>
         <guid>https://bottle.moe/bottle-303.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[在Linux系统中编辑文本总是离不开一位老帮手——Vi。而因为其诞生的年代有些久远，有些操作在现在看来可能有点“反直觉”。于是我决定写这样一篇小笔记，记录一下我记忆Vi的这些这些 常用 操作和指令的方法（主要靠的是英语和图示了）。当然，正如“好记性不如烂笔头”所言，多实践才是熟练掌握技能的王道。]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[Vim]]></category><category><![CDATA[Linux]]></category>
         <pubDate>Fri, 20 May 2022 10:55:52 GMT</pubDate>
-    </item>
-    <item>
-        <title>暑日至寒天，掠过大二上</title>
-        <link>https://bottle.moe/bottle-281.html</link>
-        <guid>https://bottle.moe/bottle-281.html</guid>
-        <description><![CDATA[转眼就到寒假了，主博客都快长草了，是时候总结一下过去这段时间了！（屁嘞！寒假都结束了喂，你这篇文章写了多久啊ヽ(｀⌒´メ)ノ）这篇总结之所以憋了这么久是因为这段时间一直在更新博客系统，现在终于整完了。（你每天都码的话1月就能写完吧喂）咳咳...闲话不多说，我们开始！# 暑假接上一篇日常小记青岛&amp;威海小游流水账，之后剩下的暑假日子咱过得算是比较悠闲了：炒菜吃为了成为将来的家庭主夫以后能照顾好...]]></description>
-        <category><![CDATA[日常]]></category><category><![CDATA[校园]]></category><category><![CDATA[学习]]></category><category><![CDATA[奋斗]]></category><category><![CDATA[总结]]></category>
-        <pubDate>Sun, 20 Feb 2022 12:58:01 GMT</pubDate>
     </item>
     
 </channel>
