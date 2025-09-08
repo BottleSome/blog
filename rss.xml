@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>广东惠州小游流水账</title>
+        <link>https://bottle.moe/bottle-305.html</link>
+        <guid>https://bottle.moe/bottle-305.html</guid>
+        <description><![CDATA[年初陪老妈去了一趟广东惠州。本来我并没有太大的兴趣，但想想以后和爸妈一起出去玩的机会只会越来越少，便还是决定去看看。这回整体行程的安排其实比较随意，很多计划都是当天才制定的。玩下来感觉惠州虽然小，但还是尽力把自己打造成了一个旅游城市，也确实吸引了不少游客。]]></description>
+        <category><![CDATA[日常]]></category><category><![CDATA[游玩]]></category>
+        <pubDate>Mon, 08 Sep 2025 09:10:43 GMT</pubDate>
+    </item>
+    <item>
         <title>博客十周年暨单身 23 周年纪念日</title>
         <link>https://bottle.moe/bottle-304.html</link>
         <guid>https://bottle.moe/bottle-304.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[在C/C++中有个叫指针的玩意存在感极其强烈，而说到指针又不得不提到内存管理。现在时不时能听到一些朋友说指针很难，实际上说的是内存操作和管理方面的难。（这篇笔记咱也会结合自己的理解简述一些相关的内存知识）最近在写C程序使用指针的时候遇到了几个让我印象深刻的地方，这里记录一下，以便今后回顾。“经一蹶者长一智，今日之失，未必不为后日之得。” - 王阳明《与薛尚谦书》]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[C]]></category>
         <pubDate>Thu, 14 Jul 2022 12:13:41 GMT</pubDate>
-    </item>
-    <item>
-        <title>想法子记忆Vi/Vim常用操作及指令</title>
-        <link>https://bottle.moe/bottle-282.html</link>
-        <guid>https://bottle.moe/bottle-282.html</guid>
-        <description><![CDATA[在Linux系统中编辑文本总是离不开一位老帮手——Vi。而因为其诞生的年代有些久远，有些操作在现在看来可能有点“反直觉”。于是我决定写这样一篇小笔记，记录一下我记忆Vi的这些这些 常用 操作和指令的方法（主要靠的是英语和图示了）。当然，正如“好记性不如烂笔头”所言，多实践才是熟练掌握技能的王道。]]></description>
-        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[Vim]]></category><category><![CDATA[Linux]]></category>
-        <pubDate>Fri, 20 May 2022 10:55:52 GMT</pubDate>
     </item>
     
 </channel>
