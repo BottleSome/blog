@@ -5,7 +5,7 @@ $.script("https://cdn.imbottle.com/static_files/base64/base64.min.js");
 /*markdown-it/markdown-it*/
 $.script("https://cdn.imbottle.com/static_files/markdown/markdown-it.min.js");
 /*markdown-it-anchor */
-$.script("https://bottle-ghproxy.ghostchu.com/static/markdownItAnchor.umd.js");
+$.script("https://cdn.imbottle.com/static_files/markdown/markdownItAnchor.umd.js");
 
 /*Markdown Function used by main.js，这里是main.js需要用到的函数$.mark(content)，content是传入的markdown原文，函数返回值是按要求渲染后的文档*/
 /*默认使用了markdown-it以及其组件markdown-it-anchor*/
