@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>秋风萧瑟天气凉，回首崎岖研一下</title>
+        <link>https://bottle.moe/bottle-306.html</link>
+        <guid>https://bottle.moe/bottle-306.html</guid>
+        <description><![CDATA[最近天气转凉了，武汉难得迎来了秋天（虽然可能稍纵即逝 (¬_¬ )）。回过神来，发现咱已经是一位研二老师兄了，不禁再次感叹时间的飞逝。回顾研一下学期，整体体验就是迷茫和内耗，迷茫于自己研究方向、研究点是否选择正确，而内耗则在于实验几乎没有怎么成功过。恰恰自己又有些喜欢钻自己牛角尖，有些问题感觉就差一点了，但就是因为那一点做不出来，会把我绕进去很久，到底我就像实验中摇摆不定的模型参数一样，随着各损失...]]></description>
+        <category><![CDATA[日常]]></category><category><![CDATA[学习]]></category><category><![CDATA[总结]]></category><category><![CDATA[校园]]></category>
+        <pubDate>Sat, 27 Sep 2025 08:05:27 GMT</pubDate>
+    </item>
+    <item>
         <title>广东惠州小游流水账</title>
         <link>https://bottle.moe/bottle-305.html</link>
         <guid>https://bottle.moe/bottle-305.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[为了在命令行程序中实现和用户的交互，我们编写的程序的运行过程中往往涉及到对标准输入/输出流的多次读写。在C语言中接受用户输入这一块，有着一个老生常谈的问题：“怎么样及时清空输入流中的数据？”这也是这篇小笔记的主题内容。]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[C]]></category>
         <pubDate>Thu, 14 Jul 2022 12:29:06 GMT</pubDate>
-    </item>
-    <item>
-        <title>【小记】与指针和二维数组过几招</title>
-        <link>https://bottle.moe/bottle-283.html</link>
-        <guid>https://bottle.moe/bottle-283.html</guid>
-        <description><![CDATA[在C/C++中有个叫指针的玩意存在感极其强烈，而说到指针又不得不提到内存管理。现在时不时能听到一些朋友说指针很难，实际上说的是内存操作和管理方面的难。（这篇笔记咱也会结合自己的理解简述一些相关的内存知识）最近在写C程序使用指针的时候遇到了几个让我印象深刻的地方，这里记录一下，以便今后回顾。“经一蹶者长一智，今日之失，未必不为后日之得。” - 王阳明《与薛尚谦书》]]></description>
-        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[C]]></category>
-        <pubDate>Thu, 14 Jul 2022 12:13:41 GMT</pubDate>
     </item>
     
 </channel>
