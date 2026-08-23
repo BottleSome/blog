@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>【小记】上手 Pi，记录一下我的 AI 编码实践</title>
+        <link>https://bottle.moe/bottle-309.html</link>
+        <guid>https://bottle.moe/bottle-309.html</guid>
+        <description><![CDATA[多个月以后，面对满屏的代码无从下手时，些瓶将会回想起，他第一次接触 Coding Agent 的那个遥远的下午。自从今年年初开始尝试 AI 辅助编码后，咱是真的一发不可收拾了，这体验简直和一直以来的 Tab 补全完全不同。在本地 Agent 程序的约束和辅助下，指令遵循较强的大语言模型 (LLMs, Large Language Models) 变得可以基于“观察-决策-执行”循环来在一个项目的范...]]></description>
+        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[咸鱼技术]]></category><category><![CDATA[Agent]]></category><category><![CDATA[AI]]></category>
+        <pubDate>Sun, 23 Aug 2026 10:43:47 GMT</pubDate>
+    </item>
+    <item>
         <title>研二冬深再回首，前路依稀雾几重</title>
         <link>https://bottle.moe/bottle-308.html</link>
         <guid>https://bottle.moe/bottle-308.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[上一篇文章咱回顾了大二下学期的生活，这篇就简述一下之后的暑假我印象比较深的事吧！]]></description>
         <category><![CDATA[日常]]></category><category><![CDATA[总结]]></category>
         <pubDate>Wed, 04 Jan 2023 05:20:51 GMT</pubDate>
-    </item>
-    <item>
-        <title>暑烧一夏，回顾一下（一）</title>
-        <link>https://bottle.moe/bottle-286.html</link>
-        <guid>https://bottle.moe/bottle-286.html</guid>
-        <description><![CDATA[转眼大二下学期就过去了。现在的我，已经迈入了本科阶段的后半程了...这里就按惯例记录一下我的大二下至暑假这段时间的生活。毕竟记忆这玩意嘛，真的说消散就消散了，唯有记录下来，我才得以在不久的将来，能回味当初的青涩时光。这篇文章主要记录的是咱大二下学期的生活。]]></description>
-        <category><![CDATA[日常]]></category><category><![CDATA[校园]]></category><category><![CDATA[奋斗]]></category><category><![CDATA[学习]]></category><category><![CDATA[总结]]></category>
-        <pubDate>Fri, 21 Oct 2022 15:00:12 GMT</pubDate>
     </item>
     
 </channel>
