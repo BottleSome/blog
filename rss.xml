@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>【小记】图片托管从又拍云迁移到腾讯云 EO + COS（兼容图片处理参数）</title>
+        <link>https://bottle.moe/bottle-310.html</link>
+        <guid>https://bottle.moe/bottle-310.html</guid>
+        <description><![CDATA[传闻又拍云那边有些不稳定了，遂决定把博客的图片托管服务从又拍云迁移到腾讯云的 EdgeOne + COS。为了保持图片处理参数兼容，在不显著影响延迟的前提下，我想到了个神奇的方案...本篇笔记就来记录一下这个过程。]]></description>
+        <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[咸鱼技术]]></category><category><![CDATA[折腾]]></category><category><![CDATA[计算机网络]]></category><category><![CDATA[CDN]]></category><category><![CDATA[对象存储]]></category>
+        <pubDate>Mon, 07 Sep 2026 07:05:08 GMT</pubDate>
+    </item>
+    <item>
         <title>【小记】上手 Pi，记录一下我的 AI 编码实践</title>
         <link>https://bottle.moe/bottle-309.html</link>
         <guid>https://bottle.moe/bottle-309.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[你瞧这时间，如寒冬腊月的风一般在指缝间穿行流走......这篇小记中咱会回顾一下大三上发生在咱身边的一些事儿。]]></description>
         <category><![CDATA[日常]]></category><category><![CDATA[学习]]></category><category><![CDATA[校园]]></category><category><![CDATA[总结]]></category>
         <pubDate>Tue, 07 Feb 2023 13:48:27 GMT</pubDate>
-    </item>
-    <item>
-        <title>暑烧一夏，回顾一下（二）</title>
-        <link>https://bottle.moe/bottle-288.html</link>
-        <guid>https://bottle.moe/bottle-288.html</guid>
-        <description><![CDATA[上一篇文章咱回顾了大二下学期的生活，这篇就简述一下之后的暑假我印象比较深的事吧！]]></description>
-        <category><![CDATA[日常]]></category><category><![CDATA[总结]]></category>
-        <pubDate>Wed, 04 Jan 2023 05:20:51 GMT</pubDate>
     </item>
     
 </channel>
