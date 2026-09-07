@@ -10,7 +10,7 @@
         <guid>https://bottle.moe/bottle-310.html</guid>
         <description><![CDATA[传闻又拍云那边有些不稳定了，遂决定把博客的图片托管服务从又拍云迁移到腾讯云的 EdgeOne + COS。为了保持图片处理参数兼容，在不显著影响延迟的前提下，我想到了个神奇的方案...本篇笔记就来记录一下这个过程。]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[小记]]></category><category><![CDATA[咸鱼技术]]></category><category><![CDATA[折腾]]></category><category><![CDATA[计算机网络]]></category><category><![CDATA[CDN]]></category><category><![CDATA[对象存储]]></category>
-        <pubDate>Mon, 07 Sep 2026 07:05:08 GMT</pubDate>
+        <pubDate>Mon, 07 Sep 2026 07:15:13 GMT</pubDate>
     </item>
     <item>
         <title>【小记】上手 Pi，记录一下我的 AI 编码实践</title>
