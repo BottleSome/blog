@@ -5,6 +5,14 @@
     <link>https://bottle.moe/</link>
     <description>SomeBottle的小站</description>
     <item>
+        <title>研三伊始，拾忆研二下</title>
+        <link>https://bottle.moe/bottle-311.html</link>
+        <guid>https://bottle.moe/bottle-311.html</guid>
+        <description><![CDATA[提笔写下这句话的时候，咱刚刚暑期实习完返回学校。很幸运地，我拿到了转正资格，但现实情况却让我有些高兴不起来，心中的焦虑反而加重了，仿佛从一场豪赌转移到了另一场豪赌之中。说来今年武汉的八月底意外还比较凉爽，就和那无形且冰凉的就业市场一样。回想起来，总觉得这半年来过得不太有实感，做的事似乎有很多，得到的收获又没那么多；但其实也过得有些实感，因为没少遇到倒霉事。无论如何，买一瓶无糖七喜，坐在实验室工位前，静静回忆一下寒假到研二下的这段日子吧。  ]]></description>
+        <category><![CDATA[日常]]></category><category><![CDATA[学习]]></category><category><![CDATA[随笔]]></category><category><![CDATA[总结]]></category><category><![CDATA[校园]]></category><category><![CDATA[工作]]></category>
+        <pubDate>Wed, 16 Sep 2026 08:27:05 GMT</pubDate>
+    </item>
+    <item>
         <title>【小记】图片托管从又拍云迁移到腾讯云 EO + COS（兼容图片处理参数）</title>
         <link>https://bottle.moe/bottle-310.html</link>
         <guid>https://bottle.moe/bottle-310.html</guid>
@@ -155,14 +163,6 @@
         <description><![CDATA[300多天，说长其实也没那么长，但是说短吧，也并不是体感上很短暂的一段时光。依稀记得2月13日那天我正式开始备考考研初试，自此咱一路上几乎一直以备考为最优先事项了，上课时尽量抽时间背单词、实验作业和各种报告抽中午休息的时间写，推掉了参加竞赛的机会....到中间暑假的时候学校实训甚至和期末大作业交叉了，还要写40多面实训报告（只有5天时间），大作业这边更是接连几个课设加综述论文.....]]></description>
         <category><![CDATA[学习]]></category><category><![CDATA[奋斗]]></category><category><![CDATA[小记]]></category><category><![CDATA[感慨]]></category><category><![CDATA[日常]]></category>
         <pubDate>Mon, 25 Dec 2023 12:18:05 GMT</pubDate>
-    </item>
-    <item>
-        <title>寒风腊月起，回首大三上</title>
-        <link>https://bottle.moe/bottle-289.html</link>
-        <guid>https://bottle.moe/bottle-289.html</guid>
-        <description><![CDATA[你瞧这时间，如寒冬腊月的风一般在指缝间穿行流走......这篇小记中咱会回顾一下大三上发生在咱身边的一些事儿。]]></description>
-        <category><![CDATA[日常]]></category><category><![CDATA[学习]]></category><category><![CDATA[校园]]></category><category><![CDATA[总结]]></category>
-        <pubDate>Tue, 07 Feb 2023 13:48:27 GMT</pubDate>
     </item>
     
 </channel>
